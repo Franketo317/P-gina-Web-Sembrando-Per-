@@ -24,6 +24,7 @@ import socialInstagram from './assets/figma/imgSocialIcons.svg'
 import socialYoutube from './assets/figma/imgSocialIcons1.svg'
 import topHeader from './assets/figma/imgTopHeader1.svg'
 import heroImage from './assets/figma/img71.png'
+import NosotrosPage from './pages/NosotrosPage'
 import './App.css'
 
 const programs = [
@@ -131,7 +132,7 @@ function SiteHeader() {
           Inicio
           <img src={greenLine} alt="" />
         </a>
-        <a href="#nosotros" onClick={() => setMenuOpen(false)}>Nosotros</a>
+        <a href="/nosotros" onClick={() => setMenuOpen(false)}>Nosotros</a>
         <a href="#noticias" onClick={() => setMenuOpen(false)}>Blog</a>
         <a href="#contacto" onClick={() => setMenuOpen(false)}>Contáctanos</a>
       </nav>
@@ -282,6 +283,10 @@ function SiteFooter() {
 }
 
 function App() {
+  if (window.location.pathname === '/nosotros') {
+    return <NosotrosPage />
+  }
+
   return (
     <div className="home-page" id="inicio">
       <SiteHeader />
