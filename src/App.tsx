@@ -14,6 +14,7 @@ import footerArt from './assets/figma/imgGroup6.svg'
 import impactArt from './assets/figma/imgImpacto.svg'
 import image1 from './assets/figma/imgImage1.png'
 import image4 from './assets/figma/imgImage4.png'
+import multiRatioPhoto from './assets/figma/imgBuildingBlocks169.jpg'
 import mascotImage from './assets/figma/imgMascotImage.png'
 import socialFacebook from './assets/figma/imgPlatformFacebookColorNegative.svg'
 import socialLinkedin from './assets/figma/imgPlatformLinkedInColorNegative.svg'
@@ -294,6 +295,11 @@ function App() {
         </section>
 
         <section className="intro-section" id="nosotros" aria-labelledby="intro-title">
+          <img
+            className="intro-section__image"
+            src={multiRatioPhoto}
+            alt="Fotografía de la sección Qué hacemos"
+          />
           <div className="intro-section__content">
             <h2 id="intro-title">¿QUÉ<br />HACEMOS?</h2>
             <p>
