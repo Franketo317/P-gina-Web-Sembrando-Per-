@@ -25,6 +25,7 @@ import socialYoutube from './assets/figma/imgSocialIcons1.svg'
 import topHeader from './assets/figma/imgTopHeader1.svg'
 import heroImage from './assets/figma/img71.png'
 import NosotrosPage from './pages/NosotrosPage'
+import BlogPage from './pages/BlogPage'
 import './App.css'
 
 const programs = [
@@ -133,7 +134,7 @@ function SiteHeader() {
           <img src={greenLine} alt="" />
         </a>
         <a href="/nosotros" onClick={() => setMenuOpen(false)}>Nosotros</a>
-        <a href="#noticias" onClick={() => setMenuOpen(false)}>Blog</a>
+        <a href="/blog" onClick={() => setMenuOpen(false)}>Blog</a>
         <a href="#contacto" onClick={() => setMenuOpen(false)}>Contáctanos</a>
       </nav>
       <div className="site-header__actions">
@@ -252,7 +253,7 @@ function SiteFooter() {
               <h3>Navegación</h3>
               <a href="#inicio">Inicio</a>
               <a href="#nosotros">Nosotros</a>
-              <a href="#noticias">Blog</a>
+              <a href="/blog">Blog</a>
               <a href="#contacto">Contáctanos</a>
             </div>
             <div>
@@ -283,6 +284,10 @@ function SiteFooter() {
 }
 
 function App() {
+  if (window.location.pathname === '/blog') {
+    return <BlogPage />
+  }
+
   if (window.location.pathname === '/nosotros') {
     return <NosotrosPage />
   }
