@@ -7,15 +7,14 @@ import blogFeatureCommunity from '../assets/figma/blog-featured-community.jpg'
 import blogReforestation from '../assets/figma/blog-article-reforestation.jpg'
 import blogCommunity from '../assets/figma/blog-article-community.jpg'
 import blogHealth from '../assets/figma/blog-article-health.jpg'
-import footerArt from '../assets/figma/imgGroup6.svg'
 import logo from '../assets/figma/imgImage4.png'
-import partners from '../assets/figma/blog-footer-partners.png'
 import socialFacebook from '../assets/figma/imgPlatformFacebookColorNegative.svg'
-import socialInstagram from '../assets/figma/imgSocialIcons.svg'
 import socialLinkedin from '../assets/figma/imgPlatformLinkedInColorNegative.svg'
-import socialTiktok from '../assets/figma/imgPlatformTikTokColorNegative.svg'
 import socialX from '../assets/figma/imgPlatformXTwitterColorNegative.svg'
-import socialYoutube from '../assets/figma/imgSocialIcons1.svg'
+import socialInstagramReal from '../assets/figma/imgSocialIcons1.svg'
+
+import greenLine from '../assets/figma/imgGreenLine.svg'
+import blogHeroBackground from '../assets/figma/about-values-background.png'
 import './BlogPage.css'
 
 const categories = [
@@ -83,37 +82,39 @@ const popularArticles = [
 const tags = ['Amazonía', 'Sostenibilidad', 'Innovación', 'Perú', 'Clima', 'Biodiversidad']
 const socials = [
   { label: 'Facebook', image: socialFacebook },
-  { label: 'Instagram', image: socialInstagram },
+  { label: 'Instagram', image: socialInstagramReal },
   { label: 'X', image: socialX },
   { label: 'LinkedIn', image: socialLinkedin },
-  { label: 'TikTok', image: socialTiktok },
-  { label: 'YouTube', image: socialYoutube },
 ]
 
-function BlogFooter() {
+export function BlogFooter() {
   return (
     <footer className="blog-footer" id="contacto">
-      <div className="blog-footer__main" style={{ backgroundImage: `url(${footerArt})` }}>
+      <div className="blog-footer__main">
         <h2>HAGAMOS EL CAMBIO POSIBLE!</h2>
         <div className="blog-footer__content">
           <div className="blog-footer__brand">
-            <a href="/" aria-label="Sembrando Perú, inicio"><img src={logo} alt="Sembrando Perú" /></a>
-            <img className="blog-footer__partners" src={partners} alt="Organizaciones aliadas" />
+            <a href="/" aria-label="Sembrando Perú, inicio">
+              <div className="blog-footer__logo-horizontal">
+                <img src={logo} alt="Sembrando Perú Icon" />
+                <span className="blog-footer__logo-text">SEMBRANDO<br/>PERÚ</span>
+              </div>
+            </a>
             <p>Esperanza para un futuro mejor</p>
           </div>
           <div className="blog-footer__column">
             <h3>Navegación</h3>
-            <a href="/">Inicio</a><a href="/nosotros">Nosotros</a><a href="/blog">Blog</a><a href="#contacto">Contáctanos</a>
+            <a href="/">Inicio</a><a href="/nosotros">Nosotros</a><a href="/blog">Blog</a><a href="/contacto">Contáctanos</a>
           </div>
           <div className="blog-footer__column blog-footer__contact">
             <h3>Contacto</h3>
             <a href="mailto:contacto@sembrandoperu.org">contacto@sembrandoperu.org</a>
             <a href="tel:+51921462828">+51 921 462 828</a>
-            <p>Av. Arequipa 2447 – Office 409, Lince District, Lima, Peru</p>
+            <p>Av. Arequipa 2447 – Office 409, Lince District,<br/>Lima, Peru</p>
           </div>
           <div className="blog-footer__column">
             <h3>Involúcrate</h3>
-            <a href="/#unete">Voluntariado</a><a href="/#unete">Donaciones</a><a href="#contacto">Transparencia</a>
+            <a href="/#unete">Voluntariado</a><a href="/donacion">Donaciones</a><a href="#contacto">Transparencia</a>
           </div>
         </div>
         <div className="blog-footer__follow">
@@ -121,8 +122,70 @@ function BlogFooter() {
           {socials.map((social) => <a href="#redes" aria-label={social.label} key={social.label}><img src={social.image} alt="" /></a>)}
         </div>
       </div>
-      <div className="blog-footer__legal"><span>© 2026 Sembrando. Todos los derechos reservados.</span><a href="#privacidad">Políticas de privacidad</a></div>
+      <div className="blog-footer__legal">
+        <span>© 2026 Sembrando. Todos los derechos reservados.</span>
+        <a href="#privacidad">Políticas de privacidad</a>
+      </div>
     </footer>
+  )
+}
+
+
+function BlogHeader() {
+  const [menuOpen, setMenuOpen] = useState(false)
+
+  function closeMenu() {
+    setMenuOpen(false)
+  }
+
+  return (
+    <>
+      <header className="blog-header">
+        <a className="blog-header__brand" href="/" aria-label="Sembrando Perú, inicio">
+          <img src={logo} alt="Sembrando Perú" />
+        </a>
+        <button
+          className="blog-header__menu-toggle"
+          type="button"
+          aria-expanded={menuOpen}
+          aria-controls="blog-navigation"
+          aria-label={menuOpen ? 'Cerrar menú' : 'Abrir menú'}
+          onClick={() => setMenuOpen((open) => !open)}
+        >
+          <span />
+          <span />
+          <span />
+        </button>
+        <nav
+          className={`blog-navigation${menuOpen ? ' blog-navigation--open' : ''}`}
+          id="blog-navigation"
+        >
+          <a href="/" onClick={closeMenu}>Inicio</a>
+          <a href="/nosotros" onClick={closeMenu}>Nosotros</a>
+          <a className="blog-navigation__active" href="/blog" onClick={closeMenu}>
+            Blog
+            <img src={greenLine} alt="" />
+          </a>
+          <a href="/contacto" onClick={closeMenu}>Contáctanos</a>
+          <a className="blog-navigation__donate" href="/donacion" onClick={closeMenu}>
+            Donar Ahora <img src={arrowRight} alt="" />
+          </a>
+        </nav>
+        <div className="blog-header__language" aria-label="Idioma: español">
+          <span aria-hidden="true">◎</span> ES | Español <span aria-hidden="true">⌄</span>
+        </div>
+        <a className="blog-header__donate" href="/donacion">
+          Donación
+        </a>
+      </header>
+      <section
+        className="blog-masthead"
+        style={{ backgroundImage: `url(${blogHeroBackground})` }}
+      >
+        <div style={{ position: 'absolute', inset: 0, background: 'rgba(2, 115, 77, 0.4)', zIndex: 1 }} />
+        <h1>"Historias que inspiran,<br />acciones que transforman"</h1>
+      </section>
+    </>
   )
 }
 
@@ -142,10 +205,7 @@ export default function BlogPage() {
 
   return (
     <div className="blog-page">
-      <header className="blog-masthead">
-        <p className="blog-masthead__ghost" aria-hidden="true">¿QUIÉNES SOMOS?</p>
-        <h1><span>SOMOS</span><strong>SEMBRANDO PERÚ</strong></h1>
-      </header>
+      <BlogHeader />
       <main className="blog-layout">
         <div className="blog-main-column">
           <section className="blog-featured" aria-labelledby="featured-title">

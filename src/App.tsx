@@ -10,23 +10,18 @@ import blogImage4 from './assets/figma/imgBlogImage4.png'
 import blogImage5 from './assets/figma/imgBlogImage5.png'
 import ellipse from './assets/figma/imgEllipse.svg'
 import greenLine from './assets/figma/imgGreenLine.svg'
-import footerArt from './assets/figma/imgGroup6.svg'
 import impactArt from './assets/figma/imgImpacto.svg'
-import image1 from './assets/figma/imgImage1.png'
 import image4 from './assets/figma/imgImage4.png'
 import multiRatioPhoto from './assets/figma/imgBuildingBlocks169.jpg'
 import mascotImage from './assets/figma/imgMascotImage.png'
-import socialFacebook from './assets/figma/imgPlatformFacebookColorNegative.svg'
-import socialLinkedin from './assets/figma/imgPlatformLinkedInColorNegative.svg'
-import socialTiktok from './assets/figma/imgPlatformTikTokColorNegative.svg'
-import socialX from './assets/figma/imgPlatformXTwitterColorNegative.svg'
-import socialInstagram from './assets/figma/imgSocialIcons.svg'
-import socialYoutube from './assets/figma/imgSocialIcons1.svg'
-import topHeader from './assets/figma/imgTopHeader1.svg'
 import heroImage from './assets/figma/img71.png'
 import NosotrosPage from './pages/NosotrosPage'
 import BlogPage from './pages/BlogPage'
+import { BlogFooter } from './pages/BlogPage'
+import ContactPage from './pages/ContactPage'
+import DonationPage from './pages/DonationPage'
 import './App.css'
+import './pages/NosotrosPage.css'
 
 const programs = [
   {
@@ -84,66 +79,46 @@ const articles = [
   },
 ]
 
-const socialLinks = [
-  { label: 'Facebook', image: socialFacebook },
-  { label: 'Instagram', image: socialInstagram },
-  { label: 'X', image: socialX },
-  { label: 'LinkedIn', image: socialLinkedin },
-  { label: 'TikTok', image: socialTiktok },
-  { label: 'YouTube', image: socialYoutube },
-]
-
-function SocialLinks({ className = '' }: { className?: string }) {
-  return (
-    <div className={`social-links ${className}`} aria-label="Redes sociales">
-      {socialLinks.map((social) => (
-        <a href="#redes" aria-label={social.label} key={social.label}>
-          <img src={social.image} alt="" />
-        </a>
-      ))}
-    </div>
-  )
-}
-
 function SiteHeader() {
   const [menuOpen, setMenuOpen] = useState(false)
 
   return (
-    <header className="site-header">
-      <img className="site-header__art" src={topHeader} alt="" />
-      <a className="site-header__brand" href="#inicio" aria-label="Sembrando Perú, inicio">
+    <header className="about-header">
+      <a className="about-header__brand" href="#inicio" aria-label="Sembrando Perú, inicio">
         <img src={image4} alt="Sembrando Perú" />
       </a>
       <button
-        className="menu-toggle"
+        className="about-header__menu-toggle"
         type="button"
         aria-expanded={menuOpen}
-        aria-controls="primary-navigation"
+        aria-controls="about-navigation"
         onClick={() => setMenuOpen((open) => !open)}
       >
         <span />
         <span />
-        <span className="sr-only">{menuOpen ? 'Cerrar menú' : 'Abrir menú'}</span>
+        <span />
       </button>
       <nav
-        className={`primary-navigation${menuOpen ? ' primary-navigation--open' : ''}`}
-        id="primary-navigation"
+        className={`about-navigation${menuOpen ? ' about-navigation--open' : ''}`}
+        id="about-navigation"
       >
-        <a className="primary-navigation__active" href="#inicio" onClick={() => setMenuOpen(false)}>
+        <a className="about-navigation__active" href="#inicio" onClick={() => setMenuOpen(false)}>
           Inicio
           <img src={greenLine} alt="" />
         </a>
         <a href="/nosotros" onClick={() => setMenuOpen(false)}>Nosotros</a>
         <a href="/blog" onClick={() => setMenuOpen(false)}>Blog</a>
-        <a href="#contacto" onClick={() => setMenuOpen(false)}>Contáctanos</a>
-      </nav>
-      <div className="site-header__actions">
-        <SocialLinks className="site-header__socials" />
-        <a className="donate-button" href="#unete">
-          Donar Ahora
-          <img src={arrowRight} alt="" />
+        <a href="/contacto" onClick={() => setMenuOpen(false)}>Contáctanos</a>
+        <a className="about-navigation__donate" href="/donacion" onClick={() => setMenuOpen(false)}>
+          Donar Ahora <img src={arrowRight} alt="" />
         </a>
+      </nav>
+      <div className="about-header__language" aria-label="Idioma: español">
+        <span aria-hidden="true">◎</span> ES | Español <span aria-hidden="true">⌄</span>
       </div>
+      <a className="about-header__donate" href="/donacion">
+        Donación
+      </a>
     </header>
   )
 }
@@ -238,57 +213,26 @@ function CommunityForm() {
 
 function SiteFooter() {
   return (
-    <footer className="site-footer" id="contacto">
-      <div className="site-footer__main">
-        <img className="site-footer__art" src={footerArt} alt="" />
-        <div className="site-footer__inner">
-          <div className="site-footer__callout">
-            <h2>HAGAMOS EL CAMBIO POSIBLE!</h2>
-            <div className="site-footer__partners">
-              <img src={image1} alt="Organizaciones aliadas" />
-            </div>
-          </div>
-          <div className="site-footer__columns">
-            <div>
-              <h3>Navegación</h3>
-              <a href="#inicio">Inicio</a>
-              <a href="#nosotros">Nosotros</a>
-              <a href="/blog">Blog</a>
-              <a href="#contacto">Contáctanos</a>
-            </div>
-            <div>
-              <h3>Contacto</h3>
-              <a href="mailto:contacto@sembrandoperu.org">contacto@sembrandoperu.org</a>
-              <a href="tel:+51921462828">+51 921 462 828</a>
-              <p>Av. Arequipa 2447 – Office 409, Lince District, Lima, Peru</p>
-            </div>
-            <div>
-              <h3>Involúcrate</h3>
-              <a href="#unete">Voluntariado</a>
-              <a href="#unete">Donaciones</a>
-              <a href="#contacto">Transparencia</a>
-            </div>
-          </div>
-          <div className="site-footer__follow" id="redes">
-            <span>SÍGUENOS :</span>
-            <SocialLinks />
-          </div>
-        </div>
-      </div>
-      <div className="legal-bar">
-        <span>© 2026 Sembrando. Todos los derechos reservados.</span>
-        <a href="#privacidad">Políticas de privacidad</a>
-      </div>
-    </footer>
+    <BlogFooter />
   )
 }
 
 function App() {
-  if (window.location.pathname === '/blog') {
+  const currentPath = window.location.pathname.replace(/\/+$/, '') || '/'
+
+  if (currentPath === '/donacion') {
+    return <DonationPage />
+  }
+
+  if (currentPath === '/contacto') {
+    return <ContactPage />
+  }
+
+  if (currentPath === '/blog') {
     return <BlogPage />
   }
 
-  if (window.location.pathname === '/nosotros') {
+  if (currentPath === '/nosotros') {
     return <NosotrosPage />
   }
 

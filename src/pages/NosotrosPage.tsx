@@ -6,12 +6,12 @@ import storyCard from '../assets/figma/about-story-card.png'
 import valuesImage from '../assets/figma/about-values-main.png'
 import visionIcon from '../assets/figma/about-vision-icon.png'
 import valuesBackground from '../assets/figma/about-values-background.png'
-import footerArt from '../assets/figma/imgGroup6.svg'
 import logo from '../assets/figma/imgImage4.png'
 import greenLine from '../assets/figma/imgGreenLine.svg'
 import childrenImage from '../assets/figma/imgBlogImage5.png'
 import learningImage from '../assets/figma/imgBlogImage4.png'
 import forestImage from '../assets/figma/imgBlogImage1.png'
+import { BlogFooter } from './BlogPage'
 import socialFacebook from '../assets/figma/imgPlatformFacebookColorNegative.svg'
 import socialInstagram from '../assets/figma/imgSocialIcons.svg'
 import socialLinkedin from '../assets/figma/imgPlatformLinkedInColorNegative.svg'
@@ -93,14 +93,14 @@ function AboutHeader() {
           </a>
           <a href="/#noticias" onClick={closeMenu}>Blog</a>
           <a href="/#contacto" onClick={closeMenu}>Contáctanos</a>
-          <a className="about-navigation__donate" href="/#unete" onClick={closeMenu}>
+          <a className="about-navigation__donate" href="/donacion" onClick={closeMenu}>
             Donar Ahora <img src={arrowRight} alt="" />
           </a>
         </nav>
         <div className="about-header__language" aria-label="Idioma: español">
           <span aria-hidden="true">◎</span> ES | Español <span aria-hidden="true">⌄</span>
         </div>
-        <a className="about-header__donate" href="/#unete">
+        <a className="about-header__donate" href="/donacion">
           Donación
         </a>
       </header>
@@ -219,48 +219,7 @@ function ValuesSection() {
 }
 
 function AboutFooter() {
-  return (
-    <footer className="about-footer" id="contacto">
-      <div className="about-footer__main" style={{ backgroundImage: `url(${footerArt})` }}>
-        <h2>HAGAMOS EL CAMBIO POSIBLE!</h2>
-        <div className="about-footer__content">
-          <div className="about-footer__brand">
-            <a href="/" aria-label="Sembrando Perú, inicio">
-              <img src={logo} alt="Sembrando Perú" />
-            </a>
-            <p>Esperanza para un futuro mejor</p>
-          </div>
-          <div className="about-footer__column">
-            <h3>Navegación</h3>
-            <a href="/">Inicio</a>
-            <a href="/nosotros">Nosotros</a>
-            <a href="/#noticias">Blog</a>
-            <a href="/#contacto">Contáctanos</a>
-          </div>
-          <div className="about-footer__column">
-            <h3>Contacto</h3>
-            <a href="mailto:contacto@sembrandoperu.org">contacto@sembrandoperu.org</a>
-            <a href="tel:+51921462828">+51 921 462 828</a>
-            <p>Av. Arequipa 2447 – Office 409, Lince District, Lima, Peru</p>
-          </div>
-          <div className="about-footer__column">
-            <h3>Involúcrate</h3>
-            <a href="/#unete">Voluntariado</a>
-            <a href="/#unete">Donaciones</a>
-            <a href="/#contacto">Transparencia</a>
-          </div>
-        </div>
-        <div className="about-footer__follow" id="redes">
-          <span>SÍGUENOS :</span>
-          <SocialLinks />
-        </div>
-      </div>
-      <div className="about-footer__legal">
-        <span>© 2026 Sembrando. Todos los derechos reservados.</span>
-        <a href="#privacidad">Políticas de privacidad</a>
-      </div>
-    </footer>
-  )
+  return <BlogFooter />
 }
 
 export default function NosotrosPage() {
