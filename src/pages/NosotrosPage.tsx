@@ -1,10 +1,10 @@
 import { useState } from 'react'
 import arrowRight from '../assets/figma/imgArrowRight.svg'
 import aboutHero from '../assets/figma/about-hero-background.png'
-import missionIcon from '../assets/figma/about-mission-icon.png'
+import missionIcon from '../assets/figma/misión.png'
 import storyCard from '../assets/figma/about-story-card.png'
 import valuesImage from '../assets/figma/about-values-main.png'
-import visionIcon from '../assets/figma/about-vision-icon.png'
+import visionIcon from '../assets/figma/vision.png'
 import valuesBackground from '../assets/figma/about-values-background.png'
 import logo from '../assets/figma/imgImage4.png'
 import greenLine from '../assets/figma/imgGreenLine.svg'
@@ -91,8 +91,8 @@ function AboutHeader() {
             Nosotros
             <img src={greenLine} alt="" />
           </a>
-          <a href="/#noticias" onClick={closeMenu}>Blog</a>
-          <a href="/#contacto" onClick={closeMenu}>Contáctanos</a>
+          <a href="/blog" onClick={closeMenu}>Blog</a>
+          <a href="/contacto" onClick={closeMenu}>Contáctanos</a>
           <a className="about-navigation__donate" href="/donacion" onClick={closeMenu}>
             Donar Ahora <img src={arrowRight} alt="" />
           </a>

@@ -133,7 +133,7 @@
 .donation-hero__content p {
   max-width: 380px;
   font-family: var(--font-league);
-  font-size: 13px;
+  font-size: 15px;
   line-height: 1.45;
 }
 
@@ -142,7 +142,7 @@
   z-index: 2;
   top: 12px;
   right: max(9%, calc((100% - 1030px) / 2));
-  width: 186px;
+  width: 210px;
   padding: 13px 15px 12px;
   background: #fff;
   box-shadow: 0 2px 10px rgb(0 0 0 / 22%);
@@ -155,7 +155,7 @@
   background: #b2d63e;
   color: #14351b;
   font-family: var(--font-poppins);
-  font-size: 8px;
+  font-size: 13px;
   font-weight: 700;
   text-align: center;
 }
@@ -174,7 +174,7 @@
   background: transparent;
   color: #555;
   font: inherit;
-  font-size: 8px;
+  font-size: 10px;
   cursor: pointer;
 }
 
@@ -196,7 +196,7 @@
 .donation-form__custom > span:first-child {
   margin-bottom: 6px;
   color: #242424;
-  font-size: 8px;
+  font-size: 10px;
   font-weight: 600;
 }
 
@@ -205,7 +205,7 @@
   align-items: center;
   gap: 5px;
   color: #4a4a4a;
-  font-size: 8px;
+  font-size: 10px;
   cursor: pointer;
 }
 
@@ -229,7 +229,7 @@
   gap: 5px;
   padding: 0 5px;
   border: 1px solid #d8d8d8;
-  font-size: 8px;
+  font-size: 10px;
 }
 
 .donation-form__custom-input input {
@@ -255,7 +255,7 @@
 .donation-form > p {
   margin-top: 7px;
   color: #616161;
-  font-size: 7px;
+  font-size: 9px;
   line-height: 1.35;
   text-align: center;
 }
@@ -272,7 +272,7 @@
 .donation-about h2 {
   margin-bottom: 14px;
   font-family: var(--font-display);
-  font-size: 19px;
+  font-size: 22px;
   font-weight: 400;
 }
 
@@ -280,7 +280,7 @@
 .donation-how__copy p {
   max-width: 700px;
   font-family: var(--font-league);
-  font-size: 12px;
+  font-size: 16px;
   line-height: 1.5;
 }
 
@@ -296,7 +296,7 @@
 .donation-impact h2,
 .donation-faq h2 {
   font-family: var(--font-display);
-  font-size: 19px;
+  font-size: 22px;
   font-weight: 400;
   line-height: 1.2;
 }
@@ -308,7 +308,7 @@
 }
 
 .donation-how__copy p {
-  font-size: 11px;
+  font-size: 13px;
 }
 
 .donation-how__copy p + p {
@@ -336,7 +336,7 @@
   max-width: 470px;
   margin: 10px auto 16px;
   font-family: var(--font-league);
-  font-size: 11px;
+  font-size: 13px;
   line-height: 1.45;
 }
 
@@ -365,14 +365,14 @@
 .donation-impact-card h3 {
   margin: 2px 0 5px;
   font-family: var(--font-poppins);
-  font-size: 8px;
+  font-size: 10px;
   font-weight: 700;
   line-height: 1.25;
 }
 
 .donation-impact-card p {
   font-family: var(--font-inter);
-  font-size: 7px;
+  font-size: 9px;
   line-height: 1.45;
 }
 
@@ -405,7 +405,7 @@
   padding: 6px 10px;
   color: #333;
   font-family: var(--font-inter);
-  font-size: 9px;
+  font-size: 11px;
   cursor: pointer;
   list-style: none;
 }
@@ -428,7 +428,7 @@
   padding: 0 10px 9px;
   color: #444;
   font-family: var(--font-inter);
-  font-size: 8px;
+  font-size: 10px;
   line-height: 1.5;
 }
 
@@ -735,13 +735,13 @@
 
   .donation-hero__content p {
     max-width: 520px;
-    font-size: 17px;
+    font-size: 20px;
   }
 
   .donation-form {
     top: 20px;
     right: max(7%, calc((100% - 1250px) / 2));
-    width: 290px;
+    width: 320px;
     padding: 20px 22px 18px;
   }
 
@@ -756,7 +756,7 @@
   .donation-form__custom > span:first-child,
   .donation-form fieldset label,
   .donation-form__custom-input {
-    font-size: 12px;
+    font-size: 15px;
   }
 
   .donation-form__frequency button {
@@ -764,16 +764,16 @@
   }
 
   .donation-form__custom-input {
-    height: 30px;
+    height: 36px;
   }
 
   .donation-form__submit {
-    min-height: 36px;
-    font-size: 17px;
+    min-height: 42px;
+    font-size: 19px;
   }
 
   .donation-form > p {
-    font-size: 10px;
+    font-size: 12px;
   }
 
   .donation-about,
@@ -792,11 +792,11 @@
   .donation-how h2,
   .donation-impact h2,
   .donation-faq h2 {
-    font-size: 26px;
+    font-size: 32px;
   }
 
   .donation-about p {
-    font-size: 16px;
+    font-size: 19px;
   }
 
   .donation-how {
@@ -811,7 +811,7 @@
 
   .donation-how__copy p,
   .donation-impact__intro {
-    font-size: 15px;
+    font-size: 18px;
   }
 
   .donation-how__image {
@@ -846,11 +846,11 @@
   }
 
   .donation-impact-card h3 {
-    font-size: 12px;
+    font-size: 16px;
   }
 
   .donation-impact-card p {
-    font-size: 11px;
+    font-size: 15px;
   }
 
   .donation-faq {
@@ -861,18 +861,18 @@
   .donation-faq summary {
     min-height: 42px;
     padding: 9px 14px;
-    font-size: 13px;
+    font-size: 16px;
   }
 
   .donation-faq details p {
     padding: 0 14px 13px;
-    font-size: 12px;
+    font-size: 15px;
   }
 
   .donation-faq > a {
     min-height: 38px;
     padding: 0 18px;
-    font-size: 14px;
+    font-size: 17px;
   }
 }
 

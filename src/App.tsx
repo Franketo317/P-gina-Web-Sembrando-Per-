@@ -263,7 +263,7 @@ function App() {
               fortalecemos la salud infantil y combatimos la anemia en las zonas más vulnerables
               del país.
             </p>
-            <a className="button button--lime" href="#programas">
+            <a className="button button--lime" href="/nosotros">
               CONÓCENOS <img src={arrowRight} alt="" />
             </a>
           </div>
@@ -286,7 +286,7 @@ function App() {
             <div className="article-grid">
               {articles.map((article) => <ArticleCard key={article.title} {...article} />)}
             </div>
-            <a className="button button--green news-section__more" href="#noticias">Ver más</a>
+            <a className="button button--green news-section__more" href="/blog">Ver más</a>
           </div>
         </section>
 

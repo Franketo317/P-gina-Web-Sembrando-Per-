@@ -10,7 +10,6 @@ import blogHealth from '../assets/figma/blog-article-health.jpg'
 import logo from '../assets/figma/imgImage4.png'
 import socialFacebook from '../assets/figma/imgPlatformFacebookColorNegative.svg'
 import socialLinkedin from '../assets/figma/imgPlatformLinkedInColorNegative.svg'
-import socialX from '../assets/figma/imgPlatformXTwitterColorNegative.svg'
 import socialInstagramReal from '../assets/figma/imgSocialIcons1.svg'
 
 import greenLine from '../assets/figma/imgGreenLine.svg'
@@ -81,10 +80,9 @@ const popularArticles = [
 
 const tags = ['Amazonía', 'Sostenibilidad', 'Innovación', 'Perú', 'Clima', 'Biodiversidad']
 const socials = [
-  { label: 'Facebook', image: socialFacebook },
-  { label: 'Instagram', image: socialInstagramReal },
-  { label: 'X', image: socialX },
-  { label: 'LinkedIn', image: socialLinkedin },
+  { label: 'Facebook', image: socialFacebook, href: 'https://www.facebook.com/PeruSembrando' },
+  { label: 'Instagram', image: socialInstagramReal, href: 'https://www.instagram.com/sembrando_peru/' },
+  { label: 'LinkedIn', image: socialLinkedin, href: 'https://www.linkedin.com/company/sembrandoperu/' },
 ]
 
 export function BlogFooter() {
@@ -119,7 +117,7 @@ export function BlogFooter() {
         </div>
         <div className="blog-footer__follow">
           <span>SÍGUENOS :</span>
-          {socials.map((social) => <a href="#redes" aria-label={social.label} key={social.label}><img src={social.image} alt="" /></a>)}
+          {socials.map((social) => <a href={social.href ?? '#redes'} target={social.href ? '_blank' : undefined} rel={social.href ? 'noreferrer' : undefined} aria-label={social.label} key={social.label}><img src={social.image} alt="" /></a>)}
         </div>
       </div>
       <div className="blog-footer__legal">
