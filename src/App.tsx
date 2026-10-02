@@ -20,8 +20,7 @@ import socialFacebook from './assets/figma/imgPlatformFacebookColorNegative.svg'
 import socialLinkedin from './assets/figma/imgPlatformLinkedInColorNegative.svg'
 import socialTiktok from './assets/figma/imgPlatformTikTokColorNegative.svg'
 import socialX from './assets/figma/imgPlatformXTwitterColorNegative.svg'
-import socialInstagram from './assets/figma/imgSocialIcons.svg'
-import socialYoutube from './assets/figma/imgSocialIcons1.svg'
+import socialInstagram from './assets/figma/imgSocialIcons1.svg'
 import topHeader from './assets/figma/imgTopHeader1.svg'
 import heroImage from './assets/figma/img71.png'
 import NosotrosPage from './pages/NosotrosPage'
@@ -89,7 +88,6 @@ const socialLinks = [
   { label: 'X', image: socialX },
   { label: 'LinkedIn', image: socialLinkedin },
   { label: 'TikTok', image: socialTiktok },
-  { label: 'YouTube', image: socialYoutube },
 ]
 
 function SocialLinks({ className = '' }: { className?: string }) {
