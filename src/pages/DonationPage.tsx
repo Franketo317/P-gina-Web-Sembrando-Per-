@@ -40,7 +40,7 @@ const impactAreas = [
 const questions = [
   {
     question: '¿Cómo se usa mi donación para hacer una diferencia?',
-    ansfer: 'Tu aporte ayuda a financiar directamente nuestras jornadas de reforestación, educación ambiental y trabajo comunitario en la Amazonía peruana.',
+    answer: 'Tu aporte ayuda a financiar directamente nuestras jornadas de reforestación, educación ambiental y trabajo comunitario en la Amazonía peruana.',
   },
   {
     question: '¿Cómo se utilizan los fondos de manera eficiente?',

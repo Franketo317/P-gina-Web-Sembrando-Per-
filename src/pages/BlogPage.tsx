@@ -26,6 +26,7 @@ const categories = [
 
 const featuredArticles = [
   {
+    slug: 'sembrando-futuro-juntos-por-nuestros-bosques',
     category: 'MEDIO AMBIENTE',
     date: 'Marzo 12, 2026',
     title: 'Sembrando futuro: juntos por nuestros bosque',
@@ -35,6 +36,7 @@ const featuredArticles = [
     arrow: arrowRight1,
   },
   {
+    slug: 'transformando-vidas-comunidades',
     category: 'COMUNIDAD',
     date: 'Enero 15, 2026',
     title: 'Transformando vidas en nuestras comunidades',
@@ -47,6 +49,7 @@ const featuredArticles = [
 
 const articles = [
   {
+    slug: 'jornada-reforestacion-madre-de-dios',
     category: 'VOLUNTARIADO',
     date: '12 Oct, 2024',
     title: 'Jornada de reforestación en Madre de Dios',
@@ -55,6 +58,7 @@ const articles = [
     alt: 'Jornada comunitaria de reforestación',
   },
   {
+    slug: 'guardianas-del-bosque',
     category: 'COMUNIDAD',
     date: '05 Oct, 2024',
     title: 'Guardianas del bosque: historias locales',
@@ -63,6 +67,7 @@ const articles = [
     alt: 'Equipo comunitario trabajando en un vivero',
   },
   {
+    slug: 'prevencion-anemia-nuevos-enfoques',
     category: 'SALUD',
     date: '28 Sep, 2024',
     title: 'Prevención de anemia: nuevos enfoques',
@@ -129,7 +134,7 @@ export function BlogFooter() {
 }
 
 
-function BlogHeader() {
+export function BlogHeader({ showMasthead = true }: { showMasthead?: boolean }) {
   const [menuOpen, setMenuOpen] = useState(false)
 
   function closeMenu() {
@@ -176,13 +181,15 @@ function BlogHeader() {
           Donación
         </a>
       </header>
-      <section
-        className="blog-masthead"
-        style={{ backgroundImage: `url(${blogHeroBackground})` }}
-      >
-        <div style={{ position: 'absolute', inset: 0, background: 'rgba(2, 115, 77, 0.4)', zIndex: 1 }} />
-        <h1>"Historias que inspiran,<br />acciones que transforman"</h1>
-      </section>
+      {showMasthead && (
+        <section
+          className="blog-masthead"
+          style={{ backgroundImage: `url(${blogHeroBackground})` }}
+        >
+          <div style={{ position: 'absolute', inset: 0, background: 'rgba(2, 115, 77, 0.4)', zIndex: 1 }} />
+          <h1>"Historias que inspiran,<br />acciones que transforman"</h1>
+        </section>
+      )}
     </>
   )
 }
@@ -216,7 +223,7 @@ export default function BlogPage() {
                     <div className="blog-meta"><span>{article.category}</span><i /><time>{article.date}</time></div>
                     <h3>{article.title}</h3>
                     <p>{article.description}</p>
-                    <a href="#articulos">Leer artículo <img src={article.arrow} alt="" /></a>
+                    <a href={`/blog/articulo/${article.slug}`}>Leer artículo <img src={article.arrow} alt="" /></a>
                   </div>
                 </article>
               ))}
@@ -238,7 +245,7 @@ export default function BlogPage() {
                     <div className="blog-meta"><span>{article.category}</span><i /><time>{article.date}</time></div>
                     <h3>{article.title}</h3>
                     <p>{article.description}</p>
-                    <a href="#articulos">Leer más <img src={arrowRight} alt="" /></a>
+                    <a href={`/blog/articulo/${article.slug}`}>Leer más <img src={arrowRight} alt="" /></a>
                   </div>
                 </article>
               )) : <p className="blog-empty">No hay artículos para este filtro.</p>}
