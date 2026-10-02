@@ -27,16 +27,16 @@
 
 .site-header__brand {
   position: absolute;
-  z-index: 1;
-  top: 7px;
-  left: 47px;
-  width: 133px;
-  height: 104px;
+  inset: 0 auto 0 0;
+  width: 222px;
+  display: grid;
+  place-items: center;
+  background: #e8f5e9;
 }
 
 .site-header__brand img {
-  width: 100%;
-  height: 100%;
+  width: 132px;
+  height: 104px;
   object-fit: contain;
 }
 
