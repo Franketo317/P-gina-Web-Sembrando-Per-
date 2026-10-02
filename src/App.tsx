@@ -18,6 +18,7 @@ import heroImage from './assets/figma/img71.png'
 import NosotrosPage from './pages/NosotrosPage'
 import BlogPage from './pages/BlogPage'
 import { BlogFooter } from './pages/BlogPage'
+import BlogArticlePage from './pages/BlogArticlePage'
 import ContactPage from './pages/ContactPage'
 import DonationPage from './pages/DonationPage'
 import './App.css'
@@ -155,7 +156,7 @@ function ArticleCard({
         </div>
         <h3>{title}</h3>
         <p>{description}</p>
-        <a className="article-card__link" href="#noticias">
+        <a className="article-card__link" href="/blog">
           Leer artículo
           <img src={arrow} alt="" />
         </a>
@@ -213,7 +214,7 @@ function CommunityForm() {
 
 function SiteFooter() {
   return (
-    <BlogFooter />
+    <BlogFooter /> 
   )
 }
 
@@ -230,6 +231,11 @@ function App() {
 
   if (currentPath === '/blog') {
     return <BlogPage />
+  }
+
+  if (currentPath.startsWith('/blog/articulo/')) {
+    const slug = decodeURIComponent(currentPath.slice('/blog/articulo/'.length))
+    return <BlogArticlePage slug={slug} />
   }
 
   if (currentPath === '/nosotros') {
