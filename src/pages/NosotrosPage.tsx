@@ -7,25 +7,15 @@ import valuesImage from '../assets/figma/about-values-main.png'
 import visionIcon from '../assets/figma/vision.png'
 import valuesBackground from '../assets/figma/about-values-background.png'
 import logo from '../assets/figma/imgImage4.png'
+import LanguageSwitcher from '../components/LanguageSwitcher'
+import { useLanguage } from '../components/LanguageContext'
+import SocialLinks from '../components/SocialLinks'
 import greenLine from '../assets/figma/imgGreenLine.svg'
 import childrenImage from '../assets/figma/imgBlogImage5.png'
 import learningImage from '../assets/figma/imgBlogImage4.png'
 import forestImage from '../assets/figma/imgBlogImage1.png'
 import { BlogFooter } from './BlogPage'
-import socialFacebook from '../assets/figma/imgPlatformFacebookColorNegative.svg'
-import socialInstagram from '../assets/figma/imgSocialIcons.svg'
-import socialLinkedin from '../assets/figma/imgPlatformLinkedInColorNegative.svg'
-import socialTiktok from '../assets/figma/imgPlatformTikTokColorNegative.svg'
-import socialX from '../assets/figma/imgPlatformXTwitterColorNegative.svg'
 import './NosotrosPage.css'
-
-const socialLinks = [
-  { label: 'Facebook', image: socialFacebook },
-  { label: 'Instagram', image: socialInstagram },
-  { label: 'X', image: socialX },
-  { label: 'LinkedIn', image: socialLinkedin },
-  { label: 'TikTok', image: socialTiktok },
-]
 
 const values = [
   {
@@ -45,20 +35,9 @@ const values = [
   },
 ]
 
-function SocialLinks({ className = '' }: { className?: string }) {
-  return (
-    <div className={`about-socials ${className}`} aria-label="Redes sociales">
-      {socialLinks.map((social) => (
-        <a href="#redes" aria-label={social.label} key={social.label}>
-          <img src={social.image} alt="" />
-        </a>
-      ))}
-    </div>
-  )
-}
-
 function AboutHeader() {
   const [menuOpen, setMenuOpen] = useState(false)
+  const { t } = useLanguage()
 
   function closeMenu() {
     setMenuOpen(false)
@@ -75,7 +54,7 @@ function AboutHeader() {
           type="button"
           aria-expanded={menuOpen}
           aria-controls="about-navigation"
-          aria-label={menuOpen ? 'Cerrar menú' : 'Abrir menú'}
+          aria-label={t(menuOpen ? 'Cerrar menú' : 'Abrir menú')}
           onClick={() => setMenuOpen((open) => !open)}
         >
           <span />
@@ -86,22 +65,21 @@ function AboutHeader() {
           className={`about-navigation${menuOpen ? ' about-navigation--open' : ''}`}
           id="about-navigation"
         >
-          <a href="/" onClick={closeMenu}>Inicio</a>
+          <a href="/" onClick={closeMenu}>{t('Inicio')}</a>
           <a className="about-navigation__active" href="/nosotros" onClick={closeMenu}>
-            Nosotros
+            {t('Nosotros')}
             <img src={greenLine} alt="" />
           </a>
-          <a href="/blog" onClick={closeMenu}>Blog</a>
-          <a href="/contacto" onClick={closeMenu}>Contáctanos</a>
+          <a href="/blog" onClick={closeMenu}>{t('Blog')}</a>
+          <a href="/contacto" onClick={closeMenu}>{t('Contáctanos')}</a>
           <a className="about-navigation__donate" href="/donacion" onClick={closeMenu}>
-            Donar Ahora <img src={arrowRight} alt="" />
+            {t('Donar Ahora')} <img src={arrowRight} alt="" />
           </a>
+          <LanguageSwitcher className="about-navigation__language-mobile" />
         </nav>
-        <div className="about-header__language" aria-label="Idioma: español">
-          <span aria-hidden="true">◎</span> ES | Español <span aria-hidden="true">⌄</span>
-        </div>
+        <LanguageSwitcher className="about-header__language" />
         <a className="about-header__donate" href="/donacion">
-          Donación
+          {t('Donación')}
         </a>
       </header>
       <section
@@ -109,16 +87,18 @@ function AboutHeader() {
         style={{ backgroundImage: `url(${aboutHero})` }}
         aria-labelledby="about-title"
       >
-        <h1 id="about-title">¿QUIÉNES SOMOS?</h1>
-        <SocialLinks className="about-hero__socials" />
+        <h1 id="about-title">{t('¿QUIÉNES SOMOS?')}</h1>
+        <SocialLinks />
       </section>
     </>
   )
 }
 
 function StorySection() {
+  const { t } = useLanguage()
+
   return (
-    <section className="about-story" aria-label="Sobre Sembrando Perú">
+    <section className="about-story" aria-label={t('Sobre Sembrando Perú')}>
       <div className="about-story__intro">
         <img
           className="about-story__image"
@@ -126,31 +106,20 @@ function StorySection() {
           alt="Integrante de Sembrando Perú en una jornada de reforestación"
         />
         <div className="about-story__copy">
-          <h2>Una familia comprometida con la vida, bosques y la Amazonía, creando un futuro sostenible</h2>
+          <h2>{t('Una familia comprometida con la vida, bosques y la Amazonía, creando un futuro sostenible')}</h2>
           <p>
-            Nos enfocamos en frenar la tala indiscriminada, combatir el analfabetismo y la anemia
-            infantil en zonas rurales. Trabajamos con comunidades rurales de la Amazonía y Andes,
-            restaurando ecosistemas, mejorando la vida de niños y promoviendo agricultura y salud
-            sostenible.
+            {t('Nos enfocamos en frenar la tala indiscriminada, combatir el analfabetismo y la anemia infantil en zonas rurales. Trabajamos con comunidades rurales de la Amazonía y Andes, restaurando ecosistemas, mejorando la vida de niños y promoviendo agricultura y salud sostenible.')}
           </p>
         </div>
       </div>
       <div className="about-story__history">
-        <h2>Nuestra historia</h2>
+        <h2>{t('Nuestra historia')}</h2>
         <img className="about-story__rule" src={greenLine} alt="" />
         <p>
-          Sembrando Perú nació con una misión clara y profundamente social: mitigar la deforestación,
-          contribuir a la mejora de la educación en zonas rurales y apoyar la lucha contra la anemia
-          infantil en las comunidades más vulnerables del país. Su creación surge como respuesta a
-          la creciente degradación de los bosques nativos, la falta de acceso a educación de calidad
-          y los graves problemas de salud que afectan a miles de niños en áreas rurales y altoandinas.
+          {t('Sembrando Perú nació con una misión clara y profundamente social: mitigar la deforestación, contribuir a la mejora de la educación en zonas rurales y apoyar la lucha contra la anemia infantil en las comunidades más vulnerables del país. Su creación surge como respuesta a la creciente degradación de los bosques nativos, la falta de acceso a educación de calidad y los graves problemas de salud que afectan a miles de niños en áreas rurales y altoandinas.')}
         </p>
         <p>
-          Desde sus inicios, Sembrando Perú ha trabajado con un enfoque integral de desarrollo
-          sostenible, entendiendo que la protección del medio ambiente y el bienestar humano están
-          estrechamente conectados. Por ello, la organización impulsa acciones que combinan
-          reforestación, educación ambiental, alfabetización y prevención en salud, trabajando de
-          manera directa y participativa con agricultores, familias y comunidades locales.
+          {t('Desde sus inicios, Sembrando Perú ha trabajado con un enfoque integral de desarrollo sostenible, entendiendo que la protección del medio ambiente y el bienestar humano están estrechamente conectados. Por ello, la organización impulsa acciones que combinan reforestación, educación ambiental, alfabetización y prevención en salud, trabajando de manera directa y participativa con agricultores, familias y comunidades locales.')}
         </p>
       </div>
     </section>
@@ -158,27 +127,26 @@ function StorySection() {
 }
 
 function MissionVision() {
+  const { t } = useLanguage()
+
   return (
     <section
       className="about-mission-vision"
       style={{ backgroundImage: `url(${valuesBackground})` }}
-      aria-label="Misión y visión"
+      aria-label={t('Misión y visión')}
     >
       <article className="about-mission-vision__item">
         <img src={missionIcon} alt="" />
-        <h2>Misión</h2>
+        <h2>{t('Misión')}</h2>
         <p>
-          Reducción de la deforestación en Perú, fomento de la alfabetización en zonas rurales y
-          lucha contra la anemia infantil mediante soluciones sostenibles y educativas.
+          {t('Reducción de la deforestación en Perú, fomento de la alfabetización en zonas rurales y lucha contra la anemia infantil mediante soluciones sostenibles y educativas.')}
         </p>
       </article>
       <article className="about-mission-vision__item">
         <img src={visionIcon} alt="" />
-        <h2>Visión</h2>
+        <h2>{t('Visión')}</h2>
         <p>
-          Convertirnos en un motor de cambio en la Amazonía y las zonas rurales, donde los árboles
-          restauren los ecosistemas y las nuevas generaciones crezcan sanas y con acceso a una
-          educación de calidad.
+          {t('Convertirnos en un motor de cambio en la Amazonía y las zonas rurales, donde los árboles restauren los ecosistemas y las nuevas generaciones crezcan sanas y con acceso a una educación de calidad.')}
         </p>
       </article>
     </section>
@@ -186,30 +154,32 @@ function MissionVision() {
 }
 
 function ValuesSection() {
+  const { t } = useLanguage()
+
   return (
     <section className="about-values" aria-labelledby="values-title">
       <div className="about-values__layout">
-        <div className="about-values__gallery" aria-label="Acciones de Sembrando Perú">
+        <div className="about-values__gallery" aria-label={t('Acciones de Sembrando Perú')}>
           <div className="about-values__photo">
             <img src={childrenImage} alt="Niños participando en actividades educativas" />
-            <span>{values[0].title}</span>
+            <span>{t(values[0].title)}</span>
           </div>
           <div className="about-values__photo">
             <img src={learningImage} alt="Jornada comunitaria de salud" />
-            <span>{values[1].title}</span>
+            <span>{t(values[1].title)}</span>
           </div>
           <div className="about-values__photo about-values__photo--wide">
             <img src={forestImage} alt="Equipo de Sembrando Perú en un bosque" />
-            <span>{values[2].title}</span>
+            <span>{t(values[2].title)}</span>
           </div>
           <img className="about-values__frame" src={valuesImage} alt="" />
         </div>
         <div className="about-values__copy">
-          <h2 id="values-title">Valores</h2>
+          <h2 id="values-title">{t('Valores')}</h2>
           {values.map((value) => (
             <article key={value.title}>
-              <h3>{value.title}</h3>
-              <p>{value.description}</p>
+              <h3>{t(value.title)}</h3>
+              <p>{t(value.description)}</p>
             </article>
           ))}
         </div>

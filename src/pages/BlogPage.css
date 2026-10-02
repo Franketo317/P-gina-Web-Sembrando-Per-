@@ -36,11 +36,23 @@
 }
 
 .blog-navigation {
+  --navigation-gap: clamp(18px, 2.95vw, 57px);
   height: 100%;
   display: flex;
   align-items: center;
-  gap: clamp(18px, 2.95vw, 57px);
-  margin-left: 17.5%;
+  gap: var(--navigation-gap);
+  margin-left: clamp(270px, 19.5vw, 370px);
+}
+
+.blog-navigation > a:nth-child(-n + 3)::after {
+  position: absolute;
+  top: 50%;
+  right: calc(var(--navigation-gap) / -2);
+  width: 1px;
+  height: 24px;
+  transform: translateY(-50%);
+  background: rgb(255 255 255 / 55%);
+  content: '';
 }
 
 .blog-navigation a {
@@ -55,11 +67,12 @@
 
 .blog-navigation__active img {
   position: absolute;
-  right: 0;
+  right: auto;
   bottom: -12px;
-  left: 0;
-  width: 90px;
+  left: 50%;
+  width: 80%;
   height: 2px;
+  transform: translateX(-50%);
 }
 
 .blog-header__language {
@@ -69,12 +82,10 @@
   margin-left: auto;
   padding: 0 22px;
   color: #fff;
-  font-size: 17px;
+  font-family: var(--font-avenir);
+  font-size: 24px;
+  font-weight: 300;
   white-space: nowrap;
-}
-
-.blog-header__language span:first-child {
-  font-size: 23px;
 }
 
 .blog-header__donate,
@@ -95,23 +106,25 @@
   display: none !important;
 }
 
+.blog-navigation__language-mobile {
+  display: none;
+}
+
 .blog-header__menu-toggle {
   display: none;
 }
 
 @media (max-width: 1000px) {
   .blog-navigation {
-    gap: 18px;
-    margin-left: 20%;
+    --navigation-gap: 18px;
+    gap: var(--navigation-gap);
+    margin-left: clamp(250px, 22%, 265px);
   }
 
   .blog-navigation a {
     font-size: 23px;
   }
 
-  .blog-header__language {
-    display: none;
-  }
 }
 
 @media (max-width: 760px) {
@@ -150,6 +163,10 @@
     width: 28px;
     height: 2px;
     background: #fff;
+  }
+
+  .blog-header__language {
+    display: none;
   }
 
   .blog-navigation {
@@ -193,6 +210,26 @@
     border: 0 !important;
     border-radius: 3px;
     font-size: 22px !important;
+  }
+
+  .blog-navigation__language-mobile {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 14px;
+    padding: 8px 0;
+    color: #fff;
+    font-size: 15px;
+  }
+
+  .blog-navigation__language-mobile .language-globe {
+    width: 20px;
+    height: 20px;
+  }
+
+  .blog-navigation__language-mobile .language-chevron {
+    width: 14px;
+    height: 14px;
   }
 
   .blog-navigation__donate img {
