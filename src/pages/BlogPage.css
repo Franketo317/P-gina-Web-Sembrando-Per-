@@ -171,6 +171,7 @@
 
   .blog-navigation {
     position: absolute;
+    z-index: 5;
     top: 82px;
     right: 0;
     left: 0;
@@ -181,8 +182,7 @@
     gap: 0;
     margin: 0;
     padding: 10px 22px 20px;
-    background: #ffffff;
-  color: #111;
+    background: #006445;
   }
 
   .blog-navigation--open {
@@ -192,7 +192,9 @@
   .blog-navigation a {
     padding: 14px 0;
     border-bottom: 1px solid rgb(255 255 255 / 20%);
+    color: #fff;
     font-size: 25px;
+    text-transform: uppercase;
   }
 
   .blog-navigation__active img {
@@ -210,6 +212,7 @@
     border: 0 !important;
     border-radius: 3px;
     font-size: 22px !important;
+    text-transform: uppercase;
   }
 
   .blog-navigation__language-mobile {
@@ -969,9 +972,9 @@
 
   .blog-layout {
     grid-template-columns: minmax(0, 1fr);
-    gap: 36px;
+    gap: 28px;
     width: min(720px, calc(100% - 48px));
-    margin: 56px auto 80px;
+    margin: 32px auto 64px;
   }
 
   .blog-sidebar {
@@ -1003,12 +1006,12 @@
   .blog-masthead {
     width: 100%;
     height: auto;
-    min-height: 300px;
+    min-height: 210px;
     box-sizing: border-box;
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 48px 22px;
+    padding: 30px 22px;
   }
 
   .blog-masthead h1 {
@@ -1025,9 +1028,9 @@
   }
 
   .blog-layout {
-    width: min(100% - 32px, 480px);
-    gap: 28px;
-    margin: 40px auto 56px;
+    width: min(480px, calc(100% - 32px));
+    gap: 24px;
+    margin: 18px auto 48px;
   }
 
   .blog-main-column,
@@ -1046,6 +1049,8 @@
 
   .blog-section-heading h2 {
     font-size: 27px;
+    line-height: 1.25;
+    overflow-wrap: anywhere;
   }
 
   .blog-featured__grid {
@@ -1165,8 +1170,8 @@
 
 @media (max-width: 380px) {
   .blog-masthead {
-    min-height: 290px;
-    padding: 44px 18px;
+    min-height: 190px;
+    padding: 28px 18px;
   }
 
   .blog-masthead h1 {

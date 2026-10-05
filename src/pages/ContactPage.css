@@ -341,7 +341,7 @@
 }
 
 .contact-office h2 {
-  margin-left: 31.5%;
+  margin-left: 27%;
   color: #111;
   font-family: var(--font-display);
   font-size: 48px;
@@ -354,11 +354,13 @@
   flex-direction: column;
   align-items: flex-start;
   gap: 8px;
-  margin: 34px 0 0 31.5%;
+  width: min(25%, 360px);
+  margin: 34px 0 0 27%;
   color: #111;
   font-family: var(--font-league);
   font-size: 18px;
   line-height: 1.4;
+  overflow-wrap: anywhere;
 }
 
 .contact-office__details h3 {
@@ -469,6 +471,10 @@
   .contact-office h2,
   .contact-office__details {
     margin-left: 12%;
+  }
+
+  .contact-office__details {
+    width: 44%;
   }
 }
 
