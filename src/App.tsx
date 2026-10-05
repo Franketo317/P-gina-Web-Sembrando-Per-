@@ -257,6 +257,7 @@ function App() {
         <section className="hero-section" aria-labelledby="hero-title">
           <img className="hero-section__image" src={heroImage} alt="Paisaje de la Amazonía peruana" />
           <SocialLinks />
+          <span className="hero-section__next" aria-hidden="true" />
           <div className="hero-section__content">
             <h1 id="hero-title">{t('SOMOS')}<br /><span>SEMBRANDO PERÚ</span></h1>
             <p>{t('Trabajamos junto a comunades de la Amazonía y los Andes para construir sostenible')}</p>
@@ -285,6 +286,11 @@ function App() {
           </div>
           <div className="program-grid">
             {programs.map((program) => <ProgramCard key={program.title} {...program} />)}
+          </div>
+          <div className="programs-pagination" aria-hidden="true">
+            <span className="is-active" />
+            <span />
+            <span />
           </div>
         </section>
 

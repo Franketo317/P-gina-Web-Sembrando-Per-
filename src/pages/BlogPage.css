@@ -1,7 +1,7 @@
 .blog-page {
   width: 100%;
   min-height: 100vh;
-  overflow: hidden;
+  overflow: clip;
   background: #ffffff;
   color: #191c1d;
   font-family: var(--font-avenir);
@@ -12,7 +12,8 @@
 ========================= */
 
 .blog-header {
-  position: relative;
+  position: sticky;
+  top: 0;
   z-index: 5;
   height: 113px;
   display: flex;
@@ -218,11 +219,19 @@
   .blog-navigation__language-mobile {
     display: flex;
     align-items: center;
-    gap: 8px;
     margin-top: 14px;
     padding: 8px 0;
     color: #fff;
     font-size: 15px;
+  }
+
+  .blog-navigation__language-mobile .language-switcher {
+    gap: 8px;
+  }
+
+  .blog-navigation__language-mobile .language-switcher__menu {
+    right: auto;
+    left: 0;
   }
 
   .blog-navigation__language-mobile .language-globe {

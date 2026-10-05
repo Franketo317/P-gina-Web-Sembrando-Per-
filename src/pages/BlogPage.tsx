@@ -14,6 +14,8 @@ import SocialLinks from '../components/SocialLinks'
 import socialFacebook from '../assets/figma/imgPlatformFacebookColorNegative.svg'
 import socialLinkedin from '../assets/figma/imgPlatformLinkedInColorNegative.svg'
 import socialInstagramReal from '../assets/figma/imgSocialIcons1.svg'
+import socialTiktok from '../assets/figma/imgPlatformTikTokColorNegative.svg'
+import socialX from '../assets/figma/imgPlatformXTwitterColorNegative.svg'
 
 import greenLine from '../assets/figma/imgGreenLine.svg'
 import blogHeroBackground from '../assets/figma/about-values-background.png'
@@ -90,7 +92,9 @@ const tags = ['Amazonía', 'Sostenibilidad', 'Innovación', 'Perú', 'Clima', 'B
 const socials = [
   { label: 'Facebook', image: socialFacebook, href: 'https://www.facebook.com/PeruSembrando' },
   { label: 'Instagram', image: socialInstagramReal, href: 'https://www.instagram.com/sembrando_peru/' },
+  { label: 'X', image: socialX, href: 'https://x.com/PeruSembrando' },
   { label: 'LinkedIn', image: socialLinkedin, href: 'https://www.linkedin.com/company/sembrandoperu/' },
+  { label: 'TikTok', image: socialTiktok, href: 'https://www.tiktok.com/@sembrando_peru' },
 ]
 
 export function BlogFooter() {

@@ -3,7 +3,6 @@ import arrowRight from '../assets/figma/imgArrowRight.svg'
 import aboutHero from '../assets/figma/about-hero-background.png'
 import missionIcon from '../assets/figma/misión.png'
 import storyCard from '../assets/figma/about-story-card.png'
-import valuesImage from '../assets/figma/about-values-main.png'
 import visionIcon from '../assets/figma/vision.png'
 import valuesBackground from '../assets/figma/about-values-background.png'
 import logo from '../assets/figma/imgImage4.png'
@@ -172,7 +171,6 @@ function ValuesSection() {
             <img src={forestImage} alt="Equipo de Sembrando Perú en un bosque" />
             <span>{t(values[2].title)}</span>
           </div>
-          <img className="about-values__frame" src={valuesImage} alt="" />
         </div>
         <div className="about-values__copy">
           <h2 id="values-title">{t('Valores')}</h2>

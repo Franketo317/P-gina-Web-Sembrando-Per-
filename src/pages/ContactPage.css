@@ -3,14 +3,15 @@
   max-width: 1982px;
   min-height: 100vh;
   margin: 0 auto;
-  overflow: hidden;
+  overflow: clip;
   background: #fff;
   color: #111;
   font-family: var(--font-avenir);
 }
 
 .contact-header {
-  position: relative;
+  position: sticky;
+  top: 0;
   z-index: 5;
   height: 113px;
   display: flex;

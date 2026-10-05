@@ -6,7 +6,6 @@ import reforestationImage from '../assets/figma/blog-article-reforestation.jpg'
 import educationImage from '../assets/figma/imgBlogImage4.png'
 import healthImage from '../assets/figma/blog-article-health.jpg'
 import communityImage from '../assets/figma/blog-article-community.jpg'
-import greenLine from '../assets/figma/imgGreenLine.svg'
 import LanguageSwitcher from '../components/LanguageSwitcher'
 import { useLanguage } from '../components/LanguageContext'
 import SocialLinks from '../components/SocialLinks'
@@ -64,12 +63,12 @@ function DonationHeader() {
   const { t } = useLanguage()
 
   return (
-    <header className="donation-header">
-      <a className="donation-header__brand" href="/" aria-label="Sembrando Perú, inicio">
+    <header className="about-header">
+      <a className="about-header__brand" href="/" aria-label="Sembrando Perú, inicio">
         <img src={logo} alt="Sembrando Perú" />
       </a>
       <button
-        className="donation-header__toggle"
+        className="about-header__menu-toggle"
         type="button"
         aria-expanded={menuOpen}
         aria-controls="donation-navigation"
@@ -78,15 +77,24 @@ function DonationHeader() {
       >
         <span /><span /><span />
       </button>
-      <nav className={`donation-navigation${menuOpen ? ' donation-navigation--open' : ''}`} id="donation-navigation">
-        <a href="/">{t('INICIO')}</a>
-        <a href="/nosotros">{t('NOSOTROS')}</a>
-        <a href="/blog">{t('BLOG')}</a>
-        <a className="donation-navigation__active" href="/donacion">{t('DONACIONES')}<img src={greenLine} alt="" /></a>
-        <LanguageSwitcher className="donation-navigation__language-mobile" />
+      <nav className={`about-navigation${menuOpen ? ' about-navigation--open' : ''}`} id="donation-navigation">
+        <a href="/" onClick={() => setMenuOpen(false)}>{t('Inicio')}</a>
+        <a href="/nosotros" onClick={() => setMenuOpen(false)}>{t('Nosotros')}</a>
+        <a href="/blog" onClick={() => setMenuOpen(false)}>{t('Blog')}</a>
+        <a href="/contacto" onClick={() => setMenuOpen(false)}>{t('Contáctanos')}</a>
+        <a className="about-navigation__donate" href="#aportar" onClick={() => setMenuOpen(false)}>
+          {t('Donar Ahora')}
+        </a>
+        <LanguageSwitcher className="about-navigation__language-mobile" />
       </nav>
-      <LanguageSwitcher className="donation-header__language" />
-      <a className="donation-header__button" href="#aportar">{t('DONACIÓN')}</a>
+      <LanguageSwitcher className="about-header__language" />
+      <a
+        className="about-header__donate donation-header__donate--active"
+        href="#aportar"
+        aria-current="page"
+      >
+        {t('Donación')}
+      </a>
     </header>
   )
 }
@@ -141,6 +149,15 @@ function DonationForm() {
         <span>{t('Otro monto')}</span>
         <span className="donation-form__custom-input"><span>S/</span><input aria-label={t('Otro monto en soles')} type="number" min="1" value={customAmount} onChange={(event) => setCustomAmount(event.target.value)} placeholder="0" /></span>
       </label>
+      <div className="donation-form__payment-methods" aria-label={t('Métodos de pago')}>
+        <button className="donation-form__paypal" type="button" disabled>
+          <span aria-hidden="true">P</span>{t('Donar con PayPal')}
+        </button>
+        <button className="donation-form__card" type="button" disabled>
+          {t('Donar con tarjeta de crédito o de débito')}
+        </button>
+        <p>{t('Próximamente')}</p>
+      </div>
       <button className="donation-form__submit" type="submit">{t('DONAR')}</button>
       <p>{t('Tu aporte transforma vidas y protege nuestros bosques.')}</p>
     </form>

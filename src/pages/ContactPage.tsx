@@ -8,7 +8,7 @@ import officeImage from '../assets/figma/contact-office.png'
 import arrowRight from '../assets/figma/imgArrowRight.svg'
 import greenLine from '../assets/figma/imgGreenLine.svg'
 import socialFacebook from '../assets/figma/imgPlatformFacebookColorNegative.svg'
-import socialInstagram from '../assets/figma/imgSocialIcons.svg'
+import socialInstagram from '../assets/figma/imgSocialIcons1.svg'
 import socialLinkedin from '../assets/figma/imgPlatformLinkedInColorNegative.svg'
 import socialTiktok from '../assets/figma/imgPlatformTikTokColorNegative.svg'
 import socialX from '../assets/figma/imgPlatformXTwitterColorNegative.svg'
@@ -17,12 +17,12 @@ import { BlogFooter } from './BlogPage'
 import './ContactPage.css'
 
 const socialLinks = [
-  { label: 'Facebook', image: socialFacebook, className: 'facebook' },
-  { label: 'Instagram', image: socialInstagram, className: 'instagram' },
-  { label: 'X', image: socialX, className: 'x' },
-  { label: 'TikTok', image: socialTiktok, className: 'tiktok' },
-  { label: 'LinkedIn', image: socialLinkedin, className: 'linkedin' },
-  { label: 'YouTube', image: socialYoutube, className: 'youtube' },
+  { label: 'Facebook', image: socialFacebook, className: 'facebook', href: 'https://www.facebook.com/PeruSembrando' },
+  { label: 'Instagram', image: socialInstagram, className: 'instagram', href: 'https://www.instagram.com/sembrando_peru/' },
+  { label: 'X', image: socialX, className: 'x', href: 'https://x.com/PeruSembrando' },
+  { label: 'TikTok', image: socialTiktok, className: 'tiktok', href: 'https://www.tiktok.com/@sembrando_peru' },
+  { label: 'LinkedIn', image: socialLinkedin, className: 'linkedin', href: 'https://www.linkedin.com/company/sembrandoperu/' },
+  { label: 'YouTube', image: socialYoutube, className: 'youtube', href: 'https://www.youtube.com/results?search_query=Sembrando+Peru' },
 ]
 
 function ContactHeader() {
@@ -236,7 +236,7 @@ export default function ContactPage() {
             <h2 id="contact-social-title">{t('EN REDES SOCIALES')}</h2>
           <div className="contact-social__grid">
             {socialLinks.map((social) => (
-              <a className={`contact-social__link contact-social__link--${social.className}`} href="#redes" aria-label={social.label} key={social.label}>
+              <a className={`contact-social__link contact-social__link--${social.className}`} href={social.href} target="_blank" rel="noreferrer" aria-label={social.label} key={social.label}>
                 <img src={social.image} alt="" />
               </a>
             ))}
