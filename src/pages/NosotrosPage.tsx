@@ -159,7 +159,7 @@ function ValuesSection() {
     <section className="about-values" aria-labelledby="values-title">
       <div className="about-values__layout">
         <div className="about-values__gallery" aria-label={t('Acciones de Sembrando Perú')}>
-          <div className="about-values__photo">
+          <div className="about-values__photo about-values__photo--wide">
             <img src={childrenImage} alt="Niños participando en actividades educativas" />
             <span>{t(values[0].title)}</span>
           </div>
@@ -167,7 +167,7 @@ function ValuesSection() {
             <img src={learningImage} alt="Jornada comunitaria de salud" />
             <span>{t(values[1].title)}</span>
           </div>
-          <div className="about-values__photo about-values__photo--wide">
+          <div className="about-values__photo">
             <img src={forestImage} alt="Equipo de Sembrando Perú en un bosque" />
             <span>{t(values[2].title)}</span>
           </div>
