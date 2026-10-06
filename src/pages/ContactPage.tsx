@@ -206,7 +206,9 @@ export default function ContactPage() {
           <h2 id="contact-form-title"><span>{t('Completa el')}</span> {t('siguiente formulario')}</h2>
           <div className="contact-form-section__ornament" aria-hidden="true">
             <span />
-            <img src={logo} alt="" />
+            <span className="contact-form-section__logo-crop">
+              <img src={logo} alt="" />
+            </span>
             <span />
           </div>
           <ContactForm />

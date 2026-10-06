@@ -626,7 +626,7 @@
   min-height: 686px;
   box-sizing: border-box;
   padding: 62px 32px 42px;
-  background: #fff8ee;
+  background: #dce8d5;
 }
 
 .community-section::before {
@@ -637,16 +637,6 @@
   height: 1px;
   content: '';
   background: #b7b7b7;
-}
-
-.community-section__mascot {
-  position: absolute;
-  z-index: 1;
-  top: -10px;
-  left: 21px;
-  width: 221px;
-  height: 182px;
-  object-fit: contain;
 }
 
 .community-section__inner {
@@ -1217,14 +1207,6 @@
   .community-section {
     min-height: 0;
     padding: 52px 22px 58px;
-  }
-
-  .community-section__mascot {
-    top: -38px;
-    left: auto;
-    right: 8px;
-    width: 112px;
-    height: 92px;
   }
 
   .community-section h2 {

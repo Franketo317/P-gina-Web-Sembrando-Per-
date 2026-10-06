@@ -13,7 +13,6 @@ import greenLine from './assets/figma/imgGreenLine.svg'
 import impactArt from './assets/figma/imgImpacto.svg'
 import image4 from './assets/figma/imgImage4.png'
 import multiRatioPhoto from './assets/figma/imgBuildingBlocks169.jpg'
-import mascotImage from './assets/figma/imgMascotImage.png'
 import heroImage from './assets/figma/img71.png'
 import LanguageSwitcher from './components/LanguageSwitcher'
 import { useLanguage } from './components/LanguageContext'
@@ -306,7 +305,6 @@ function App() {
         </section>
 
         <section className="community-section" id="unete" aria-labelledby="community-title">
-          <img className="community-section__mascot" src={mascotImage} alt="" />
           <div className="community-section__inner">
             <h2 id="community-title">{t('ÚNETE A LA COMUNIDAD')}</h2>
             <p className="community-section__description">
