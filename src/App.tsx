@@ -1,4 +1,4 @@
-import { useState, type FormEvent } from 'react'
+import { useEffect, useRef, useState, type FormEvent } from 'react'
 import arrowRight from './assets/figma/imgArrowRight.svg'
 import arrowRight1 from './assets/figma/imgArrowRight1.svg'
 import arrowRight2 from './assets/figma/imgArrowRight2.svg'
@@ -14,6 +14,8 @@ import impactArt from './assets/figma/imgImpacto.svg'
 import image4 from './assets/figma/imgImage4.png'
 import multiRatioPhoto from './assets/figma/imgBuildingBlocks169.jpg'
 import heroImage from './assets/figma/img71.png'
+import educationHeroImage from './assets/figma/1.jpg'
+import healthHeroImage from './assets/figma/2.jpg'
 import LanguageSwitcher from './components/LanguageSwitcher'
 import { useLanguage } from './components/LanguageContext'
 import SocialLinks from './components/SocialLinks'
@@ -46,6 +48,33 @@ const programs = [
       'Trabajamos para prevenir la anemia infantil en niños de las regiones de Selva y Sierra, mejorando su salud y bienestar.',
     image: blogImage3,
     alt: 'Atención de salud para niños y familias',
+  },
+]
+
+const heroSlides = [
+  {
+    image: heroImage,
+    alt: 'Familias de comunidades andinas en una jornada de alimentación saludable',
+    titleStart: 'SOMOS',
+    titleEnd: 'SEMBRANDO PERÚ',
+    description: 'Trabajamos junto a comunidades de la Amazonía y los Andes para construir un futuro sostenible.',
+    position: 'center 20%',
+  },
+  {
+    image: educationHeroImage,
+    alt: 'Actividad educativa de Sembrando Perú en una comunidad amazónica',
+    titleStart: 'EDUCACIÓN QUE',
+    titleEnd: 'TRANSFORMA',
+    description: 'Promovemos el aprendizaje y la participación para fortalecer a las comunidades.',
+    position: 'center 48%',
+  },
+  {
+    image: healthHeroImage,
+    alt: 'Campaña comunitaria para mejorar la alimentación y salud infantil',
+    titleStart: 'JUNTOS CONTRA',
+    titleEnd: 'LA ANEMIA',
+    description: 'Impulsamos una mejor alimentación y el cuidado de la salud infantil.',
+    position: 'center 18%',
   },
 ]
 
@@ -218,6 +247,109 @@ function CommunityForm() {
   )
 }
 
+function HomeHero() {
+  const [activeSlide, setActiveSlide] = useState(0)
+  const [isPlaying, setIsPlaying] = useState(true)
+  const pointerStartX = useRef<number | null>(null)
+  const { t } = useLanguage()
+
+  useEffect(() => {
+    if (!isPlaying) return
+
+    const intervalId = window.setInterval(() => {
+      setActiveSlide((current) => (current + 1) % heroSlides.length)
+    }, 5000)
+
+    return () => window.clearInterval(intervalId)
+  }, [activeSlide, isPlaying])
+
+  function showSlide(index: number) {
+    setActiveSlide((index + heroSlides.length) % heroSlides.length)
+  }
+
+  function handlePointerDown(event: React.PointerEvent<HTMLElement>) {
+    if ((event.target as HTMLElement).closest('button, a')) return
+    pointerStartX.current = event.clientX
+  }
+
+  function handlePointerUp(event: React.PointerEvent<HTMLElement>) {
+    if (pointerStartX.current === null) return
+
+    const distance = event.clientX - pointerStartX.current
+    pointerStartX.current = null
+    if (Math.abs(distance) > 45) showSlide(activeSlide + (distance < 0 ? 1 : -1))
+  }
+
+  const slide = heroSlides[activeSlide]
+
+  return (
+    <section
+      className="hero-section"
+      aria-label={t('Carrusel de Sembrando Perú')}
+      aria-roledescription={t('carrusel')}
+      onPointerDown={handlePointerDown}
+      onPointerUp={handlePointerUp}
+      onPointerCancel={() => { pointerStartX.current = null }}
+    >
+      {heroSlides.map((item, index) => (
+        <img
+          className={`hero-section__image${index === activeSlide ? ' is-active' : ''}`}
+          src={item.image}
+          alt={item.alt}
+          aria-hidden={index !== activeSlide}
+          key={item.image}
+          style={{ objectPosition: item.position }}
+        />
+      ))}
+      <SocialLinks />
+      <div className="hero-section__content" aria-live="polite">
+        <h1 id="hero-title">
+          {t(slide.titleStart)}<br /><span>{t(slide.titleEnd)}</span>
+        </h1>
+        <p>{t(slide.description)}</p>
+      </div>
+      <button
+        className="hero-section__arrow hero-section__arrow--previous"
+        type="button"
+        aria-label={t('Diapositiva anterior')}
+        onClick={() => showSlide(activeSlide - 1)}
+      >
+        <span aria-hidden="true" />
+      </button>
+      <button
+        className="hero-section__arrow hero-section__arrow--next"
+        type="button"
+        aria-label={t('Siguiente diapositiva')}
+        onClick={() => showSlide(activeSlide + 1)}
+      >
+        <span aria-hidden="true" />
+      </button>
+      <div className="hero-section__controls">
+        <div className="hero-section__indicators" role="group" aria-label={t('Elegir diapositiva')}>
+          {heroSlides.map((item, index) => (
+            <button
+              className={index === activeSlide ? 'is-active' : ''}
+              type="button"
+              aria-label={`${t('Ir a la diapositiva')} ${index + 1}`}
+              aria-current={index === activeSlide ? 'true' : undefined}
+              key={item.titleStart}
+              onClick={() => showSlide(index)}
+            />
+          ))}
+        </div>
+        <button
+          className="hero-section__playback"
+          type="button"
+          aria-label={t(isPlaying ? 'Pausar reproducción' : 'Reanudar reproducción')}
+          onClick={() => setIsPlaying((playing) => !playing)}
+        >
+          <span className={isPlaying ? 'is-playing' : 'is-paused'} aria-hidden="true" />
+        </button>
+      </div>
+    </section>
+  )
+}
+
 function SiteFooter() {
   return (
     <BlogFooter /> 
@@ -253,15 +385,7 @@ function App() {
     <div className="home-page" id="inicio">
       <SiteHeader />
       <main>
-        <section className="hero-section" aria-labelledby="hero-title">
-          <img className="hero-section__image" src={heroImage} alt="Paisaje de la Amazonía peruana" />
-          <SocialLinks />
-          <span className="hero-section__next" aria-hidden="true" />
-          <div className="hero-section__content">
-            <h1 id="hero-title">{t('SOMOS')}<br /><span>SEMBRANDO PERÚ</span></h1>
-            <p>{t('Trabajamos junto a comunades de la Amazonía y los Andes para construir sostenible')}</p>
-          </div>
-        </section>
+        <HomeHero />
 
         <section className="intro-section" id="nosotros" aria-labelledby="intro-title">
           <img
