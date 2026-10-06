@@ -1,4 +1,4 @@
-import { useState, type FormEvent } from 'react'
+import { useEffect, useRef, useState, type FormEvent } from 'react'
 import arrowRight from './assets/figma/imgArrowRight.svg'
 import arrowRight1 from './assets/figma/imgArrowRight1.svg'
 import arrowRight2 from './assets/figma/imgArrowRight2.svg'
@@ -13,8 +13,12 @@ import greenLine from './assets/figma/imgGreenLine.svg'
 import impactArt from './assets/figma/imgImpacto.svg'
 import image4 from './assets/figma/imgImage4.png'
 import multiRatioPhoto from './assets/figma/imgBuildingBlocks169.jpg'
-import mascotImage from './assets/figma/imgMascotImage.png'
 import heroImage from './assets/figma/img71.png'
+import educationHeroImage from './assets/figma/1.jpg'
+import healthHeroImage from './assets/figma/2.jpg'
+import LanguageSwitcher from './components/LanguageSwitcher'
+import { useLanguage } from './components/LanguageContext'
+import SocialLinks from './components/SocialLinks'
 import NosotrosPage from './pages/NosotrosPage'
 import BlogPage from './pages/BlogPage'
 import { BlogFooter } from './pages/BlogPage'
@@ -44,6 +48,33 @@ const programs = [
       'Trabajamos para prevenir la anemia infantil en niños de las regiones de Selva y Sierra, mejorando su salud y bienestar.',
     image: blogImage3,
     alt: 'Atención de salud para niños y familias',
+  },
+]
+
+const heroSlides = [
+  {
+    image: heroImage,
+    alt: 'Familias de comunidades andinas en una jornada de alimentación saludable',
+    titleStart: 'SOMOS',
+    titleEnd: 'SEMBRANDO PERÚ',
+    description: 'Trabajamos junto a comunidades de la Amazonía y los Andes para construir un futuro sostenible.',
+    position: 'center 20%',
+  },
+  {
+    image: educationHeroImage,
+    alt: 'Actividad educativa de Sembrando Perú en una comunidad amazónica',
+    titleStart: 'EDUCACIÓN QUE',
+    titleEnd: 'TRANSFORMA',
+    description: 'Promovemos el aprendizaje y la participación para fortalecer a las comunidades.',
+    position: 'center 48%',
+  },
+  {
+    image: healthHeroImage,
+    alt: 'Campaña comunitaria para mejorar la alimentación y salud infantil',
+    titleStart: 'JUNTOS CONTRA',
+    titleEnd: 'LA ANEMIA',
+    description: 'Impulsamos una mejor alimentación y el cuidado de la salud infantil.',
+    position: 'center 18%',
   },
 ]
 
@@ -82,6 +113,7 @@ const articles = [
 
 function SiteHeader() {
   const [menuOpen, setMenuOpen] = useState(false)
+  const { t } = useLanguage()
 
   return (
     <header className="about-header">
@@ -104,33 +136,34 @@ function SiteHeader() {
         id="about-navigation"
       >
         <a className="about-navigation__active" href="#inicio" onClick={() => setMenuOpen(false)}>
-          Inicio
+          {t('Inicio')}
           <img src={greenLine} alt="" />
         </a>
-        <a href="/nosotros" onClick={() => setMenuOpen(false)}>Nosotros</a>
-        <a href="/blog" onClick={() => setMenuOpen(false)}>Blog</a>
-        <a href="/contacto" onClick={() => setMenuOpen(false)}>Contáctanos</a>
+        <a href="/nosotros" onClick={() => setMenuOpen(false)}>{t('Nosotros')}</a>
+        <a href="/blog" onClick={() => setMenuOpen(false)}>{t('Blog')}</a>
+        <a href="/contacto" onClick={() => setMenuOpen(false)}>{t('Contáctanos')}</a>
         <a className="about-navigation__donate" href="/donacion" onClick={() => setMenuOpen(false)}>
-          Donar Ahora <img src={arrowRight} alt="" />
+          {t('Donar Ahora')} <img src={arrowRight} alt="" />
         </a>
+        <LanguageSwitcher className="about-navigation__language-mobile" />
       </nav>
-      <div className="about-header__language" aria-label="Idioma: español">
-        <span aria-hidden="true">◎</span> ES | Español <span aria-hidden="true">⌄</span>
-      </div>
+      <LanguageSwitcher className="about-header__language" />
       <a className="about-header__donate" href="/donacion">
-        Donación
+        {t('Donación')}
       </a>
     </header>
   )
 }
 
 function ProgramCard({ title, description, image, alt }: (typeof programs)[number]) {
+  const { t } = useLanguage()
+
   return (
     <article className="program-card">
       <img className="program-card__image" src={image} alt={alt} />
       <div className="program-card__body">
-        <h3>{title}</h3>
-        <p>{description}</p>
+        <h3>{t(title)}</h3>
+        <p>{t(description)}</p>
       </div>
     </article>
   )
@@ -145,19 +178,21 @@ function ArticleCard({
   alt,
   arrow,
 }: (typeof articles)[number]) {
+  const { t } = useLanguage()
+
   return (
     <article className="article-card">
       <img className="article-card__image" src={image} alt={alt} />
       <div className="article-card__body">
         <div className="article-card__meta">
-          <span>{category}</span>
+          <span>{t(category)}</span>
           <img src={ellipse} alt="" />
           <time>{date}</time>
         </div>
-        <h3>{title}</h3>
-        <p>{description}</p>
+        <h3>{t(title)}</h3>
+        <p>{t(description)}</p>
         <a className="article-card__link" href="/blog">
-          Leer artículo
+          {t('Leer artículo')}
           <img src={arrow} alt="" />
         </a>
       </div>
@@ -167,6 +202,7 @@ function ArticleCard({
 
 function CommunityForm() {
   const [submitted, setSubmitted] = useState(false)
+  const { t } = useLanguage()
 
   function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault()
@@ -176,39 +212,141 @@ function CommunityForm() {
   return (
     <form className="community-form" onSubmit={handleSubmit}>
       <label>
-        <span>Nombre <em>(Requerido)</em></span>
-        <input name="firstName" placeholder="Nombre*" autoComplete="given-name" required />
+        <span>{t('Nombre')} <em>{t('(Requerido)')}</em></span>
+        <input name="firstName" placeholder={`${t('Nombre')}*`} autoComplete="given-name" required />
       </label>
       <label>
-        <span>Apellido <em>(Requerido)</em></span>
-        <input name="lastName" placeholder="Apellido*" autoComplete="family-name" required />
+        <span>{t('Apellido')} <em>{t('(Requerido)')}</em></span>
+        <input name="lastName" placeholder={`${t('Apellido')}*`} autoComplete="family-name" required />
       </label>
       <label>
-        <span>Correo electrónico <em>(Requerido)</em></span>
-        <input name="email" type="email" placeholder="Nombre*" autoComplete="email" required />
+        <span>{t('Correo electrónico')} <em>{t('(Requerido)')}</em></span>
+        <input name="email" type="email" placeholder={`${t('Correo electrónico')}*`} autoComplete="email" required />
       </label>
       <label>
-        <span>País/Región <em>(Requerido)</em></span>
+        <span>{t('País/Región')} <em>{t('(Requerido)')}</em></span>
         <select name="country" defaultValue="" required>
-          <option value="" disabled>Seleccione país o región*</option>
+          <option value="" disabled>{t('Seleccione país o región*')}</option>
           <option value="Perú">Perú</option>
           <option value="Bolivia">Bolivia</option>
           <option value="Ecuador">Ecuador</option>
-          <option value="Otro">Otro</option>
+          <option value="Otro">{t('Otro')}</option>
         </select>
       </label>
       <label className="community-form__consent">
         <input type="checkbox" name="consent" required />
         <span>
-          Quiero recibir noticias por correo sobre proyectos de siembra, avances de impacto y
-          eventos de voluntariado de Sembrando Perú. <em>(Requerido)</em>
+          {t('Quiero recibir noticias por correo sobre proyectos de siembra, avances de impacto y eventos de voluntariado de Sembrando Perú. (Requerido)')}
         </span>
       </label>
       <div className="community-form__submit">
-        <button className="button button--green" type="submit">Unirme al cambio</button>
-        {submitted && <p role="status">Gracias por unirte a nuestra comunidad.</p>}
+        <button className="button button--green" type="submit">{t('Unirme al cambio')}</button>
+        {submitted && <p role="status">{t('Gracias por unirte a nuestra comunidad.')}</p>}
       </div>
     </form>
+  )
+}
+
+function HomeHero() {
+  const [activeSlide, setActiveSlide] = useState(0)
+  const [isPlaying, setIsPlaying] = useState(true)
+  const pointerStartX = useRef<number | null>(null)
+  const { t } = useLanguage()
+
+  useEffect(() => {
+    if (!isPlaying) return
+
+    const intervalId = window.setInterval(() => {
+      setActiveSlide((current) => (current + 1) % heroSlides.length)
+    }, 5000)
+
+    return () => window.clearInterval(intervalId)
+  }, [activeSlide, isPlaying])
+
+  function showSlide(index: number) {
+    setActiveSlide((index + heroSlides.length) % heroSlides.length)
+  }
+
+  function handlePointerDown(event: React.PointerEvent<HTMLElement>) {
+    if ((event.target as HTMLElement).closest('button, a')) return
+    pointerStartX.current = event.clientX
+  }
+
+  function handlePointerUp(event: React.PointerEvent<HTMLElement>) {
+    if (pointerStartX.current === null) return
+
+    const distance = event.clientX - pointerStartX.current
+    pointerStartX.current = null
+    if (Math.abs(distance) > 45) showSlide(activeSlide + (distance < 0 ? 1 : -1))
+  }
+
+  const slide = heroSlides[activeSlide]
+
+  return (
+    <section
+      className="hero-section"
+      aria-label={t('Carrusel de Sembrando Perú')}
+      aria-roledescription={t('carrusel')}
+      onPointerDown={handlePointerDown}
+      onPointerUp={handlePointerUp}
+      onPointerCancel={() => { pointerStartX.current = null }}
+    >
+      {heroSlides.map((item, index) => (
+        <img
+          className={`hero-section__image${index === activeSlide ? ' is-active' : ''}`}
+          src={item.image}
+          alt={item.alt}
+          aria-hidden={index !== activeSlide}
+          key={item.image}
+          style={{ objectPosition: item.position }}
+        />
+      ))}
+      <SocialLinks />
+      <div className="hero-section__content" aria-live="polite">
+        <h1 id="hero-title">
+          {t(slide.titleStart)}<br /><span>{t(slide.titleEnd)}</span>
+        </h1>
+        <p>{t(slide.description)}</p>
+      </div>
+      <button
+        className="hero-section__arrow hero-section__arrow--previous"
+        type="button"
+        aria-label={t('Diapositiva anterior')}
+        onClick={() => showSlide(activeSlide - 1)}
+      >
+        <span aria-hidden="true" />
+      </button>
+      <button
+        className="hero-section__arrow hero-section__arrow--next"
+        type="button"
+        aria-label={t('Siguiente diapositiva')}
+        onClick={() => showSlide(activeSlide + 1)}
+      >
+        <span aria-hidden="true" />
+      </button>
+      <div className="hero-section__controls">
+        <div className="hero-section__indicators" role="group" aria-label={t('Elegir diapositiva')}>
+          {heroSlides.map((item, index) => (
+            <button
+              className={index === activeSlide ? 'is-active' : ''}
+              type="button"
+              aria-label={`${t('Ir a la diapositiva')} ${index + 1}`}
+              aria-current={index === activeSlide ? 'true' : undefined}
+              key={item.titleStart}
+              onClick={() => showSlide(index)}
+            />
+          ))}
+        </div>
+        <button
+          className="hero-section__playback"
+          type="button"
+          aria-label={t(isPlaying ? 'Pausar reproducción' : 'Reanudar reproducción')}
+          onClick={() => setIsPlaying((playing) => !playing)}
+        >
+          <span className={isPlaying ? 'is-playing' : 'is-paused'} aria-hidden="true" />
+        </button>
+      </div>
+    </section>
   )
 }
 
@@ -220,6 +358,7 @@ function SiteFooter() {
 
 function App() {
   const currentPath = window.location.pathname.replace(/\/+$/, '') || '/'
+  const { t } = useLanguage()
 
   if (currentPath === '/donacion') {
     return <DonationPage />
@@ -246,13 +385,7 @@ function App() {
     <div className="home-page" id="inicio">
       <SiteHeader />
       <main>
-        <section className="hero-section" aria-labelledby="hero-title">
-          <img className="hero-section__image" src={heroImage} alt="Paisaje de la Amazonía peruana" />
-          <div className="hero-section__content">
-            <h1 id="hero-title">SOMOS<br /><span>SEMBRANDO PERÚ</span></h1>
-            <p>Trabajamos junto a comunades de la Amazonía y los Andes para construir sostenible</p>
-          </div>
-        </section>
+        <HomeHero />
 
         <section className="intro-section" id="nosotros" aria-labelledby="intro-title">
           <img
@@ -261,49 +394,45 @@ function App() {
             alt="Fotografía de la sección Qué hacemos"
           />
           <div className="intro-section__content">
-            <h2 id="intro-title">¿QUÉ<br />HACEMOS?</h2>
-            <p>
-              Sembrando Perú es una organización sin fines de lucro comprometida con la protección
-              de la Amazonía peruana y el desarrollo sostenible de las comunidades rurales.
-              Restauramos bosques degradados, promovemos la educación y la alfabetización,
-              fortalecemos la salud infantil y combatimos la anemia en las zonas más vulnerables
-              del país.
-            </p>
+            <h2 id="intro-title">{t('¿QUÉ HACEMOS?')}</h2>
+            <p>{t('Sembrando Perú es una organización sin fines de lucro comprometida con la protección de la Amazonía peruana y el desarrollo sostenible de las comunidades rurales. Restauramos bosques degradados, promovemos la educación y la alfabetización, fortalecemos la salud infantil y combatimos la anemia en las zonas más vulnerables del país.')}</p>
             <a className="button button--lime" href="/nosotros">
-              CONÓCENOS <img src={arrowRight} alt="" />
+              {t('CONÓCENOS')} <img src={arrowRight} alt="" />
             </a>
           </div>
         </section>
 
         <section className="programs-section" id="programas" aria-labelledby="programs-title">
           <div className="section-heading">
-            <h2 id="programs-title">Mejorando vida, futuro y medio ambiente</h2>
-            <p>Trabajamos por un futuro sostenible desde diferentes frentes.</p>
+            <h2 id="programs-title">{t('Mejorando vida, futuro y medio ambiente')}</h2>
+            <p>{t('Trabajamos por un futuro sostenible desde diferentes frentes.')}</p>
           </div>
           <div className="program-grid">
             {programs.map((program) => <ProgramCard key={program.title} {...program} />)}
+          </div>
+          <div className="programs-pagination" aria-hidden="true">
+            <span className="is-active" />
+            <span />
+            <span />
           </div>
         </section>
 
         <section className="news-section" id="noticias" aria-labelledby="news-title">
           <img className="news-section__art" src={impactArt} alt="" />
           <div className="news-section__content">
-            <h2 id="news-title">Últimas noticias</h2>
+            <h2 id="news-title">{t('Últimas noticias')}</h2>
             <div className="article-grid">
               {articles.map((article) => <ArticleCard key={article.title} {...article} />)}
             </div>
-            <a className="button button--green news-section__more" href="/blog">Ver más</a>
+            <a className="button button--green news-section__more" href="/blog">{t('Ver más')}</a>
           </div>
         </section>
 
         <section className="community-section" id="unete" aria-labelledby="community-title">
-          <img className="community-section__mascot" src={mascotImage} alt="" />
           <div className="community-section__inner">
-            <h2 id="community-title">ÚNETE A LA COMUNIDAD</h2>
+            <h2 id="community-title">{t('ÚNETE A LA COMUNIDAD')}</h2>
             <p className="community-section__description">
-              Recibe avances mensuales sobre nuestras jornadas de plantación, historias de impacto
-              en nuestras comunidades y noticias sobre cómo estamos protegiendo nuestros
-              ecosistemas.
+              {t('Recibe avances mensuales sobre nuestras jornadas de plantación, historias de impacto en nuestras comunidades y noticias sobre cómo estamos protegiendo nuestros ecosistemas.')}
             </p>
             <CommunityForm />
           </div>

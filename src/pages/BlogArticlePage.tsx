@@ -4,6 +4,7 @@ import blogCommunity from '../assets/figma/blog-article-community.jpg'
 import blogHealth from '../assets/figma/blog-article-health.jpg'
 import blogFeatureForest from '../assets/figma/blog-featured-forest.jpg'
 import blogFeatureCommunity from '../assets/figma/blog-featured-community.jpg'
+import { useLanguage } from '../components/LanguageContext'
 import { BlogFooter, BlogHeader } from './BlogPage'
 import './BlogPage.css'
 
@@ -81,6 +82,7 @@ const relatedArticles = [
 type Props = { slug: string }
 
 export default function BlogArticlePage({ slug }: Props) {
+  const { t } = useLanguage()
   const article = articleDetails[slug as keyof typeof articleDetails]
   const related = relatedArticles.filter((item) => item.slug !== slug)
 
@@ -89,35 +91,35 @@ export default function BlogArticlePage({ slug }: Props) {
       <BlogHeader showMasthead={false} />
       {article ? (
         <main className="blog-article">
-          <a className="blog-article__back" href="/blog#articulos">← Volver a Últimos artículos</a>
+          <a className="blog-article__back" href="/blog#articulos">{t('← Volver a Últimos artículos')}</a>
           <article>
             <header className="blog-article__header">
-              <div className="blog-meta"><span>{article.category}</span><i /><time>{article.date}</time></div>
-              <h1>{article.title}</h1>
+              <div className="blog-meta"><span>{t(article.category)}</span><i /><time>{article.date}</time></div>
+              <h1>{t(article.title)}</h1>
             </header>
             <img className="blog-article__hero" src={article.image} alt={article.alt} />
             <div className="blog-article__body">
-              <p className="blog-article__introduction">{article.introduction}</p>
+              <p className="blog-article__introduction">{t(article.introduction)}</p>
               {article.sections.map((section) => (
                 <section key={section.heading}>
-                  <h2>{section.heading}</h2>
-                  {section.paragraphs.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}
+                  <h2>{t(section.heading)}</h2>
+                  {section.paragraphs.map((paragraph) => <p key={paragraph}>{t(paragraph)}</p>)}
                 </section>
               ))}
             </div>
           </article>
           <section className="blog-related" aria-labelledby="blog-related-title">
-            <div className="blog-section-heading"><h2 id="blog-related-title">Artículos relacionados</h2></div>
+            <div className="blog-section-heading"><h2 id="blog-related-title">{t('Artículos relacionados')}</h2></div>
             <div className="blog-related__grid">
               {related.map((item) => (
                 <article className="blog-related-card" key={item.slug}>
-                  <a className="blog-related-card__image-link" href={`/blog/articulo/${item.slug}`} aria-label={`Leer ${item.title}`}>
+                  <a className="blog-related-card__image-link" href={`/blog/articulo/${item.slug}`} aria-label={`${t('Leer')} ${t(item.title)}`}>
                     <img src={item.image} alt={item.alt} />
                   </a>
                   <div className="blog-related-card__content">
-                    <div className="blog-meta"><span>{item.category}</span><i /><time>{item.date}</time></div>
-                    <h3>{item.title}</h3>
-                    <a href={`/blog/articulo/${item.slug}`}>Leer artículo <img src={arrowRight} alt="" /></a>
+                    <div className="blog-meta"><span>{t(item.category)}</span><i /><time>{item.date}</time></div>
+                    <h3>{t(item.title)}</h3>
+                    <a href={`/blog/articulo/${item.slug}`}>{t('Leer artículo')} <img src={arrowRight} alt="" /></a>
                   </div>
                 </article>
               ))}
@@ -126,8 +128,8 @@ export default function BlogArticlePage({ slug }: Props) {
         </main>
       ) : (
         <main className="blog-article blog-article--not-found">
-          <h1>Artículo no encontrado</h1>
-          <a className="blog-article__back" href="/blog#articulos">Volver a Últimos artículos</a>
+          <h1>{t('Artículo no encontrado')}</h1>
+          <a className="blog-article__back" href="/blog#articulos">{t('Volver a Últimos artículos')}</a>
         </main>
       )}
       <BlogFooter />

@@ -8,9 +8,14 @@ import blogReforestation from '../assets/figma/blog-article-reforestation.jpg'
 import blogCommunity from '../assets/figma/blog-article-community.jpg'
 import blogHealth from '../assets/figma/blog-article-health.jpg'
 import logo from '../assets/figma/imgImage4.png'
+import LanguageSwitcher from '../components/LanguageSwitcher'
+import { useLanguage } from '../components/LanguageContext'
+import SocialLinks from '../components/SocialLinks'
 import socialFacebook from '../assets/figma/imgPlatformFacebookColorNegative.svg'
 import socialLinkedin from '../assets/figma/imgPlatformLinkedInColorNegative.svg'
 import socialInstagramReal from '../assets/figma/imgSocialIcons1.svg'
+import socialTiktok from '../assets/figma/imgPlatformTikTokColorNegative.svg'
+import socialX from '../assets/figma/imgPlatformXTwitterColorNegative.svg'
 
 import greenLine from '../assets/figma/imgGreenLine.svg'
 import blogHeroBackground from '../assets/figma/about-values-background.png'
@@ -87,14 +92,18 @@ const tags = ['Amazonía', 'Sostenibilidad', 'Innovación', 'Perú', 'Clima', 'B
 const socials = [
   { label: 'Facebook', image: socialFacebook, href: 'https://www.facebook.com/PeruSembrando' },
   { label: 'Instagram', image: socialInstagramReal, href: 'https://www.instagram.com/sembrando_peru/' },
+  { label: 'X', image: socialX, href: 'https://x.com/PeruSembrando' },
   { label: 'LinkedIn', image: socialLinkedin, href: 'https://www.linkedin.com/company/sembrandoperu/' },
+  { label: 'TikTok', image: socialTiktok, href: 'https://www.tiktok.com/@sembrando_peru' },
 ]
 
 export function BlogFooter() {
+  const { t } = useLanguage()
+
   return (
     <footer className="blog-footer" id="contacto">
       <div className="blog-footer__main">
-        <h2>HAGAMOS EL CAMBIO POSIBLE!</h2>
+        <h2>{t('HAGAMOS EL CAMBIO POSIBLE!')}</h2>
         <div className="blog-footer__content">
           <div className="blog-footer__brand">
             <a href="/" aria-label="Sembrando Perú, inicio">
@@ -103,31 +112,31 @@ export function BlogFooter() {
                 <span className="blog-footer__logo-text">SEMBRANDO<br/>PERÚ</span>
               </div>
             </a>
-            <p>Esperanza para un futuro mejor</p>
+            <p>{t('Esperanza para un futuro mejor')}</p>
           </div>
           <div className="blog-footer__column">
-            <h3>Navegación</h3>
-            <a href="/">Inicio</a><a href="/nosotros">Nosotros</a><a href="/blog">Blog</a><a href="/contacto">Contáctanos</a>
+            <h3>{t('Navegación')}</h3>
+            <a href="/">{t('Inicio')}</a><a href="/nosotros">{t('Nosotros')}</a><a href="/blog">{t('Blog')}</a><a href="/contacto">{t('Contáctanos')}</a>
           </div>
           <div className="blog-footer__column blog-footer__contact">
-            <h3>Contacto</h3>
+            <h3>{t('Contacto')}</h3>
             <a href="mailto:contacto@sembrandoperu.org">contacto@sembrandoperu.org</a>
             <a href="tel:+51921462828">+51 921 462 828</a>
             <p>Av. Arequipa 2447 – Office 409, Lince District,<br/>Lima, Peru</p>
           </div>
           <div className="blog-footer__column">
-            <h3>Involúcrate</h3>
-            <a href="/#unete">Voluntariado</a><a href="/donacion">Donaciones</a><a href="#contacto">Transparencia</a>
+            <h3>{t('Involúcrate')}</h3>
+            <a href="/#unete">{t('Voluntariado')}</a><a href="/donacion">{t('DONACIONES')}</a><a href="#contacto">{t('Transparencia')}</a>
           </div>
         </div>
         <div className="blog-footer__follow">
-          <span>SÍGUENOS :</span>
+          <span>{t('SÍGUENOS :')}</span>
           {socials.map((social) => <a href={social.href ?? '#redes'} target={social.href ? '_blank' : undefined} rel={social.href ? 'noreferrer' : undefined} aria-label={social.label} key={social.label}><img src={social.image} alt="" /></a>)}
         </div>
       </div>
       <div className="blog-footer__legal">
-        <span>© 2026 Sembrando. Todos los derechos reservados.</span>
-        <a href="#privacidad">Políticas de privacidad</a>
+        <span>{t('© 2026 Sembrando. Todos los derechos reservados.')}</span>
+        <a href="#privacidad">{t('Políticas de privacidad')}</a>
       </div>
     </footer>
   )
@@ -136,6 +145,7 @@ export function BlogFooter() {
 
 export function BlogHeader({ showMasthead = true }: { showMasthead?: boolean }) {
   const [menuOpen, setMenuOpen] = useState(false)
+  const { t } = useLanguage()
 
   function closeMenu() {
     setMenuOpen(false)
@@ -152,7 +162,7 @@ export function BlogHeader({ showMasthead = true }: { showMasthead?: boolean }) 
           type="button"
           aria-expanded={menuOpen}
           aria-controls="blog-navigation"
-          aria-label={menuOpen ? 'Cerrar menú' : 'Abrir menú'}
+          aria-label={t(menuOpen ? 'Cerrar menú' : 'Abrir menú')}
           onClick={() => setMenuOpen((open) => !open)}
         >
           <span />
@@ -163,22 +173,21 @@ export function BlogHeader({ showMasthead = true }: { showMasthead?: boolean }) 
           className={`blog-navigation${menuOpen ? ' blog-navigation--open' : ''}`}
           id="blog-navigation"
         >
-          <a href="/" onClick={closeMenu}>Inicio</a>
-          <a href="/nosotros" onClick={closeMenu}>Nosotros</a>
+          <a href="/" onClick={closeMenu}>{t('Inicio')}</a>
+          <a href="/nosotros" onClick={closeMenu}>{t('Nosotros')}</a>
           <a className="blog-navigation__active" href="/blog" onClick={closeMenu}>
-            Blog
+            {t('Blog')}
             <img src={greenLine} alt="" />
           </a>
-          <a href="/contacto" onClick={closeMenu}>Contáctanos</a>
+          <a href="/contacto" onClick={closeMenu}>{t('Contáctanos')}</a>
           <a className="blog-navigation__donate" href="/donacion" onClick={closeMenu}>
-            Donar Ahora <img src={arrowRight} alt="" />
+            {t('Donar Ahora')} <img src={arrowRight} alt="" />
           </a>
+          <LanguageSwitcher className="blog-navigation__language-mobile" />
         </nav>
-        <div className="blog-header__language" aria-label="Idioma: español">
-          <span aria-hidden="true">◎</span> ES | Español <span aria-hidden="true">⌄</span>
-        </div>
+        <LanguageSwitcher className="blog-header__language" />
         <a className="blog-header__donate" href="/donacion">
-          Donación
+          {t('Donación')}
         </a>
       </header>
       {showMasthead && (
@@ -187,7 +196,8 @@ export function BlogHeader({ showMasthead = true }: { showMasthead?: boolean }) 
           style={{ backgroundImage: `url(${blogHeroBackground})` }}
         >
           <div style={{ position: 'absolute', inset: 0, background: 'rgba(2, 115, 77, 0.4)', zIndex: 1 }} />
-          <h1>"Historias que inspiran,<br />acciones que transforman"</h1>
+          <SocialLinks />
+          <h1>{t('"Historias que inspiran, acciones que transforman"')}</h1>
         </section>
       )}
     </>
@@ -198,6 +208,7 @@ export default function BlogPage() {
   const [selectedCategory, setSelectedCategory] = useState('')
   const [selectedTag, setSelectedTag] = useState('')
   const [message, setMessage] = useState('')
+  const { t } = useLanguage()
   const filteredArticles = selectedCategory
     ? articles.filter((article) => article.category.toLowerCase() === selectedCategory.toLowerCase())
     : articles
@@ -214,27 +225,27 @@ export default function BlogPage() {
       <main className="blog-layout">
         <div className="blog-main-column">
           <section className="blog-featured" aria-labelledby="featured-title">
-            <div className="blog-section-heading"><h2 id="featured-title">Destacados</h2></div>
+            <div className="blog-section-heading"><h2 id="featured-title">{t('Destacados')}</h2></div>
             <div className="blog-featured__grid">
               {featuredArticles.map((article) => (
                 <article className="featured-card" key={article.title}>
                   <img className="featured-card__image" src={article.image} alt={article.alt} />
                   <div className="featured-card__content">
-                    <div className="blog-meta"><span>{article.category}</span><i /><time>{article.date}</time></div>
-                    <h3>{article.title}</h3>
-                    <p>{article.description}</p>
-                    <a href={`/blog/articulo/${article.slug}`}>Leer artículo <img src={article.arrow} alt="" /></a>
+                    <div className="blog-meta"><span>{t(article.category)}</span><i /><time>{article.date}</time></div>
+                    <h3>{t(article.title)}</h3>
+                    <p>{t(article.description)}</p>
+                    <a href={`/blog/articulo/${article.slug}`}>{t('Leer artículo')} <img src={article.arrow} alt="" /></a>
                   </div>
                 </article>
               ))}
             </div>
           </section>
           <section className="blog-latest" id="articulos" aria-labelledby="latest-title">
-            <div className="blog-section-heading"><h2 id="latest-title">Últimos Artículos</h2></div>
+            <div className="blog-section-heading"><h2 id="latest-title">{t('Últimos Artículos')}</h2></div>
             {selectedCategory || selectedTag ? (
               <div className="blog-filter-status">
                 <span>{selectedCategory || selectedTag}</span>
-                <button type="button" onClick={clearFilters}>Limpiar filtro</button>
+                <button type="button" onClick={clearFilters}>{t('Limpiar filtro')}</button>
               </div>
             ) : null}
             <div className="blog-latest__list">
@@ -242,47 +253,47 @@ export default function BlogPage() {
                 <article className="latest-card" key={article.title}>
                   <img className="latest-card__image" src={article.image} alt={article.alt} />
                   <div className="latest-card__content">
-                    <div className="blog-meta"><span>{article.category}</span><i /><time>{article.date}</time></div>
-                    <h3>{article.title}</h3>
-                    <p>{article.description}</p>
-                    <a href={`/blog/articulo/${article.slug}`}>Leer más <img src={arrowRight} alt="" /></a>
+                    <div className="blog-meta"><span>{t(article.category)}</span><i /><time>{article.date}</time></div>
+                    <h3>{t(article.title)}</h3>
+                    <p>{t(article.description)}</p>
+                    <a href={`/blog/articulo/${article.slug}`}>{t('Leer más')} <img src={arrowRight} alt="" /></a>
                   </div>
                 </article>
-              )) : <p className="blog-empty">No hay artículos para este filtro.</p>}
+              )) : <p className="blog-empty">{t('No hay artículos para este filtro.')}</p>}
             </div>
             <div className="blog-load-more">
-              <button type="button" onClick={() => setMessage('No hay más historias por ahora.')}>Cargar más historias</button>
-              {message && <p role="status">{message}</p>}
+              <button type="button" onClick={() => setMessage('No hay más historias por ahora.')}>{t('Cargar más historias')}</button>
+              {message && <p role="status">{t(message)}</p>}
             </div>
           </section>
         </div>
-        <aside className="blog-sidebar" aria-label="Explorar artículos">
+        <aside className="blog-sidebar" aria-label={t('Explorar artículos')}>
           <section className="blog-sidebar__categories">
-            <h2>Categorías</h2>
+            <h2>{t('Categorías')}</h2>
             <ul>
               {categories.map((category) => (
                 <li key={category.label}>
                   <button type="button" aria-pressed={selectedCategory === category.label} onClick={() => { setSelectedCategory(category.label); setSelectedTag('') }}>
-                    {category.label}<span>{category.count}</span>
+                    {t(category.label)}<span>{category.count}</span>
                   </button>
                 </li>
               ))}
             </ul>
           </section>
           <section className="blog-sidebar__popular">
-            <h2>Post más leídos</h2>
+            <h2>{t('Post más leídos')}</h2>
             {popularArticles.map((article) => (
               <a className="popular-post" href="#articulos" key={article.title}>
                 <img src={article.image} alt="" />
-                <span><strong>{article.title}</strong><time>{article.date}</time></span>
+                <span><strong>{t(article.title)}</strong><time>{article.date}</time></span>
               </a>
             ))}
           </section>
           <section className="blog-sidebar__tags">
-            <h2>Etiquetas Populares</h2>
+            <h2>{t('Etiquetas Populares')}</h2>
             <div>
               {tags.map((tag) => (
-                <button className={selectedTag === tag ? 'is-selected' : ''} type="button" key={tag} onClick={() => { setSelectedTag(tag); setSelectedCategory('') }}>{tag}</button>
+                <button className={selectedTag === tag ? 'is-selected' : ''} type="button" key={tag} onClick={() => { setSelectedTag(tag); setSelectedCategory('') }}>{t(tag)}</button>
               ))}
             </div>
           </section>
