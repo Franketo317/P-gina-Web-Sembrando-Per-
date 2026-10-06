@@ -1,4 +1,5 @@
-import { useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
+import { createPortal } from 'react-dom'
 import logo from '../assets/figma/imgImage4.png'
 import heroImage from '../assets/figma/donacion.jpg'
 import impactImage from '../assets/figma/5.jpeg'
@@ -165,7 +166,52 @@ function DonationForm() {
 }
 
 function DonationHero() {
+  const formSlotRef = useRef<HTMLDivElement>(null)
+  const [showFloatingDonate, setShowFloatingDonate] = useState(false)
   const { t } = useLanguage()
+
+  useEffect(() => {
+    const updateDonateButtonVisibility = () => {
+      const formSlot = formSlotRef.current
+      const page = formSlot?.closest('.donation-page')
+      const header = page?.querySelector('.about-header')
+      const form = formSlot?.querySelector('.donation-form')
+
+      if (!form || !header) {
+        setShowFloatingDonate(false)
+        return
+      }
+
+      const headerBounds = header.getBoundingClientRect()
+      const formBounds = form.getBoundingClientRect()
+      const formIsVisible = formBounds.bottom > headerBounds.bottom
+        && formBounds.top < window.innerHeight
+        && formBounds.right > 0
+        && formBounds.left < window.innerWidth
+      setShowFloatingDonate(!formIsVisible)
+    }
+
+    updateDonateButtonVisibility()
+    window.addEventListener('scroll', updateDonateButtonVisibility, { passive: true })
+    window.addEventListener('resize', updateDonateButtonVisibility)
+    return () => {
+      window.removeEventListener('scroll', updateDonateButtonVisibility)
+      window.removeEventListener('resize', updateDonateButtonVisibility)
+    }
+  }, [])
+
+  function scrollToDonationForm() {
+    const form = formSlotRef.current?.querySelector('.donation-form')
+    const header = formSlotRef.current?.closest('.donation-page')?.querySelector('.about-header')
+    if (!form || !header) return
+
+    const formBounds = form.getBoundingClientRect()
+    const headerHeight = header.getBoundingClientRect().height
+    window.scrollTo({
+      top: window.scrollY + formBounds.top - headerHeight - 16,
+      behavior: 'smooth',
+    })
+  }
 
   return (
     <section className="donation-hero" aria-labelledby="donation-hero-title">
@@ -176,7 +222,23 @@ function DonationHero() {
         <h1 id="donation-hero-title">{t('ÚNETE AL CAMBIO,')}<br />{t('DONA HOY!')}</h1>
         <p>Tu donación hace posible más acciones de reforestación, educación y desarrollo sostenible en las comunidades del Perú.</p>
       </div>
-      <DonationForm />
+      <div
+        ref={formSlotRef}
+        className="donation-form-slot"
+      >
+        <DonationForm />
+      </div>
+      {showFloatingDonate && createPortal(
+        <button
+          className="donation-quick-donate"
+          type="button"
+          aria-label={t('Ir al formulario de donación')}
+          onClick={scrollToDonationForm}
+        >
+          {t('Donar Ahora')}
+        </button>,
+        document.body,
+      )}
     </section>
   )
 }
