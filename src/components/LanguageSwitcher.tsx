@@ -41,14 +41,16 @@ export default function LanguageSwitcher({ className }: Props) {
       <button
         className="language-switcher"
         type="button"
-        aria-label="Seleccionar idioma"
+        aria-label={language === 'en' ? 'Cambiar idioma a español' : 'Cambiar idioma a inglés'}
         aria-haspopup="menu"
         aria-expanded={menuOpen}
         aria-controls={menuId}
         onClick={() => setMenuOpen((open) => !open)}
       >
         <LanguageIcon />
-        <span>{language === 'en' ? 'EN | English' : 'ES | Español'}</span>
+        <span className="language-switcher__label">
+          {language === 'es' ? 'ES | Español' : 'EN | English'}
+        </span>
         <LanguageChevron />
       </button>
       {menuOpen && (

@@ -1,5 +1,4 @@
-import { useEffect, useRef, useState, type FormEvent } from 'react'
-import arrowRight from './assets/figma/imgArrowRight.svg'
+import { useState, type FormEvent } from 'react'
 import arrowRight1 from './assets/figma/imgArrowRight1.svg'
 import arrowRight2 from './assets/figma/imgArrowRight2.svg'
 import blogImage from './assets/figma/imgBlogImage.png'
@@ -9,14 +8,12 @@ import blogImage3 from './assets/figma/imgBlogImage3.png'
 import blogImage4 from './assets/figma/imgBlogImage4.png'
 import blogImage5 from './assets/figma/imgBlogImage5.png'
 import ellipse from './assets/figma/imgEllipse.svg'
-import greenLine from './assets/figma/imgGreenLine.svg'
 import impactArt from './assets/figma/imgImpacto.svg'
-import image4 from './assets/figma/imgImage4.png'
-import multiRatioPhoto from './assets/figma/imgBuildingBlocks169.jpg'
 import heroImage from './assets/figma/img71.png'
 import educationHeroImage from './assets/figma/1.jpg'
 import healthHeroImage from './assets/figma/2.jpg'
-import LanguageSwitcher from './components/LanguageSwitcher'
+import SiteHeader from './components/SiteHeader'
+import ValuesSection from './components/ValuesSection'
 import { useLanguage } from './components/LanguageContext'
 import SocialLinks from './components/SocialLinks'
 import NosotrosPage from './pages/NosotrosPage'
@@ -58,7 +55,7 @@ const heroSlides = [
     titleStart: 'SOMOS',
     titleEnd: 'SEMBRANDO PERÚ',
     description: 'Trabajamos junto a comunidades de la Amazonía y los Andes para construir un futuro sostenible.',
-    position: 'center 20%',
+    position: 'center 22%',
   },
   {
     image: educationHeroImage,
@@ -66,7 +63,7 @@ const heroSlides = [
     titleStart: 'EDUCACIÓN QUE',
     titleEnd: 'TRANSFORMA',
     description: 'Promovemos el aprendizaje y la participación para fortalecer a las comunidades.',
-    position: 'center 48%',
+    position: 'center 35%',
   },
   {
     image: healthHeroImage,
@@ -74,7 +71,7 @@ const heroSlides = [
     titleStart: 'JUNTOS CONTRA',
     titleEnd: 'LA ANEMIA',
     description: 'Impulsamos una mejor alimentación y el cuidado de la salud infantil.',
-    position: 'center 18%',
+    position: 'center 20%',
   },
 ]
 
@@ -111,49 +108,7 @@ const articles = [
   },
 ]
 
-function SiteHeader() {
-  const [menuOpen, setMenuOpen] = useState(false)
-  const { t } = useLanguage()
 
-  return (
-    <header className="about-header">
-      <a className="about-header__brand" href="#inicio" aria-label="Sembrando Perú, inicio">
-        <img src={image4} alt="Sembrando Perú" />
-      </a>
-      <button
-        className="about-header__menu-toggle"
-        type="button"
-        aria-expanded={menuOpen}
-        aria-controls="about-navigation"
-        onClick={() => setMenuOpen((open) => !open)}
-      >
-        <span />
-        <span />
-        <span />
-      </button>
-      <nav
-        className={`about-navigation${menuOpen ? ' about-navigation--open' : ''}`}
-        id="about-navigation"
-      >
-        <a className="about-navigation__active" href="#inicio" onClick={() => setMenuOpen(false)}>
-          {t('Inicio')}
-          <img src={greenLine} alt="" />
-        </a>
-        <a href="/nosotros" onClick={() => setMenuOpen(false)}>{t('Nosotros')}</a>
-        <a href="/blog" onClick={() => setMenuOpen(false)}>{t('Blog')}</a>
-        <a href="/contacto" onClick={() => setMenuOpen(false)}>{t('Contáctanos')}</a>
-        <a className="about-navigation__donate" href="/donacion" onClick={() => setMenuOpen(false)}>
-          {t('Donar Ahora')} <img src={arrowRight} alt="" />
-        </a>
-        <LanguageSwitcher className="about-navigation__language-mobile" />
-      </nav>
-      <LanguageSwitcher className="about-header__language" />
-      <a className="about-header__donate" href="/donacion">
-        {t('Donación')}
-      </a>
-    </header>
-  )
-}
 
 function ProgramCard({ title, description, image, alt }: (typeof programs)[number]) {
   const { t } = useLanguage()
@@ -249,35 +204,10 @@ function CommunityForm() {
 
 function HomeHero() {
   const [activeSlide, setActiveSlide] = useState(0)
-  const [isPlaying, setIsPlaying] = useState(true)
-  const pointerStartX = useRef<number | null>(null)
   const { t } = useLanguage()
-
-  useEffect(() => {
-    if (!isPlaying) return
-
-    const intervalId = window.setInterval(() => {
-      setActiveSlide((current) => (current + 1) % heroSlides.length)
-    }, 5000)
-
-    return () => window.clearInterval(intervalId)
-  }, [activeSlide, isPlaying])
 
   function showSlide(index: number) {
     setActiveSlide((index + heroSlides.length) % heroSlides.length)
-  }
-
-  function handlePointerDown(event: React.PointerEvent<HTMLElement>) {
-    if ((event.target as HTMLElement).closest('button, a')) return
-    pointerStartX.current = event.clientX
-  }
-
-  function handlePointerUp(event: React.PointerEvent<HTMLElement>) {
-    if (pointerStartX.current === null) return
-
-    const distance = event.clientX - pointerStartX.current
-    pointerStartX.current = null
-    if (Math.abs(distance) > 45) showSlide(activeSlide + (distance < 0 ? 1 : -1))
   }
 
   const slide = heroSlides[activeSlide]
@@ -287,26 +217,27 @@ function HomeHero() {
       className="hero-section"
       aria-label={t('Carrusel de Sembrando Perú')}
       aria-roledescription={t('carrusel')}
-      onPointerDown={handlePointerDown}
-      onPointerUp={handlePointerUp}
-      onPointerCancel={() => { pointerStartX.current = null }}
     >
-      {heroSlides.map((item, index) => (
-        <img
-          className={`hero-section__image${index === activeSlide ? ' is-active' : ''}`}
-          src={item.image}
-          alt={item.alt}
-          aria-hidden={index !== activeSlide}
-          key={item.image}
-          style={{ objectPosition: item.position }}
-        />
-      ))}
-      <SocialLinks />
-      <div className="hero-section__content" aria-live="polite">
-        <h1 id="hero-title">
-          {t(slide.titleStart)}<br /><span>{t(slide.titleEnd)}</span>
-        </h1>
-        <p>{t(slide.description)}</p>
+      <div className="hero-section__slides" aria-hidden="true">
+        {heroSlides.map((item, index) => (
+          <img
+            className={`hero-section__image${index === activeSlide ? ' is-active' : ''}`}
+            src={item.image}
+            alt={item.alt}
+            aria-hidden={index !== activeSlide}
+            key={item.image}
+            style={{ objectPosition: item.position }}
+          />
+        ))}
+      </div>
+      <div className="hero-section__container">
+        <SocialLinks />
+        <div className="hero-section__content" aria-live="polite">
+          <h1 id="hero-title">
+            {t(slide.titleStart)}<br /><span>{t(slide.titleEnd)}</span>
+          </h1>
+          <p>{t(slide.description)}</p>
+        </div>
       </div>
       <button
         className="hero-section__arrow hero-section__arrow--previous"
@@ -324,28 +255,6 @@ function HomeHero() {
       >
         <span aria-hidden="true" />
       </button>
-      <div className="hero-section__controls">
-        <div className="hero-section__indicators" role="group" aria-label={t('Elegir diapositiva')}>
-          {heroSlides.map((item, index) => (
-            <button
-              className={index === activeSlide ? 'is-active' : ''}
-              type="button"
-              aria-label={`${t('Ir a la diapositiva')} ${index + 1}`}
-              aria-current={index === activeSlide ? 'true' : undefined}
-              key={item.titleStart}
-              onClick={() => showSlide(index)}
-            />
-          ))}
-        </div>
-        <button
-          className="hero-section__playback"
-          type="button"
-          aria-label={t(isPlaying ? 'Pausar reproducción' : 'Reanudar reproducción')}
-          onClick={() => setIsPlaying((playing) => !playing)}
-        >
-          <span className={isPlaying ? 'is-playing' : 'is-paused'} aria-hidden="true" />
-        </button>
-      </div>
     </section>
   )
 }
@@ -387,20 +296,7 @@ function App() {
       <main>
         <HomeHero />
 
-        <section className="intro-section" id="nosotros" aria-labelledby="intro-title">
-          <img
-            className="intro-section__image"
-            src={multiRatioPhoto}
-            alt="Fotografía de la sección Qué hacemos"
-          />
-          <div className="intro-section__content">
-            <h2 id="intro-title">{t('¿QUÉ HACEMOS?')}</h2>
-            <p>{t('Sembrando Perú es una organización sin fines de lucro comprometida con la protección de la Amazonía peruana y el desarrollo sostenible de las comunidades rurales. Restauramos bosques degradados, promovemos la educación y la alfabetización, fortalecemos la salud infantil y combatimos la anemia en las zonas más vulnerables del país.')}</p>
-            <a className="button button--lime" href="/nosotros">
-              {t('CONÓCENOS')} <img src={arrowRight} alt="" />
-            </a>
-          </div>
-        </section>
+        <ValuesSection />
 
         <section className="programs-section" id="programas" aria-labelledby="programs-title">
           <div className="section-heading">

@@ -10,29 +10,9 @@ import LanguageSwitcher from '../components/LanguageSwitcher'
 import { useLanguage } from '../components/LanguageContext'
 import SocialLinks from '../components/SocialLinks'
 import greenLine from '../assets/figma/imgGreenLine.svg'
-import childrenImage from '../assets/figma/imgBlogImage5.png'
-import learningImage from '../assets/figma/imgBlogImage4.png'
-import forestImage from '../assets/figma/imgBlogImage1.png'
+import ValuesSection from '../components/ValuesSection'
 import { BlogFooter } from './BlogPage'
 import './NosotrosPage.css'
-
-const values = [
-  {
-    title: 'SOSTENIBILIDAD',
-    description:
-      'Compromiso con el uso responsable de los recursos naturales, promoviendo soluciones que respeten el equilibrio ecológico y favorezcan la conservación a largo plazo.',
-  },
-  {
-    title: 'COMPROMISO SOCIAL',
-    description:
-      'Prioridad en la mejora de la calidad de vida de las comunidades rurales, centrándose en soluciones que aborden la educación, la salud y el bienestar de las personas más vulnerables.',
-  },
-  {
-    title: 'INNOVACIÓN',
-    description:
-      'Apertura a nuevas ideas y métodos creativos para resolver problemas medioambientales, educativos y sanitarios, buscando soluciones prácticas y eficaces como el uso de contenedores o cajas de semillas.',
-  },
-]
 
 function AboutHeader() {
   const [menuOpen, setMenuOpen] = useState(false)
@@ -148,40 +128,6 @@ function MissionVision() {
           {t('Convertirnos en un motor de cambio en la Amazonía y las zonas rurales, donde los árboles restauren los ecosistemas y las nuevas generaciones crezcan sanas y con acceso a una educación de calidad.')}
         </p>
       </article>
-    </section>
-  )
-}
-
-function ValuesSection() {
-  const { t } = useLanguage()
-
-  return (
-    <section className="about-values" aria-labelledby="values-title">
-      <div className="about-values__layout">
-        <div className="about-values__gallery" aria-label={t('Acciones de Sembrando Perú')}>
-          <div className="about-values__photo about-values__photo--wide">
-            <img src={childrenImage} alt="Niños participando en actividades educativas" />
-            <span>{t(values[0].title)}</span>
-          </div>
-          <div className="about-values__photo">
-            <img src={learningImage} alt="Jornada comunitaria de salud" />
-            <span>{t(values[1].title)}</span>
-          </div>
-          <div className="about-values__photo">
-            <img src={forestImage} alt="Equipo de Sembrando Perú en un bosque" />
-            <span>{t(values[2].title)}</span>
-          </div>
-        </div>
-        <div className="about-values__copy">
-          <h2 id="values-title">{t('Valores')}</h2>
-          {values.map((value) => (
-            <article key={value.title}>
-              <h3>{t(value.title)}</h3>
-              <p>{t(value.description)}</p>
-            </article>
-          ))}
-        </div>
-      </div>
     </section>
   )
 }
