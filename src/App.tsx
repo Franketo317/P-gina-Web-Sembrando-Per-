@@ -1,4 +1,5 @@
 import { useState, type FormEvent } from 'react'
+import arrowRight from './assets/figma/imgArrowRight.svg'
 import arrowRight1 from './assets/figma/imgArrowRight1.svg'
 import arrowRight2 from './assets/figma/imgArrowRight2.svg'
 import blogImage from './assets/figma/imgBlogImage.png'
@@ -12,10 +13,10 @@ import impactArt from './assets/figma/imgImpacto.svg'
 import heroImage from './assets/figma/img71.png'
 import educationHeroImage from './assets/figma/1.jpg'
 import healthHeroImage from './assets/figma/2.jpg'
-import SiteHeader from './components/SiteHeader'
-import ValuesSection from './components/ValuesSection'
 import { useLanguage } from './components/LanguageContext'
 import SocialLinks from './components/SocialLinks'
+import SiteHeader from './components/SiteHeader'
+import ValuesSection from './components/ValuesSection'
 import NosotrosPage from './pages/NosotrosPage'
 import BlogPage from './pages/BlogPage'
 import { BlogFooter } from './pages/BlogPage'
@@ -56,6 +57,7 @@ const heroSlides = [
     titleEnd: 'SEMBRANDO PERÚ',
     description: 'Trabajamos junto a comunidades de la Amazonía y los Andes para construir un futuro sostenible.',
     position: 'center 22%',
+    href: '/nosotros',
   },
   {
     image: educationHeroImage,
@@ -64,6 +66,7 @@ const heroSlides = [
     titleEnd: 'TRANSFORMA',
     description: 'Promovemos el aprendizaje y la participación para fortalecer a las comunidades.',
     position: 'center 35%',
+    href: '/#programas',
   },
   {
     image: healthHeroImage,
@@ -72,6 +75,7 @@ const heroSlides = [
     titleEnd: 'LA ANEMIA',
     description: 'Impulsamos una mejor alimentación y el cuidado de la salud infantil.',
     position: 'center 20%',
+    href: '/#programas',
   },
 ]
 
@@ -107,8 +111,6 @@ const articles = [
     arrow: arrowRight2,
   },
 ]
-
-
 
 function ProgramCard({ title, description, image, alt }: (typeof programs)[number]) {
   const { t } = useLanguage()
@@ -218,27 +220,28 @@ function HomeHero() {
       aria-label={t('Carrusel de Sembrando Perú')}
       aria-roledescription={t('carrusel')}
     >
-      <div className="hero-section__slides" aria-hidden="true">
-        {heroSlides.map((item, index) => (
-          <img
-            className={`hero-section__image${index === activeSlide ? ' is-active' : ''}`}
-            src={item.image}
-            alt={item.alt}
-            aria-hidden={index !== activeSlide}
-            key={item.image}
-            style={{ objectPosition: item.position }}
-          />
-        ))}
+      {heroSlides.map((item, index) => (
+        <img
+          className={`hero-section__image${index === activeSlide ? ' is-active' : ''}`}
+          src={item.image}
+          alt={item.alt}
+          aria-hidden={index !== activeSlide}
+          key={item.image}
+          style={{ objectPosition: item.position }}
+        />
+      ))}
+      <SocialLinks />
+      <div className="hero-section__content" aria-live="polite">
+        <h1 id="hero-title">
+          {t(slide.titleStart)}<br /><span>{t(slide.titleEnd)}</span>
+        </h1>
+        <p>{t(slide.description)}</p>
+        <a className="hero-section__cta" href={slide.href}>
+          {t('Leer más')}
+        </a>
       </div>
-      <div className="hero-section__container">
-        <SocialLinks />
-        <div className="hero-section__content" aria-live="polite">
-          <h1 id="hero-title">
-            {t(slide.titleStart)}<br /><span>{t(slide.titleEnd)}</span>
-          </h1>
-          <p>{t(slide.description)}</p>
-        </div>
-      </div>
+
+      {/* Flecha izquierda: fondo negro rectangular */}
       <button
         className="hero-section__arrow hero-section__arrow--previous"
         type="button"
@@ -247,6 +250,8 @@ function HomeHero() {
       >
         <span aria-hidden="true" />
       </button>
+
+      {/* Flecha derecha: fondo negro rectangular */}
       <button
         className="hero-section__arrow hero-section__arrow--next"
         type="button"
@@ -258,6 +263,7 @@ function HomeHero() {
     </section>
   )
 }
+
 
 function SiteFooter() {
   return (

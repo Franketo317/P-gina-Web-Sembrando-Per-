@@ -9,6 +9,7 @@ import blogCommunity from '../assets/figma/blog-article-community.jpg'
 import blogHealth from '../assets/figma/blog-article-health.jpg'
 import logo from '../assets/figma/imgImage4.png'
 import LanguageSwitcher from '../components/LanguageSwitcher'
+import SiteHeader from '../components/SiteHeader'
 import { useLanguage } from '../components/LanguageContext'
 import SocialLinks from '../components/SocialLinks'
 import socialFacebook from '../assets/figma/imgPlatformFacebookColorNegative.svg'
@@ -143,63 +144,26 @@ export function BlogFooter() {
 }
 
 
-export function BlogHeader({ showMasthead = true }: { showMasthead?: boolean }) {
-  const [menuOpen, setMenuOpen] = useState(false)
+export function BlogHero() {
   const { t } = useLanguage()
 
-  function closeMenu() {
-    setMenuOpen(false)
-  }
+  return (
+    <section
+      className="blog-masthead"
+      style={{ backgroundImage: `url(${blogHeroBackground})` }}
+    >
+      <div style={{ position: 'absolute', inset: 0, background: 'rgba(2, 115, 77, 0.4)', zIndex: 1 }} />
+      <SocialLinks />
+      <h1>{t('"Historias que inspiran, acciones que transforman"')}</h1>
+    </section>
+  )
+}
 
+export function BlogHeader({ showMasthead = true }: { showMasthead?: boolean }) {
   return (
     <>
-      <header className="blog-header">
-        <a className="blog-header__brand" href="/" aria-label="Sembrando Perú, inicio">
-          <img src={logo} alt="Sembrando Perú" />
-        </a>
-        <button
-          className="blog-header__menu-toggle"
-          type="button"
-          aria-expanded={menuOpen}
-          aria-controls="blog-navigation"
-          aria-label={t(menuOpen ? 'Cerrar menú' : 'Abrir menú')}
-          onClick={() => setMenuOpen((open) => !open)}
-        >
-          <span />
-          <span />
-          <span />
-        </button>
-        <nav
-          className={`blog-navigation${menuOpen ? ' blog-navigation--open' : ''}`}
-          id="blog-navigation"
-        >
-          <a href="/" onClick={closeMenu}>{t('Inicio')}</a>
-          <a href="/nosotros" onClick={closeMenu}>{t('Nosotros')}</a>
-          <a className="blog-navigation__active" href="/blog" onClick={closeMenu}>
-            {t('Blog')}
-            <img src={greenLine} alt="" />
-          </a>
-          <a href="/contacto" onClick={closeMenu}>{t('Contáctanos')}</a>
-          <a className="blog-navigation__donate" href="/donacion" onClick={closeMenu}>
-            {t('Donar Ahora')} <img src={arrowRight} alt="" />
-          </a>
-          <LanguageSwitcher className="blog-navigation__language-mobile" />
-        </nav>
-        <LanguageSwitcher className="blog-header__language" />
-        <a className="blog-header__donate" href="/donacion">
-          {t('Donación')}
-        </a>
-      </header>
-      {showMasthead && (
-        <section
-          className="blog-masthead"
-          style={{ backgroundImage: `url(${blogHeroBackground})` }}
-        >
-          <div style={{ position: 'absolute', inset: 0, background: 'rgba(2, 115, 77, 0.4)', zIndex: 1 }} />
-          <SocialLinks />
-          <h1>{t('"Historias que inspiran, acciones que transforman"')}</h1>
-        </section>
-      )}
+      <SiteHeader />
+      {showMasthead && <BlogHero />}
     </>
   )
 }
@@ -221,7 +185,8 @@ export default function BlogPage() {
 
   return (
     <div className="blog-page">
-      <BlogHeader />
+      <SiteHeader />
+      <BlogHero />
       <main className="blog-layout">
         <div className="blog-main-column">
           <section className="blog-featured" aria-labelledby="featured-title">

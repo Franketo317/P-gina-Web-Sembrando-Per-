@@ -7,6 +7,7 @@ import visionIcon from '../assets/figma/vision.png'
 import valuesBackground from '../assets/figma/about-values-background.png'
 import logo from '../assets/figma/imgImage4.png'
 import LanguageSwitcher from '../components/LanguageSwitcher'
+import SiteHeader from '../components/SiteHeader'
 import { useLanguage } from '../components/LanguageContext'
 import SocialLinks from '../components/SocialLinks'
 import greenLine from '../assets/figma/imgGreenLine.svg'
@@ -14,62 +15,18 @@ import ValuesSection from '../components/ValuesSection'
 import { BlogFooter } from './BlogPage'
 import './NosotrosPage.css'
 
-function AboutHeader() {
-  const [menuOpen, setMenuOpen] = useState(false)
+function AboutHero() {
   const { t } = useLanguage()
 
-  function closeMenu() {
-    setMenuOpen(false)
-  }
-
   return (
-    <>
-      <header className="about-header">
-        <a className="about-header__brand" href="/" aria-label="Sembrando Perú, inicio">
-          <img src={logo} alt="Sembrando Perú" />
-        </a>
-        <button
-          className="about-header__menu-toggle"
-          type="button"
-          aria-expanded={menuOpen}
-          aria-controls="about-navigation"
-          aria-label={t(menuOpen ? 'Cerrar menú' : 'Abrir menú')}
-          onClick={() => setMenuOpen((open) => !open)}
-        >
-          <span />
-          <span />
-          <span />
-        </button>
-        <nav
-          className={`about-navigation${menuOpen ? ' about-navigation--open' : ''}`}
-          id="about-navigation"
-        >
-          <a href="/" onClick={closeMenu}>{t('Inicio')}</a>
-          <a className="about-navigation__active" href="/nosotros" onClick={closeMenu}>
-            {t('Nosotros')}
-            <img src={greenLine} alt="" />
-          </a>
-          <a href="/blog" onClick={closeMenu}>{t('Blog')}</a>
-          <a href="/contacto" onClick={closeMenu}>{t('Contáctanos')}</a>
-          <a className="about-navigation__donate" href="/donacion" onClick={closeMenu}>
-            {t('Donar Ahora')} <img src={arrowRight} alt="" />
-          </a>
-          <LanguageSwitcher className="about-navigation__language-mobile" />
-        </nav>
-        <LanguageSwitcher className="about-header__language" />
-        <a className="about-header__donate" href="/donacion">
-          {t('Donación')}
-        </a>
-      </header>
-      <section
-        className="about-hero"
-        style={{ backgroundImage: `url(${aboutHero})` }}
-        aria-labelledby="about-title"
-      >
-        <h1 id="about-title">{t('¿QUIÉNES SOMOS?')}</h1>
-        <SocialLinks />
-      </section>
-    </>
+    <section
+      className="about-hero"
+      style={{ backgroundImage: `url(${aboutHero})` }}
+      aria-labelledby="about-title"
+    >
+      <h1 id="about-title">{t('¿QUIÉNES SOMOS?')}</h1>
+      <SocialLinks />
+    </section>
   )
 }
 
@@ -139,7 +96,8 @@ function AboutFooter() {
 export default function NosotrosPage() {
   return (
     <div className="about-page">
-      <AboutHeader />
+      <SiteHeader />
+      <AboutHero />
       <main>
         <StorySection />
         <MissionVision />

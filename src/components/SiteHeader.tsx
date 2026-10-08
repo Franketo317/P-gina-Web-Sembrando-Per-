@@ -3,6 +3,7 @@ import logo from '../assets/figma/imgImage4.png'
 import arrowRight from '../assets/figma/imgArrowRight.svg'
 import LanguageSwitcher from './LanguageSwitcher'
 import { useLanguage } from './LanguageContext'
+import './HomeHeader.css'
 
 type SearchItem = {
   title: string

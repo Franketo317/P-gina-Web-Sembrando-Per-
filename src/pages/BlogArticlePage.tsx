@@ -5,7 +5,8 @@ import blogHealth from '../assets/figma/blog-article-health.jpg'
 import blogFeatureForest from '../assets/figma/blog-featured-forest.jpg'
 import blogFeatureCommunity from '../assets/figma/blog-featured-community.jpg'
 import { useLanguage } from '../components/LanguageContext'
-import { BlogFooter, BlogHeader } from './BlogPage'
+import SiteHeader from '../components/SiteHeader'
+import { BlogFooter } from './BlogPage'
 import './BlogPage.css'
 
 const articleDetails = {
@@ -88,7 +89,7 @@ export default function BlogArticlePage({ slug }: Props) {
 
   return (
     <div className="blog-page blog-article-page">
-      <BlogHeader showMasthead={false} />
+      <SiteHeader />
       {article ? (
         <main className="blog-article">
           <a className="blog-article__back" href="/blog#articulos">{t('← Volver a Últimos artículos')}</a>

@@ -4,9 +4,10 @@ import { useLanguage } from './LanguageContext'
 
 type Props = {
   className: string
+  compact?: boolean
 }
 
-export default function LanguageSwitcher({ className }: Props) {
+export default function LanguageSwitcher({ className, compact = false }: Props) {
   const { language, toggleLanguage } = useLanguage()
   const [menuOpen, setMenuOpen] = useState(false)
   const menuId = useId()
@@ -48,9 +49,7 @@ export default function LanguageSwitcher({ className }: Props) {
         onClick={() => setMenuOpen((open) => !open)}
       >
         <LanguageIcon />
-        <span className="language-switcher__label">
-          {language === 'es' ? 'ES | Español' : 'EN | English'}
-        </span>
+        <span>{language === 'en' ? 'EN | English' : 'ES | Español'}</span>
         <LanguageChevron />
       </button>
       {menuOpen && (

@@ -1,0 +1,489 @@
+:is(.home-page, .about-page, .blog-page, .contact-page, .donation-page) > header.site-header-root {
+  position: relative;
+  top: auto;
+  z-index: 10;
+  width: 100%;
+  height: 74px;
+  min-height: 74px;
+  justify-content: flex-start;
+  background: #006445;
+  box-shadow: none;
+  color: #fff;
+}
+
+:is(.home-page, .about-page, .blog-page, .contact-page, .donation-page) > header.site-header-root .about-header__brand {
+  position: absolute;
+  inset: 0 auto auto 14px;
+  z-index: 12;
+  width: 90px;
+  height: 100px;
+  display: grid;
+  place-items: center;
+  padding: 7px;
+  border-radius: 0 0 3px 3px;
+  background: #fff;
+  box-shadow: 0 3px 8px rgb(0 0 0 / 24%);
+}
+
+:is(.home-page, .about-page, .blog-page, .contact-page, .donation-page) > header.site-header-root .about-header__brand img {
+  width: 74px;
+  height: 84px;
+  object-fit: contain;
+}
+
+:is(.home-page, .about-page, .blog-page, .contact-page, .donation-page) > header.site-header-root .about-navigation.site-navigation {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  gap: clamp(10px, 1.3vw, 24px);
+  margin: 0 0 0 122px;
+}
+
+:is(.home-page, .about-page, .blog-page, .contact-page, .donation-page) > header.site-header-root .nav-dropdown {
+  position: relative;
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+
+:is(.home-page, .about-page, .blog-page, .contact-page, .donation-page) > header.site-header-root .nav-dropdown__trigger {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 0;
+  border: 0;
+  background: transparent;
+  color: #fff;
+  font-family: var(--font-display);
+  font-size: clamp(13px, 1vw, 16px);
+  font-weight: 500;
+  line-height: 1.2;
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+:is(.home-page, .about-page, .blog-page, .contact-page, .donation-page) > header.site-header-root .nav-dropdown__trigger:hover,
+:is(.home-page, .about-page, .blog-page, .contact-page, .donation-page) > header.site-header-root .nav-dropdown.is-active .nav-dropdown__trigger {
+  color: #b4d968;
+}
+
+:is(.home-page, .about-page, .blog-page, .contact-page, .donation-page) > header.site-header-root .nav-dropdown__chevron {
+  transition: transform 160ms ease;
+}
+
+:is(.home-page, .about-page, .blog-page, .contact-page, .donation-page) > header.site-header-root .nav-dropdown.is-open .nav-dropdown__chevron {
+  transform: rotate(180deg);
+}
+
+:is(.home-page, .about-page, .blog-page, .contact-page, .donation-page) > header.site-header-root .nav-dropdown__active-indicator {
+  display: none;
+}
+
+:is(.home-page, .about-page, .blog-page, .contact-page, .donation-page) > header.site-header-root .nav-dropdown__menu {
+  position: absolute;
+  top: 100%;
+  left: -12px;
+  z-index: 14;
+  min-width: 230px;
+  display: none;
+  flex-direction: column;
+  padding: 7px 0;
+  border-top: 2px solid var(--lime);
+  background: #050505;
+  box-shadow: 0 8px 18px rgb(0 0 0 / 30%);
+}
+
+:is(.home-page, .about-page, .blog-page, .contact-page, .donation-page) > header.site-header-root .nav-dropdown.is-open .nav-dropdown__menu {
+  display: flex;
+}
+
+:is(.home-page, .about-page, .blog-page, .contact-page, .donation-page) > header.site-header-root .nav-dropdown__menu a {
+  display: block;
+  padding: 10px 16px;
+  color: #fff;
+  font-family: var(--font-avenir);
+  font-size: 14px;
+  line-height: 1.35;
+  text-decoration: none;
+  white-space: normal;
+}
+
+:is(.home-page, .about-page, .blog-page, .contact-page, .donation-page) > header.site-header-root .nav-dropdown__menu a:hover,
+:is(.home-page, .about-page, .blog-page, .contact-page, .donation-page) > header.site-header-root .nav-dropdown__menu a:focus-visible {
+  background: rgb(255 255 255 / 12%);
+  color: #b4d968;
+}
+
+:is(.home-page, .about-page, .blog-page, .contact-page, .donation-page) > header.site-header-root .about-navigation__actions-mobile,
+:is(.home-page, .about-page, .blog-page, .contact-page, .donation-page) > header.site-header-root .about-navigation__language-mobile {
+  display: none;
+}
+
+:is(.home-page, .about-page, .blog-page, .contact-page, .donation-page) > header.site-header-root .header-right-actions {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  margin-left: auto;
+}
+
+:is(.home-page, .about-page, .blog-page, .contact-page, .donation-page) > header.site-header-root .header-search-btn {
+  width: 48px;
+  height: 48px;
+  display: grid;
+  place-items: center;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: transparent;
+  color: #fff;
+  cursor: pointer;
+}
+
+:is(.home-page, .about-page, .blog-page, .contact-page, .donation-page) > header.site-header-root .header-search-btn:hover,
+:is(.home-page, .about-page, .blog-page, .contact-page, .donation-page) > header.site-header-root .header-search-btn.is-active {
+  background: rgb(255 255 255 / 14%);
+}
+
+:is(.home-page, .about-page, .blog-page, .contact-page, .donation-page) > header.site-header-root .about-header__language {
+  margin: 0;
+  padding: 0 16px;
+  color: #fff;
+  font-family: var(--font-display);
+  font-size: 15px;
+  font-weight: 400;
+}
+
+:is(.home-page, .about-page, .blog-page, .contact-page, .donation-page) > header.site-header-root .about-header__language .language-globe {
+  display: none;
+}
+
+:is(.home-page, .about-page, .blog-page, .contact-page, .donation-page) > header.site-header-root .language-switcher__menu {
+  z-index: 20;
+}
+
+:is(.home-page, .about-page, .blog-page, .contact-page, .donation-page) > header.site-header-root .header-action-buttons {
+  height: 100%;
+  display: flex;
+  align-items: stretch;
+}
+
+:is(.home-page, .about-page, .blog-page, .contact-page, .donation-page) > header.site-header-root .header-action-btn {
+  min-width: 98px;
+  height: 100%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 14px;
+  color: #fff;
+  font-family: var(--font-display);
+  font-size: 15px;
+  font-weight: 500;
+  line-height: 1.15;
+  text-align: center;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: filter 160ms ease;
+}
+
+:is(.home-page, .about-page, .blog-page, .contact-page, .donation-page) > header.site-header-root .header-action-btn:hover {
+  filter: brightness(1.12);
+}
+
+:is(.home-page, .about-page, .blog-page, .contact-page, .donation-page) > header.site-header-root .header-action-btn--donate {
+  background: var(--orange);
+  color: #fff;
+}
+
+:is(.home-page, .about-page, .blog-page, .contact-page, .donation-page) > header.site-header-root .header-action-btn--volunteer {
+  background: var(--lime);
+  color: #fff;
+}
+
+:is(.home-page, .about-page, .blog-page, .contact-page, .donation-page) > header.site-header-root .header-action-btn--alliances {
+  background: var(--forest);
+}
+
+:is(.home-page, .about-page, .blog-page, .contact-page, .donation-page) > header.site-header-root .header-search-panel {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  left: 0;
+  z-index: 13;
+  padding: 28px 24px;
+  background: #fff;
+  color: #111;
+  box-shadow: 0 10px 24px rgb(0 0 0 / 20%);
+}
+
+:is(.home-page, .about-page, .blog-page, .contact-page, .donation-page) > header.site-header-root .header-search-panel__container {
+  position: relative;
+  width: min(100%, 900px);
+  margin: 0 auto;
+}
+
+:is(.home-page, .about-page, .blog-page, .contact-page, .donation-page) > header.site-header-root .header-search-panel__close {
+  position: absolute;
+  top: 0;
+  right: 0;
+  display: grid;
+  place-items: center;
+  padding: 5px;
+  border: 0;
+  background: transparent;
+  color: inherit;
+  cursor: pointer;
+}
+
+:is(.home-page, .about-page, .blog-page, .contact-page, .donation-page) > header.site-header-root .header-search-panel__title {
+  margin: 0 40px 16px 0;
+  font-family: var(--font-display);
+  font-size: 24px;
+}
+
+:is(.home-page, .about-page, .blog-page, .contact-page, .donation-page) > header.site-header-root .header-search-panel__form {
+  margin: 0;
+}
+
+:is(.home-page, .about-page, .blog-page, .contact-page, .donation-page) > header.site-header-root .header-search-panel__input-wrap {
+  display: flex;
+  border: 1px solid #b8b8b8;
+}
+
+:is(.home-page, .about-page, .blog-page, .contact-page, .donation-page) > header.site-header-root .header-search-panel__input {
+  width: 100%;
+  min-width: 0;
+  padding: 12px 14px;
+  border: 0;
+}
+
+:is(.home-page, .about-page, .blog-page, .contact-page, .donation-page) > header.site-header-root .header-search-panel__submit {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 0 18px;
+  border: 0;
+  background: var(--forest);
+  color: #fff;
+  cursor: pointer;
+}
+
+:is(.home-page, .about-page, .blog-page, .contact-page, .donation-page) > header.site-header-root .header-search-panel__results {
+  max-height: 330px;
+  overflow-y: auto;
+  margin-top: 16px;
+}
+
+:is(.home-page, .about-page, .blog-page, .contact-page, .donation-page) > header.site-header-root .header-search-panel__results-list {
+  display: grid;
+  gap: 8px;
+}
+
+:is(.home-page, .about-page, .blog-page, .contact-page, .donation-page) > header.site-header-root .header-search-panel__result-item {
+  display: block;
+  padding: 12px;
+  border: 1px solid #e5e5e5;
+  color: inherit;
+  text-decoration: none;
+}
+
+:is(.home-page, .about-page, .blog-page, .contact-page, .donation-page) > header.site-header-root .header-search-panel__result-item:hover {
+  border-color: var(--forest);
+}
+
+:is(.home-page, .about-page, .blog-page, .contact-page, .donation-page) > header.site-header-root .header-search-panel__result-category {
+  color: var(--forest);
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+:is(.home-page, .about-page, .blog-page, .contact-page, .donation-page) > header.site-header-root .header-search-panel__result-title {
+  margin: 3px 0;
+  font-size: 16px;
+}
+
+:is(.home-page, .about-page, .blog-page, .contact-page, .donation-page) > header.site-header-root .header-search-panel__result-desc,
+:is(.home-page, .about-page, .blog-page, .contact-page, .donation-page) > header.site-header-root .header-search-panel__no-results {
+  font-size: 14px;
+}
+
+@media (max-width: 1120px) {
+  :is(.home-page, .about-page, .blog-page, .contact-page, .donation-page) > header.site-header-root .about-navigation.site-navigation {
+    gap: 12px;
+    margin-left: 108px;
+  }
+
+  :is(.home-page, .about-page, .blog-page, .contact-page, .donation-page) > header.site-header-root .header-action-btn {
+    min-width: 78px;
+    padding: 0 9px;
+    font-size: 13px;
+  }
+
+  :is(.home-page, .about-page, .blog-page, .contact-page, .donation-page) > header.site-header-root .about-header__language {
+    padding: 0 10px;
+    font-size: 13px;
+  }
+}
+
+@media (max-width: 900px) {
+  :is(.home-page, .about-page, .blog-page, .contact-page, .donation-page) > header.site-header-root {
+    height: 70px;
+    min-height: 70px;
+    justify-content: flex-end;
+  }
+
+  :is(.home-page, .about-page, .blog-page, .contact-page, .donation-page) > header.site-header-root .about-header__brand {
+    left: 12px;
+    width: 70px;
+    height: 82px;
+    padding: 6px;
+  }
+
+  :is(.home-page, .about-page, .blog-page, .contact-page, .donation-page) > header.site-header-root .about-header__brand img {
+    width: 58px;
+    height: 68px;
+  }
+
+  :is(.home-page, .about-page, .blog-page, .contact-page, .donation-page) > header.site-header-root .about-header__menu-toggle {
+    position: relative;
+    top: auto;
+    right: auto;
+    z-index: 16;
+    width: 46px;
+    height: 46px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 6px;
+    margin-right: 14px;
+    padding: 8px;
+    border: 0;
+    background: transparent;
+    cursor: pointer;
+  }
+
+  :is(.home-page, .about-page, .blog-page, .contact-page, .donation-page) > header.site-header-root .about-header__menu-toggle span {
+    width: 100%;
+    height: 2px;
+    background: #fff;
+  }
+
+  :is(.home-page, .about-page, .blog-page, .contact-page, .donation-page) > header.site-header-root .header-right-actions {
+    display: none;
+  }
+
+  :is(.home-page, .about-page, .blog-page, .contact-page, .donation-page) > header.site-header-root .about-navigation.site-navigation {
+    position: absolute;
+    top: 70px;
+    right: 0;
+    left: 0;
+    z-index: 15;
+    height: auto;
+    display: none;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0;
+    margin: 0;
+    padding: 12px 22px 20px;
+    background: #050505;
+    box-shadow: 0 10px 18px rgb(0 0 0 / 28%);
+  }
+
+  :is(.home-page, .about-page, .blog-page, .contact-page, .donation-page) > header.site-header-root .about-navigation.site-navigation.about-navigation--open {
+    display: flex;
+  }
+
+  :is(.home-page, .about-page, .blog-page, .contact-page, .donation-page) > header.site-header-root .nav-dropdown {
+    height: auto;
+    display: block;
+    border-bottom: 1px solid rgb(255 255 255 / 18%);
+  }
+
+  :is(.home-page, .about-page, .blog-page, .contact-page, .donation-page) > header.site-header-root .nav-dropdown__trigger {
+    width: 100%;
+    justify-content: space-between;
+    padding: 14px 0;
+    font-size: 16px;
+  }
+
+  :is(.home-page, .about-page, .blog-page, .contact-page, .donation-page) > header.site-header-root .nav-dropdown__menu {
+    position: static;
+    min-width: 0;
+    padding: 0 0 8px 12px;
+    border-top: 0;
+    background: transparent;
+    box-shadow: none;
+  }
+
+  :is(.home-page, .about-page, .blog-page, .contact-page, .donation-page) > header.site-header-root .nav-dropdown__menu a {
+    padding: 9px 8px;
+    font-size: 14px;
+  }
+
+  :is(.home-page, .about-page, .blog-page, .contact-page, .donation-page) > header.site-header-root .about-navigation__actions-mobile {
+    display: grid;
+    gap: 0;
+    margin-top: 14px;
+  }
+
+  :is(.home-page, .about-page, .blog-page, .contact-page, .donation-page) > header.site-header-root .about-navigation__actions-mobile .about-navigation__btn {
+    min-height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 14px;
+    color: #fff;
+    font-family: var(--font-display);
+    font-size: 15px;
+    text-decoration: none;
+  }
+
+  :is(.home-page, .about-page, .blog-page, .contact-page, .donation-page) > header.site-header-root .about-navigation__btn--donate {
+    background: var(--orange);
+    color: #171717;
+  }
+
+  :is(.home-page, .about-page, .blog-page, .contact-page, .donation-page) > header.site-header-root .about-navigation__btn--volunteer {
+    background: var(--lime);
+    color: #171717;
+  }
+
+  :is(.home-page, .about-page, .blog-page, .contact-page, .donation-page) > header.site-header-root .about-navigation__btn--alliances {
+    background: var(--forest);
+  }
+
+  :is(.home-page, .about-page, .blog-page, .contact-page, .donation-page) > header.site-header-root .about-navigation__actions-mobile img {
+    width: 14px;
+    height: 14px;
+  }
+
+  :is(.home-page, .about-page, .blog-page, .contact-page, .donation-page) > header.site-header-root .about-navigation__language-mobile {
+    display: flex;
+    align-items: center;
+    align-self: flex-start;
+    margin-top: 14px;
+    color: #fff;
+    font-size: 14px;
+  }
+
+  :is(.home-page, .about-page, .blog-page, .contact-page, .donation-page) > header.site-header-root .language-switcher__menu {
+    top: auto;
+    bottom: calc(100% + 8px);
+    right: auto;
+    left: 0;
+  }
+}
+
+@media (max-width: 420px) {
+  :is(.home-page, .about-page, .blog-page, .contact-page, .donation-page) > header.site-header-root .about-header__brand {
+    left: 8px;
+    width: 64px;
+    height: 78px;
+  }
+
+  :is(.home-page, .about-page, .blog-page, .contact-page, .donation-page) > header.site-header-root .about-header__brand img {
+    width: 52px;
+    height: 62px;
+  }
+}

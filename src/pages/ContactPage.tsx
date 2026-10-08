@@ -1,6 +1,7 @@
 import { useState, type FormEvent } from 'react'
 import logo from '../assets/figma/imgImage4.png'
 import LanguageSwitcher from '../components/LanguageSwitcher'
+import SiteHeader from '../components/SiteHeader'
 import { useLanguage } from '../components/LanguageContext'
 import SocialLinks from '../components/SocialLinks'
 import heroImage from '../assets/figma/contact-hero.png'
@@ -25,56 +26,15 @@ const socialLinks = [
   { label: 'YouTube', image: socialYoutube, className: 'youtube', href: 'https://www.youtube.com/results?search_query=Sembrando+Peru' },
 ]
 
-function ContactHeader() {
-  const [menuOpen, setMenuOpen] = useState(false)
+function ContactHero() {
   const { t } = useLanguage()
 
-  function closeMenu() {
-    setMenuOpen(false)
-  }
-
   return (
-    <>
-      <header className="contact-header">
-        <a className="contact-header__brand" href="/" aria-label="Sembrando Perú, inicio">
-          <img src={logo} alt="Sembrando Perú" />
-        </a>
-        <button
-          className="contact-header__menu-toggle"
-          type="button"
-          aria-expanded={menuOpen}
-          aria-controls="contact-navigation"
-          aria-label={t(menuOpen ? 'Cerrar menú' : 'Abrir menú')}
-          onClick={() => setMenuOpen((open) => !open)}
-        >
-          <span />
-          <span />
-          <span />
-        </button>
-        <nav
-          className={`contact-navigation${menuOpen ? ' contact-navigation--open' : ''}`}
-          id="contact-navigation"
-        >
-          <a href="/" onClick={closeMenu}>{t('Inicio')}</a>
-          <a href="/nosotros" onClick={closeMenu}>{t('Nosotros')}</a>
-          <a href="/blog" onClick={closeMenu}>{t('Blog')}</a>
-          <a className="contact-navigation__active" href="/contacto" onClick={closeMenu}>
-            {t('Contáctanos')} <img src={greenLine} alt="" />
-          </a>
-          <a className="contact-navigation__mobile-donate" href="/donacion" onClick={closeMenu}>
-            {t('Donar Ahora')} <img src={arrowRight} alt="" />
-          </a>
-          <LanguageSwitcher className="contact-navigation__language-mobile" />
-        </nav>
-        <LanguageSwitcher className="contact-header__language" />
-        <a className="contact-header__donate" href="/donacion">{t('Donación')}</a>
-      </header>
-      <section className="contact-hero" aria-labelledby="contact-title">
-        <img className="contact-hero__image" src={heroImage} alt="Voluntarios plantando un árbol" />
-        <h1 id="contact-title">{t('COMUNÍCATE CON NOSOTROS')}</h1>
-        <SocialLinks />
-      </section>
-    </>
+    <section className="contact-hero" aria-labelledby="contact-title">
+      <img className="contact-hero__image" src={heroImage} alt="Voluntarios plantando un árbol" />
+      <h1 id="contact-title">{t('COMUNÍCATE CON NOSOTROS')}</h1>
+      <SocialLinks />
+    </section>
   )
 }
 
@@ -200,7 +160,8 @@ export default function ContactPage() {
 
   return (
     <div className="contact-page">
-      <ContactHeader />
+      <SiteHeader />
+      <ContactHero />
       <main>
         <section className="contact-form-section" aria-labelledby="contact-form-title">
           <h2 id="contact-form-title"><span>{t('Completa el')}</span> {t('siguiente formulario')}</h2>

@@ -8,6 +8,7 @@ import educationImage from '../assets/figma/imgBlogImage4.png'
 import healthImage from '../assets/figma/blog-article-health.jpg'
 import communityImage from '../assets/figma/blog-article-community.jpg'
 import LanguageSwitcher from '../components/LanguageSwitcher'
+import SiteHeader from '../components/SiteHeader'
 import { useLanguage } from '../components/LanguageContext'
 import SocialLinks from '../components/SocialLinks'
 import { BlogFooter } from './BlogPage'
@@ -58,47 +59,6 @@ const questions = [
     answer: 'Para consultar sobre comprobantes y beneficios aplicables, escríbenos a contacto@sembrandoperu.org.',
   },
 ]
-
-function DonationHeader() {
-  const [menuOpen, setMenuOpen] = useState(false)
-  const { t } = useLanguage()
-
-  return (
-    <header className="about-header">
-      <a className="about-header__brand" href="/" aria-label="Sembrando Perú, inicio">
-        <img src={logo} alt="Sembrando Perú" />
-      </a>
-      <button
-        className="about-header__menu-toggle"
-        type="button"
-        aria-expanded={menuOpen}
-        aria-controls="donation-navigation"
-        aria-label={t(menuOpen ? 'Cerrar menú' : 'Abrir menú')}
-        onClick={() => setMenuOpen((open) => !open)}
-      >
-        <span /><span /><span />
-      </button>
-      <nav className={`about-navigation${menuOpen ? ' about-navigation--open' : ''}`} id="donation-navigation">
-        <a href="/" onClick={() => setMenuOpen(false)}>{t('Inicio')}</a>
-        <a href="/nosotros" onClick={() => setMenuOpen(false)}>{t('Nosotros')}</a>
-        <a href="/blog" onClick={() => setMenuOpen(false)}>{t('Blog')}</a>
-        <a href="/contacto" onClick={() => setMenuOpen(false)}>{t('Contáctanos')}</a>
-        <a className="about-navigation__donate" href="#aportar" onClick={() => setMenuOpen(false)}>
-          {t('Donar Ahora')}
-        </a>
-        <LanguageSwitcher className="about-navigation__language-mobile" />
-      </nav>
-      <LanguageSwitcher className="about-header__language" />
-      <a
-        className="about-header__donate donation-header__donate--active"
-        href="#aportar"
-        aria-current="page"
-      >
-        {t('Donación')}
-      </a>
-    </header>
-  )
-}
 
 function DonationForm() {
   const [amount, setAmount] = useState('30')
@@ -289,7 +249,7 @@ export default function DonationPage() {
 
   return (
     <div className="donation-page">
-      <DonationHeader />
+      <SiteHeader />
       <main>
         <DonationHero />
         <section className="donation-about" aria-labelledby="donation-about-title">
