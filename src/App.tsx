@@ -1,4 +1,4 @@
-import { useState, type FormEvent } from 'react'
+import { useState } from 'react'
 import arrowRight1 from './assets/figma/imgArrowRight1.svg'
 import arrowRight2 from './assets/figma/imgArrowRight2.svg'
 import blogImage from './assets/figma/imgBlogImage.png'
@@ -14,6 +14,7 @@ import healthHeroImage from './assets/figma/2.jpg'
 import { useLanguage } from './components/LanguageContext'
 import SocialLinks from './components/SocialLinks'
 import SiteHeader from './components/SiteHeader'
+import { CommunitySignupForm, PeruOfficeInfo } from './components/CommunitySignup'
 import ValuesSection from './components/ValuesSection'
 import NosotrosPage from './pages/NosotrosPage'
 import BlogPage from './pages/BlogPage'
@@ -202,53 +203,6 @@ function ArticleCard({
   )
 }
 
-function CommunityForm() {
-  const [submitted, setSubmitted] = useState(false)
-  const { t } = useLanguage()
-
-  function handleSubmit(event: FormEvent<HTMLFormElement>) {
-    event.preventDefault()
-    setSubmitted(true)
-  }
-
-  return (
-    <form className="community-form" onSubmit={handleSubmit}>
-      <label>
-        <span>{t('Nombre')} <em>{t('(Requerido)')}</em></span>
-        <input name="firstName" placeholder={`${t('Nombre')}*`} autoComplete="given-name" required />
-      </label>
-      <label>
-        <span>{t('Apellido')} <em>{t('(Requerido)')}</em></span>
-        <input name="lastName" placeholder={`${t('Apellido')}*`} autoComplete="family-name" required />
-      </label>
-      <label>
-        <span>{t('Correo electrónico')} <em>{t('(Requerido)')}</em></span>
-        <input name="email" type="email" placeholder={`${t('Correo electrónico')}*`} autoComplete="email" required />
-      </label>
-      <label>
-        <span>{t('País/Región')} <em>{t('(Requerido)')}</em></span>
-        <select name="country" defaultValue="" required>
-          <option value="" disabled>{t('Seleccione país o región*')}</option>
-          <option value="Perú">Perú</option>
-          <option value="Bolivia">Bolivia</option>
-          <option value="Ecuador">Ecuador</option>
-          <option value="Otro">{t('Otro')}</option>
-        </select>
-      </label>
-      <label className="community-form__consent">
-        <input type="checkbox" name="consent" required />
-        <span>
-          {t('Quiero recibir noticias por correo sobre proyectos de siembra, avances de impacto y eventos de voluntariado de Sembrando Perú. (Requerido)')}
-        </span>
-      </label>
-      <div className="community-form__submit">
-        <button className="button button--green" type="submit">{t('Unirme al cambio')}</button>
-        {submitted && <p role="status">{t('Gracias por unirte a nuestra comunidad.')}</p>}
-      </div>
-    </form>
-  )
-}
-
 function HomeHero() {
   const [activeSlide, setActiveSlide] = useState(0)
   const { t } = useLanguage()
@@ -355,17 +309,10 @@ function App() {
             <p className="community-section__description">
               {t('Recibe avances mensuales sobre nuestras jornadas de plantación, historias de impacto en nuestras comunidades y noticias sobre cómo estamos protegiendo nuestros ecosistemas.')}
             </p>
-            <CommunityForm />
+            <CommunitySignupForm />
 
             <div className="community-section__info" aria-label="Información de contacto">
-              <h3>{t('EN PERÚ:')}</h3>
-
-              <div className="community-section__office">
-                <h4>{t('Oficina Lima (sede principal)')}</h4>
-                <p>Av. Arequipa 2447 – Office 409, Lince District, Lima, Peru</p>
-                <a href="tel:+51921462828">{t('Tel: +51 921 462 828')}</a>
-                <a href="mailto:contacto@sembrandoperu.org">contacto@sembrandoperu.org</a>
-              </div>
+              <PeruOfficeInfo />
 
               <div className="community-section__subscribe">
                 <span>{t('Suscríbete a nuestro boletín')}</span>
