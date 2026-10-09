@@ -128,6 +128,7 @@ function DonationForm() {
 function DonationHero() {
   const formSlotRef = useRef<HTMLDivElement>(null)
   const [showFloatingDonate, setShowFloatingDonate] = useState(false)
+  const [isFormPinned, setIsFormPinned] = useState(false)
   const { t } = useLanguage()
 
   useEffect(() => {
@@ -135,20 +136,30 @@ function DonationHero() {
       const formSlot = formSlotRef.current
       const page = formSlot?.closest('.donation-page')
       const header = page?.querySelector('.about-header')
+      const main = page?.querySelector('main')
       const form = formSlot?.querySelector('.donation-form')
 
-      if (!form || !header) {
+      if (!form || !header || !main || !formSlot) {
+        setIsFormPinned(false)
         setShowFloatingDonate(false)
         return
       }
 
       const headerBounds = header.getBoundingClientRect()
       const formBounds = form.getBoundingClientRect()
-      const formIsVisible = formBounds.bottom > headerBounds.bottom
+      const formSlotBounds = formSlot.getBoundingClientRect()
+      const mainBounds = main.getBoundingClientRect()
+      const stickyTop = Math.max(headerBounds.bottom, 0) + 16
+      formSlot.style.setProperty('--donation-form-sticky-top', `${stickyTop}px`)
+      const shouldPinForm = window.innerWidth >= 1320
+        && formSlotBounds.top <= stickyTop
+        && mainBounds.bottom > stickyTop + formBounds.height + 16
+      const formIsVisible = formBounds.bottom > Math.max(headerBounds.bottom, 0)
         && formBounds.top < window.innerHeight
         && formBounds.right > 0
         && formBounds.left < window.innerWidth
-      setShowFloatingDonate(!formIsVisible)
+      setIsFormPinned(shouldPinForm)
+      setShowFloatingDonate(!formIsVisible && !shouldPinForm)
     }
 
     updateDonateButtonVisibility()
@@ -184,7 +195,7 @@ function DonationHero() {
       </div>
       <div
         ref={formSlotRef}
-        className="donation-form-slot"
+        className={`donation-form-slot${isFormPinned ? ' is-pinned' : ''}`}
       >
         <DonationForm />
       </div>
@@ -224,22 +235,41 @@ function ImpactAreas() {
 
 function DonationFaq() {
   const [openQuestion, setOpenQuestion] = useState(0)
+  const [isExpanded, setIsExpanded] = useState(true)
   const { t } = useLanguage()
 
   return (
     <section className="donation-faq" aria-labelledby="donation-faq-title">
-      <h2 id="donation-faq-title">{t('PREGUNTAS FRECUENTES')}</h2>
-      <div className="donation-faq__list">
-        {questions.map((item, index) => (
-          <details key={item.question} open={openQuestion === index} onToggle={(event) => {
-            if ((event.currentTarget as HTMLDetailsElement).open) setOpenQuestion(index)
-          }}>
-            <summary>{t(item.question)}<span aria-hidden="true">{openQuestion === index ? '−' : '+'}</span></summary>
-            {openQuestion === index && <p>{t(item.answer)}</p>}
-          </details>
-        ))}
+      <div className="donation-faq__heading">
+        <h2 id="donation-faq-title">{t('PREGUNTAS FRECUENTES')}</h2>
+        <button
+          className="donation-faq__toggle"
+          type="button"
+          aria-label={t('PREGUNTAS FRECUENTES')}
+          aria-expanded={isExpanded}
+          aria-controls="donation-faq-content"
+          onClick={() => setIsExpanded((expanded) => !expanded)}
+        >
+          <svg className={isExpanded ? '' : 'is-collapsed'} viewBox="0 0 24 24" width="20" height="20" aria-hidden="true">
+            <path d="m6 15 6-6 6 6" />
+          </svg>
+        </button>
       </div>
-      <a href="#donation-faq-title">{t('Ver más preguntas')}</a>
+      {isExpanded && (
+        <div id="donation-faq-content">
+          <div className="donation-faq__list">
+            {questions.map((item, index) => (
+              <details key={item.question} open={openQuestion === index} onToggle={(event) => {
+                if ((event.currentTarget as HTMLDetailsElement).open) setOpenQuestion(index)
+              }}>
+                <summary>{t(item.question)}<span aria-hidden="true">{openQuestion === index ? '−' : '+'}</span></summary>
+                {openQuestion === index && <p>{t(item.answer)}</p>}
+              </details>
+            ))}
+          </div>
+          <a href="#donation-faq-title">{t('Ver más preguntas')}</a>
+        </div>
+      )}
     </section>
   )
 }
