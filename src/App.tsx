@@ -1,4 +1,4 @@
-import { useState, type FormEvent } from 'react'
+import { useState } from 'react'
 import arrowRight1 from './assets/figma/imgArrowRight1.svg'
 import arrowRight2 from './assets/figma/imgArrowRight2.svg'
 import blogImage from './assets/figma/imgBlogImage.png'
@@ -14,6 +14,7 @@ import healthHeroImage from './assets/figma/2.jpg'
 import { useLanguage } from './components/LanguageContext'
 import SocialLinks from './components/SocialLinks'
 import SiteHeader from './components/SiteHeader'
+import { CommunitySignupForm, PeruOfficeInfo } from './components/CommunitySignup'
 import ValuesSection from './components/ValuesSection'
 import NosotrosPage from './pages/NosotrosPage'
 import BlogPage from './pages/BlogPage'
@@ -26,6 +27,7 @@ import './pages/NosotrosPage.css'
 
 const programs = [
   {
+    category: 'medio-ambiente',
     title: 'SEMBRANDO ÁRBOLES',
     description:
       'Trabajamos para restaurar los árboles extraídos de manera injusta en la Amazonía, protegiendo bosques y la biodiversidad.',
@@ -33,18 +35,28 @@ const programs = [
     alt: 'Trabajo de reforestación en la Amazonía',
   },
   {
+    category: 'educacion',
     title: 'SEMBRANDO EDUCACIÓN',
     description: 'Promovemos la igualdad social a través de procesos de alfabetización.',
     image: blogImage4,
     alt: 'Niños participando en actividades educativas',
   },
   {
+    category: 'salud',
     title: 'SEMBRANDO SALUD',
     description:
       'Trabajamos para prevenir la anemia infantil en niños de las regiones de Selva y Sierra, mejorando su salud y bienestar.',
     image: blogImage3,
     alt: 'Atención de salud para niños y familias',
   },
+]
+
+type ProgramCategory = (typeof programs)[number]['category']
+
+const programCategories: { id: ProgramCategory; label: string }[] = [
+  { id: 'medio-ambiente', label: 'Medio ambiente' },
+  { id: 'educacion', label: 'Educación' },
+  { id: 'salud', label: 'Salud' },
 ]
 
 const heroSlides = [
@@ -110,17 +122,53 @@ const articles = [
   },
 ]
 
-function ProgramCard({ title, description, image, alt }: (typeof programs)[number]) {
+function ProgramCard({ category, title, description, image, alt }: (typeof programs)[number]) {
   const { t } = useLanguage()
 
   return (
-    <article className="program-card">
+    <article className={`program-card program-card--${category}`}>
       <img className="program-card__image" src={image} alt={alt} />
       <div className="program-card__body">
         <h3>{t(title)}</h3>
         <p>{t(description)}</p>
+        <a className="button button--green program-card__action" href="/donacion">
+          {t('Apoya esta iniciativa')}
+        </a>
       </div>
     </article>
+  )
+}
+
+function ProgramsSection() {
+  const [activeCategory, setActiveCategory] = useState<ProgramCategory | null>(null)
+  const { t } = useLanguage()
+  const visiblePrograms = activeCategory
+    ? programs.filter((program) => program.category === activeCategory)
+    : programs.slice(0, 2)
+
+  return (
+    <section className="programs-section" id="programas" aria-labelledby="programs-title">
+      <div className="section-heading">
+        <h2 id="programs-title">{t('NUESTRO TRABAJO')}</h2>
+        <p>{t('Trabajamos por un futuro sostenible desde diferentes frentes.')}</p>
+      </div>
+      <div className="program-filters" role="group" aria-label={t('Filtrar iniciativas por categoría')}>
+        {programCategories.map((category) => (
+          <button
+            className={`program-filter program-filter--${category.id}${activeCategory === category.id ? ' is-active' : ''}`}
+            type="button"
+            aria-pressed={activeCategory === category.id}
+            onClick={() => setActiveCategory(activeCategory === category.id ? null : category.id)}
+            key={category.id}
+          >
+            {t(category.label)}
+          </button>
+        ))}
+      </div>
+      <div className={`program-grid${activeCategory ? ' program-grid--filtered' : ''}`} aria-live="polite">
+        {visiblePrograms.map((program) => <ProgramCard key={program.category} {...program} />)}
+      </div>
+    </section>
   )
 }
 
@@ -152,53 +200,6 @@ function ArticleCard({
         </a>
       </div>
     </article>
-  )
-}
-
-function CommunityForm() {
-  const [submitted, setSubmitted] = useState(false)
-  const { t } = useLanguage()
-
-  function handleSubmit(event: FormEvent<HTMLFormElement>) {
-    event.preventDefault()
-    setSubmitted(true)
-  }
-
-  return (
-    <form className="community-form" onSubmit={handleSubmit}>
-      <label>
-        <span>{t('Nombre')} <em>{t('(Requerido)')}</em></span>
-        <input name="firstName" placeholder={`${t('Nombre')}*`} autoComplete="given-name" required />
-      </label>
-      <label>
-        <span>{t('Apellido')} <em>{t('(Requerido)')}</em></span>
-        <input name="lastName" placeholder={`${t('Apellido')}*`} autoComplete="family-name" required />
-      </label>
-      <label>
-        <span>{t('Correo electrónico')} <em>{t('(Requerido)')}</em></span>
-        <input name="email" type="email" placeholder={`${t('Correo electrónico')}*`} autoComplete="email" required />
-      </label>
-      <label>
-        <span>{t('País/Región')} <em>{t('(Requerido)')}</em></span>
-        <select name="country" defaultValue="" required>
-          <option value="" disabled>{t('Seleccione país o región*')}</option>
-          <option value="Perú">Perú</option>
-          <option value="Bolivia">Bolivia</option>
-          <option value="Ecuador">Ecuador</option>
-          <option value="Otro">{t('Otro')}</option>
-        </select>
-      </label>
-      <label className="community-form__consent">
-        <input type="checkbox" name="consent" required />
-        <span>
-          {t('Quiero recibir noticias por correo sobre proyectos de siembra, avances de impacto y eventos de voluntariado de Sembrando Perú. (Requerido)')}
-        </span>
-      </label>
-      <div className="community-form__submit">
-        <button className="button button--green" type="submit">{t('Unirme al cambio')}</button>
-        {submitted && <p role="status">{t('Gracias por unirte a nuestra comunidad.')}</p>}
-      </div>
-    </form>
   )
 }
 
@@ -308,22 +309,10 @@ function App() {
             <p className="community-section__description">
               {t('Recibe avances mensuales sobre nuestras jornadas de plantación, historias de impacto en nuestras comunidades y noticias sobre cómo estamos protegiendo nuestros ecosistemas.')}
             </p>
-            <CommunityForm />
+            <CommunitySignupForm />
 
             <div className="community-section__info" aria-label="Información de contacto">
-              <h3>{t('EN PERÚ:')}</h3>
-
-              <div className="community-section__office">
-                <h4>{t('Oficina Lima (sede principal)')}</h4>
-                <p>Av. Arequipa 2447 – Office 409, Lince District, Lima, Peru</p>
-                <a href="tel:+51921462828">{t('Tel: +51 921 462 828')}</a>
-                <a href="mailto:contacto@sembrandoperu.org">contacto@sembrandoperu.org</a>
-              </div>
-
-              <div className="community-section__office">
-                <h4>{t('Oficina Madre de Dios')}</h4>
-                <p>Jr. Los Nogales D-28 Los Castaños, Puerto Maldonado, Madre de Dios</p>
-              </div>
+              <PeruOfficeInfo />
 
               <div className="community-section__subscribe">
                 <span>{t('Suscríbete a nuestro boletín')}</span>
@@ -338,20 +327,7 @@ function App() {
           </div>
         </section>
 
-        <section className="programs-section" id="programas" aria-labelledby="programs-title">
-          <div className="section-heading">
-            <h2 id="programs-title">{t('Mejorando vida, futuro y medio ambiente')}</h2>
-            <p>{t('Trabajamos por un futuro sostenible desde diferentes frentes.')}</p>
-          </div>
-          <div className="program-grid">
-            {programs.map((program) => <ProgramCard key={program.title} {...program} />)}
-          </div>
-          <div className="programs-pagination" aria-hidden="true">
-            <span className="is-active" />
-            <span />
-            <span />
-          </div>
-        </section>
+        <ProgramsSection />
 
       </main>
       <SiteFooter />
