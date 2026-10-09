@@ -1,5 +1,4 @@
 import { useState, type FormEvent } from 'react'
-import arrowRight from './assets/figma/imgArrowRight.svg'
 import arrowRight1 from './assets/figma/imgArrowRight1.svg'
 import arrowRight2 from './assets/figma/imgArrowRight2.svg'
 import blogImage from './assets/figma/imgBlogImage.png'
@@ -9,7 +8,6 @@ import blogImage3 from './assets/figma/imgBlogImage3.png'
 import blogImage4 from './assets/figma/imgBlogImage4.png'
 import blogImage5 from './assets/figma/imgBlogImage5.png'
 import ellipse from './assets/figma/imgEllipse.svg'
-import impactArt from './assets/figma/imgImpacto.svg'
 import heroImage from './assets/figma/img71.png'
 import educationHeroImage from './assets/figma/1.jpg'
 import healthHeroImage from './assets/figma/2.jpg'
@@ -304,6 +302,42 @@ function App() {
 
         <ValuesSection />
 
+        <section className="community-section" id="unete" aria-labelledby="community-title">
+          <div className="community-section__inner">
+            <h2 id="community-title">{t('ÚNETE A LA COMUNIDAD')}</h2>
+            <p className="community-section__description">
+              {t('Recibe avances mensuales sobre nuestras jornadas de plantación, historias de impacto en nuestras comunidades y noticias sobre cómo estamos protegiendo nuestros ecosistemas.')}
+            </p>
+            <CommunityForm />
+
+            <div className="community-section__info" aria-label="Información de contacto">
+              <h3>{t('EN PERÚ:')}</h3>
+
+              <div className="community-section__office">
+                <h4>{t('Oficina Lima (sede principal)')}</h4>
+                <p>Av. Arequipa 2447 – Office 409, Lince District, Lima, Peru</p>
+                <a href="tel:+51921462828">{t('Tel: +51 921 462 828')}</a>
+                <a href="mailto:contacto@sembrandoperu.org">contacto@sembrandoperu.org</a>
+              </div>
+
+              <div className="community-section__office">
+                <h4>{t('Oficina Madre de Dios')}</h4>
+                <p>Jr. Los Nogales D-28 Los Castaños, Puerto Maldonado, Madre de Dios</p>
+              </div>
+
+              <div className="community-section__subscribe">
+                <span>{t('Suscríbete a nuestro boletín')}</span>
+              </div>
+
+              <div className="community-section__articles">
+                {articles.map((article) => <ArticleCard key={article.title} {...article} />)}
+              </div>
+
+              <a className="button button--green community-section__more" href="/blog">{t('Ver más')}</a>
+            </div>
+          </div>
+        </section>
+
         <section className="programs-section" id="programas" aria-labelledby="programs-title">
           <div className="section-heading">
             <h2 id="programs-title">{t('Mejorando vida, futuro y medio ambiente')}</h2>
@@ -319,26 +353,6 @@ function App() {
           </div>
         </section>
 
-        <section className="news-section" id="noticias" aria-labelledby="news-title">
-          <img className="news-section__art" src={impactArt} alt="" />
-          <div className="news-section__content">
-            <h2 id="news-title">{t('Últimas noticias')}</h2>
-            <div className="article-grid">
-              {articles.map((article) => <ArticleCard key={article.title} {...article} />)}
-            </div>
-            <a className="button button--green news-section__more" href="/blog">{t('Ver más')}</a>
-          </div>
-        </section>
-
-        <section className="community-section" id="unete" aria-labelledby="community-title">
-          <div className="community-section__inner">
-            <h2 id="community-title">{t('ÚNETE A LA COMUNIDAD')}</h2>
-            <p className="community-section__description">
-              {t('Recibe avances mensuales sobre nuestras jornadas de plantación, historias de impacto en nuestras comunidades y noticias sobre cómo estamos protegiendo nuestros ecosistemas.')}
-            </p>
-            <CommunityForm />
-          </div>
-        </section>
       </main>
       <SiteFooter />
     </div>
