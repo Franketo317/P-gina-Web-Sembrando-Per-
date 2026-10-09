@@ -26,6 +26,7 @@ import './pages/NosotrosPage.css'
 
 const programs = [
   {
+    category: 'medio-ambiente',
     title: 'SEMBRANDO ÁRBOLES',
     description:
       'Trabajamos para restaurar los árboles extraídos de manera injusta en la Amazonía, protegiendo bosques y la biodiversidad.',
@@ -33,18 +34,28 @@ const programs = [
     alt: 'Trabajo de reforestación en la Amazonía',
   },
   {
+    category: 'educacion',
     title: 'SEMBRANDO EDUCACIÓN',
     description: 'Promovemos la igualdad social a través de procesos de alfabetización.',
     image: blogImage4,
     alt: 'Niños participando en actividades educativas',
   },
   {
+    category: 'salud',
     title: 'SEMBRANDO SALUD',
     description:
       'Trabajamos para prevenir la anemia infantil en niños de las regiones de Selva y Sierra, mejorando su salud y bienestar.',
     image: blogImage3,
     alt: 'Atención de salud para niños y familias',
   },
+]
+
+type ProgramCategory = (typeof programs)[number]['category']
+
+const programCategories: { id: ProgramCategory; label: string }[] = [
+  { id: 'medio-ambiente', label: 'Medio ambiente' },
+  { id: 'educacion', label: 'Educación' },
+  { id: 'salud', label: 'Salud' },
 ]
 
 const heroSlides = [
@@ -110,17 +121,53 @@ const articles = [
   },
 ]
 
-function ProgramCard({ title, description, image, alt }: (typeof programs)[number]) {
+function ProgramCard({ category, title, description, image, alt }: (typeof programs)[number]) {
   const { t } = useLanguage()
 
   return (
-    <article className="program-card">
+    <article className={`program-card program-card--${category}`}>
       <img className="program-card__image" src={image} alt={alt} />
       <div className="program-card__body">
         <h3>{t(title)}</h3>
         <p>{t(description)}</p>
+        <a className="button button--green program-card__action" href="/donacion">
+          {t('Apoya esta iniciativa')}
+        </a>
       </div>
     </article>
+  )
+}
+
+function ProgramsSection() {
+  const [activeCategory, setActiveCategory] = useState<ProgramCategory | null>(null)
+  const { t } = useLanguage()
+  const visiblePrograms = activeCategory
+    ? programs.filter((program) => program.category === activeCategory)
+    : programs.slice(0, 2)
+
+  return (
+    <section className="programs-section" id="programas" aria-labelledby="programs-title">
+      <div className="section-heading">
+        <h2 id="programs-title">{t('NUESTRO TRABAJO')}</h2>
+        <p>{t('Trabajamos por un futuro sostenible desde diferentes frentes.')}</p>
+      </div>
+      <div className="program-filters" role="group" aria-label={t('Filtrar iniciativas por categoría')}>
+        {programCategories.map((category) => (
+          <button
+            className={`program-filter program-filter--${category.id}${activeCategory === category.id ? ' is-active' : ''}`}
+            type="button"
+            aria-pressed={activeCategory === category.id}
+            onClick={() => setActiveCategory(activeCategory === category.id ? null : category.id)}
+            key={category.id}
+          >
+            {t(category.label)}
+          </button>
+        ))}
+      </div>
+      <div className={`program-grid${activeCategory ? ' program-grid--filtered' : ''}`} aria-live="polite">
+        {visiblePrograms.map((program) => <ProgramCard key={program.category} {...program} />)}
+      </div>
+    </section>
   )
 }
 
@@ -320,11 +367,6 @@ function App() {
                 <a href="mailto:contacto@sembrandoperu.org">contacto@sembrandoperu.org</a>
               </div>
 
-              <div className="community-section__office">
-                <h4>{t('Oficina Madre de Dios')}</h4>
-                <p>Jr. Los Nogales D-28 Los Castaños, Puerto Maldonado, Madre de Dios</p>
-              </div>
-
               <div className="community-section__subscribe">
                 <span>{t('Suscríbete a nuestro boletín')}</span>
               </div>
@@ -338,20 +380,7 @@ function App() {
           </div>
         </section>
 
-        <section className="programs-section" id="programas" aria-labelledby="programs-title">
-          <div className="section-heading">
-            <h2 id="programs-title">{t('Mejorando vida, futuro y medio ambiente')}</h2>
-            <p>{t('Trabajamos por un futuro sostenible desde diferentes frentes.')}</p>
-          </div>
-          <div className="program-grid">
-            {programs.map((program) => <ProgramCard key={program.title} {...program} />)}
-          </div>
-          <div className="programs-pagination" aria-hidden="true">
-            <span className="is-active" />
-            <span />
-            <span />
-          </div>
-        </section>
+        <ProgramsSection />
 
       </main>
       <SiteFooter />
