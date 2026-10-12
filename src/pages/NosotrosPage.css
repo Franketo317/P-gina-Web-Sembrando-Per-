@@ -114,6 +114,7 @@
 
 .about-hero {
   position: relative;
+  scroll-margin-top: 84px;
   min-height: 420px;
   box-sizing: border-box;
   display: grid;
@@ -215,6 +216,7 @@
 }
 
 .about-story {
+  scroll-margin-top: 84px;
   background: #fff;
 }
 

@@ -7,17 +7,16 @@ import socialInstagram from '../assets/figma/imgSocialIcons1.svg'
 import socialLinkedin from '../assets/figma/imgPlatformLinkedInColorNegative.svg'
 import socialTiktok from '../assets/figma/imgPlatformTikTokColorNegative.svg'
 import socialX from '../assets/figma/imgPlatformXTwitterColorNegative.svg'
-import socialYoutube from '../assets/figma/imgSocialYoutube.svg'
 import { BlogFooter } from './BlogPage'
 import './ContactPage.css'
 
 const socialLinks = [
   { label: 'Facebook', image: socialFacebook, className: 'facebook', href: 'https://www.facebook.com/PeruSembrando' },
-  { label: 'Instagram', image: socialInstagram, className: 'instagram', href: 'https://www.instagram.com/sembrando_peru/' },
   { label: 'X', image: socialX, className: 'x', href: 'https://x.com/PeruSembrando' },
+  { label: 'Instagram', image: socialInstagram, className: 'instagram', href: 'https://www.instagram.com/sembrando_peru/' },
+  { label: 'YouTube', image: null, className: 'youtube', href: 'https://www.youtube.com/results?search_query=Sembrando+Peru' },
   { label: 'TikTok', image: socialTiktok, className: 'tiktok', href: 'https://www.tiktok.com/@sembrando_peru' },
   { label: 'LinkedIn', image: socialLinkedin, className: 'linkedin', href: 'https://www.linkedin.com/company/sembrandoperu/' },
-  { label: 'YouTube', image: socialYoutube, className: 'youtube', href: 'https://www.youtube.com/results?search_query=Sembrando+Peru' },
 ]
 
 function ContactHero() {
@@ -69,7 +68,13 @@ export default function ContactPage() {
                 aria-label={social.label}
                 key={social.label}
               >
-                <img src={social.image} alt="" />
+                {social.image ? (
+                  <img src={social.image} alt="" />
+                ) : (
+                  <svg viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="M9 6.75v10.5L17 12 9 6.75Z" fill="currentColor" />
+                  </svg>
+                )}
               </a>
             ))}
           </div>

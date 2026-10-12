@@ -18,6 +18,7 @@ function AboutHero() {
     <>
       <section
         className="about-hero"
+        id="historia"
         style={{ backgroundImage: `url(${aboutHero})` }}
         aria-labelledby="about-title"
       >
@@ -39,7 +40,7 @@ function OrganizationStory() {
       <div className="about-mission-strip">
         <p>{t('Sembrando Perú impulsa soluciones sostenibles para proteger la Amazonía y fortalecer el bienestar de las comunidades rurales.')}</p>
       </div>
-      <section className="about-story" aria-labelledby="about-story-title">
+      <section className="about-story" id="quienes-somos" aria-labelledby="about-story-title">
         <div className="about-story__history">
           <h2 id="about-story-title">{t('QUIÉNES SOMOS')}</h2>
           <img className="about-story__rule" src={greenLine} alt="" />

@@ -130,9 +130,11 @@ export function BlogFooter() {
             <a href="/#unete">{t('Voluntariado')}</a><a href="/donacion">{t('DONACIONES')}</a><a href="#contacto">{t('Transparencia')}</a>
           </div>
         </div>
-        <div className="blog-footer__follow">
-          <span>{t('SÍGUENOS :')}</span>
-          {socials.map((social) => <a href={social.href ?? '#redes'} target={social.href ? '_blank' : undefined} rel={social.href ? 'noreferrer' : undefined} aria-label={social.label} key={social.label}><img src={social.image} alt="" /></a>)}
+        <div className="blog-footer__socialbar">
+          <div className="blog-footer__follow">
+            <span>{t('SÍGUENOS :')}</span>
+            {socials.map((social) => <a href={social.href ?? '#redes'} target={social.href ? '_blank' : undefined} rel={social.href ? 'noreferrer' : undefined} aria-label={social.label} key={social.label}><img src={social.image} alt="" /></a>)}
+          </div>
         </div>
       </div>
       <div className="blog-footer__legal">

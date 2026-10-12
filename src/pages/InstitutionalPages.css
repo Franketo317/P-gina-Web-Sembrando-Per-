@@ -1,0 +1,128 @@
+.institutional-page {
+  width: 100%;
+  max-width: 1920px;
+  min-height: 100vh;
+  margin: 0 auto;
+  overflow: clip;
+  background: #fff;
+  color: #191c1d;
+  font-family: var(--font-avenir);
+}
+
+.institutional-hero {
+  position: relative;
+  min-height: clamp(280px, 32vw, 420px);
+  display: grid;
+  align-items: center;
+  padding: 48px max(24px, calc((100% - 1120px) / 2));
+  background: linear-gradient(115deg, #006445, #02734d);
+}
+
+.institutional-hero h1 {
+  max-width: 960px;
+  margin: 0;
+  color: #fff;
+  font-family: var(--font-display);
+  font-size: clamp(42px, 7vw, 76px);
+  font-weight: 600;
+  line-height: 1.1;
+  text-transform: uppercase;
+}
+
+.institutional-content {
+  width: min(1120px, calc(100% - 48px));
+  margin: 0 auto;
+  padding: 72px 0 88px;
+}
+
+.team-content {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  align-items: center;
+  gap: clamp(28px, 5vw, 64px);
+}
+
+.team-content__image {
+  width: 100%;
+  min-height: 300px;
+  max-height: 480px;
+  display: block;
+  object-fit: cover;
+}
+
+.team-content__copy h2,
+.complaints-content h2 {
+  margin: 0 0 20px;
+  color: #173f30;
+  font-family: var(--font-display);
+  font-size: clamp(30px, 3.5vw, 42px);
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+.team-content__copy p,
+.complaints-content p {
+  margin: 0;
+  color: #343a36;
+  font-size: clamp(17px, 1.8vw, 21px);
+  line-height: 1.7;
+}
+
+.complaints-content {
+  max-width: 800px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.complaints-content__notice {
+  margin-top: 22px !important;
+}
+
+.complaints-content__channels {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 14px 28px;
+  margin-top: 30px;
+}
+
+.complaints-content__channels a {
+  color: #02734d;
+  font-size: clamp(17px, 1.8vw, 21px);
+  font-weight: 700;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+.complaints-content__channels a:focus-visible {
+  outline: 3px solid #f5a623;
+  outline-offset: 4px;
+}
+
+@media (max-width: 700px) {
+  .institutional-hero {
+    min-height: 280px;
+    padding: 36px 22px;
+  }
+
+  .institutional-content {
+    width: min(100% - 36px, 560px);
+    padding: 48px 0 60px;
+  }
+
+  .team-content {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+
+  .team-content__image {
+    min-height: 240px;
+    max-height: 360px;
+  }
+
+  .complaints-content__channels {
+    align-items: center;
+    flex-direction: column;
+    gap: 14px;
+  }
+}

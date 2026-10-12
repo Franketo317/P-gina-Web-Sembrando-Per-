@@ -23,6 +23,13 @@ const searchDatabase: SearchItem[] = [
     keywords: ['nosotros', 'quienes somos', 'historia', 'organizacion', 'familia', 'amazonia', 'ong'],
   },
   {
+    title: '¿Cómo trabajamos?',
+    category: 'Sembrando Perú',
+    description: 'Conoce nuestro trabajo en conservación de la Amazonía, educación rural y salud infantil.',
+    href: '/como-trabajamos',
+    keywords: ['como trabajamos', 'conservacion', 'restauracion', 'educacion', 'salud', 'anemia', 'comunidades'],
+  },
+  {
     title: 'Nuestra Historia',
     category: 'Sembrando Perú',
     description: 'El origen de Sembrando Perú y nuestro compromiso social frente a la deforestación y la anemia infantil.',
@@ -244,7 +251,7 @@ export default function SiteHeader() {
   }
 
   const currentPath = typeof window !== 'undefined' ? window.location.pathname.replace(/\/+$/, '') || '/' : '/'
-  const isSembrandoPeruActive = currentPath === '/nosotros' || currentPath.startsWith('/nosotros') || currentPath === '/contacto'
+  const isSembrandoPeruActive = currentPath === '/nosotros' || currentPath.startsWith('/nosotros') || currentPath === '/contacto' || currentPath === '/como-trabajamos' || currentPath === '/trabaja-con-nosotros' || currentPath === '/nuestro-equipo' || currentPath === '/mecanismo-de-quejas'
   const isInformateActive = currentPath === '/blog' || currentPath.startsWith('/blog')
 
   return (
@@ -276,20 +283,23 @@ export default function SiteHeader() {
             </svg>
           </button>
           <div className="nav-dropdown__menu" role="menu">
-            <a href="/nosotros" role="menuitem" onClick={closeAll}>
-              {t('¿Quiénes somos?')}
-            </a>
             <a href="/nosotros#historia" role="menuitem" onClick={closeAll}>
               {t('Nuestra historia')}
             </a>
-            <a href="/nosotros#mision-vision" role="menuitem" onClick={closeAll}>
-              {t('Misión y Visión')}
+            <a href="/como-trabajamos" role="menuitem" onClick={closeAll}>
+              {t('¿Cómo trabajamos?')}
             </a>
-            <a href="/nosotros#valores" role="menuitem" onClick={closeAll}>
-              {t('Nuestros Valores')}
+            <a href="/trabaja-con-nosotros" role="menuitem" onClick={closeAll}>
+              {t('Trabaja con nosotros')}
             </a>
             <a href="/contacto" role="menuitem" onClick={closeAll}>
               {t('Contáctanos')}
+            </a>
+            <a href="/nuestro-equipo" role="menuitem" onClick={closeAll}>
+              {t('Nuestro equipo')}
+            </a>
+            <a href="/mecanismo-de-quejas" role="menuitem" onClick={closeAll}>
+              {t('Mecanismo de quejas')}
             </a>
           </div>
         </div>

@@ -22,6 +22,10 @@ import { BlogFooter } from './pages/BlogPage'
 import BlogArticlePage from './pages/BlogArticlePage'
 import ContactPage from './pages/ContactPage'
 import DonationPage from './pages/DonationPage'
+import HowWeWorkPage from './pages/HowWeWorkPage'
+import WorkWithUsPage from './pages/WorkWithUsPage'
+import OurTeamPage from './pages/OurTeamPage'
+import ComplaintsMechanismPage from './pages/ComplaintsMechanismPage'
 import './App.css'
 import './pages/NosotrosPage.css'
 
@@ -293,6 +297,22 @@ function App() {
 
   if (currentPath === '/nosotros') {
     return <NosotrosPage />
+  }
+
+  if (currentPath === '/como-trabajamos') {
+    return <HowWeWorkPage />
+  }
+
+  if (currentPath === '/trabaja-con-nosotros') {
+    return <WorkWithUsPage />
+  }
+
+  if (currentPath === '/nuestro-equipo') {
+    return <OurTeamPage />
+  }
+
+  if (currentPath === '/mecanismo-de-quejas') {
+    return <ComplaintsMechanismPage />
   }
 
   return (

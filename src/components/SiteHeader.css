@@ -1,0 +1,798 @@
+/* ========================================================
+   UNIFIED SITE HEADER (Sembrando Perú - Referencia visual)
+   Distribution: Logo (tarjeta blanca sobresaliente) →
+                 Sembrando Perú → Nuestro trabajo → Infórmate →
+                 lupa → ES|Español → Donación | Voluntariado | Alianzas
+   ======================================================== */
+
+header.site-header {
+  position: sticky !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  width: 100% !important;
+  height: 74px !important;
+  min-height: 74px !important;
+  max-height: 74px !important;
+  /* Barra negra como en la referencia */
+  background-color: #014c33 !important;
+  color: #ffffff !important;
+  z-index: 1000 !important;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.35) !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  box-sizing: border-box !important;
+  /* El header ocupa su altura pero el logo puede sobresalir hacia abajo */
+  overflow: visible !important;
+  font-family: var(--font-avenir), 'Avenir Next', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
+  isolation: isolate;
+}
+
+/* Neutralize legacy header positioning overrides */
+header.site-header * {
+  box-sizing: border-box;
+}
+
+.site-header__container {
+  /* Ocupa todo el ancho de la barra negra, sin centrado ni max-width */
+  width: 100%;
+  height: 100%;
+  /* Sin margin: 0 auto para que no haya márgenes laterales */
+  padding: 0;
+  display: flex;
+  align-items: center;
+  /* Logo pegado a la izquierda, acciones pegadas a la derecha */
+  justify-content: space-between;
+  gap: 0;
+  overflow: visible;
+}
+
+/* ---------------------------------------------
+   1. LOGO: tarjeta blanca pegada al borde superior izquierdo
+      sobresale ~26px por debajo de la barra negra (74px total)
+   --------------------------------------------- */
+.site-header__brand {
+  position: relative !important;
+  /* Sube el logo para que quede pegado al borde superior */
+  align-self: flex-start !important;
+  margin-top: 0 !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  /* Tarjeta blanca ~90px ancho × 100px alto */
+  width: 90px !important;
+  height: 100px !important;
+  padding: 8px 10px !important;
+  background-color: #ffffff !important;
+  /* Bordes redondeados solo en la parte inferior */
+  border-radius: 0 0 10px 10px !important;
+  text-decoration: none !important;
+  flex-shrink: 0 !important;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.22);
+  z-index: 10;
+}
+
+.site-header__brand:hover {
+  transform: translateY(2px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.3);
+}
+
+.site-header__brand img {
+  height: 80px !important;
+  width: 70px !important;
+  object-fit: contain !important;
+  display: block !important;
+}
+
+
+/* ---------------------------------------------
+   2. NAVEGACIÓN A CONTINUACIÓN
+   --------------------------------------------- */
+.site-header__nav {
+  position: static !important;
+  display: flex !important;
+  align-items: center !important;
+  /* Ocupa todo el espacio disponible entre logo y acciones */
+  flex: 1 !important;
+  height: 100% !important;
+  /* Margen izquierdo moderado respecto al logo */
+  margin: 0 0 0 8px !important;
+  padding: 0 !important;
+  background: transparent !important;
+}
+
+.site-header__nav-list {
+  display: flex;
+  align-items: center;
+  /* Separaciones uniformes y moderadas entre ítems de nav */
+  gap: clamp(4px, 1.5vw, 24px);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  height: 100%;
+}
+
+
+.site-header__nav-item {
+  position: relative;
+  display: flex;
+  align-items: center;
+  height: 100%;
+}
+
+.site-header__nav-btn {
+  background: transparent;
+  border: none;
+  color: #ffffff;
+  font-family: inherit;
+  font-size: 15px;
+  font-weight: 600;
+  line-height: 1.2;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background-color 0.18s ease, color 0.18s ease;
+}
+
+.site-header__nav-btn:hover,
+.site-header__nav-item.is-active .site-header__nav-btn {
+  background-color: rgba(255, 255, 255, 0.16);
+  color: #ffffff;
+}
+
+.site-header__nav-btn.is-current {
+  color: #a1cc3a;
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.site-header__chevron {
+  transition: transform 0.2s ease;
+  opacity: 0.85;
+}
+
+.site-header__nav-item.is-active .site-header__chevron {
+  transform: rotate(180deg);
+  opacity: 1;
+}
+
+/* Desplegables de navegación */
+.site-header__dropdown {
+  position: absolute;
+  top: calc(100% - 10px);
+  left: 0;
+  min-width: 220px;
+  background-color: #014c33;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 8px;
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.28);
+  padding: 8px 0;
+  z-index: 1010;
+  display: none;
+  animation: headerDropdownIn 0.18s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.site-header__nav-item.is-active .site-header__dropdown {
+  display: block;
+}
+
+@keyframes headerDropdownIn {
+  from {
+    opacity: 0;
+    transform: translateY(-6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.site-header__dropdown-link {
+  display: block;
+  padding: 10px 20px;
+  color: #ffffff;
+  font-size: 14px;
+  font-weight: 500;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: background-color 0.15s ease, color 0.15s ease, padding-left 0.15s ease;
+}
+
+.site-header__dropdown-link:hover {
+  background-color: rgba(255, 255, 255, 0.14);
+  color: #a1cc3a;
+  padding-left: 24px;
+}
+
+/* ---------------------------------------------
+   3. HERRAMIENTAS Y BOTONES A LA DERECHA
+   --------------------------------------------- */
+.site-header__actions {
+  display: flex;
+  align-items: center;
+  /* Gap moderado entre lupa, selector de idioma y el grupo CTA */
+  gap: clamp(6px, 0.8vw, 12px);
+  flex-shrink: 0;
+  /* Se extiende al alto de la barra para que los botones CTA lleguen al borde */
+  align-self: stretch;
+  /* Pequeño padding izquierdo para separar del nav, cero a la derecha
+     porque los botones CTA llegan al borde de la pantalla */
+  padding: 0 0 0 8px;
+}
+
+/* Herramienta Lupa / Búsqueda */
+.site-header__search-tool {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.site-header__icon-btn {
+  background: transparent;
+  border: none;
+  color: #ffffff;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background-color 0.18s ease, transform 0.18s ease;
+}
+
+.site-header__icon-btn:hover,
+.site-header__icon-btn.is-active {
+  background-color: rgba(255, 255, 255, 0.18);
+  transform: scale(1.05);
+}
+
+.site-header__search-popover {
+  position: absolute;
+  top: calc(100% + 14px);
+  right: 0;
+  width: 340px;
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.28);
+  padding: 14px;
+  z-index: 1020;
+  color: #191c1d;
+  animation: headerDropdownIn 0.18s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.site-header__search-form {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background-color: #f3f4f6;
+  border-radius: 6px;
+  padding: 6px 10px;
+  border: 1px solid #e5e7eb;
+}
+
+.site-header__search-input-icon {
+  color: #6b7280;
+  flex-shrink: 0;
+}
+
+.site-header__search-input {
+  border: none;
+  background: transparent;
+  outline: none;
+  font-family: inherit;
+  font-size: 13.5px;
+  color: #191c1d;
+  width: 100%;
+}
+
+.site-header__search-input::placeholder {
+  color: #9ca3af;
+}
+
+.site-header__search-submit-btn {
+  background-color: #02734d;
+  color: #ffffff;
+  border: none;
+  border-radius: 4px;
+  padding: 5px 10px;
+  font-size: 12.5px;
+  font-weight: 600;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background-color 0.15s ease;
+}
+
+.site-header__search-submit-btn:hover {
+  background-color: #01593b;
+}
+
+.site-header__search-close-btn {
+  background: transparent;
+  border: none;
+  color: #9ca3af;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  padding: 2px;
+}
+
+.site-header__search-close-btn:hover {
+  color: #4b5563;
+}
+
+.site-header__search-suggestions {
+  margin-top: 10px;
+  padding-top: 10px;
+  border-top: 1px solid #f3f4f6;
+}
+
+.site-header__search-suggestions-title {
+  display: block;
+  font-size: 11.5px;
+  color: #6b7280;
+  font-weight: 600;
+  margin-bottom: 6px;
+}
+
+.site-header__search-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.site-header__search-tags a {
+  font-size: 12px;
+  color: #02734d;
+  background-color: #e8f5e9;
+  padding: 3px 8px;
+  border-radius: 4px;
+  text-decoration: none;
+  font-weight: 500;
+  transition: background-color 0.15s ease;
+}
+
+.site-header__search-tags a:hover {
+  background-color: #c8e6c9;
+}
+
+/* Herramienta Idioma */
+.site-header__language-tool {
+  display: flex;
+  align-items: center;
+}
+
+.site-header__language .language-switcher {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 6px !important;
+  padding: 6px 10px !important;
+  border-radius: 6px !important;
+  border: none !important;
+  background: transparent !important;
+  color: #ffffff !important;
+  font-size: 13.5px !important;
+  font-weight: 600 !important;
+  cursor: pointer !important;
+  transition: background-color 0.18s ease;
+  white-space: nowrap !important;
+}
+
+.site-header__language .language-switcher:hover {
+  background-color: rgba(255, 255, 255, 0.16) !important;
+}
+
+.site-header__language .language-switcher__menu {
+  background-color: #014c33 !important;
+  border: 1px solid rgba(255, 255, 255, 0.15) !important;
+  border-radius: 6px !important;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.28) !important;
+}
+
+/* ---------------------------------------------
+   4. TRES BOTONES DE ACCIÓN JUNTOS (pegados sin gaps)
+   Donación → Voluntariado → Alianzas
+   --------------------------------------------- */
+.site-header__cta-group {
+  display: flex;
+  align-items: stretch;
+  /* Sin gap entre botones, pegados como en referencia */
+  gap: 0;
+  margin-left: 8px;
+  /* Altura alineada con la barra */
+  align-self: stretch;
+}
+
+.site-header__btn {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  font-family: inherit !important;
+  font-size: 13px !important;
+  font-weight: 700 !important;
+  line-height: 1 !important;
+  text-decoration: none !important;
+  /* Sin border-radius para que queden completamente pegados */
+  border-radius: 0 !important;
+  white-space: nowrap !important;
+  transition: filter 0.18s ease !important;
+  cursor: pointer !important;
+  text-align: center !important;
+  padding: 0 16px !important;
+  min-height: 74px !important;
+  letter-spacing: 0.02em !important;
+  text-transform: uppercase !important;
+}
+
+/* 1. Donación — naranja de la paleta */
+.site-header__btn--donate {
+  background-color: #f9a22f !important;
+  color: #ffffff !important;
+  border: none !important;
+}
+
+.site-header__btn--donate:hover {
+  filter: brightness(0.9) !important;
+}
+
+/* 2. Voluntariado — verde lima */
+.site-header__btn--volunteer {
+  background-color: #78aa2d !important;
+  color: #ffffff !important;
+  border: none !important;
+}
+
+.site-header__btn--volunteer:hover {
+  filter: brightness(0.9) !important;
+}
+
+/* 3. Alianzas — verde oscuro de la marca */
+.site-header__btn--alliances {
+  background-color: #02734d !important;
+  color: #ffffff !important;
+  border: none !important;
+}
+
+.site-header__btn--alliances:hover {
+  filter: brightness(0.85) !important;
+}
+
+
+/* Botón hamburguesa móvil */
+.site-header__mobile-toggle {
+  display: none;
+  background: transparent;
+  border: none;
+  color: #ffffff;
+  padding: 6px;
+  border-radius: 6px;
+  cursor: pointer;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.18s ease;
+}
+
+.site-header__mobile-toggle:hover {
+  background-color: rgba(255, 255, 255, 0.16);
+}
+
+/* ---------------------------------------------
+   5. MENÚ MÓVIL (PANTALLAS PEQUEÑAS)
+   Sin superposiciones, sin desplazamiento horizontal
+   --------------------------------------------- */
+.site-header__mobile-overlay {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.65);
+  backdrop-filter: blur(4px);
+  z-index: 2000;
+  display: flex;
+  justify-content: flex-end;
+  animation: fadeIn 0.2s ease;
+}
+
+.site-header__mobile-drawer {
+  width: 100%;
+  max-width: 360px;
+  height: 100%;
+  background-color: #014c33;
+  color: #ffffff;
+  padding: 20px 20px 32px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  box-shadow: -6px 0 24px rgba(0, 0, 0, 0.35);
+  animation: slideDrawer 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes slideDrawer {
+  from {
+    transform: translateX(100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.site-header__mobile-drawer-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: 12px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.site-header__mobile-drawer-brand {
+  display: inline-flex;
+  align-items: center;
+  padding: 4px 10px;
+  background-color: #e8f5e9;
+  border-radius: 6px;
+}
+
+.site-header__mobile-drawer-brand img {
+  height: 36px;
+  width: auto;
+  display: block;
+}
+
+.site-header__mobile-drawer-close {
+  background: transparent;
+  border: none;
+  color: #ffffff;
+  padding: 6px;
+  border-radius: 6px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.site-header__mobile-drawer-close:hover {
+  background-color: rgba(255, 255, 255, 0.16);
+}
+
+/* Búsqueda en el drawer móvil */
+.site-header__mobile-search {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background-color: #ffffff;
+  border-radius: 6px;
+  padding: 6px 10px;
+}
+
+.site-header__mobile-search-icon {
+  color: #6b7280;
+  flex-shrink: 0;
+}
+
+.site-header__mobile-search-input {
+  border: none;
+  background: transparent;
+  outline: none;
+  font-size: 13.5px;
+  color: #191c1d;
+  width: 100%;
+}
+
+.site-header__mobile-search-submit {
+  background-color: #02734d;
+  color: #ffffff;
+  border: none;
+  border-radius: 4px;
+  padding: 5px 10px;
+  font-size: 12.5px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+/* Acordeón de navegación en móvil */
+.site-header__mobile-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.site-header__mobile-section {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  padding-bottom: 8px;
+}
+
+.site-header__mobile-section-toggle {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: transparent;
+  border: none;
+  color: #ffffff;
+  font-family: inherit;
+  font-size: 17px;
+  font-weight: 600;
+  padding: 10px 4px;
+  cursor: pointer;
+  text-align: left;
+}
+
+.site-header__mobile-chevron {
+  transition: transform 0.2s ease;
+}
+
+.site-header__mobile-chevron.is-rotated {
+  transform: rotate(180deg);
+}
+
+.site-header__mobile-sublinks {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 6px 0 10px 14px;
+}
+
+.site-header__mobile-sublinks a {
+  color: rgba(255, 255, 255, 0.88);
+  font-size: 14.5px;
+  text-decoration: none;
+  padding: 6px 0;
+  transition: color 0.15s ease;
+}
+
+.site-header__mobile-sublinks a:hover {
+  color: #a1cc3a;
+}
+
+/* Idioma en móvil */
+.site-header__mobile-language-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 4px;
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.site-header__mobile-lang-label {
+  font-size: 14px;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.site-header__language-mobile .language-switcher {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 6px !important;
+  padding: 6px 12px !important;
+  border-radius: 6px !important;
+  border: 1px solid rgba(255, 255, 255, 0.2) !important;
+  background: rgba(255, 255, 255, 0.1) !important;
+  color: #ffffff !important;
+  font-size: 14px !important;
+  font-weight: 600 !important;
+  cursor: pointer !important;
+}
+
+.site-header__language-mobile .language-switcher__menu {
+  background-color: #013725 !important;
+  border: 1px solid rgba(255, 255, 255, 0.2) !important;
+  border-radius: 6px !important;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4) !important;
+}
+
+/* Botones en móvil */
+.site-header__mobile-ctas {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 8px;
+}
+
+.site-header__mobile-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px;
+  border-radius: 6px;
+  font-family: inherit;
+  font-size: 15px;
+  text-decoration: none;
+  font-weight: 600;
+  text-align: center;
+  transition: opacity 0.18s ease;
+}
+
+.site-header__mobile-btn:active {
+  opacity: 0.85;
+}
+
+.site-header__mobile-btn--donate {
+  background-color: #f9a22f;
+  color: #ffffff;
+  font-weight: 700;
+}
+
+.site-header__mobile-btn--volunteer {
+  background-color: #78aa2d;
+  color: #ffffff;
+}
+
+.site-header__mobile-btn--alliances {
+  background-color: transparent;
+  color: #ffffff;
+  border: 1.5px solid rgba(255, 255, 255, 0.8);
+}
+
+/* ---------------------------------------------
+   6. RESPONSIVE MEDIA QUERIES
+   --------------------------------------------- */
+@media (max-width: 1200px) {
+  .site-header__container {
+    gap: 8px;
+  }
+
+  .site-header__nav-btn {
+    font-size: 13px;
+    padding: 6px 8px;
+  }
+
+  .site-header__btn {
+    font-size: 11.5px !important;
+    padding: 0 12px !important;
+  }
+}
+
+@media (max-width: 1024px) {
+  /* Ocultar navegación y botones desktop en móvil/tablet */
+  .site-header__nav {
+    display: none !important;
+  }
+
+  .site-header__language-tool {
+    display: none !important;
+  }
+
+  .site-header__cta-group {
+    display: none !important;
+  }
+
+  /* Mostrar botón hamburguesa */
+  .site-header__mobile-toggle {
+    display: flex !important;
+  }
+
+  header.site-header {
+    height: 68px !important;
+    min-height: 68px !important;
+    max-height: 68px !important;
+  }
+
+  /* Logo más pequeño en móvil: tarjeta blanca reducida */
+  .site-header__brand {
+    width: 70px !important;
+    height: 80px !important;
+    padding: 6px 8px !important;
+  }
+
+  .site-header__brand img {
+    height: 60px !important;
+    width: 54px !important;
+  }
+}
+
