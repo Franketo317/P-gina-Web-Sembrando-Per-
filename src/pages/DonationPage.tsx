@@ -5,7 +5,6 @@ import heroImage from '../assets/figma/donacion.jpg'
 import impactImage from '../assets/figma/5.jpeg'
 import reforestationImage from '../assets/figma/blog-article-reforestation.jpg'
 import educationImage from '../assets/figma/imgBlogImage4.png'
-import healthImage from '../assets/figma/blog-article-health.jpg'
 import communityImage from '../assets/figma/blog-article-community.jpg'
 import LanguageSwitcher from '../components/LanguageSwitcher'
 import SiteHeader from '../components/SiteHeader'
@@ -17,27 +16,27 @@ import './DonationPage.css'
 const impactAreas = [
   {
     title: 'REFORESTACIÓN Y RESTAURACIÓN ECOLÓGICA',
-    description: 'Restauramos los bosques amazónicos con especies nativas y protegemos la biodiversidad de nuestro territorio.',
+    description: 'Los bosques y ecosistemas locales sufren constantemente debido a la deforestación y la pérdida de biodiversidad. Sembrando Perú trabaja junto a voluntarios y comunidades locales para reforestar áreas degradadas, instalar viveros comunitarios y proteger especies nativas. Estas acciones ayudan a mitigar el cambio climático y aseguran un entorno saludable para las futuras generaciones.',
     image: reforestationImage,
     alt: 'Jornada de reforestación en la Amazonía',
   },
   {
-    title: 'CONSERVACIÓN DE BIODIVERSIDAD Y FAUNA NATIVA',
-    description: 'Promovemos la conservación de los ecosistemas y de las especies que habitan nuestros bosques.',
-    image: communityImage,
-    alt: 'Comunidad local participando en acciones de conservación',
-  },
-  {
     title: 'EDUCACIÓN Y CONCIENCIA AMBIENTAL',
-    description: 'Impulsamos aprendizajes que fortalecen el cuidado del ambiente y crean nuevas oportunidades.',
+    description: 'El cambio duradero empieza en las aulas y comunidades. Desarrollamos talleres participativos, programas de sensibilización y proyectos de huertos escolares para formar a niños y jóvenes como agentes de cambio ecológico. Empoderamos a las comunidades con herramientas de reciclaje, conservación y gestión sostenible de sus propios recursos.',
     image: educationImage,
     alt: 'Niños participando en una actividad educativa',
   },
   {
-    title: 'SALUD Y BIENESTAR EN COMUNIDADES',
-    description: 'Acompañamos a familias con iniciativas de salud, nutrición y desarrollo comunitario.',
-    image: healthImage,
-    alt: 'Jornada de salud en una comunidad',
+    title: 'CONSERVACIÓN DE BIODIVERSIDAD Y FAUNA NATIVA',
+    description: 'Protegemos los hábitats naturales y las especies en peligro mediante el monitoreo ambiental y la creación de corredores biológicos. En Sembrando Perú impulsamos alianzas estratégicas para resguardar la flora y fauna local, asegurando el equilibrio de los ecosistemas en nuestras zonas de intervención y promoviendo prácticas de coexistencia sostenible.',
+    image: communityImage,
+    alt: 'Trabajo comunitario para proteger los ecosistemas locales',
+  },
+  {
+    title: 'VOLUNTARIADO Y GESTIÓN COMUNITARIA',
+    description: 'Fomentamos la participación activa de jóvenes y familias en jornadas de siembra, limpieza de espacios naturales y organización comunitaria. Capacitamos a los líderes locales en gestión ambiental sostenible para que cada proyecto permanezca en el tiempo y genere un impacto positivo duradero en sus propias regiones.',
+    image: impactImage,
+    alt: 'Voluntarios participando en una jornada de siembra',
   },
 ]
 
@@ -64,20 +63,10 @@ function DonationForm() {
   const [amount, setAmount] = useState('30')
   const [frequency, setFrequency] = useState('Mensual')
   const [customAmount, setCustomAmount] = useState('')
-  const { t, language } = useLanguage()
-
-  function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
-    event.preventDefault()
-    const donationAmount = customAmount || amount
-    const subject = language === 'en' ? 'Donation to Sembrando Perú' : 'Donación a Sembrando Perú'
-    const body = language === 'en'
-      ? `I would like to make a ${t(frequency).toLowerCase()} donation of S/ ${donationAmount}.`
-      : `Quiero realizar una donación ${frequency.toLowerCase()} de S/ ${donationAmount}.`
-    window.location.href = `mailto:contacto@sembrandoperu.org?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`
-  }
+  const { t } = useLanguage()
 
   return (
-    <form className="donation-form" id="aportar" onSubmit={handleSubmit}>
+    <div className="donation-form" id="aportar">
       <h2>{t('TU CONTRIBUCIÓN')}</h2>
       <div className="donation-form__frequency" role="group" aria-label={t('Frecuencia de donación')}>
         {['Mensual', 'Única'].map((option) => (
@@ -111,22 +100,23 @@ function DonationForm() {
         <span className="donation-form__custom-input"><span>S/</span><input aria-label={t('Otro monto en soles')} type="number" min="1" value={customAmount} onChange={(event) => setCustomAmount(event.target.value)} placeholder="0" /></span>
       </label>
       <div className="donation-form__payment-methods" aria-label={t('Métodos de pago')}>
-        <button className="donation-form__paypal" type="button" disabled>
-          <span aria-hidden="true">P</span>{t('Donar con PayPal')}
-        </button>
-        <button className="donation-form__card" type="button" disabled>
-          {t('Donar con tarjeta de crédito o de débito')}
-        </button>
-        <p>{t('Próximamente')}</p>
+        <a
+          className="donation-form__paypal"
+          href="https://www.paypal.com/donate/?hosted_button_id=CFPZV9GMT4GNU"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <span aria-hidden="true">P</span>{t('Donar con PayPal o tarjeta')}
+        </a>
       </div>
-      <button className="donation-form__submit" type="submit">{t('DONAR')}</button>
       <p>{t('Tu aporte transforma vidas y protege nuestros bosques.')}</p>
-    </form>
+    </div>
   )
 }
 
 function DonationHero() {
   const formSlotRef = useRef<HTMLDivElement>(null)
+  const pinnedTopRef = useRef<number | null>(null)
   const [showFloatingDonate, setShowFloatingDonate] = useState(false)
   const [isFormPinned, setIsFormPinned] = useState(false)
   const { t } = useLanguage()
@@ -149,11 +139,26 @@ function DonationHero() {
       const formBounds = form.getBoundingClientRect()
       const formSlotBounds = formSlot.getBoundingClientRect()
       const mainBounds = main.getBoundingClientRect()
-      const stickyTop = Math.max(headerBounds.bottom, 0) + 16
+      const minimumPinnedTop = headerBounds.height + 16
+      if (pinnedTopRef.current === null || pinnedTopRef.current < minimumPinnedTop) {
+        pinnedTopRef.current = Math.max(minimumPinnedTop, formSlotBounds.top)
+      }
+      const stickyTop = pinnedTopRef.current
       formSlot.style.setProperty('--donation-form-sticky-top', `${stickyTop}px`)
-      const shouldPinForm = window.innerWidth >= 1320
-        && formSlotBounds.top <= stickyTop
+      const shouldPinForm = window.innerWidth >= 621
         && mainBounds.bottom > stickyTop + formBounds.height + 16
+      const isCurrentlyPinned = formSlot.classList.contains('is-pinned')
+      if (shouldPinForm) {
+        formSlot.style.setProperty('--donation-form-sticky-left', `${formSlotBounds.left}px`)
+        formSlot.style.setProperty('--donation-form-sticky-width', `${formSlotBounds.width}px`)
+      }
+      if (shouldPinForm && !isCurrentlyPinned) {
+        formSlot.style.height = `${formBounds.height}px`
+      } else if (!shouldPinForm && isCurrentlyPinned) {
+        formSlot.style.removeProperty('--donation-form-sticky-left')
+        formSlot.style.removeProperty('--donation-form-sticky-width')
+        formSlot.style.height = ''
+      }
       const formIsVisible = formBounds.bottom > Math.max(headerBounds.bottom, 0)
         && formBounds.top < window.innerHeight
         && formBounds.right > 0
@@ -185,7 +190,7 @@ function DonationHero() {
   }
 
   return (
-    <section className="donation-hero" aria-labelledby="donation-hero-title">
+    <section className={`donation-hero${isFormPinned ? ' is-form-pinned' : ''}`} aria-labelledby="donation-hero-title">
       <img className="donation-hero__image" src={heroImage} alt="Manos plantando un árbol joven" />
       <div className="donation-hero__shade" />
       <SocialLinks />
@@ -214,12 +219,56 @@ function DonationHero() {
   )
 }
 
+function CollapsibleSection({
+  title,
+  titleId,
+  sectionClassName,
+  children,
+  defaultOpen = true,
+}: {
+  title: string
+  titleId: string
+  sectionClassName: string
+  children: React.ReactNode
+  defaultOpen?: boolean
+}) {
+  const [isExpanded, setIsExpanded] = useState(defaultOpen)
+
+  return (
+    <section className={sectionClassName} aria-labelledby={titleId}>
+      <div className="donation-section__header">
+        <h2 id={titleId}>{title}</h2>
+        <button
+          className="donation-section__toggle"
+          type="button"
+          aria-label={title}
+          aria-expanded={isExpanded}
+          aria-controls={`${titleId}-content`}
+          onClick={() => setIsExpanded((expanded) => !expanded)}
+        >
+          <svg className={isExpanded ? '' : 'is-collapsed'} viewBox="0 0 24 24" width="20" height="20" aria-hidden="true">
+            <path d="m6 15 6-6 6 6" />
+          </svg>
+        </button>
+      </div>
+      {isExpanded && (
+        <div id={`${titleId}-content`} className="donation-section__content">
+          {children}
+        </div>
+      )}
+    </section>
+  )
+}
+
 function ImpactAreas() {
   const { t } = useLanguage()
 
   return (
-    <section className="donation-impact" aria-labelledby="donation-impact-title">
-      <h2 id="donation-impact-title">{t('SEMBREMOS UN FUTURO SOSTENIBLE PARA EL PERÚ')}</h2>
+    <CollapsibleSection
+      title={t('SEMBREMOS UN FUTURO SOSTENIBLE PARA EL PERÚ')}
+      titleId="donation-impact-title"
+      sectionClassName="donation-impact"
+    >
       <p className="donation-impact__intro">{t('Tus aportes impulsan el trabajo integral de Sembrando Perú, promoviendo iniciativas ecológicas y comunitarias en nuestras regiones clave.')}</p>
       <div className="donation-impact__grid">
         {impactAreas.map((area) => (
@@ -229,7 +278,7 @@ function ImpactAreas() {
           </article>
         ))}
       </div>
-    </section>
+    </CollapsibleSection>
   )
 }
 
@@ -282,18 +331,24 @@ export default function DonationPage() {
       <SiteHeader />
       <main>
         <DonationHero />
-        <section className="donation-about" aria-labelledby="donation-about-title">
-          <h2 id="donation-about-title">{t('¿POR QUÉ DONAR A SEMBRANDO PERÚ?')}</h2>
+        <CollapsibleSection
+          title={t('¿POR QUÉ DONAR A SEMBRANDO PERÚ?')}
+          titleId="donation-about-title"
+          sectionClassName="donation-about"
+        >
           <p>{t('Sembrando Perú trabaja para proteger y recuperar nuestros bosques, fortalecer a las comunidades mediante la reforestación, la educación ambiental y el fortalecimiento de las capacidades locales. Tu donación financia directamente la siembra de árboles, el mantenimiento de viveros y el desarrollo de un entorno más verde y saludable para todos.')}</p>
-        </section>
-        <section className="donation-how" aria-labelledby="donation-how-title">
-          <h2 id="donation-how-title">{t('¿CÓMO CONTRIBUYES CON TU DONACIÓN A SEMBRANDO PERÚ?')}</h2>
+        </CollapsibleSection>
+        <CollapsibleSection
+          title={t('¿CÓMO CONTRIBUYES CON TU DONACIÓN A SEMBRANDO PERÚ?')}
+          titleId="donation-how-title"
+          sectionClassName="donation-how"
+        >
           <div className="donation-how__copy">
             <p>{t('Tu donación se destina directamente a nuestras jornadas de reforestación, la producción de plantines en viveros y talleres de educación ambiental. Cada aporte asegura la transparencia y continuidad de nuestros proyectos en las comunidades.')}</p>
             <p>{t('Juntos hacemos crecer oportunidades, recuperamos ecosistemas y construimos un futuro sostenible para el Perú.')}</p>
           </div>
           <img className="donation-how__image" src={impactImage} alt="Integrantes de Sembrando Perú trabajando junto a la comunidad" />
-        </section>
+        </CollapsibleSection>
         <ImpactAreas />
         <DonationFaq />
       </main>
