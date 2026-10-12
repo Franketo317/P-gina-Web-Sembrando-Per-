@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import arrowRight1 from './assets/figma/imgArrowRight1.svg'
 import arrowRight2 from './assets/figma/imgArrowRight2.svg'
 import blogImage from './assets/figma/imgBlogImage.png'
@@ -26,6 +26,7 @@ import HowWeWorkPage from './pages/HowWeWorkPage'
 import WorkWithUsPage from './pages/WorkWithUsPage'
 import OurTeamPage from './pages/OurTeamPage'
 import ComplaintsMechanismPage from './pages/ComplaintsMechanismPage'
+import ConservationStrategiesPage from './pages/ConservationStrategiesPage'
 import './App.css'
 import './pages/NosotrosPage.css'
 
@@ -144,11 +145,21 @@ function ProgramCard({ category, title, description, image, alt }: (typeof progr
 }
 
 function ProgramsSection() {
-  const [activeCategory, setActiveCategory] = useState<ProgramCategory | null>(null)
+  const [activeCategory, setActiveCategory] = useState<ProgramCategory | null>(() => {
+    const requestedCategory = programCategories.find(
+      (category) => window.location.hash === `#programas-${category.id}`,
+    )
+    return requestedCategory?.id ?? null
+  })
   const { t } = useLanguage()
   const visiblePrograms = activeCategory
     ? programs.filter((program) => program.category === activeCategory)
     : programs.slice(0, 2)
+
+  useEffect(() => {
+    if (!activeCategory || window.location.hash !== `#programas-${activeCategory}`) return
+    document.getElementById(`programas-filter-${activeCategory}`)?.scrollIntoView({ block: 'center' })
+  }, [activeCategory])
 
   return (
     <section className="programs-section" id="programas" aria-labelledby="programs-title">
@@ -160,6 +171,7 @@ function ProgramsSection() {
         {programCategories.map((category) => (
           <button
             className={`program-filter program-filter--${category.id}${activeCategory === category.id ? ' is-active' : ''}`}
+            id={`programas-filter-${category.id}`}
             type="button"
             aria-pressed={activeCategory === category.id}
             onClick={() => setActiveCategory(activeCategory === category.id ? null : category.id)}
@@ -301,6 +313,10 @@ function App() {
 
   if (currentPath === '/como-trabajamos') {
     return <HowWeWorkPage />
+  }
+
+  if (currentPath === '/estrategias-conservacion') {
+    return <ConservationStrategiesPage />
   }
 
   if (currentPath === '/trabaja-con-nosotros') {

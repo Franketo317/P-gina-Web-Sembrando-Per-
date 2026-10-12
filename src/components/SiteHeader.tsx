@@ -320,20 +320,17 @@ export default function SiteHeader() {
             </svg>
           </button>
           <div className="nav-dropdown__menu" role="menu">
-            <a href="/#nosotros" role="menuitem" onClick={closeAll}>
-              {t('¿Qué hacemos?')}
+            <a href="/estrategias-conservacion" role="menuitem" onClick={closeAll}>
+              {t('Estrategias de conservación')}
             </a>
-            <a href="/#programas" role="menuitem" onClick={closeAll}>
-              {t('Sembrando Árboles (Reforestación)')}
+            <a href="/#programas-medio-ambiente" role="menuitem" onClick={closeAll}>
+              {t('Reforestación')}
             </a>
-            <a href="/#programas" role="menuitem" onClick={closeAll}>
-              {t('Sembrando Educación')}
+            <a href="/#programas-educacion" role="menuitem" onClick={closeAll}>
+              {t('Educación')}
             </a>
-            <a href="/#programas" role="menuitem" onClick={closeAll}>
-              {t('Sembrando Salud (Lucha contra la anemia)')}
-            </a>
-            <a href="/#unete" role="menuitem" onClick={closeAll}>
-              {t('Voluntariado y Comunidad')}
+            <a href="/#programas-salud" role="menuitem" onClick={closeAll}>
+              {t('Salud')}
             </a>
           </div>
         </div>

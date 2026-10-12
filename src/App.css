@@ -324,7 +324,7 @@
   color: #f8fafc;
   font-family: var(--font-league);
   font-size: 75px;
-  font-weight: 700;
+  font-weight: 400;
   line-height: 1.1;
 }
 
@@ -1821,7 +1821,7 @@
   color: #fff;
   font-family: var(--font-display);
   font-size: clamp(56px, 5.1vw, 82px);
-  font-weight: 600;
+  font-weight: 400;
   line-height: 1.08;
   text-transform: uppercase;
 }
