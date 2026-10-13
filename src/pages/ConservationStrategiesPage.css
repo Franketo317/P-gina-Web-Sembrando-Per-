@@ -21,6 +21,28 @@
   isolation: isolate;
 }
 
+.strategies-hero.strategies-hero--overview {
+  height: 620px;
+  min-height: 0;
+  align-items: start;
+  padding-top: clamp(104px, 7.5vw, 144px);
+}
+
+.strategies-hero .hero-socials--banner {
+  top: 20px !important;
+  right: max(24px, calc((100% - 1180px) / 2));
+}
+
+.strategies-hero--overview .hero-socials--banner {
+  top: 88px !important;
+}
+
+@media (max-width: 760px) {
+  .strategies-hero.strategies-hero--overview {
+    height: 660px;
+  }
+}
+
 .strategies-hero::before {
   position: absolute;
   z-index: -1;
@@ -31,7 +53,8 @@
 
 .strategies-hero h1 {
   width: min(100%, 820px);
-  margin: 0;
+  margin: 0 auto;
+  text-align: center;
   color: #fff;
   font-family: var(--font-display);
   font-size: clamp(42px, 6.5vw, 80px);
@@ -40,11 +63,19 @@
   text-shadow: 0 2px 12px rgb(0 0 0 / 32%);
 }
 
+.strategies-hero--overview h1 {
+  width: min(100%, 500px);
+  margin: 0;
+  font-size: clamp(42px, 4.5vw, 64px);
+  line-height: 1.3;
+  text-align: left;
+}
+
 .strategies-intro {
   display: grid;
   min-height: 260px;
   place-items: center;
-  padding: 56px 24px;
+  padding: 80px 24px;
   background: #fff;
   text-align: center;
 }
@@ -53,12 +84,15 @@
   width: min(100%, 780px);
   margin: 0;
   color: #343a36;
-  font-family: var(--font-league);
-  font-size: clamp(17px, 1.6vw, 20px);
-  line-height: 1.6;
+  font-family: var(--font-inter);
+  font-size: 18px;
+  font-weight: 300;
+  line-height: 1.45;
+  text-align: justify;
 }
 
 .strategies-section {
+  margin-bottom: 40px;
   padding: 64px 24px 84px;
   background: #00583e;
   color: #fff;
@@ -83,6 +117,7 @@
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 28px;
+  align-items: start;
 }
 
 .strategy {
@@ -100,22 +135,103 @@
 }
 
 .strategy__content {
-  padding: 24px 22px 28px;
+  padding: 14px 14px 18px;
 }
 
-.strategy__content h3 {
-  margin: 0 0 14px;
+.strategy__content h2 {
+  margin: 0 0 8px;
   color: #006445;
   font-family: var(--font-display);
-  font-size: clamp(23px, 2.4vw, 30px);
-  font-weight: 600;
+  font-size: 19px;
+  font-weight: 400;
   line-height: 1.2;
+  text-transform: uppercase;
+  text-align: left;
+}
+
+.strategy__content h2 a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.strategy__content h2 a:hover {
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+.strategy__more {
+  display: inline-block;
+  margin-top: 14px;
+  color: #006445;
+  font-size: 14px;
+  font-weight: 600;
+  text-underline-offset: 4px;
 }
 
 .strategy__content p {
   margin: 0;
+  font-family: var(--font-inter);
   font-size: 16px;
-  line-height: 1.7;
+  line-height: 1.5;
+  text-align: justify;
+}
+
+.strategy-detail__hero h1 {
+  font-size: clamp(38px, 5vw, 64px);
+}
+
+.strategy-detail {
+  width: min(100%, 840px);
+  margin: 0 auto;
+  padding: 48px 24px 72px;
+  font-family: var(--font-avenir);
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 1.55;
+}
+
+.strategy-detail a {
+  color: #006445;
+  text-underline-offset: 4px;
+}
+
+.strategy-detail__back {
+  display: inline-block;
+  margin-bottom: 28px;
+}
+
+.strategy-detail p {
+  margin: 12px 0 0;
+  font-size: inherit;
+  line-height: inherit;
+  text-align: justify;
+}
+
+.strategy-detail .strategy-detail__lead {
+  margin: 0 0 36px;
+  font-size: inherit;
+}
+
+.strategy-detail section + section {
+  margin-top: 32px;
+}
+
+.strategy-detail h2 {
+  color: #006445;
+  font-family: var(--font-display);
+  font-size: clamp(32px, 3vw, 40px);
+  font-weight: 400;
+  line-height: 1.2;
+}
+
+@media (max-width: 760px) {
+  .strategy-detail {
+    font-size: 17px;
+  }
+
+  .strategy-detail h2 {
+    font-size: clamp(28px, 6vw, 32px);
+  }
 }
 
 @media (max-width: 900px) {
@@ -147,10 +263,11 @@
 
   .strategies-intro {
     min-height: 0;
-    padding: 46px 22px;
+    padding: 64px 22px;
   }
 
   .strategies-section {
+    margin-bottom: 28px;
     padding: 48px 20px 60px;
   }
 

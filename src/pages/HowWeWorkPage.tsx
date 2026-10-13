@@ -1,5 +1,5 @@
 import aboutHero from '../assets/figma/Nuestros.jpg'
-import communityWorkImage from '../assets/figma/blog-featured-forest.jpg'
+import communityWorkImage from '../assets/figma/principios1.jpg'
 import SocialLinks from '../components/SocialLinks'
 import SiteHeader from '../components/SiteHeader'
 import { useLanguage } from '../components/LanguageContext'

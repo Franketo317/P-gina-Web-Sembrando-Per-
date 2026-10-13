@@ -26,23 +26,23 @@ export default function ValuesSection() {
   const { t } = useLanguage()
 
   return (
-    <section className="about-values" id="valores" aria-labelledby="values-title">
-      <div className="about-values__layout">
-        <div className="about-values__gallery" aria-label={t('Acciones de Sembrando Perú')}>
-          <div className="about-values__photo about-values__photo--wide">
+    <section className="home-values" id="valores" aria-labelledby="values-title">
+      <div className="home-values__layout">
+        <div className="home-values__gallery" aria-label={t('Acciones de Sembrando Perú')}>
+          <div className="home-values__photo home-values__photo--wide">
             <img src={childrenImage} alt="Niños participando en actividades educativas" />
             <span>{t(valuesData[0].title)}</span>
           </div>
-          <div className="about-values__photo">
+          <div className="home-values__photo">
             <img src={learningImage} alt="Jornada comunitaria de salud" />
             <span>{t(valuesData[1].title)}</span>
           </div>
-          <div className="about-values__photo">
+          <div className="home-values__photo">
             <img src={forestImage} alt="Equipo de Sembrando Perú en un bosque" />
             <span>{t(valuesData[2].title)}</span>
           </div>
         </div>
-        <div className="about-values__copy">
+        <div className="home-values__copy">
           <h2 id="values-title">{t('Valores')}</h2>
           {valuesData.map((value) => (
             <article key={value.title}>

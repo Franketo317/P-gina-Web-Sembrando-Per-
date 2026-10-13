@@ -27,6 +27,7 @@ import WorkWithUsPage from './pages/WorkWithUsPage'
 import OurTeamPage from './pages/OurTeamPage'
 import ComplaintsMechanismPage from './pages/ComplaintsMechanismPage'
 import ConservationStrategiesPage from './pages/ConservationStrategiesPage'
+import ConservationStrategyDetailPage from './pages/ConservationStrategyDetailPage'
 import './App.css'
 import './pages/NosotrosPage.css'
 
@@ -317,6 +318,11 @@ function App() {
 
   if (currentPath === '/estrategias-conservacion') {
     return <ConservationStrategiesPage />
+  }
+
+  if (currentPath.startsWith('/estrategias-conservacion/')) {
+    const slug = currentPath.slice('/estrategias-conservacion/'.length)
+    return <ConservationStrategyDetailPage slug={slug} />
   }
 
   if (currentPath === '/trabaja-con-nosotros') {

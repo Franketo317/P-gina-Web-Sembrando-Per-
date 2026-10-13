@@ -1,35 +1,11 @@
 import forestBanner from '../assets/figma/blog-featured-forest.jpg'
-import localFamiliesImage from '../assets/figma/blog-featured-community.jpg'
-import communityActivityImage from '../assets/figma/imgBlogImage4.png'
-import volunteerImage from '../assets/figma/imgBlogImage5.png'
 import SiteHeader from '../components/SiteHeader'
+import SocialLinks from '../components/SocialLinks'
 import { useLanguage } from '../components/LanguageContext'
 import { BlogFooter } from './BlogPage'
 import './ConservationStrategiesPage.css'
 
-const strategies = [
-  {
-    title: 'Socio estratégico local',
-    description:
-      'Involucramos directamente a las familias rurales y a los agricultores locales en la ejecución de los proyectos. Así, la comunidad puede participar activamente y dar continuidad a las iniciativas.',
-    image: localFamiliesImage,
-    alt: 'Familias y agricultores de la comunidad',
-  },
-  {
-    title: 'Sostenibilidad integral',
-    description:
-      'Conectamos la reforestación con la calidad de vida de las comunidades. Este enfoque articula la conservación ambiental con la educación comunitaria y la salud y nutrición, incluida la prevención de la anemia infantil.',
-    image: communityActivityImage,
-    alt: 'Actividad comunitaria de Sembrando Perú',
-  },
-  {
-    title: 'Alianzas y voluntariado activo',
-    description:
-      'Movilizamos redes de voluntariado y articulamos esfuerzos con organizaciones del sector privado y civil para ampliar el alcance de las iniciativas y acercar capacitaciones y herramientas a comunidades de la Selva y la Sierra.',
-    image: volunteerImage,
-    alt: 'Voluntariado de Sembrando Perú en el bosque',
-  },
-]
+import { strategies } from './conservationStrategies'
 
 export default function ConservationStrategiesPage() {
   const { t } = useLanguage()
@@ -38,11 +14,12 @@ export default function ConservationStrategiesPage() {
     <div className="home-page conservation-strategies-page">
       <SiteHeader />
       <section
-        className="strategies-hero"
+        className="strategies-hero strategies-hero--overview"
         style={{ backgroundImage: `url(${forestBanner})` }}
         aria-labelledby="strategies-title"
       >
         <h1 id="strategies-title">{t('ESTRATEGIAS DE TRABAJO DE SEMBRANDO PERÚ')}</h1>
+        <SocialLinks placement="banner" />
       </section>
 
       <main>
@@ -52,10 +29,10 @@ export default function ConservationStrategiesPage() {
           </p>
         </section>
 
-        <section className="strategies-section" aria-labelledby="strategies-section-title">
+        <section className="strategies-section" aria-label={t('Nuestras estrategias')}>
           <div className="strategies-section__inner">
             <div className="strategies-grid">
-              {strategies.map((strategy) => (
+              {strategies.map((strategy, index) => (
                 <article className="strategy" key={strategy.title}>
                   <img
                     className="strategy__image"
@@ -64,8 +41,15 @@ export default function ConservationStrategiesPage() {
                     loading="lazy"
                   />
                   <div className="strategy__content">
-                    <h3>{t(strategy.title)}</h3>
+                    <h2>
+                      <a href={`/estrategias-conservacion/${strategy.slug}`}>
+                        {t(`Estrategia ${index + 1}`)}: {t(strategy.title)} <span aria-hidden="true">›</span>
+                      </a>
+                    </h2>
                     <p>{t(strategy.description)}</p>
+                    <a className="strategy__more" href={`/estrategias-conservacion/${strategy.slug}`} aria-label={`${t('Conoce más sobre')} ${t(strategy.title)}`}>
+                      {t('Conoce la estrategia')} <span aria-hidden="true">→</span>
+                    </a>
                   </div>
                 </article>
               ))}
