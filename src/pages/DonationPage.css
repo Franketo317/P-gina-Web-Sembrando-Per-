@@ -253,9 +253,9 @@
   justify-content: center;
   gap: 7px;
   padding: 5px 8px;
-  border-radius: 24px;
+  border-radius: 12px;
   font-family: var(--font-poppins);
-  font-size: 10px;
+  font-size: 12px;
   font-weight: 700;
   line-height: 1.2;
   text-align: center;
@@ -607,6 +607,22 @@
 
   .donation-form {
     right: 6%;
+  }
+}
+
+@media (min-width: 940px) {
+  .donation-section__toggle {
+    left: calc(50% + 398px);
+  }
+
+  .donation-about .donation-section__toggle {
+    left: calc(50% + 170px);
+  }
+
+  .donation-faq__toggle {
+    position: absolute;
+    left: calc(50% + 398px);
+    transform: translateY(-50%);
   }
 }
 
@@ -1030,6 +1046,13 @@
     padding-left: 46px;
   }
 
+  .donation-faq__heading {
+    position: relative;
+    width: min(926px, calc(100vw - 480px));
+    padding-right: 0;
+    box-sizing: border-box;
+  }
+
   .donation-how,
   .donation-impact {
     text-align: left;
@@ -1042,7 +1065,7 @@
   }
 
   .donation-faq__heading {
-    padding-right: 46px;
+    padding-right: 0;
   }
 
   .donation-how__copy,
@@ -1063,5 +1086,9 @@
   .donation-faq {
     width: min(900px, calc(100vw - 480px));
     margin: 56px 0 64px max(64px, calc((100vw - 1452px) / 2) + 24px);
+  }
+
+  .donation-faq__heading {
+    width: min(926px, calc(100vw - 480px));
   }
 }
