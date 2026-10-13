@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from 'react'
 import { createPortal } from 'react-dom'
+import { ChevronRight, Home, Info, LockKeyhole, Mountain, Sprout, TreePine } from 'lucide-react'
 import logo from '../assets/figma/imgImage4.png'
 import heroImage from '../assets/figma/donacion.jpg'
 import impactImage from '../assets/figma/5.jpeg'
@@ -60,45 +61,39 @@ const questions = [
 ]
 
 function DonationForm() {
-  const [amount, setAmount] = useState('30')
-  const [frequency, setFrequency] = useState('Mensual')
-  const [customAmount, setCustomAmount] = useState('')
   const { t } = useLanguage()
 
   return (
     <div className="donation-form" id="aportar">
       <h2>{t('TU CONTRIBUCIÓN')}</h2>
-      <div className="donation-form__frequency" role="group" aria-label={t('Frecuencia de donación')}>
-        {['Mensual', 'Única'].map((option) => (
-          <button
-            className={frequency === option ? 'is-selected' : ''}
-            type="button"
-            key={option}
-            onClick={() => setFrequency(option)}
-          >
-            {t(option)}
-          </button>
-        ))}
+      <div className="donation-form__impact">
+        <strong className="donation-form__tree-count">+1,200</strong>
+        <p className="donation-form__tree-caption">{t('árboles sembrados por voluntarios y aliados en todo el Perú')}</p>
       </div>
-      <fieldset>
-        <legend>{t('Elige el monto')}</legend>
-        {['10', '30', '50', '100'].map((value) => (
-          <label className={amount === value && !customAmount ? 'is-selected' : ''} key={value}>
-            <input
-              type="radio"
-              name="donationAmount"
-              value={value}
-              checked={amount === value && !customAmount}
-              onChange={() => { setAmount(value); setCustomAmount('') }}
-            />
-            <span>S/ {value}</span>
-          </label>
-        ))}
-      </fieldset>
-      <label className="donation-form__custom">
-        <span>{t('Otro monto')}</span>
-        <span className="donation-form__custom-input"><span>S/</span><input aria-label={t('Otro monto en soles')} type="number" min="1" value={customAmount} onChange={(event) => setCustomAmount(event.target.value)} placeholder="0" /></span>
-      </label>
+      <section className="donation-form__examples" aria-labelledby="donation-form-impact-title">
+        <h3 id="donation-form-impact-title">{t('Tu aporte hace esto')}</h3>
+        <ul>
+          <li>
+            <span className="donation-form__impact-icon"><Sprout aria-hidden="true" /></span>
+            <strong>S/ 10</strong>
+            <span>{t('siembra 1 árbol nativo')}</span>
+          </li>
+          <li>
+            <span className="donation-form__impact-icon"><TreePine aria-hidden="true" /></span>
+            <strong>S/ 30</strong>
+            <span>{t('cuida 5 plántulas durante un mes')}</span>
+          </li>
+          <li>
+            <span className="donation-form__impact-icon"><Mountain aria-hidden="true" /></span>
+            <strong>S/ 100</strong>
+            <span>{t('apoya una jornada de reforestación')}</span>
+          </li>
+        </ul>
+      </section>
+      <div className="donation-form__secure-note">
+        <LockKeyhole aria-hidden="true" />
+        <p>{t('Pago seguro con PayPal. Al continuar eliges si tu aporte es mensual o único, y el monto.')}</p>
+      </div>
       <div className="donation-form__payment-methods" aria-label={t('Métodos de pago')}>
         <a
           className="donation-form__paypal"
@@ -198,6 +193,10 @@ function DonationHero() {
         <h1 id="donation-hero-title">{t('ÚNETE AL CAMBIO,')}<br />{t('DONA HOY!')}</h1>
         <p>Tu donación hace posible más acciones de reforestación, educación y desarrollo sostenible en las comunidades del Perú.</p>
       </div>
+      <details className="donation-hero__photo-info">
+        <summary aria-label={t('Información de la imagen')}><Info aria-hidden="true" /></summary>
+        <p>{t('Manos plantando un árbol joven')}</p>
+      </details>
       <div
         ref={formSlotRef}
         className={`donation-form-slot${isFormPinned ? ' is-pinned' : ''}`}
@@ -216,6 +215,24 @@ function DonationHero() {
         document.body,
       )}
     </section>
+  )
+}
+
+function DonationBreadcrumbs() {
+  const { t } = useLanguage()
+
+  return (
+    <nav className="donation-breadcrumbs" aria-label={t('Ruta de navegación')}>
+      <ol>
+        <li>
+          <a href="/" aria-label={t('Inicio')}>
+            <Home aria-hidden="true" />
+          </a>
+        </li>
+        <li><ChevronRight aria-hidden="true" /><a href="/donacion">{t('Donación')}</a></li>
+        <li><ChevronRight aria-hidden="true" /><span aria-current="page">{t('Donación general')}</span></li>
+      </ol>
+    </nav>
   )
 }
 
@@ -331,6 +348,7 @@ export default function DonationPage() {
       <SiteHeader />
       <main>
         <DonationHero />
+        <DonationBreadcrumbs />
         <CollapsibleSection
           title={t('¿POR QUÉ DONAR A SEMBRANDO PERÚ?')}
           titleId="donation-about-title"
@@ -345,7 +363,6 @@ export default function DonationPage() {
         >
           <div className="donation-how__copy">
             <p>{t('Tu donación se destina directamente a nuestras jornadas de reforestación, la producción de plantines en viveros y talleres de educación ambiental. Cada aporte asegura la transparencia y continuidad de nuestros proyectos en las comunidades.')}</p>
-            <p>{t('Juntos hacemos crecer oportunidades, recuperamos ecosistemas y construimos un futuro sostenible para el Perú.')}</p>
           </div>
           <img className="donation-how__image" src={impactImage} alt="Integrantes de Sembrando Perú trabajando junto a la comunidad" />
         </CollapsibleSection>
