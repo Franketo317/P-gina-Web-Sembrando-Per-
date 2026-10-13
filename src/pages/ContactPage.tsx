@@ -7,6 +7,7 @@ import socialInstagram from '../assets/figma/imgSocialIcons1.svg'
 import socialLinkedin from '../assets/figma/imgPlatformLinkedInColorNegative.svg'
 import socialTiktok from '../assets/figma/imgPlatformTikTokColorNegative.svg'
 import socialX from '../assets/figma/imgPlatformXTwitterColorNegative.svg'
+import SocialLinks from '../components/SocialLinks'
 import { BlogFooter } from './BlogPage'
 import './ContactPage.css'
 
@@ -28,6 +29,7 @@ function ContactHero() {
       <div className="contact-hero__content">
         <h1 id="contact-title">{t('CONTÁCTANOS')}</h1>
       </div>
+      <SocialLinks placement="banner" />
     </section>
   )
 }

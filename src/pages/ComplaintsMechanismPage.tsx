@@ -1,4 +1,5 @@
 import SiteHeader from '../components/SiteHeader'
+import SocialLinks from '../components/SocialLinks'
 import { useLanguage } from '../components/LanguageContext'
 import { BlogFooter } from './BlogPage'
 import './InstitutionalPages.css'
@@ -11,6 +12,7 @@ export default function ComplaintsMechanismPage() {
       <SiteHeader />
       <section className="institutional-hero" aria-labelledby="complaints-title">
         <h1 id="complaints-title">{t('Mecanismo de quejas')}</h1>
+        <SocialLinks placement="banner" />
       </section>
       <main className="institutional-content">
         <section className="complaints-content" aria-labelledby="complaints-heading">

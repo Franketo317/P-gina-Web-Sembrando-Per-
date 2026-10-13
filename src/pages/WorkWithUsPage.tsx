@@ -1,5 +1,6 @@
 import { useState, type FormEvent } from 'react'
 import opportunitiesHero from '../assets/figma/imgBuildingBlocks169.jpg'
+import SocialLinks from '../components/SocialLinks'
 import SiteHeader from '../components/SiteHeader'
 import { useLanguage } from '../components/LanguageContext'
 import { BlogFooter } from './BlogPage'
@@ -44,6 +45,7 @@ export default function WorkWithUsPage() {
         aria-labelledby="opportunities-title"
       >
         <h1 id="opportunities-title">{t('CONVOCATORIA')}</h1>
+        <SocialLinks placement="banner" />
       </section>
 
       <main className="opportunities-main">

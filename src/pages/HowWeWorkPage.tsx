@@ -1,5 +1,6 @@
 import aboutHero from '../assets/figma/Nuestros.jpg'
 import communityWorkImage from '../assets/figma/blog-featured-forest.jpg'
+import SocialLinks from '../components/SocialLinks'
 import SiteHeader from '../components/SiteHeader'
 import { useLanguage } from '../components/LanguageContext'
 import { BlogFooter } from './BlogPage'
@@ -57,6 +58,7 @@ export default function HowWeWorkPage() {
         aria-labelledby="work-title"
       >
         <h1 id="work-title">{t('NUESTROS PRINCIPIOS')}</h1>
+        <SocialLinks placement="banner" />
       </section>
       <main>
         <section className="work-intro" aria-label={t('Sobre nuestro enfoque')}>

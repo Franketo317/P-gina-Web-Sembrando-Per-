@@ -56,9 +56,16 @@ const socialLinks: SocialItem[] = [
   },
 ]
 
-export default function SocialLinks() {
+type SocialLinksProps = {
+  placement?: 'banner'
+}
+
+export default function SocialLinks({ placement }: SocialLinksProps) {
   return (
-    <div className="hero-socials" aria-label="Redes sociales">
+    <div
+      className={`hero-socials${placement ? ` hero-socials--${placement}` : ''}`}
+      aria-label="Redes sociales"
+    >
       {socialLinks.map((social) => (
         <a
           href={social.href}

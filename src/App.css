@@ -1792,6 +1792,16 @@
   background: #18261e;
 }
 
+.about-page .about-hero,
+.how-we-work-page .work-hero,
+.work-with-us-page .opportunities-hero,
+.contact-page .contact-hero,
+.institutional-page .institutional-hero {
+  box-sizing: border-box;
+  height: clamp(480px, calc(100vh - 180px), 620px);
+  min-height: 480px;
+}
+
 .home-page .hero-section::after {
   z-index: 1;
   background: linear-gradient(90deg, rgb(0 0 0 / 58%), rgb(0 0 0 / 27%) 62%, rgb(0 0 0 / 12%));
@@ -1865,7 +1875,9 @@
   filter: brightness(1.12);
 }
 
-.home-page .hero-socials {
+.home-page .hero-socials,
+.about-page .hero-socials,
+.contact-page .hero-socials {
   top: 18px;
   right: clamp(20px, 5vw, 84px);
   z-index: 3;
@@ -1873,7 +1885,11 @@
 }
 
 .home-page .hero-socials a,
-.home-page .hero-socials__link {
+.home-page .hero-socials__link,
+.about-page .hero-socials a,
+.about-page .hero-socials__link,
+.contact-page .hero-socials a,
+.contact-page .hero-socials__link {
   width: 36px;
   height: 36px;
   background: rgb(255 255 255 / 76%);
@@ -1882,7 +1898,11 @@
 }
 
 .home-page .hero-socials a:hover,
-.home-page .hero-socials__link:hover {
+.home-page .hero-socials__link:hover,
+.about-page .hero-socials a:hover,
+.about-page .hero-socials__link:hover,
+.contact-page .hero-socials a:hover,
+.contact-page .hero-socials__link:hover {
   background: #fff;
   color: #111;
 }
@@ -1916,6 +1936,15 @@
 }
 
 @media (max-width: 900px) {
+  .about-page .about-hero,
+  .how-we-work-page .work-hero,
+  .work-with-us-page .opportunities-hero,
+  .contact-page .contact-hero,
+  .institutional-page .institutional-hero {
+    height: clamp(500px, 65svh, 580px);
+    min-height: 500px;
+  }
+
   .home-page .hero-section {
     height: clamp(500px, 65svh, 580px);
     min-height: 500px;
@@ -1944,19 +1973,27 @@
     font-size: 18px;
   }
 
-  .home-page .hero-socials {
+  .home-page .hero-socials,
+  .about-page .hero-socials,
+  .contact-page .hero-socials {
     top: 14px;
     right: 14px;
     gap: 7px;
   }
 
   .home-page .hero-socials a,
-  .home-page .hero-socials__link {
+  .home-page .hero-socials__link,
+  .about-page .hero-socials a,
+  .about-page .hero-socials__link,
+  .contact-page .hero-socials a,
+  .contact-page .hero-socials__link {
     width: 30px;
     height: 30px;
   }
 
-  .home-page .hero-socials svg {
+  .home-page .hero-socials svg,
+  .about-page .hero-socials svg,
+  .contact-page .hero-socials svg {
     width: 16px;
     height: 16px;
   }
@@ -1968,6 +2005,15 @@
 }
 
 @media (max-width: 420px) {
+  .about-page .about-hero,
+  .how-we-work-page .work-hero,
+  .work-with-us-page .opportunities-hero,
+  .contact-page .contact-hero,
+  .institutional-page .institutional-hero {
+    height: clamp(500px, 65svh, 560px);
+    min-height: 500px;
+  }
+
   .home-page .hero-section {
     height: clamp(500px, 65svh, 560px);
   }
@@ -1994,5 +2040,17 @@
     width: 11px;
     height: 11px;
     border-width: 2px;
+  }
+}
+
+.hero-socials--banner {
+  top: 88px !important;
+  z-index: 20 !important;
+}
+
+@media (max-width: 1024px) {
+  .hero-socials--banner {
+    top: 80px !important;
+    z-index: 20 !important;
   }
 }

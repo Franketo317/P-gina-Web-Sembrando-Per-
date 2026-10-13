@@ -26,7 +26,7 @@ function AboutHero() {
           <h1 id="about-title">{t('NUESTRA HISTORIA')}</h1>
           <p>{t('Acompañamos a comunidades rurales para proteger los bosques y construir un futuro sostenible.')}</p>
         </div>
-        <SocialLinks />
+        <SocialLinks placement="banner" />
       </section>
     </>
   )

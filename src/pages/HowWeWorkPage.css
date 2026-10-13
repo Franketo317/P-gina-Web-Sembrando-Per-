@@ -51,8 +51,8 @@
 .work-intro p {
   width: min(100%, 780px);
   color: #343a36;
-  font-family: var(--font-league);
-  font-size: clamp(17px, 1.6vw, 20px);
+  font-family: var(--font-avenir);
+  font-size: clamp(18px, 1.75vw, 22px);
   line-height: 1.6;
 }
 
@@ -87,7 +87,7 @@
 .work-community__message p {
   width: min(42%, 460px);
   color: #fff;
-  font-family: var(--font-league);
+  font-family: var(--font-avenir);
   font-size: clamp(22px, 2.5vw, 30px);
   line-height: 1.5;
   text-align: center;
