@@ -7,7 +7,6 @@ import blogImage2 from './assets/figma/imgBlogImage2.png'
 import blogImage3 from './assets/figma/imgBlogImage3.png'
 import blogImage4 from './assets/figma/imgBlogImage4.png'
 import blogImage5 from './assets/figma/imgBlogImage5.png'
-import ellipse from './assets/figma/imgEllipse.svg'
 import heroImage from './assets/figma/img71.png'
 import educationHeroImage from './assets/figma/1.jpg'
 import healthHeroImage from './assets/figma/2.jpg'
@@ -27,6 +26,9 @@ import WorkWithUsPage from './pages/WorkWithUsPage'
 import OurTeamPage from './pages/OurTeamPage'
 import ComplaintsMechanismPage from './pages/ComplaintsMechanismPage'
 import ConservationStrategiesPage from './pages/ConservationStrategiesPage'
+import ReforestationPage from './pages/ReforestationPage'
+import EducationPage from './pages/EducationPage'
+import HealthPage from './pages/HealthPage'
 import ConservationStrategyDetailPage from './pages/ConservationStrategyDetailPage'
 import './App.css'
 import './pages/NosotrosPage.css'
@@ -99,7 +101,7 @@ const articles = [
   {
     category: 'MEDIO AMBIENTE',
     date: 'Marzo 12, 2026',
-    title: 'Sembrando futuro: juntos por nuestros bosque',
+    title: 'Comunidades y agricultores se unen para restaurar los bosques de la Amazonía peruana',
     description:
       'Conoce nuestras acciones de reforestación y el impacto que generamos en las comunidades.',
     image: blogImage,
@@ -109,7 +111,7 @@ const articles = [
   {
     category: 'VOLUNTARIADO',
     date: 'Febrero 28, 2026',
-    title: 'Convocatoria de voluntariado 2026',
+    title: 'Voluntariado: sumamos esfuerzos por la conservación y el bienestar de las comunidades',
     description:
       'Sé parte del cambio y únete a nuestras próximas actividades y proyectos sociales.',
     image: blogImage1,
@@ -119,7 +121,7 @@ const articles = [
   {
     category: 'COMUNIDAD',
     date: 'Enero 15, 2026',
-    title: 'Transformando vidas en nuestras comunidades',
+    title: 'Educación y salud: un futuro con más oportunidades para los niños y sus familias',
     description:
       'Conoce las historias y acciones que impulsamos para mejorar la vida de niños y familias.',
     image: blogImage2,
@@ -190,13 +192,9 @@ function ProgramsSection() {
 }
 
 function ArticleCard({
-  category,
-  date,
   title,
-  description,
   image,
   alt,
-  arrow,
 }: (typeof articles)[number]) {
   const { t } = useLanguage()
 
@@ -204,17 +202,7 @@ function ArticleCard({
     <article className="article-card">
       <img className="article-card__image" src={image} alt={alt} />
       <div className="article-card__body">
-        <div className="article-card__meta">
-          <span>{t(category)}</span>
-          <img src={ellipse} alt="" />
-          <time>{date}</time>
-        </div>
-        <h3>{t(title)}</h3>
-        <p>{t(description)}</p>
-        <a className="article-card__link" href="/blog">
-          {t('Leer artículo')}
-          <img src={arrow} alt="" />
-        </a>
+        <h3><a href="/blog">{t(title)}</a></h3>
       </div>
     </article>
   )
@@ -318,6 +306,18 @@ function App() {
 
   if (currentPath === '/estrategias-conservacion') {
     return <ConservationStrategiesPage />
+  }
+
+  if (currentPath === '/reforestacion') {
+    return <ReforestationPage />
+  }
+
+  if (currentPath === '/educacion') {
+    return <EducationPage />
+  }
+
+  if (currentPath === '/salud') {
+    return <HealthPage />
   }
 
   if (currentPath.startsWith('/estrategias-conservacion/')) {

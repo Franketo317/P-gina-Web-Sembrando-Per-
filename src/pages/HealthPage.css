@@ -1,0 +1,21 @@
+.health-hero {
+  background-position: center 45%;
+}
+
+.health-intro p + p {
+  margin-top: 28px;
+}
+
+.health-challenges {
+  background-position: center 45%;
+}
+
+@media (max-width: 760px) {
+  .health-hero {
+    background-position: 60% center;
+  }
+
+  .health-intro p + p {
+    margin-top: 22px;
+  }
+}

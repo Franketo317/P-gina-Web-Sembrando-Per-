@@ -70,21 +70,21 @@ const searchDatabase: SearchItem[] = [
     title: 'Sembrando Árboles (Reforestación)',
     category: 'Nuestro Trabajo',
     description: 'Restauración de árboles nativos y protección de la biodiversidad en bosques de la Amazonía.',
-    href: '/#programas',
+    href: '/reforestacion',
     keywords: ['arboles', 'sembrando arboles', 'reforestacion', 'bosques', 'biodiversidad', 'plantacion', 'viveros', 'plantines'],
   },
   {
     title: 'Sembrando Educación (Alfabetización)',
     category: 'Nuestro Trabajo',
     description: 'Promovemos la igualdad social y el aprendizaje en comunidades rurales y amazónicas.',
-    href: '/#programas',
+    href: '/educacion',
     keywords: ['educacion', 'sembrando educacion', 'alfabetizacion', 'ninos', 'escuelas', 'aprendizaje', 'talleres'],
   },
   {
     title: 'Sembrando Salud (Lucha contra la anemia)',
     category: 'Nuestro Trabajo',
     description: 'Prevención de la anemia infantil y cuidado de la salud integral en niños de Selva y Sierra.',
-    href: '/#programas',
+    href: '/salud',
     keywords: ['salud', 'sembrando salud', 'anemia', 'infantil', 'nutricion', 'alimentacion', 'campanas medicas'],
   },
   {
@@ -323,13 +323,13 @@ export default function SiteHeader() {
             <a href="/estrategias-conservacion" role="menuitem" onClick={closeAll}>
               {t('Estrategias de conservación')}
             </a>
-            <a href="/#programas-medio-ambiente" role="menuitem" onClick={closeAll}>
+            <a href="/reforestacion" role="menuitem" onClick={closeAll}>
               {t('Reforestación')}
             </a>
-            <a href="/#programas-educacion" role="menuitem" onClick={closeAll}>
+            <a href="/educacion" role="menuitem" onClick={closeAll}>
               {t('Educación')}
             </a>
-            <a href="/#programas-salud" role="menuitem" onClick={closeAll}>
+            <a href="/salud" role="menuitem" onClick={closeAll}>
               {t('Salud')}
             </a>
           </div>
