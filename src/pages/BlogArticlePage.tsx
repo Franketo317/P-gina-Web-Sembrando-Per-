@@ -92,7 +92,7 @@ export default function BlogArticlePage({ slug }: Props) {
       <SiteHeader />
       {article ? (
         <main className="blog-article">
-          <a className="blog-article__back" href="/blog#articulos">{t('← Volver a Últimos artículos')}</a>
+          <a className="blog-article__back" href="/publicaciones#articulos">{t('← Volver a Últimos artículos')}</a>
           <article>
             <header className="blog-article__header">
               <div className="blog-meta"><span>{t(article.category)}</span><i /><time>{article.date}</time></div>
@@ -114,13 +114,13 @@ export default function BlogArticlePage({ slug }: Props) {
             <div className="blog-related__grid">
               {related.map((item) => (
                 <article className="blog-related-card" key={item.slug}>
-                  <a className="blog-related-card__image-link" href={`/blog/articulo/${item.slug}`} aria-label={`${t('Leer')} ${t(item.title)}`}>
+                  <a className="blog-related-card__image-link" href={`/publicaciones/articulo/${item.slug}`} aria-label={`${t('Leer')} ${t(item.title)}`}>
                     <img src={item.image} alt={item.alt} />
                   </a>
                   <div className="blog-related-card__content">
                     <div className="blog-meta"><span>{t(item.category)}</span><i /><time>{item.date}</time></div>
                     <h3>{t(item.title)}</h3>
-                    <a href={`/blog/articulo/${item.slug}`}>{t('Leer artículo')} <img src={arrowRight} alt="" /></a>
+                    <a href={`/publicaciones/articulo/${item.slug}`}>{t('Leer artículo')} <img src={arrowRight} alt="" /></a>
                   </div>
                 </article>
               ))}
@@ -130,7 +130,7 @@ export default function BlogArticlePage({ slug }: Props) {
       ) : (
         <main className="blog-article blog-article--not-found">
           <h1>{t('Artículo no encontrado')}</h1>
-          <a className="blog-article__back" href="/blog#articulos">{t('Volver a Últimos artículos')}</a>
+          <a className="blog-article__back" href="/publicaciones#articulos">{t('Volver a Últimos artículos')}</a>
         </main>
       )}
       <BlogFooter />

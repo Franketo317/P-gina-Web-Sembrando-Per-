@@ -3,6 +3,7 @@ import logo from '../assets/figma/imgImage4.png'
 import arrowRight from '../assets/figma/imgArrowRight.svg'
 import LanguageSwitcher from './LanguageSwitcher'
 import { useLanguage } from './LanguageContext'
+import { getPublications } from '../pages/publications'
 import './HomeHeader.css'
 
 type SearchItem = {
@@ -14,6 +15,13 @@ type SearchItem = {
 }
 
 const searchDatabase: SearchItem[] = [
+  ...getPublications('es').map((publication) => ({
+    title: publication.title,
+    category: 'Publicaciones',
+    description: publication.description,
+    href: `/publicaciones/articulo/${publication.slug}`,
+    keywords: [publication.format, publication.category, 'publicaciones', 'guia', 'materiales'],
+  })),
   // SEMBRANDO PERÚ (Institucional)
   {
     title: '¿Quiénes somos? / Nosotros',
@@ -95,54 +103,61 @@ const searchDatabase: SearchItem[] = [
     keywords: ['voluntariado', 'unete', 'comunidad', 'voluntarios', 'jornadas', 'participacion'],
   },
 
-  // INFÓRMATE (Blog y artículos)
+  // INFÓRMATE
   {
-    title: 'Blog de Noticias y Artículos',
+    title: 'Publicaciones',
     category: 'Infórmate',
     description: 'Historias de impacto, avances ambientales y novedades de nuestras actividades en el Perú.',
-    href: '/blog',
+    href: '/publicaciones',
     keywords: ['blog', 'noticias', 'articulos', 'historias', 'novedades', 'publicaciones'],
   },
   {
     title: 'Últimas Noticias de Impacto',
     category: 'Infórmate',
     description: 'Conoce las acciones recientes de reforestación, salud y educación en nuestras comunidades.',
-    href: '/#noticias',
+    href: '/noticias',
     keywords: ['ultimas noticias', 'noticias', 'reciente', 'impacto'],
+  },
+  {
+    title: 'Campañas',
+    category: 'Infórmate',
+    description: 'Conoce nuestras iniciativas de reforestación, educación y salud.',
+    href: '/campanas',
+    keywords: ['campanas', 'iniciativas', 'reforestacion', 'educacion', 'salud'],
   },
   {
     title: 'Artículo: Sembrando futuro por nuestros bosques',
     category: 'Infórmate',
     description: 'Conoce nuestras acciones de reforestación y el impacto ambiental generado en la Amazonía.',
-    href: '/blog/articulo/sembrando-futuro-juntos-por-nuestros-bosques',
+    href: '/publicaciones/articulo/sembrando-futuro-juntos-por-nuestros-bosques',
     keywords: ['sembrando futuro', 'bosques', 'madre de dios', 'medio ambiente', 'plantas nativas'],
   },
   {
     title: 'Artículo: Transformando vidas en nuestras comunidades',
     category: 'Infórmate',
     description: 'Historias y acciones para mejorar la vida de niños y familias en zonas rurales.',
-    href: '/blog/articulo/transformando-vidas-comunidades',
+    href: '/publicaciones/articulo/transformando-vidas-comunidades',
     keywords: ['transformando vidas', 'comunidad', 'familias', 'desarrollo', 'historias'],
   },
   {
     title: 'Artículo: Jornada de reforestación en Madre de Dios',
     category: 'Infórmate',
     description: 'Voluntarios y familias unidas para restaurar áreas degradadas en la selva peruana.',
-    href: '/blog/articulo/jornada-reforestacion-madre-de-dios',
+    href: '/publicaciones/articulo/jornada-reforestacion-madre-de-dios',
     keywords: ['jornada', 'madre de dios', 'voluntariado 2026', 'siembra'],
   },
   {
     title: 'Artículo: Guardianas del bosque: historias locales',
     category: 'Infórmate',
     description: 'Mujeres líderes que protegen la biodiversidad y transmiten saberes ancestrales en la Amazonía.',
-    href: '/blog/articulo/guardianas-del-bosque-historias-locales',
+    href: '/publicaciones/articulo/guardianas-del-bosque',
     keywords: ['guardianas', 'mujeres', 'liderazgo', 'conservacion', 'saberes'],
   },
   {
     title: 'Artículo: Prevención de anemia: nuevos enfoques',
     category: 'Infórmate',
     description: 'Estrategias comunitarias y atención médica para combatir la desnutrición y anemia infantil.',
-    href: '/blog/articulo/prevencion-anemia-nuevos-enfoques',
+    href: '/publicaciones/articulo/prevencion-anemia-nuevos-enfoques',
     keywords: ['anemia', 'prevencion anemia', 'salud infantil', 'nutricion'],
   },
 
@@ -252,7 +267,7 @@ export default function SiteHeader() {
 
   const currentPath = typeof window !== 'undefined' ? window.location.pathname.replace(/\/+$/, '') || '/' : '/'
   const isSembrandoPeruActive = currentPath === '/nosotros' || currentPath.startsWith('/nosotros') || currentPath === '/contacto' || currentPath === '/como-trabajamos' || currentPath === '/trabaja-con-nosotros' || currentPath === '/nuestro-equipo' || currentPath === '/mecanismo-de-quejas'
-  const isInformateActive = currentPath === '/blog' || currentPath.startsWith('/blog')
+  const isInformateActive = currentPath === '/blog' || currentPath.startsWith('/blog/') || currentPath === '/publicaciones' || currentPath.startsWith('/publicaciones/') || currentPath === '/noticias' || currentPath === '/campanas'
 
   return (
     <header className="about-header site-header-root" ref={headerRef}>
@@ -352,20 +367,14 @@ export default function SiteHeader() {
             </svg>
           </button>
           <div className="nav-dropdown__menu" role="menu">
-            <a href="/blog" role="menuitem" onClick={closeAll}>
-              {t('Blog Principal')}
+            <a href="/noticias" role="menuitem" onClick={closeAll}>
+              {t('NOTICIAS')}
             </a>
-            <a href="/#noticias" role="menuitem" onClick={closeAll}>
-              {t('Últimas Noticias')}
+            <a href="/publicaciones" role="menuitem" onClick={closeAll}>
+              {t('PUBLICACIONES')}
             </a>
-            <a href="/blog/articulo/sembrando-futuro-juntos-por-nuestros-bosques" role="menuitem" onClick={closeAll}>
-              {t('Reforestación en la Amazonía')}
-            </a>
-            <a href="/blog/articulo/transformando-vidas-comunidades" role="menuitem" onClick={closeAll}>
-              {t('Historias de Impacto')}
-            </a>
-            <a href="/blog/articulo/prevencion-anemia-nuevos-enfoques" role="menuitem" onClick={closeAll}>
-              {t('Prevención de Anemia')}
+            <a href="/campanas" role="menuitem" onClick={closeAll}>
+              {t('CAMPAÑAS')}
             </a>
           </div>
         </div>

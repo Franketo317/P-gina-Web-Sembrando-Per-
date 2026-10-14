@@ -7,7 +7,7 @@ type Props = {
   compact?: boolean
 }
 
-export default function LanguageSwitcher({ className, compact = false }: Props) {
+export default function LanguageSwitcher({ className }: Props) {
   const { language, toggleLanguage } = useLanguage()
   const [menuOpen, setMenuOpen] = useState(false)
   const menuId = useId()

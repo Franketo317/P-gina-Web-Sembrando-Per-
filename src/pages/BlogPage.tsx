@@ -8,7 +8,6 @@ import blogReforestation from '../assets/figma/blog-article-reforestation.jpg'
 import blogCommunity from '../assets/figma/blog-article-community.jpg'
 import blogHealth from '../assets/figma/blog-article-health.jpg'
 import logo from '../assets/figma/imgImage4.png'
-import LanguageSwitcher from '../components/LanguageSwitcher'
 import SiteHeader from '../components/SiteHeader'
 import { useLanguage } from '../components/LanguageContext'
 import SocialLinks from '../components/SocialLinks'
@@ -18,7 +17,6 @@ import socialInstagramReal from '../assets/figma/imgSocialIcons1.svg'
 import socialTiktok from '../assets/figma/imgPlatformTikTokColorNegative.svg'
 import socialX from '../assets/figma/imgPlatformXTwitterColorNegative.svg'
 
-import greenLine from '../assets/figma/imgGreenLine.svg'
 import blogHeroBackground from '../assets/figma/about-values-background.png'
 import './BlogPage.css'
 
@@ -30,11 +28,12 @@ const categories = [
   { label: 'Salud', count: 5 },
 ]
 
-const featuredArticles = [
+export const featuredArticles = [
   {
     slug: 'sembrando-futuro-juntos-por-nuestros-bosques',
     category: 'MEDIO AMBIENTE',
     date: 'Marzo 12, 2026',
+    publishedAt: '2026-03-12',
     title: 'Sembrando futuro: juntos por nuestros bosque',
     description: 'Conoce nuestras acciones de reforestación y el impacto que generamos en las comunidades.',
     image: blogFeatureForest,
@@ -45,6 +44,7 @@ const featuredArticles = [
     slug: 'transformando-vidas-comunidades',
     category: 'COMUNIDAD',
     date: 'Enero 15, 2026',
+    publishedAt: '2026-01-15',
     title: 'Transformando vidas en nuestras comunidades',
     description: 'Conoce las historias y acciones que impulsamos para mejorar la vida de niños y familias.',
     image: blogFeatureCommunity,
@@ -53,11 +53,12 @@ const featuredArticles = [
   },
 ]
 
-const articles = [
+export const articles = [
   {
     slug: 'jornada-reforestacion-madre-de-dios',
     category: 'VOLUNTARIADO',
     date: '12 Oct, 2024',
+    publishedAt: '2024-10-12',
     title: 'Jornada de reforestación en Madre de Dios',
     description: 'Un fin de semana lleno de esfuerzo y esperanza, donde más de 50 voluntarios se unieron para restaurar áreas.',
     image: blogReforestation,
@@ -67,6 +68,7 @@ const articles = [
     slug: 'guardianas-del-bosque',
     category: 'COMUNIDAD',
     date: '05 Oct, 2024',
+    publishedAt: '2024-10-05',
     title: 'Guardianas del bosque: historias locales',
     description: 'Conoce a las mujeres que lideran los esfuerzos de conservación y educación ambiental en sus propias comunidades.',
     image: blogCommunity,
@@ -76,6 +78,7 @@ const articles = [
     slug: 'prevencion-anemia-nuevos-enfoques',
     category: 'SALUD',
     date: '28 Sep, 2024',
+    publishedAt: '2024-09-28',
     title: 'Prevención de anemia: nuevos enfoques',
     description: 'Nuestra reciente campaña médica ha introducido métodos innovadores para combatir la malnutrición infantil.',
     image: blogHealth,
@@ -117,7 +120,7 @@ export function BlogFooter() {
           </div>
           <div className="blog-footer__column">
             <h3>{t('Navegación')}</h3>
-            <a href="/">{t('Inicio')}</a><a href="/nosotros">{t('Nosotros')}</a><a href="/blog">{t('Blog')}</a><a href="/contacto">{t('Contáctanos')}</a>
+            <a href="/">{t('Inicio')}</a><a href="/nosotros">{t('Nosotros')}</a><a href="/publicaciones">{t('Publicaciones')}</a><a href="/contacto">{t('Contáctanos')}</a>
           </div>
           <div className="blog-footer__column blog-footer__contact">
             <h3>{t('Contacto')}</h3>
@@ -146,7 +149,7 @@ export function BlogFooter() {
 }
 
 
-export function BlogHero() {
+export function BlogHero({ title = 'PUBLICACIONES' }: { title?: string }) {
   const { t } = useLanguage()
 
   return (
@@ -156,7 +159,7 @@ export function BlogHero() {
     >
       <div style={{ position: 'absolute', inset: 0, background: 'rgba(2, 115, 77, 0.4)', zIndex: 1 }} />
       <SocialLinks />
-      <h1>{t('"Historias que inspiran, acciones que transforman"')}</h1>
+      <h1>{t(title)}</h1>
     </section>
   )
 }
@@ -201,7 +204,7 @@ export default function BlogPage() {
                     <div className="blog-meta"><span>{t(article.category)}</span><i /><time>{article.date}</time></div>
                     <h3>{t(article.title)}</h3>
                     <p>{t(article.description)}</p>
-                    <a href={`/blog/articulo/${article.slug}`}>{t('Leer artículo')} <img src={article.arrow} alt="" /></a>
+                    <a href={`/publicaciones/articulo/${article.slug}`}>{t('Leer artículo')} <img src={article.arrow} alt="" /></a>
                   </div>
                 </article>
               ))}
@@ -223,7 +226,7 @@ export default function BlogPage() {
                     <div className="blog-meta"><span>{t(article.category)}</span><i /><time>{article.date}</time></div>
                     <h3>{t(article.title)}</h3>
                     <p>{t(article.description)}</p>
-                    <a href={`/blog/articulo/${article.slug}`}>{t('Leer más')} <img src={arrowRight} alt="" /></a>
+                    <a href={`/publicaciones/articulo/${article.slug}`}>{t('Leer más')} <img src={arrowRight} alt="" /></a>
                   </div>
                 </article>
               )) : <p className="blog-empty">{t('No hay artículos para este filtro.')}</p>}

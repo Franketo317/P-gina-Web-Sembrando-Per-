@@ -1909,21 +1909,15 @@
   filter: brightness(1.12);
 }
 
-.home-page .hero-socials,
-.about-page .hero-socials,
-.contact-page .hero-socials {
+:is(.home-page, .about-page, .contact-page, .news-page, .campaigns-page) .hero-socials {
   top: 18px;
   right: clamp(20px, 5vw, 84px);
   z-index: 3;
   gap: 10px;
 }
 
-.home-page .hero-socials a,
-.home-page .hero-socials__link,
-.about-page .hero-socials a,
-.about-page .hero-socials__link,
-.contact-page .hero-socials a,
-.contact-page .hero-socials__link {
+:is(.home-page, .about-page, .contact-page, .news-page, .campaigns-page) .hero-socials a,
+:is(.home-page, .about-page, .contact-page, .news-page, .campaigns-page) .hero-socials__link {
   width: 36px;
   height: 36px;
   background: rgb(255 255 255 / 76%);
@@ -1931,12 +1925,8 @@
   box-shadow: 0 1px 5px rgb(0 0 0 / 20%);
 }
 
-.home-page .hero-socials a:hover,
-.home-page .hero-socials__link:hover,
-.about-page .hero-socials a:hover,
-.about-page .hero-socials__link:hover,
-.contact-page .hero-socials a:hover,
-.contact-page .hero-socials__link:hover {
+:is(.home-page, .about-page, .contact-page, .news-page, .campaigns-page) .hero-socials a:hover,
+:is(.home-page, .about-page, .contact-page, .news-page, .campaigns-page) .hero-socials__link:hover {
   background: #fff;
   color: #111;
 }
@@ -2007,27 +1997,19 @@
     font-size: 18px;
   }
 
-  .home-page .hero-socials,
-  .about-page .hero-socials,
-  .contact-page .hero-socials {
+  :is(.home-page, .about-page, .contact-page, .news-page, .campaigns-page) .hero-socials {
     top: 14px;
     right: 14px;
     gap: 7px;
   }
 
-  .home-page .hero-socials a,
-  .home-page .hero-socials__link,
-  .about-page .hero-socials a,
-  .about-page .hero-socials__link,
-  .contact-page .hero-socials a,
-  .contact-page .hero-socials__link {
+  :is(.home-page, .about-page, .contact-page, .news-page, .campaigns-page) .hero-socials a,
+  :is(.home-page, .about-page, .contact-page, .news-page, .campaigns-page) .hero-socials__link {
     width: 30px;
     height: 30px;
   }
 
-  .home-page .hero-socials svg,
-  .about-page .hero-socials svg,
-  .contact-page .hero-socials svg {
+  :is(.home-page, .about-page, .contact-page, .news-page, .campaigns-page) .hero-socials svg {
     width: 16px;
     height: 16px;
   }

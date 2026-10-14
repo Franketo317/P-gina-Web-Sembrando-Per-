@@ -16,9 +16,13 @@ import SiteHeader from './components/SiteHeader'
 import { CommunitySignupForm, PeruOfficeInfo } from './components/CommunitySignup'
 import ValuesSection from './components/ValuesSection'
 import NosotrosPage from './pages/NosotrosPage'
-import BlogPage from './pages/BlogPage'
+import PublicationsPage from './pages/PublicationsPage'
+import PublicationDetailPage from './pages/PublicationDetailPage'
+import { isPublicationSlug } from './pages/publications'
 import { BlogFooter } from './pages/BlogPage'
 import BlogArticlePage from './pages/BlogArticlePage'
+import CampaignsPage from './pages/CampaignsPage'
+import NewsPage from './pages/NewsPage'
 import ContactPage from './pages/ContactPage'
 import DonationPage from './pages/DonationPage'
 import HowWeWorkPage from './pages/HowWeWorkPage'
@@ -202,7 +206,7 @@ function ArticleCard({
     <article className="article-card">
       <img className="article-card__image" src={image} alt={alt} />
       <div className="article-card__body">
-        <h3><a href="/blog">{t(title)}</a></h3>
+        <h3><a href="/publicaciones">{t(title)}</a></h3>
       </div>
     </article>
   )
@@ -287,12 +291,21 @@ function App() {
     return <ContactPage />
   }
 
-  if (currentPath === '/blog') {
-    return <BlogPage />
+  if (currentPath === '/publicaciones' || currentPath === '/blog') {
+    return <PublicationsPage />
   }
 
-  if (currentPath.startsWith('/blog/articulo/')) {
-    const slug = decodeURIComponent(currentPath.slice('/blog/articulo/'.length))
+  if (currentPath === '/noticias') {
+    return <NewsPage />
+  }
+
+  if (currentPath === '/campanas') {
+    return <CampaignsPage />
+  }
+
+  if (currentPath.startsWith('/publicaciones/articulo/') || currentPath.startsWith('/blog/articulo/')) {
+    const slug = decodeURIComponent(currentPath.split('/articulo/')[1])
+    if (isPublicationSlug(slug)) return <PublicationDetailPage slug={slug} />
     return <BlogArticlePage slug={slug} />
   }
 
@@ -364,7 +377,7 @@ function App() {
                 {articles.map((article) => <ArticleCard key={article.title} {...article} />)}
               </div>
 
-              <a className="button button--green community-section__more" href="/blog">{t('Ver más')}</a>
+              <a className="button button--green community-section__more" href="/publicaciones">{t('Ver más')}</a>
             </div>
           </div>
         </section>
