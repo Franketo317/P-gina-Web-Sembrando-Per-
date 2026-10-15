@@ -66,13 +66,30 @@
 .news-empty { padding: 48px 24px; background: #f5f7f5; text-align: center; }
 .news-visually-hidden { position: absolute; width: 1px; height: 1px; padding: 0; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
 
+.news-page--news .news-item h2 { font-family: var(--font-display); font-size: clamp(24px, 2.3vw, 30px); font-weight: 500; line-height: 1.25; }
+.news-page--news .news-item time { color: #929292; font-size: 13px; font-weight: 600; }
+.news-page--news .news-search__submit,
+.news-page--news .news-more button { background: #383838; font-family: var(--font-display); font-weight: 500; }
+.news-page--news .news-search__submit { font-size: 14px; }
+.news-page--news .news-more button { font-size: 21px; }
+.news-page--news .news-search__submit:hover,
+.news-page--news .news-more button:hover { background: #202020; }
+.news-page--news .news-search__submit svg,
+.news-page--news .news-more button svg { display: none; }
+
+@media (min-width: 801px) {
+  .news-page--news .news-search { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+  .news-page--news .news-item { grid-template-columns: 240px minmax(0, 1fr); gap: 20px; }
+  .news-page--news .news-item__image img { height: 160px; }
+}
+
 .publications-page .news-hero { background-position: center 40%; }
 .publications-page .news-content { padding-top: 64px; scroll-margin-top: 100px; }
 .publications-page .news-item { grid-template-columns: 200px minmax(0, 1fr); gap: 32px; padding: 28px 0; }
 .publications-page .news-item:first-child { padding-top: 0; }
 .publications-page .news-item__image { display: block; width: 100%; text-decoration: none; }
 .publications-page .news-item__body { display: flex; flex-direction: column; justify-content: flex-start; padding-top: 12px; }
-.publications-page .news-item h2 { margin-bottom: 16px; }
+.publications-page .news-item h2 { margin-bottom: 16px; font-family: var(--font-display); font-size: clamp(26px, 2.4vw, 32px); font-weight: 500; line-height: 1.25; }
 .publication-library-note { margin: 0 0 24px; color: #68716c; font-size: 13px; line-height: 1.6; }
 .publication-format { margin-bottom: 12px; color: #02734d; font-size: 13px; font-weight: 700; letter-spacing: .04em; text-transform: uppercase; }
 

@@ -22,6 +22,7 @@ import { isPublicationSlug } from './pages/publications'
 import { BlogFooter } from './pages/BlogPage'
 import BlogArticlePage from './pages/BlogArticlePage'
 import CampaignsPage from './pages/CampaignsPage'
+import CampaignDetailPage from './pages/CampaignDetailPage'
 import NewsPage from './pages/NewsPage'
 import ContactPage from './pages/ContactPage'
 import DonationPage from './pages/DonationPage'
@@ -301,6 +302,10 @@ function App() {
 
   if (currentPath === '/campanas') {
     return <CampaignsPage />
+  }
+
+  if (currentPath.startsWith('/campanas/')) {
+    return <CampaignDetailPage slug={currentPath.slice('/campanas/'.length)} />
   }
 
   if (currentPath.startsWith('/publicaciones/articulo/') || currentPath.startsWith('/blog/articulo/')) {

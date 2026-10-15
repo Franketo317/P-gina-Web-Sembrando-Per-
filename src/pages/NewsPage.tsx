@@ -7,7 +7,7 @@ import { getPublications } from './publications'
 import { useLanguage } from '../components/LanguageContext'
 import { articles, featuredArticles, BlogFooter } from './BlogPage'
 import forestImage from '../assets/figma/about-values-background.png'
-import publicationsImage from '../assets/figma/blog-featured-forest.jpg'
+import publicationsImage from '../assets/figma/publicaciones.jpg'
 import './NewsPage.css'
 
 const news = [...featuredArticles, ...articles].sort((a, b) => b.publishedAt.localeCompare(a.publishedAt))
@@ -47,7 +47,7 @@ export function ArticleListingPage({ section }: { section: 'noticias' | 'publica
   }
 
   return (
-    <div className={`blog-page news-page${isPublications ? ' publications-page' : ''}`}>
+    <div className={`blog-page news-page${isPublications ? ' publications-page' : ' news-page--news'}`}>
       <SiteHeader />
       <main>
         <section className="news-hero" style={{ backgroundImage: `url(${isPublications ? publicationsImage : forestImage})` }} aria-labelledby="news-title">
@@ -111,7 +111,7 @@ export function ArticleListingPage({ section }: { section: 'noticias' | 'publica
                 <div className="news-item__body">
                   {'format' in article && <span className="publication-format">{article.format}</span>}
                   <h2><a href={`/publicaciones/articulo/${article.slug}`}>{t(article.title)}</a></h2>
-                  <p>{t(article.description)}</p>
+                  {isPublications && <p>{t(article.description)}</p>}
                   <time dateTime={article.publishedAt}>{new Intl.DateTimeFormat(locale, { day: '2-digit', month: 'short', year: 'numeric', timeZone: 'UTC' }).format(new Date(`${article.publishedAt}T12:00:00Z`))}</time>
                 </div>
               </article>

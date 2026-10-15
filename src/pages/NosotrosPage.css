@@ -153,7 +153,7 @@
   margin-top: 20px;
   color: #fff;
   font-family: var(--font-avenir);
-  font-size: clamp(18px, 2vw, 24px);
+  font-size: clamp(17px, 1.7vw, 20px);
   line-height: 1.5;
   text-shadow: 0 2px 14px rgb(0 0 0 / 45%);
 }
@@ -735,7 +735,7 @@
   .about-hero__content p {
     max-width: 480px;
     margin-top: 14px;
-    font-size: 18px;
+    font-size: 17px;
   }
 
   .about-mission-strip {
