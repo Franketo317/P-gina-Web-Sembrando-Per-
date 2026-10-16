@@ -161,9 +161,10 @@
   margin: 0;
   padding: 0 16px;
   color: #fff;
-  font-family: var(--font-display);
-  font-size: 15px;
+  font-family: 'Bebas Neue', var(--font-display);
+  font-size: 22px;
   font-weight: 400;
+  text-transform: uppercase;
 }
 
 :is(.home-page, .about-page, .blog-page, .contact-page, .donation-page) > header.site-header-root .about-header__language .language-globe {
@@ -188,9 +189,9 @@
   justify-content: center;
   padding: 0 14px;
   color: #fff;
-  font-family: var(--font-display);
-  font-size: 15px;
-  font-weight: 500;
+  font-family: 'Bebas Neue', var(--font-display);
+  font-size: 18px;
+  font-weight: 400;
   line-height: 1.15;
   text-align: center;
   text-decoration: none;
@@ -330,12 +331,12 @@
   :is(.home-page, .about-page, .blog-page, .contact-page, .donation-page) > header.site-header-root .header-action-btn {
     min-width: 78px;
     padding: 0 9px;
-    font-size: 13px;
+    font-size: 16px;
   }
 
   :is(.home-page, .about-page, .blog-page, .contact-page, .donation-page) > header.site-header-root .about-header__language {
     padding: 0 10px;
-    font-size: 13px;
+    font-size: 18px;
   }
 }
 

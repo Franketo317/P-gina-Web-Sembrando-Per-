@@ -26,6 +26,7 @@ import CampaignDetailPage from './pages/CampaignDetailPage'
 import NewsPage from './pages/NewsPage'
 import ContactPage from './pages/ContactPage'
 import DonationPage from './pages/DonationPage'
+import JoinPage from './pages/JoinPage'
 import HowWeWorkPage from './pages/HowWeWorkPage'
 import WorkWithUsPage from './pages/WorkWithUsPage'
 import OurTeamPage from './pages/OurTeamPage'
@@ -286,6 +287,10 @@ function App() {
 
   if (currentPath === '/donacion') {
     return <DonationPage />
+  }
+
+  if (currentPath === '/sumate') {
+    return <JoinPage />
   }
 
   if (currentPath === '/contacto') {

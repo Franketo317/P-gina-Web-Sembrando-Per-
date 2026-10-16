@@ -384,8 +384,8 @@ export default function SiteHeader() {
           <a className="about-navigation__btn about-navigation__btn--donate" href="/donacion" onClick={closeAll}>
             {t('DONACIÓN')} <img src={arrowRight} alt="" />
           </a>
-          <a className="about-navigation__btn about-navigation__btn--volunteer" href="/contacto" onClick={closeAll}>
-            {t('VOLUNTARIADO')} <img src={arrowRight} alt="" />
+          <a className="about-navigation__btn about-navigation__btn--volunteer" href="/sumate" onClick={closeAll}>
+            {t('SÚMATE')} <img src={arrowRight} alt="" />
           </a>
           <a className="about-navigation__btn about-navigation__btn--alliances" href="/contacto" onClick={closeAll}>
             {t('ALIANZAS')} <img src={arrowRight} alt="" />
@@ -433,8 +433,8 @@ export default function SiteHeader() {
           <a className="header-action-btn header-action-btn--donate" href="/donacion" onClick={closeAll}>
             {t('DONACIÓN')}
           </a>
-          <a className="header-action-btn header-action-btn--volunteer" href="/contacto" onClick={closeAll}>
-            {t('VOLUNTARIADO')}
+          <a className="header-action-btn header-action-btn--volunteer" href="/sumate" onClick={closeAll}>
+            {t('SÚMATE')}
           </a>
           <a className="header-action-btn header-action-btn--alliances" href="/contacto" onClick={closeAll}>
             {t('ALIANZAS')}
