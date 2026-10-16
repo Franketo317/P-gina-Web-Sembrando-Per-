@@ -1,0 +1,4 @@
+project_id = "sembrando-peru"
+
+[functions.submit-join]
+verify_jwt = false

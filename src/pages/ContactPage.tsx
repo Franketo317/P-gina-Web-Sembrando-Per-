@@ -1,4 +1,5 @@
 import SiteHeader from '../components/SiteHeader'
+import PrivacyPolicy from '../components/PrivacyPolicy'
 import { useLanguage } from '../components/LanguageContext'
 import { CommunitySignupForm, PeruOfficeInfo } from '../components/CommunitySignup'
 import heroImage from '../assets/figma/contact-hero.png'
@@ -81,6 +82,7 @@ export default function ContactPage() {
             ))}
           </div>
         </section>
+        <PrivacyPolicy />
       </main>
       <BlogFooter />
     </div>
