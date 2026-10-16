@@ -1,0 +1,25 @@
+.publication-detail { width: min(1100px, calc(100% - 64px)); margin: 64px auto 96px; }
+.publication-detail__header { max-width: 920px; margin-bottom: 48px; }
+.publication-detail__header h1 { margin: 20px 0; font-family: var(--font-league); font-size: clamp(36px, 4vw, 56px); font-weight: 400; line-height: 1.15; }
+.publication-detail__layout { display: grid; grid-template-columns: 240px minmax(0, 1fr); gap: 64px; align-items: start; }
+.publication-detail__body { max-width: none; margin: 0; }
+.publication-detail__body > p:first-child { margin-top: 0; }
+.publication-detail__body section { scroll-margin-top: 110px; }
+.publication-detail__contents { display: grid; gap: 16px; margin-top: 32px; }
+.publication-detail__contents h2 { margin: 0; font-size: 18px; }
+.publication-detail__contents a { color: #02734d; font-size: 14px; line-height: 1.5; text-underline-offset: 4px; }
+.publication-detail__related { margin-top: 64px; padding-top: 32px; border-top: 1px solid #e1e3e4; }
+.publication-detail__related h2 { font-family: var(--font-league); font-size: 32px; font-weight: 400; }
+.publication-detail__related > div { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; }
+.publication-detail__related a { display: flex; flex-direction: column; align-items: flex-start; gap: 12px; padding: 24px; background: #f4f6f2; color: #174331; text-decoration: none; }
+.publication-detail__related a:hover strong { text-decoration: underline; }
+.publication-detail__related strong { font-size: 18px; line-height: 1.5; }
+.publication-detail__related span { font-size: 13px; }
+.publication-detail-page a:focus-visible { outline: 3px solid #89ae38; outline-offset: 4px; }
+@media (max-width: 800px) { .publication-detail__layout { grid-template-columns: 190px minmax(0, 1fr); gap: 32px; } }
+@media (max-width: 600px) {
+  .publication-detail { width: calc(100% - 32px); margin: 40px auto 64px; }
+  .publication-detail__layout, .publication-detail__related > div { grid-template-columns: 1fr; }
+  .publication-detail__aside { max-width: 240px; }
+  .publication-detail__header { margin-bottom: 32px; }
+}

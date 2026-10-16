@@ -4,6 +4,7 @@ import { useLanguage } from './LanguageContext'
 
 type Props = {
   className: string
+  compact?: boolean
 }
 
 export default function LanguageSwitcher({ className }: Props) {
@@ -41,7 +42,7 @@ export default function LanguageSwitcher({ className }: Props) {
       <button
         className="language-switcher"
         type="button"
-        aria-label="Seleccionar idioma"
+        aria-label={language === 'en' ? 'Cambiar idioma a español' : 'Cambiar idioma a inglés'}
         aria-haspopup="menu"
         aria-expanded={menuOpen}
         aria-controls={menuId}

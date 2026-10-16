@@ -1,0 +1,28 @@
+.health-hero {
+  align-items: flex-end;
+  background-position: center top;
+}
+
+.health-hero::before {
+  background: linear-gradient(0deg, rgb(0 40 27 / 55%), rgb(0 40 27 / 5%) 65%);
+}
+
+.health-intro p + p {
+  margin-top: 28px;
+}
+
+.health-challenges {
+  background-position: center 12%;
+}
+
+@media (max-width: 760px) {
+  .health-hero {
+    padding-top: 80px;
+    padding-bottom: 36px;
+    background-position: center top;
+  }
+
+  .health-intro p + p {
+    margin-top: 22px;
+  }
+}
