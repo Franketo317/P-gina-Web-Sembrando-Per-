@@ -1,13 +1,45 @@
 import { useState, type FormEvent } from 'react'
 import { useLanguage } from './LanguageContext'
+import { supabase } from '../supabaseClient' // 👈 Verifica que la ruta a tu cliente de Supabase sea correcta
 
 export function CommunitySignupForm() {
   const [submitted, setSubmitted] = useState(false)
+  const [loading, setLoading] = useState(false)
+  const [errorMessage, setErrorMessage] = useState<string | null>(null)
   const { t } = useLanguage()
 
-  function handleSubmit(event: FormEvent<HTMLFormElement>) {
+  async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault()
-    setSubmitted(true)
+    setLoading(true)
+    setErrorMessage(null)
+
+    // Extraemos los valores de los inputs usando sus atributos "name"
+    const form = event.currentTarget
+    const formData = new FormData(form)
+
+    const payload = {
+      first_name: formData.get('firstName') as string,
+      last_name: formData.get('lastName') as string,
+      email: formData.get('email') as string,
+      country: formData.get('country') as string,
+      consent: formData.get('consent') === 'on',
+      tipo_formulario: 'registro_comunidad' // 👈 Etiqueta para identificar el origen
+    }
+
+    // Insertar en la tabla de Supabase (asegúrate de que el nombre coincida)
+    const { error } = await supabase
+      .from('comunidad_registros')
+      .insert([payload])
+
+    setLoading(false)
+
+    if (error) {
+      console.error('Error al guardar en Supabase:', error.message)
+      setErrorMessage(t('Hubo un error al procesar tu solicitud. Inténtalo nuevamente.'))
+    } else {
+      setSubmitted(true)
+      form.reset() // Limpia los campos del formulario
+    }
   }
 
   return (
@@ -41,8 +73,11 @@ export function CommunitySignupForm() {
         </span>
       </label>
       <div className="community-form__submit">
-        <button className="button button--green" type="submit">{t('Unirme al cambio')}</button>
+        <button className="button button--green" type="submit" disabled={loading}>
+          {loading ? t('Enviando...') : t('Unirme al cambio')}
+        </button>
         {submitted && <p role="status">{t('Gracias por unirte a nuestra comunidad.')}</p>}
+        {errorMessage && <p role="alert" className="error-text">{errorMessage}</p>}
       </div>
     </form>
   )
