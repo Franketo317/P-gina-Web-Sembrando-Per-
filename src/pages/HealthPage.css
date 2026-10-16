@@ -1,5 +1,10 @@
 .health-hero {
-  background-position: center 45%;
+  align-items: flex-end;
+  background-position: center top;
+}
+
+.health-hero::before {
+  background: linear-gradient(0deg, rgb(0 40 27 / 55%), rgb(0 40 27 / 5%) 65%);
 }
 
 .health-intro p + p {
@@ -7,12 +12,14 @@
 }
 
 .health-challenges {
-  background-position: center 45%;
+  background-position: center 12%;
 }
 
 @media (max-width: 760px) {
   .health-hero {
-    background-position: 60% center;
+    padding-top: 80px;
+    padding-bottom: 36px;
+    background-position: center top;
   }
 
   .health-intro p + p {
