@@ -190,6 +190,41 @@
   height: 36px;
 }
 
+.contact-privacy {
+  padding: 48px 22px 64px;
+  background: #f3f6ef;
+}
+
+.contact-privacy__details {
+  max-width: 1000px;
+  margin: 0 auto;
+  border-top: 1px solid #b9cabb;
+  border-bottom: 1px solid #b9cabb;
+  scroll-margin-top: 100px;
+}
+
+.contact-privacy summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  padding: 24px 0;
+  list-style: none;
+  cursor: pointer;
+  color: #02734d;
+}
+
+.contact-privacy summary::-webkit-details-marker { display: none; }
+.contact-privacy summary:focus-visible { outline: 3px solid #78aa2d; outline-offset: 4px; }
+.contact-privacy h2 { margin: 0; font: 400 clamp(24px, 3vw, 32px) var(--font-display); }
+.contact-privacy__toggle { flex-shrink: 0; font: 400 30px var(--font-display); }
+.contact-privacy__toggle::before { content: '+'; }
+.contact-privacy__details[open] .contact-privacy__toggle::before { content: '−'; }
+.contact-privacy__content { padding-bottom: 24px; color: #25372f; }
+.contact-privacy__content p { margin: 0 0 20px; font: 400 18px/1.6 var(--font-league); }
+.contact-privacy__content p:last-child { margin-bottom: 0; }
+.contact-privacy__content a { color: #02734d; overflow-wrap: anywhere; text-underline-offset: 4px; }
+
 @media (max-width: 760px) {
   .contact-hero {
     min-height: 340px;

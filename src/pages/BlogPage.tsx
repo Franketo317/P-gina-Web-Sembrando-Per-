@@ -142,7 +142,7 @@ export function BlogFooter() {
       </div>
       <div className="blog-footer__legal">
         <span>{t('© 2026 Sembrando. Todos los derechos reservados.')}</span>
-        <a href="#privacidad">{t('Políticas de privacidad')}</a>
+        <a href="/contacto#privacidad">{t('Políticas de privacidad')}</a>
       </div>
     </footer>
   )

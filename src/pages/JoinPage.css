@@ -9,6 +9,11 @@
 .join-button { display: inline-flex; align-items: center; justify-content: center; gap: 12px; padding: 15px 24px; border: 0; background: #02734d; color: white; font: 400 17px var(--font-display); text-decoration: none; cursor: pointer; }
 .join-hero .join-button { background: #f9a22f; color: #173526; }
 .join-button:hover { filter: brightness(1.1); }
+.join-button:disabled { opacity: 0.55; cursor: not-allowed; filter: none; }
+.join-captcha { min-height: 65px; width: 100%; }
+.join-captcha > div { min-width: 0; }
+.join-captcha p { margin-top: 8px; font-size: 15px; }
+.join-captcha button { margin-top: 8px; padding: 8px 12px; border: 1px solid #02734d; background: white; color: #02734d; font: inherit; cursor: pointer; }
 .join-page main :is(a, button, input, select, textarea):focus-visible { outline: 3px solid #78aa2d; outline-offset: 4px; }
 .join-section { width: min(100% - 48px, 1100px); margin: 0 auto; padding: 64px 0; }
 .join-section h2 { margin: 0 0 20px; font-size: 30px; line-height: 1.25; }
@@ -36,6 +41,7 @@
 .join-form [aria-invalid='true'] { border-color: #b42318; }
 .join-form .join-form__error { display: block; margin: 0; color: #a51d16; font-size: 14px; line-height: 1.4; }
 .join-form__consent + .join-form__error { margin-top: 8px; }
+.join-form__privacy-link { display: inline-block; margin: 8px 0 0 26px; color: #02734d; font-size: 15px; text-underline-offset: 4px; }
 .join-form__wide, .join-form__consent, .join-form__status { grid-column: 1 / -1; }
 .join-form label.join-form__consent { flex-direction: row; align-items: flex-start; font-size: 15px; line-height: 1.5; }
 .join-form__consent input { flex-shrink: 0; width: 18px; height: 18px; margin-top: 3px; accent-color: #02734d; }

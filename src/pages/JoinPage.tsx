@@ -1,6 +1,8 @@
-import { useState, type FormEvent } from 'react'
+import { useRef, useState, type FormEvent } from 'react'
 import { BookOpen, HeartHandshake, Megaphone, Sprout, ArrowRight } from 'lucide-react'
 import SiteHeader from '../components/SiteHeader'
+import Turnstile from '../components/Turnstile'
+import { joinProductionOrigin, submitJoin } from '../lib/submitJoin'
 import SocialLinks from '../components/SocialLinks'
 import { useLanguage } from '../components/LanguageContext'
 import { BlogFooter } from './BlogPage'
@@ -18,7 +20,7 @@ const areas = [
 const questions = [
   {
     question: '¿Cómo puedo sumarme a Sembrando Perú?',
-    answer: 'Completa el formulario con tus datos, intereses y disponibilidad. Pulsa “Preparar mi solicitud” y envía el mensaje desde tu aplicación de correo a contacto@sembrandoperu.org.',
+    answer: 'Completa el formulario con tus datos, intereses y disponibilidad, realiza la verificación de seguridad y pulsa “Enviar mi solicitud”. Verás una confirmación cuando tu solicitud se haya registrado.',
   },
   {
     question: '¿Necesito experiencia previa para participar?',
@@ -38,17 +40,24 @@ const questions = [
   },
   {
     question: '¿Completar el formulario confirma mi participación?',
-    answer: 'El formulario prepara una presentación por correo; debes enviar ese mensaje para hacer llegar tu interés al equipo. Esto no reserva una plaza ni confirma una incorporación: la participación se coordina según las oportunidades disponibles.',
+    answer: 'El formulario registra tu interés en participar. Esto no reserva una plaza ni confirma una incorporación: la participación se coordina según las oportunidades disponibles.',
   },
   {
-    question: '¿Qué hago si no se abre mi aplicación de correo?',
+    question: '¿Qué hago si no puedo enviar el formulario?',
     answer: 'Escríbenos directamente a contacto@sembrandoperu.org con el asunto “Quiero sumarme a Sembrando Perú”. Incluye tu nombre, ciudad o país, área de interés y disponibilidad para que el equipo conozca tu propuesta.',
   },
 ]
 
 export default function JoinPage() {
   const { t } = useLanguage()
-  const [prepared, setPrepared] = useState(false)
+  const [submitted, setSubmitted] = useState(false)
+  const [submitting, setSubmitting] = useState(false)
+  const sending = useRef(false)
+  const [captchaToken, setCaptchaToken] = useState('')
+  const [captchaReset, setCaptchaReset] = useState(0)
+  const [submissionError, setSubmissionError] = useState('')
+  const siteKey = import.meta.env.VITE_TURNSTILE_SITE_KEY?.trim() ?? ''
+  const onProductionDomain = window.location.origin === joinProductionOrigin
   const [errors, setErrors] = useState<JoinErrors>({})
   const [touched, setTouched] = useState<Partial<Record<JoinField, boolean>>>({})
   const [attempted, setAttempted] = useState(false)
@@ -67,6 +76,7 @@ export default function JoinPage() {
   function fieldProps(field: JoinField) {
     return {
       id: `join-${field}`,
+      disabled: submitting,
       'aria-invalid': Boolean(errors[field]),
       'aria-describedby': errors[field] ? `join-${field}-error` : undefined,
     }
@@ -76,31 +86,43 @@ export default function JoinPage() {
     return errors[field] ? <span className="join-form__error" id={`join-${field}-error`}>{t(errors[field]!)}</span> : null
   }
 
-  function handleSubmit(event: FormEvent<HTMLFormElement>) {
+  async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault()
-    const data = new FormData(event.currentTarget)
+    if (sending.current || submitted) return
+    const form = event.currentTarget
+    const data = new FormData(form)
     const nextErrors = validateJoinForm(data)
     setErrors(nextErrors)
     setAttempted(true)
-    setPrepared(false)
+    setSubmissionError('')
     const firstInvalid = joinFields.find(field => nextErrors[field])
     if (firstInvalid) {
       const input = event.currentTarget.elements.namedItem(firstInvalid)
       if (input instanceof HTMLElement) input.focus()
       return
     }
-    const body = [
-      'Hola, equipo de Sembrando Perú. Me gustaría sumarme a sus iniciativas.',
-      '',
-      ...[
-        ['Nombre', 'name'], ['Correo electrónico', 'email'], ['Teléfono', 'phone'],
-        ['Ciudad / País', 'city'], ['Área de interés', 'area'], ['Disponibilidad', 'availability'],
-        ['Cómo me gustaría participar', 'message'],
-      ].map(([label, key]) => `${label}: ${String(data.get(key) || '').trim() || 'No indicado'}`),
-      '', 'Autorizo el uso de estos datos para responder a mi solicitud de participación.',
-    ].join('\n')
-    window.location.href = `mailto:contacto@sembrandoperu.org?subject=${encodeURIComponent('Quiero sumarme a Sembrando Perú')}&body=${encodeURIComponent(body)}`
-    setPrepared(true)
+    if (!onProductionDomain || !captchaToken) {
+      setSubmissionError('Completa la verificación de seguridad antes de enviar.')
+      return
+    }
+    sending.current = true
+    setSubmitting(true)
+    try {
+      await submitJoin(data, captchaToken)
+      setSubmitted(true)
+      form.reset()
+      setTouched({})
+      setAttempted(false)
+    } catch (error) {
+      setSubmissionError(error instanceof Error && error.message === 'captcha_invalid'
+        ? 'La verificación venció o no es válida. Complétala nuevamente.'
+        : 'No pudimos registrar tu solicitud. Intenta nuevamente o escríbenos a contacto@sembrandoperu.org.')
+    } finally {
+      sending.current = false
+      setSubmitting(false)
+      setCaptchaToken('')
+      setCaptchaReset(value => value + 1)
+    }
   }
 
   return (
@@ -137,7 +159,7 @@ export default function JoinPage() {
             <h2 id="join-steps">{t('¿CÓMO SUMARTE?')}</h2>
             <ol>
               <li><span aria-hidden="true">01</span><div><h3>{t('Cuéntanos sobre ti')}</h3><p>{t('Completa tus datos, intereses y disponibilidad en el formulario.')}</p></div></li>
-              <li><span aria-hidden="true">02</span><div><h3>{t('Envía tu presentación')}</h3><p>{t('Se abrirá tu aplicación de correo con tu mensaje listo para enviar al equipo.')}</p></div></li>
+              <li><span aria-hidden="true">02</span><div><h3>{t('Envía tu presentación')}</h3><p>{t('Completa la verificación de seguridad y envía tu solicitud desde esta página.')}</p></div></li>
               <li><span aria-hidden="true">03</span><div><h3>{t('Exploremos oportunidades')}</h3><p>{t('La participación se coordina según las actividades disponibles y tu perfil.')}</p></div></li>
             </ol>
           </div>
@@ -148,12 +170,12 @@ export default function JoinPage() {
             <p className="join-eyebrow">{t('EL PRIMER PASO EMPIEZA CONTIGO')}</p>
             <h2 id="join-form-title">{t('QUIERO SUMARME')}</h2>
             <p>{t('Déjanos conocerte. No necesitas tener una propuesta definida: tu interés en participar es un buen comienzo.')}</p>
-            <p>{t('Los campos con * son obligatorios. Al continuar, se abrirá tu aplicación de correo; tendrás que enviar el mensaje para completar tu solicitud.')}</p>
+            <p>{t('Los campos con * son obligatorios. Completa la verificación de seguridad para enviar tu solicitud.')}</p>
             <a href="mailto:contacto@sembrandoperu.org">contacto@sembrandoperu.org</a>
           </div>
-          <form className="join-form" noValidate onSubmit={handleSubmit}
+          <form className="join-form" noValidate onSubmit={handleSubmit} aria-busy={submitting}
             onBlur={event => validateField(event.target, event.currentTarget, true)}
-            onChange={event => { setPrepared(false); validateField(event.target, event.currentTarget) }}>
+            onChange={event => { setSubmitted(false); setSubmissionError(''); validateField(event.target, event.currentTarget) }}>
             <label>{t('Nombre completo')} *<input {...fieldProps('name')} name="name" autoComplete="name" required maxLength={120} />{fieldError('name')}</label>
             <label>{t('Correo electrónico')} *<input {...fieldProps('email')} name="email" type="email" autoComplete="email" required maxLength={180} />{fieldError('email')}</label>
             <label>{t('Teléfono (opcional)')}<input {...fieldProps('phone')} name="phone" type="tel" autoComplete="tel" maxLength={30} />{fieldError('phone')}</label>
@@ -161,10 +183,17 @@ export default function JoinPage() {
             <label>{t('Área de interés')} *<select {...fieldProps('area')} name="area" defaultValue="" required><option value="" disabled>{t('Selecciona un área')}</option>{areas.map(({ title }) => <option key={title} value={title}>{t(title)}</option>)}<option value="Por definir">{t('Quiero conocer las opciones')}</option></select>{fieldError('area')}</label>
             <label>{t('Disponibilidad')} *<select {...fieldProps('availability')} name="availability" defaultValue="" required><option value="" disabled>{t('Selecciona una opción')}</option>{joinAvailability.map(value => <option key={value} value={value}>{t(value)}</option>)}</select>{fieldError('availability')}</label>
             <label className="join-form__wide">{t('¿Cómo te gustaría participar? (opcional)')}<textarea {...fieldProps('message')} name="message" rows={4} maxLength={1000} placeholder={t('Cuéntanos sobre tus intereses, conocimientos o experiencia.')} />{fieldError('message')}</label>
-            <div className="join-form__wide"><label className="join-form__consent"><input {...fieldProps('consent')} type="checkbox" name="consent" required /><span>{t('Autorizo a Sembrando Perú a utilizar los datos de este formulario para responder a mi solicitud y contactarme sobre oportunidades de participación.')} *</span></label>{fieldError('consent')}</div>
+            <div className="join-form__wide"><label className="join-form__consent"><input {...fieldProps('consent')} type="checkbox" name="consent" required /><span>{t('Autorizo a Sembrando Perú a utilizar los datos de este formulario para responder a mi solicitud y contactarme sobre oportunidades de participación.')} *</span></label><a className="join-form__privacy-link" href="/contacto#privacidad" target="_blank" rel="noopener noreferrer">{t('Políticas de privacidad')} ({t('Se abre en otra pestaña')})</a>{fieldError('consent')}</div>
             {attempted && Object.values(errors).some(Boolean) && <p className="join-form__error join-form__wide" role="alert">{t('Revisa los campos señalados antes de continuar.')}</p>}
-            <div className="join-form__wide"><button className="join-button" type="submit">{t('PREPARAR MI SOLICITUD')} <ArrowRight size={18} aria-hidden="true" /></button></div>
-            {prepared && <p className="join-form__status" role="status">{t('Tu mensaje está preparado. Envíalo desde tu aplicación de correo para completar la solicitud. Si no se abrió, puedes escribirnos directamente a contacto@sembrandoperu.org.')}</p>}
+            {!submitted && <div className="join-form__wide">
+              {onProductionDomain ? <>
+                <p>{t('Verificación de seguridad')}</p>
+                <Turnstile siteKey={siteKey} resetKey={captchaReset} onToken={setCaptchaToken} />
+              </> : <p>{t('El envío de solicitudes está disponible en nuestro sitio oficial.')} <a href={`${joinProductionOrigin}/sumate#participar`}>{t('Ir al sitio oficial')}</a></p>}
+            </div>}
+            {submissionError && <p className="join-form__error join-form__wide" role="alert">{t(submissionError)}</p>}
+            <div className="join-form__wide"><button className="join-button" type="submit" disabled={!onProductionDomain || !captchaToken || submitting || submitted}>{t(submitting ? 'ENVIANDO…' : 'ENVIAR MI SOLICITUD')} <ArrowRight size={18} aria-hidden="true" /></button></div>
+            {submitted && <p className="join-form__status" role="status">{t('Tu solicitud se registró correctamente. Gracias por tu interés en sumarte a Sembrando Perú.')}</p>}
           </form>
         </section>
         <section className="join-faq" aria-labelledby="join-faq-title">

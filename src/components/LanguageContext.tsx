@@ -3,6 +3,23 @@ import { createContext, useContext, useEffect, useState, type ReactNode } from '
 export type Language = 'es' | 'en'
 
 const translations: Record<string, string> = {
+  'Verificación de seguridad': 'Security verification',
+  'La verificación no está disponible en este momento. Intenta nuevamente más tarde.': 'Verification is currently unavailable. Please try again later.',
+  'Reintentar verificación': 'Retry verification',
+  'Completa la verificación de seguridad antes de enviar.': 'Complete the security verification before submitting.',
+  'La verificación venció o no es válida. Complétala nuevamente.': 'Verification has expired or is invalid. Please complete it again.',
+  'No pudimos registrar tu solicitud. Intenta nuevamente o escríbenos a contacto@sembrandoperu.org.': 'We could not save your application. Try again or email contacto@sembrandoperu.org.',
+  'ENVIANDO…': 'SENDING…',
+  'ENVIAR MI SOLICITUD': 'SEND MY APPLICATION',
+  'Tu solicitud se registró correctamente. Gracias por tu interés en sumarte a Sembrando Perú.': 'Your application was saved successfully. Thank you for your interest in joining Sembrando Perú.',
+  'Completa la verificación de seguridad y envía tu solicitud desde esta página.': 'Complete the security verification and submit your application from this page.',
+  'Los campos con * son obligatorios. Completa la verificación de seguridad para enviar tu solicitud.': 'Fields marked * are required. Complete the security verification to submit your application.',
+  'Completa el formulario con tus datos, intereses y disponibilidad, realiza la verificación de seguridad y pulsa “Enviar mi solicitud”. Verás una confirmación cuando tu solicitud se haya registrado.': 'Fill in the form with your details, interests and availability, complete the security verification and select “Send my application”. You will see a confirmation once your application has been saved.',
+  'El formulario registra tu interés en participar. Esto no reserva una plaza ni confirma una incorporación: la participación se coordina según las oportunidades disponibles.': 'The form records your interest in participating. This does not reserve a place or confirm acceptance: participation is coordinated according to available opportunities.',
+  '¿Qué hago si no puedo enviar el formulario?': 'What if I cannot submit the form?',
+  'El envío de solicitudes está disponible en nuestro sitio oficial.': 'Applications can be submitted on our official website.',
+  'Ir al sitio oficial': 'Go to the official website',
+  'Se abre en otra pestaña': 'Opens in a new tab',
   'RESOLVEMOS TUS DUDAS': 'YOUR QUESTIONS ANSWERED',
   '¿Cómo puedo sumarme a Sembrando Perú?': 'How can I get involved with Sembrando Perú?',
   'Completa el formulario con tus datos, intereses y disponibilidad. Pulsa “Preparar mi solicitud” y envía el mensaje desde tu aplicación de correo a contacto@sembrandoperu.org.': 'Fill in the form with your details, interests and availability. Select “Prepare my application” and send the message from your email app to contacto@sembrandoperu.org.',
