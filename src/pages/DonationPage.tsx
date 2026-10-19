@@ -167,7 +167,7 @@ function DonationHero() {
       <div className="donation-hero__shade" />
       <SocialLinks />
       <div className="donation-hero__content">
-        <h1 id="donation-hero-title">{t('ÚNETE AL CAMBIO,')}<br />{t('DONA HOY!')}</h1>
+        <h1 id="donation-hero-title">{t('ÚNETE AL CAMBIO,')} {t('DONA HOY!')}</h1>
         <p>Tu donación hace posible más acciones de reforestación, educación y desarrollo sostenible en las comunidades del Perú.</p>
       </div>
       <details className="donation-hero__photo-info">

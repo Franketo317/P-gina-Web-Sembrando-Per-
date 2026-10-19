@@ -2,12 +2,13 @@ import { useRef, useState, type FormEvent } from 'react'
 import { BookOpen, HeartHandshake, Megaphone, Sprout, ArrowRight } from 'lucide-react'
 import SiteHeader from '../components/SiteHeader'
 import Turnstile from '../components/Turnstile'
-import { joinProductionOrigin, submitJoin } from '../lib/submitJoin'
+import { joinProductionOrigin } from '../lib/submitJoin'
 import SocialLinks from '../components/SocialLinks'
 import { useLanguage } from '../components/LanguageContext'
 import { BlogFooter } from './BlogPage'
 import heroImage from '../assets/figma/5.jpeg'
 import { joinAvailability, joinFields, validateJoinForm, type JoinErrors, type JoinField } from './joinValidation'
+import { supabase } from '../supabaseClient' // 👈 Ajusta la ruta a tu cliente si está en otro nivel
 import './JoinPage.css'
 
 const areas = [
@@ -57,7 +58,11 @@ export default function JoinPage() {
   const [captchaReset, setCaptchaReset] = useState(0)
   const [submissionError, setSubmissionError] = useState('')
   const siteKey = import.meta.env.VITE_TURNSTILE_SITE_KEY?.trim() ?? ''
-  const onProductionDomain = window.location.origin === joinProductionOrigin
+  
+  // Detección de entorno local
+  const isDev = import.meta.env.DEV || window.location.hostname === 'localhost'
+  const onProductionDomain = window.location.origin === joinProductionOrigin || isDev
+  
   const [errors, setErrors] = useState<JoinErrors>({})
   const [touched, setTouched] = useState<Partial<Record<JoinField, boolean>>>({})
   const [attempted, setAttempted] = useState(false)
@@ -89,34 +94,57 @@ export default function JoinPage() {
   async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault()
     if (sending.current || submitted) return
+    
     const form = event.currentTarget
     const data = new FormData(form)
     const nextErrors = validateJoinForm(data)
     setErrors(nextErrors)
     setAttempted(true)
     setSubmissionError('')
+
     const firstInvalid = joinFields.find(field => nextErrors[field])
     if (firstInvalid) {
       const input = event.currentTarget.elements.namedItem(firstInvalid)
       if (input instanceof HTMLElement) input.focus()
       return
     }
-    if (!onProductionDomain || !captchaToken) {
+
+    if (!isDev && (!onProductionDomain || !captchaToken)) {
       setSubmissionError('Completa la verificación de seguridad antes de enviar.')
       return
     }
+
     sending.current = true
     setSubmitting(true)
+
     try {
-      await submitJoin(data, captchaToken)
+      // Inserción en Supabase
+      const { error } = await supabase.from('solicitudes_sumate').insert([
+        {
+          name: data.get('name') as string,
+          email: data.get('email') as string,
+          phone: (data.get('phone') as string) || null,
+          city: data.get('city') as string,
+          area: data.get('area') as string,
+          availability: data.get('availability') as string,
+          message: (data.get('message') as string) || null,
+          consent: data.get('consent') === 'on',
+          tipo_formulario: 'solicitud_sumate'
+        }
+      ])
+
+      if (error) {
+        console.error('Detalle del error de Supabase:', JSON.stringify(error, null, 2))
+        throw error
+      }
+
       setSubmitted(true)
       form.reset()
       setTouched({})
       setAttempted(false)
     } catch (error) {
-      setSubmissionError(error instanceof Error && error.message === 'captcha_invalid'
-        ? 'La verificación venció o no es válida. Complétala nuevamente.'
-        : 'No pudimos registrar tu solicitud. Intenta nuevamente o escríbenos a contacto@sembrandoperu.org.')
+      console.error('Error enviando formulario de sumate:', error)
+      setSubmissionError('No pudimos registrar tu solicitud. Intenta nuevamente o escríbenos a contacto@sembrandoperu.org.')
     } finally {
       sending.current = false
       setSubmitting(false)
@@ -185,17 +213,37 @@ export default function JoinPage() {
             <label className="join-form__wide">{t('¿Cómo te gustaría participar? (opcional)')}<textarea {...fieldProps('message')} name="message" rows={4} maxLength={1000} placeholder={t('Cuéntanos sobre tus intereses, conocimientos o experiencia.')} />{fieldError('message')}</label>
             <div className="join-form__wide"><label className="join-form__consent"><input {...fieldProps('consent')} type="checkbox" name="consent" required /><span>{t('Autorizo a Sembrando Perú a utilizar los datos de este formulario para responder a mi solicitud y contactarme sobre oportunidades de participación.')} *</span></label><a className="join-form__privacy-link" href="/contacto#privacidad" target="_blank" rel="noopener noreferrer">{t('Políticas de privacidad')} ({t('Se abre en otra pestaña')})</a>{fieldError('consent')}</div>
             {attempted && Object.values(errors).some(Boolean) && <p className="join-form__error join-form__wide" role="alert">{t('Revisa los campos señalados antes de continuar.')}</p>}
-            {!submitted && <div className="join-form__wide">
-              {onProductionDomain ? <>
-                <p>{t('Verificación de seguridad')}</p>
-                <Turnstile siteKey={siteKey} resetKey={captchaReset} onToken={setCaptchaToken} />
-              </> : <p>{t('El envío de solicitudes está disponible en nuestro sitio oficial.')} <a href={`${joinProductionOrigin}/sumate#participar`}>{t('Ir al sitio oficial')}</a></p>}
-            </div>}
+            
+            {!submitted && (
+              <div className="join-form__wide">
+                {!isDev && onProductionDomain ? (
+                  <>
+                    <p>{t('Verificación de seguridad')}</p>
+                    <Turnstile siteKey={siteKey} resetKey={captchaReset} onToken={setCaptchaToken} />
+                  </>
+                ) : !isDev ? (
+                  <p>
+                    {t('El envío de solicitudes está disponible en nuestro sitio oficial.')}{' '}
+                    <a href={`${joinProductionOrigin}/sumate#participar`}>{t('Ir al sitio oficial')}</a>
+                  </p>
+                ) : null}
+              </div>
+            )}
+
             {submissionError && <p className="join-form__error join-form__wide" role="alert">{t(submissionError)}</p>}
-            <div className="join-form__wide"><button className="join-button" type="submit" disabled={!onProductionDomain || !captchaToken || submitting || submitted}>{t(submitting ? 'ENVIANDO…' : 'ENVIAR MI SOLICITUD')} <ArrowRight size={18} aria-hidden="true" /></button></div>
+            <div className="join-form__wide">
+              <button 
+                className="join-button" 
+                type="submit" 
+                disabled={submitting || submitted || (!isDev && (!onProductionDomain || !captchaToken))}
+              >
+                {t(submitting ? 'ENVIANDO…' : 'ENVIAR MI SOLICITUD')} <ArrowRight size={18} aria-hidden="true" />
+              </button>
+            </div>
             {submitted && <p className="join-form__status" role="status">{t('Tu solicitud se registró correctamente. Gracias por tu interés en sumarte a Sembrando Perú.')}</p>}
           </form>
         </section>
+
         <section className="join-faq" aria-labelledby="join-faq-title">
           <div className="join-section">
             <p className="join-eyebrow">{t('RESOLVEMOS TUS DUDAS')}</p>
