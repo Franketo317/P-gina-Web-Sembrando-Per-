@@ -9,6 +9,15 @@
   font-family: var(--font-avenir);
 }
 
+@media (min-width: 621px) {
+  .donation-page:not(.alliances-page) .donation-about p,
+  .donation-page:not(.alliances-page) .donation-how__copy p,
+  .donation-page:not(.alliances-page) .donation-impact__intro,
+  .donation-page:not(.alliances-page) .donation-hero__content p {
+    font-size: 17px;
+  }
+}
+
 .donation-header__donate--active {
   position: relative;
 }

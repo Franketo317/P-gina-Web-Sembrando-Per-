@@ -1141,6 +1141,18 @@
   accent-color: #02734d;
 }
 
+.community-form__captcha {
+  grid-column: 1 / -1;
+  min-width: 0;
+  width: min(100%, 400px);
+  margin: 0 auto;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.community-form__captcha > p { margin-bottom: 8px; }
+.community-form__captcha a { color: #02734d; text-underline-offset: 3px; }
+
 .community-form__submit {
   grid-column: 1 / -1;
   min-height: 45px;
@@ -1879,7 +1891,7 @@
   margin: 24px 0 0;
   color: #fff;
   font-family: var(--font-avenir);
-  font-size: clamp(18px, 1.35vw, 23px);
+  font-size: 17px;
   font-weight: 500;
   line-height: 1.45;
 }
@@ -1987,7 +1999,7 @@
   .home-page .hero-section__content p {
     max-width: 480px;
     margin-top: 18px;
-    font-size: clamp(17px, 3vw, 21px);
+    font-size: 16px;
   }
 
   .home-page .hero-section__cta {

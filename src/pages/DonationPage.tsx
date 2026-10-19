@@ -1,5 +1,4 @@
 import { useEffect, useRef, useState } from 'react'
-import { createPortal } from 'react-dom'
 import { ChevronRight, Home, Info, LockKeyhole, Mountain, Sprout, TreePine } from 'lucide-react'
 import heroImage from '../assets/figma/donacion.jpg'
 import impactImage from '../assets/figma/5.jpeg'
@@ -110,7 +109,6 @@ function DonationForm() {
 function DonationHero() {
   const formSlotRef = useRef<HTMLDivElement>(null)
   const pinnedTopRef = useRef<number | null>(null)
-  const [showFloatingDonate, setShowFloatingDonate] = useState(false)
   const [isFormPinned, setIsFormPinned] = useState(false)
   const { t } = useLanguage()
 
@@ -124,7 +122,6 @@ function DonationHero() {
 
       if (!form || !header || !main || !formSlot) {
         setIsFormPinned(false)
-        setShowFloatingDonate(false)
         return
       }
 
@@ -152,12 +149,7 @@ function DonationHero() {
         formSlot.style.removeProperty('--donation-form-sticky-width')
         formSlot.style.height = ''
       }
-      const formIsVisible = formBounds.bottom > Math.max(headerBounds.bottom, 0)
-        && formBounds.top < window.innerHeight
-        && formBounds.right > 0
-        && formBounds.left < window.innerWidth
       setIsFormPinned(shouldPinForm)
-      setShowFloatingDonate(!formIsVisible && !shouldPinForm)
     }
 
     updateDonateButtonVisibility()
@@ -168,19 +160,6 @@ function DonationHero() {
       window.removeEventListener('resize', updateDonateButtonVisibility)
     }
   }, [])
-
-  function scrollToDonationForm() {
-    const form = formSlotRef.current?.querySelector('.donation-form')
-    const header = formSlotRef.current?.closest('.donation-page')?.querySelector('.about-header')
-    if (!form || !header) return
-
-    const formBounds = form.getBoundingClientRect()
-    const headerHeight = header.getBoundingClientRect().height
-    window.scrollTo({
-      top: window.scrollY + formBounds.top - headerHeight - 16,
-      behavior: 'smooth',
-    })
-  }
 
   return (
     <section className={`donation-hero${isFormPinned ? ' is-form-pinned' : ''}`} aria-labelledby="donation-hero-title">
@@ -201,17 +180,6 @@ function DonationHero() {
       >
         <DonationForm />
       </div>
-      {showFloatingDonate && createPortal(
-        <button
-          className="donation-quick-donate"
-          type="button"
-          aria-label={t('Ir al formulario de donación')}
-          onClick={scrollToDonationForm}
-        >
-          {t('Donar Ahora')}
-        </button>,
-        document.body,
-      )}
     </section>
   )
 }
@@ -234,7 +202,7 @@ function DonationBreadcrumbs() {
   )
 }
 
-function CollapsibleSection({
+export function CollapsibleSection({
   title,
   titleId,
   sectionClassName,
