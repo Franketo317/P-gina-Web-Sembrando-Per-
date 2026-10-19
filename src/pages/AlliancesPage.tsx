@@ -4,7 +4,7 @@ import SocialLinks from '../components/SocialLinks'
 import { useLanguage } from '../components/LanguageContext'
 import { BlogFooter } from './BlogPage'
 import { CollapsibleSection } from './DonationPage'
-import heroImage from '../assets/figma/alianzas3.jpg'
+import heroImage from "../assets/figma/alianzas3.JPG";
 import communityImage from '../assets/figma/blog-article-community.jpg'
 import './AlliancesPage.css'
 
