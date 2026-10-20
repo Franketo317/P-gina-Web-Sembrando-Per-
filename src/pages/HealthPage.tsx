@@ -53,19 +53,20 @@ export default function HealthPage() {
         </section>
 
         <section className="reforestation-intro health-intro" aria-label={t('Salud y bienestar en las comunidades')}>
-          <p>{t('El bienestar de los niños y sus familias es parte esencial del futuro de las comunidades. En Sembrando Perú trabajamos para contribuir a la prevención de la anemia infantil y fortalecer la salud en las zonas rurales de la Selva y la Sierra.')}</p>
-          <p>{t('Nuestro enfoque conecta la prevención en salud con la educación comunitaria y la participación de las familias. Entendemos que el desarrollo sostenible también significa crear condiciones para que las nuevas generaciones crezcan con bienestar y oportunidades.')}</p>
+          <p>{t('El bienestar de los niños y sus familias es parte esencial del futuro de las comunidades. En Sembrando Perú trabajamos para contribuir a la prevención de la anemia infantil y fortalecer la salud en las zonas rurales de la Selva y la Sierra.')} {t('Nuestro enfoque conecta la prevención en salud con la educación comunitaria y la participación de las familias. Entendemos que el desarrollo sostenible también significa crear condiciones para que las nuevas generaciones crezcan con bienestar y oportunidades.')}</p>
         </section>
 
-        <section className="reforestation-threats health-challenges" style={{ backgroundImage: `url(${nutritionImage})` }} aria-labelledby="health-challenges-title">
+        <section className="reforestation-threats health-challenges" aria-labelledby="health-challenges-title">
+          <img className="reforestation-threats__image" src={nutritionImage} alt={t('Participación de familias en una actividad comunitaria')} loading="lazy" />
           <div className="reforestation-threats__inner">
             <div className="reforestation-threats__panel">
-              <h2 id="health-challenges-title">{t('RETOS PARA EL BIENESTAR INFANTIL')}</h2>
-              <p>{t('La anemia infantil y las necesidades de salud de las comunidades rurales forman parte de los desafíos que motivan nuestro trabajo. Abordarlos requiere una mirada cercana a la realidad de los niños y sus familias.')}</p>
-              <p>{t('La prevención y la educación comunitaria son parte de nuestro compromiso. Buscamos articular esfuerzos que conecten el bienestar de las personas con el desarrollo de sus comunidades.')}</p>
+              <h2 id="health-challenges-title">{t('RETOS PARA EL BIENESTAR INFANTIL')}:</h2>
+              <p>{t('La anemia infantil y las necesidades de salud de las comunidades rurales forman parte de los desafíos que motivan nuestro trabajo. Abordarlos requiere una mirada cercana a la realidad de los niños y sus familias.')} {t('La prevención y la educación comunitaria son parte de nuestro compromiso. Buscamos articular esfuerzos que conecten el bienestar de las personas con el desarrollo de sus comunidades.')}</p>
             </div>
           </div>
         </section>
+
+        <img className="reforestation-panorama" src={healthImage} alt={t('Actividad comunitaria relacionada con la salud')} loading="lazy" />
 
         <section className="reforestation-actions" aria-labelledby="health-actions-title">
           <div className="reforestation-actions__copy">
@@ -73,8 +74,9 @@ export default function HealthPage() {
             <p>{t('Acompañamos el bienestar de las comunidades desde una visión que reúne prevención, educación y participación. Nuestro trabajo se orienta a estos ejes:')}</p>
             <ul>{actions.map((action) => <li key={action}>{t(action)}</li>)}</ul>
           </div>
-          <img src={healthImage} alt={t('Participación comunitaria en una actividad de salud')} loading="lazy" />
         </section>
+
+        <img className="reforestation-panorama reforestation-panorama--after-actions" src={communityImage} alt={t('Familias de una comunidad de Sembrando Perú')} loading="lazy" />
 
         <section className="reforestation-stories" aria-labelledby="health-stories-title">
           <div className="reforestation-stories__inner">

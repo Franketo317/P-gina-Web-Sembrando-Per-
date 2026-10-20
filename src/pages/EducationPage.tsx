@@ -53,20 +53,20 @@ export default function EducationPage() {
         </section>
 
         <section className="reforestation-intro education-intro" aria-label={t('Educación y comunidades')}>
-          <p>{t('La educación abre oportunidades para las personas y fortalece el futuro de las comunidades. En Sembrando Perú promovemos la alfabetización y el aprendizaje en las zonas rurales, como parte de nuestro compromiso con el desarrollo sostenible y la igualdad social.')}</p>
-          <p>{t('Trabajamos con niños y familias desde una visión que conecta el conocimiento con la vida cotidiana. La educación comunitaria y ambiental acompaña el cuidado de los bosques y el bienestar de quienes habitan estos territorios.')}</p>
-          <p>{t('Nuestro propósito es contribuir a que las nuevas generaciones crezcan con oportunidades de aprender, participar y cuidar su entorno. Este esfuerzo se integra con nuestras iniciativas de conservación y prevención en salud.')}</p>
+          <p>{t('La educación abre oportunidades para las personas y fortalece el futuro de las comunidades. En Sembrando Perú promovemos la alfabetización y el aprendizaje en las zonas rurales, como parte de nuestro compromiso con el desarrollo sostenible y la igualdad social.')} {t('Trabajamos con niños y familias desde una visión que conecta el conocimiento con la vida cotidiana. La educación comunitaria y ambiental acompaña el cuidado de los bosques y el bienestar de quienes habitan estos territorios.')} {t('Nuestro propósito es contribuir a que las nuevas generaciones crezcan con oportunidades de aprender, participar y cuidar su entorno. Este esfuerzo se integra con nuestras iniciativas de conservación y prevención en salud.')}</p>
         </section>
 
-        <section className="reforestation-threats education-challenges" style={{ backgroundImage: `url(${classroomImage})` }} aria-labelledby="education-challenges-title">
+        <section className="reforestation-threats education-challenges" aria-labelledby="education-challenges-title">
+          <img className="reforestation-threats__image" src={classroomImage} alt={t('Niños y voluntarios compartiendo una actividad educativa')} loading="lazy" />
           <div className="reforestation-threats__inner">
             <div className="reforestation-threats__panel">
-              <h2 id="education-challenges-title">{t('RETOS EDUCATIVOS')}</h2>
-              <p>{t('El analfabetismo y las brechas de acceso a una educación de calidad son parte de los desafíos que afrontan las comunidades rurales. Atender estas necesidades significa reconocer la realidad de las familias y fortalecer sus oportunidades de aprendizaje.')}</p>
-              <p>{t('Para Sembrando Perú, la educación forma parte de una respuesta integral: aprender, cuidar la naturaleza y promover el bienestar son compromisos que se construyen con la participación de las comunidades.')}</p>
+              <h2 id="education-challenges-title">{t('RETOS EDUCATIVOS')}:</h2>
+              <p>{t('El analfabetismo y las brechas de acceso a una educación de calidad son parte de los desafíos que afrontan las comunidades rurales. Atender estas necesidades significa reconocer la realidad de las familias y fortalecer sus oportunidades de aprendizaje.')} {t('Para Sembrando Perú, la educación forma parte de una respuesta integral: aprender, cuidar la naturaleza y promover el bienestar son compromisos que se construyen con la participación de las comunidades.')}</p>
             </div>
           </div>
         </section>
+
+        <img className="reforestation-panorama" src={communityImage} alt={t('Familias de una comunidad de Sembrando Perú')} loading="lazy" />
 
         <section className="reforestation-actions" aria-labelledby="education-actions-title">
           <div className="reforestation-actions__copy">
@@ -74,8 +74,9 @@ export default function EducationPage() {
             <p>{t('Acompañamos el desarrollo de las comunidades con iniciativas que vinculan el aprendizaje y el bienestar. Nuestro enfoque reúne estos ejes:')}</p>
             <ul>{actions.map((action) => <li key={action}>{t(action)}</li>)}</ul>
           </div>
-          <img src={learningImage} alt={t('Actividad de aprendizaje con materiales educativos y participación comunitaria')} loading="lazy" />
         </section>
+
+        <img className="reforestation-panorama reforestation-panorama--after-actions" src={plantingImage} alt={t('Actividad de plantación y cuidado del entorno')} loading="lazy" />
 
         <section className="reforestation-stories" aria-labelledby="education-stories-title">
           <div className="reforestation-stories__inner">
