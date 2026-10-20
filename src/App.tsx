@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react'
+import { ChevronRight } from 'lucide-react'
 import arrowRight1 from './assets/figma/imgArrowRight1.svg'
 import arrowRight2 from './assets/figma/imgArrowRight2.svg'
 import blogImage from './assets/figma/imgBlogImage.png'
@@ -42,7 +43,9 @@ import './pages/NosotrosPage.css'
 const programs = [
   {
     category: 'medio-ambiente',
-    title: 'SEMBRANDO ÁRBOLES',
+    title: 'BOLSA DE TRABAJO',
+    action: 'POSTULA',
+    href: '/trabaja-con-nosotros',
     description:
       'Trabajamos para restaurar los árboles extraídos de manera injusta en la Amazonía, protegiendo bosques y la biodiversidad.',
     image: blogImage5,
@@ -50,7 +53,9 @@ const programs = [
   },
   {
     category: 'educacion',
-    title: 'SEMBRANDO EDUCACIÓN',
+    title: 'VOLUNTARIADO',
+    action: 'ÚNETE',
+    href: '/sumate',
     description: 'Promovemos la igualdad social a través de procesos de alfabetización.',
     image: blogImage4,
     alt: 'Niños participando en actividades educativas',
@@ -58,6 +63,8 @@ const programs = [
   {
     category: 'salud',
     title: 'SEMBRANDO SALUD',
+    action: 'Apoya esta iniciativa',
+    href: '/donacion',
     description:
       'Trabajamos para prevenir la anemia infantil en niños de las regiones de Selva y Sierra, mejorando su salud y bienestar.',
     image: blogImage3,
@@ -136,7 +143,7 @@ const articles = [
   },
 ]
 
-function ProgramCard({ category, title, description, image, alt }: (typeof programs)[number]) {
+function ProgramCard({ category, title, action, href, image, alt }: (typeof programs)[number]) {
   const { t } = useLanguage()
 
   return (
@@ -144,9 +151,8 @@ function ProgramCard({ category, title, description, image, alt }: (typeof progr
       <img className="program-card__image" src={image} alt={alt} />
       <div className="program-card__body">
         <h3>{t(title)}</h3>
-        <p>{t(description)}</p>
-        <a className="button button--green program-card__action" href="/donacion">
-          {t('Apoya esta iniciativa')}
+        <a className="program-card__action" href={href} aria-label={`${t(action)}: ${t(title)}`}>
+          {t(action)} <ChevronRight aria-hidden="true" size={24} strokeWidth={3} />
         </a>
       </div>
     </article>

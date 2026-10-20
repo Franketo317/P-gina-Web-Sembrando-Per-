@@ -585,21 +585,21 @@
 }
 
 .program-card {
+  position: relative;
   min-width: 0;
   min-height: 360px;
-  display: grid;
-  grid-template-areas: "card";
   aspect-ratio: 1.38 / 1;
   isolation: isolate;
   overflow: hidden;
-  border: 1px solid #02734d;
-  border-radius: 8px;
+  border: 0;
+  border-radius: 0;
   background: #02734d;
 }
 
 .program-card__image {
+  position: absolute;
+  inset: 0;
   display: block;
-  grid-area: card;
   width: 100%;
   height: 100%;
   object-fit: cover;
@@ -618,50 +618,62 @@
 }
 
 .program-card__body {
-  grid-area: card;
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
   z-index: 1;
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
   box-sizing: border-box;
   min-width: 0;
-  padding: clamp(20px, 2.2vw, 32px);
-  background: linear-gradient(180deg, rgb(0 0 0 / 0%) 12%, rgb(0 0 0 / 86%) 100%);
+  padding: 14px;
+  background: rgb(0 0 0 / 55%);
 }
 
 .program-card__body h3 {
-  margin-bottom: 10px;
+  margin: 0 0 4px;
   color: #fff;
   font-family: var(--font-display);
-  font-size: clamp(24px, 2.2vw, 32px);
-  font-weight: 700;
+  font-size: 24px;
+  font-weight: 500;
   line-height: 1.15;
+  text-align: center;
   overflow-wrap: anywhere;
 }
 
-.program-card__body p {
-  margin: 0;
-  color: #fff;
-  font-family: var(--font-avenir);
-  font-size: 15px;
-  line-height: 1.5;
-}
-
 .program-card__action {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
   width: 100%;
   min-height: 50px;
   box-sizing: border-box;
-  margin-top: 20px;
-  background: #02734d;
+  margin: 0;
+  padding: 10px 16px;
+  background: #f89a3c;
   color: #fff;
-  font-family: var(--font-league);
-  font-weight: 700;
+  font-family: var(--font-display);
+  font-size: 18px;
+  font-weight: 500;
   text-align: center;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
+.program-card--educacion .program-card__action {
+  background: #f3c442;
+}
+
+.program-card--salud .program-card__action {
+  background: #02734d;
 }
 
 .program-card__action:hover,
 .program-card__action:focus-visible {
-  background: #006445;
+  filter: brightness(0.92);
 }
 
 .program-card__action:focus-visible {
@@ -1359,7 +1371,6 @@
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
-  .program-card__body,
   .article-card__body {
     padding: 18px;
   }
@@ -1574,7 +1585,7 @@
   }
 
   .program-card__body {
-    padding: 20px;
+    padding: 14px;
   }
 
   .program-card__body h3 {
