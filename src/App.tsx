@@ -27,6 +27,7 @@ import CampaignDetailPage from './pages/CampaignDetailPage'
 import NewsPage from './pages/NewsPage'
 import ContactPage from './pages/ContactPage'
 import DonationPage from './pages/DonationPage'
+import AlliancesPage from './pages/AlliancesPage'
 import JoinPage from './pages/JoinPage'
 import HowWeWorkPage from './pages/HowWeWorkPage'
 import WorkWithUsPage from './pages/WorkWithUsPage'
@@ -40,6 +41,7 @@ import HealthPage from './pages/HealthPage'
 import ConservationStrategyDetailPage from './pages/ConservationStrategyDetailPage'
 import './App.css'
 import './pages/NosotrosPage.css'
+import './pages/ParticipationTypography.css'
 
 const programs = [
   {
@@ -276,6 +278,10 @@ function App() {
 
   if (currentPath === '/donacion') {
     return <DonationPage />
+  }
+
+  if (currentPath === '/alianzas') {
+    return <AlliancesPage />
   }
 
   if (currentPath === '/sumate') {
