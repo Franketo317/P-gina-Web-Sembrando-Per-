@@ -5,7 +5,7 @@
 .join-hero::before { content: ''; position: absolute; inset: 0; z-index: -1; background: linear-gradient(90deg, rgb(0 35 23 / 82%), rgb(0 35 23 / 15%)); }
 .join-hero__content { max-width: 560px; }
 .join-hero h1 { margin: 0 0 18px; font-size: clamp(30px, 3.3vw, 44px); line-height: 1.2; }
-.join-hero p { max-width: 450px; margin-bottom: 24px; font-size: 19px; line-height: 1.5; }
+.join-hero p { max-width: 450px; margin-bottom: 24px; font-size: 17px; line-height: 1.5; }
 .join-button { display: inline-flex; align-items: center; justify-content: center; gap: 12px; padding: 15px 24px; border: 0; background: #02734d; color: white; font: 400 17px var(--font-display); text-decoration: none; cursor: pointer; }
 .join-hero .join-button { background: #f9a22f; color: #173526; }
 .join-button:hover { filter: brightness(1.1); }
