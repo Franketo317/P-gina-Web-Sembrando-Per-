@@ -411,7 +411,6 @@
   min-height: 128px;
   margin: 34px auto 0;
   padding: 32px 42px;
-  border: 1px solid #78aa2d;
   background: #e8f5e9;
 }
 
@@ -626,7 +625,7 @@
 }
 
 .donation-faq__list {
-  margin-top: 30px;
+  margin-top: 60px;
   text-align: left;
 }
 
@@ -1222,5 +1221,34 @@
 
   .donation-faq__heading {
     width: min(926px, calc(100vw - 480px));
+  }
+}
+
+@media (min-width: 940px) {
+  .donation-about {
+    min-height: 0;
+    margin-top: 18px;
+    padding-top: 88px;
+    padding-bottom: 80px;
+  }
+
+  .donation-how,
+  .donation-impact,
+  .donation-faq {
+    margin-top: 0;
+    padding-top: 88px;
+    padding-bottom: 80px;
+  }
+
+  .donation-faq {
+    margin-bottom: 0;
+  }
+
+  .donation-section__header {
+    min-height: 53px;
+  }
+
+  .donation-section__header + .donation-section__content {
+    margin-top: 64px;
   }
 }

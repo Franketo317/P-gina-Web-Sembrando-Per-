@@ -107,7 +107,7 @@ function DonationForm() {
   )
 }
 
-function DonationHero() {
+function DonationHero({ isMembership }: { isMembership: boolean }) {
   const formSlotRef = useRef<HTMLDivElement>(null)
   const pinnedTopRef = useRef<number | null>(null)
   const [showFloatingDonate, setShowFloatingDonate] = useState(false)
@@ -188,8 +188,17 @@ function DonationHero() {
       <div className="donation-hero__shade" />
       <SocialLinks />
       <div className="donation-hero__content">
-        <h1 id="donation-hero-title">{t('ÚNETE AL CAMBIO,')}<br />{t('DONA HOY!')}</h1>
-        <p>Tu donación hace posible más acciones de reforestación, educación y desarrollo sostenible en las comunidades del Perú.</p>
+        {isMembership ? (
+          <>
+            <h1 id="donation-hero-title">{t('¡Hazte miembro de Sembrando Perú hoy!')}</h1>
+            <p>{t('¡Hazte miembro de Sembrando Perú!')}</p>
+          </>
+        ) : (
+          <>
+            <h1 id="donation-hero-title">{t('ÚNETE AL CAMBIO,')}<br />{t('DONA HOY!')}</h1>
+            <p>Tu donación hace posible más acciones de reforestación, educación y desarrollo sostenible en las comunidades del Perú.</p>
+          </>
+        )}
       </div>
       <details className="donation-hero__photo-info">
         <summary aria-label={t('Información de la imagen')}><Info aria-hidden="true" /></summary>
@@ -338,21 +347,21 @@ function DonationFaq() {
   )
 }
 
-export default function DonationPage() {
+export default function DonationPage({ isMembership = false }: { isMembership?: boolean }) {
   const { t } = useLanguage()
 
   return (
     <div className="donation-page">
       <SiteHeader />
       <main>
-        <DonationHero />
+        <DonationHero isMembership={isMembership} />
         <DonationBreadcrumbs />
         <CollapsibleSection
-          title={t('¿POR QUÉ DONAR A SEMBRANDO PERÚ?')}
+          title={t(isMembership ? '¿POR QUÉ SER MIEMBRO DE SEMBRANDO PERÚ?' : '¿POR QUÉ DONAR A SEMBRANDO PERÚ?')}
           titleId="donation-about-title"
           sectionClassName="donation-about"
         >
-          <p>{t('Sembrando Perú trabaja para proteger y recuperar nuestros bosques, fortalecer a las comunidades mediante la reforestación, la educación ambiental y el fortalecimiento de las capacidades locales. Tu donación financia directamente la siembra de árboles, el mantenimiento de viveros y el desarrollo de un entorno más verde y saludable para todos.')}</p>
+          <p>{t(isMembership ? 'Al hacerte miembro de Sembrando Perú, te sumas a una comunidad comprometida con el bienestar de las personas y el cuidado de la naturaleza. Tu apoyo nos ayuda a planificar y sostener iniciativas de reforestación, educación y salud junto a comunidades de todo el Perú.' : 'Sembrando Perú trabaja para proteger y recuperar nuestros bosques, fortalecer a las comunidades mediante la reforestación, la educación ambiental y el fortalecimiento de las capacidades locales. Tu donación financia directamente la siembra de árboles, el mantenimiento de viveros y el desarrollo de un entorno más verde y saludable para todos.')}</p>
         </CollapsibleSection>
         <CollapsibleSection
           title={t('¿CÓMO CONTRIBUYES CON TU DONACIÓN A SEMBRANDO PERÚ?')}

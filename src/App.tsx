@@ -274,6 +274,10 @@ function App() {
   const currentPath = window.location.pathname.replace(/\/+$/, '') || '/'
   const { t } = useLanguage()
 
+  if (currentPath === '/membresia') {
+    return <DonationPage isMembership />
+  }
+
   if (currentPath === '/donacion') {
     return <DonationPage />
   }
