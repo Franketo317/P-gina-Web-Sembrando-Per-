@@ -17,10 +17,11 @@
 
 .reforestation-hero {
   position: relative;
-  min-height: 620px;
+  height: 600px;
+  min-height: 0;
   display: flex;
-  align-items: center;
-  padding: 80px max(24px, calc((100% - 1180px) / 2));
+  align-items: flex-start;
+  padding: 190px max(24px, calc((100% - 1150px) / 2)) 80px;
   background-position: center 45%;
   background-size: cover;
   isolation: isolate;
@@ -38,24 +39,32 @@
   max-width: 100%;
   margin: 0;
   color: #fff;
-  font-size: clamp(38px, 4.5vw, 64px);
-  line-height: 1.2;
+  font-size: clamp(38px, 4.5vw, 72px);
+  line-height: 1.1;
   overflow-wrap: anywhere;
   text-shadow: 0 2px 12px rgb(0 0 0 / 30%);
 }
 
 .reforestation-hero .hero-socials--banner {
   top: 24px !important;
-  right: max(24px, calc((100% - 1180px) / 2));
+  right: max(24px, calc((100% - 1150px) / 2));
 }
 
 .reforestation-intro {
-  padding: 80px 24px;
+  display: grid;
+  min-height: 258px;
+  place-items: center;
+  padding: 46px 24px;
+  background: #006445;
+  color: #fff;
 }
 
-.reforestation-intro p {
-  max-width: 780px;
+.reforestation-page main .reforestation-intro p {
+  max-width: 750px;
   margin: 0 auto;
+  font-size: clamp(18px, 1.35vw, 20px);
+  line-height: 1.4;
+  text-align: center;
 }
 
 .reforestation-page main p,
@@ -66,27 +75,46 @@
 }
 
 .reforestation-threats {
-  background-position: center;
-  background-size: cover;
+  margin-top: 50px;
+}
+
+.reforestation-threats__image,
+.reforestation-panorama {
+  display: block;
+  width: 100%;
+  height: 600px;
+  object-fit: cover;
+  object-position: center;
+}
+
+.reforestation-panorama {
+  margin-top: 88px;
+}
+
+.reforestation-panorama.reforestation-panorama--after-actions {
+  margin-top: 0;
+  object-position: center 55%;
 }
 
 .reforestation-threats__inner {
   width: min(100%, 1180px);
-  min-height: 560px;
-  display: flex;
-  justify-content: flex-end;
   margin: 0 auto;
+  padding: 88px 24px 0;
 }
 
 .reforestation-threats__panel {
-  width: min(100%, 440px);
+  width: min(100%, 750px);
   display: flex;
   flex-direction: column;
   justify-content: center;
-  gap: 20px;
-  padding: 48px 36px;
-  background: rgb(0 0 0 / 72%);
-  color: #fff;
+  gap: 28px;
+  margin: 0 auto;
+  color: #25372f;
+}
+
+.reforestation-threats__panel h2 {
+  color: #02734d;
+  text-align: center;
 }
 
 .reforestation-page main h2 {
@@ -95,46 +123,52 @@
   line-height: 1.2;
 }
 
-.reforestation-threats__panel p {
+.reforestation-page main .reforestation-threats__panel p {
   margin: 0;
+  font-family: Arial, sans-serif;
+  font-size: 20px;
+  line-height: 1.4;
+  text-align: justify;
 }
 
 .reforestation-actions {
-  width: min(100%, 1228px);
-  display: grid;
-  grid-template-columns: 1.15fr 1fr;
-  align-items: stretch;
-  gap: 48px;
+  width: min(100%, 800px);
   margin: 0 auto;
   padding: 88px 24px;
 }
 
 .reforestation-actions h2 {
   color: #02734d;
+  text-align: center;
 }
 
-.reforestation-actions p {
-  margin: 24px 0;
+.reforestation-page main .reforestation-actions p {
+  margin: 24px 0 44px;
+  font-size: 18px;
+  font-weight: 300;
+  line-height: 1.45;
+  text-align: center;
 }
 
 .reforestation-actions ul {
-  padding-left: 24px;
+  padding-left: 26px;
   margin: 0;
 }
 
+.reforestation-actions li {
+  padding-left: 8px;
+  font-size: 16px;
+  font-weight: 300;
+  line-height: 1.45;
+  text-align: left;
+}
+
 .reforestation-actions li + li {
-  margin-top: 18px;
+  margin-top: 10px;
 }
 
 .reforestation-actions li::marker {
   color: #02734d;
-}
-
-.reforestation-actions > img {
-  width: 100%;
-  height: 100%;
-  min-height: 480px;
-  object-fit: cover;
 }
 
 .reforestation-stories {
@@ -205,16 +239,6 @@
 }
 
 @media (max-width: 900px) {
-  .reforestation-actions {
-    grid-template-columns: 1fr;
-    gap: 32px;
-  }
-
-  .reforestation-actions > img {
-    height: 420px;
-    min-height: 0;
-  }
-
   .reforestation-stories__grid {
     grid-template-columns: 1fr;
     max-width: 580px;
@@ -225,7 +249,8 @@
 
 @media (max-width: 760px) {
   .reforestation-hero {
-    min-height: 520px;
+    height: 500px;
+    padding-top: 160px;
     padding-right: 22px;
     padding-left: 22px;
   }
@@ -246,12 +271,23 @@
   }
 
   .reforestation-threats__inner {
-    min-height: 520px;
-    padding: 0 22px;
+    padding: 48px 22px 0;
   }
 
-  .reforestation-threats__panel {
-    width: min(85%, 400px);
-    padding: 32px 24px;
+  .reforestation-page main .reforestation-threats__panel p {
+    font-size: 17px;
+  }
+
+  .reforestation-threats {
+    margin-top: 32px;
+  }
+
+  .reforestation-panorama {
+    margin-top: 48px;
+  }
+
+  .reforestation-threats__image,
+  .reforestation-panorama {
+    height: 400px;
   }
 }

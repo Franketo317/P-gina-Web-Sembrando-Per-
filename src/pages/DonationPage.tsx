@@ -234,7 +234,7 @@ function DonationBreadcrumbs() {
   )
 }
 
-function CollapsibleSection({
+export function CollapsibleSection({
   title,
   titleId,
   sectionClassName,

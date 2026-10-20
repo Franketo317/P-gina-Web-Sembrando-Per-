@@ -15,6 +15,13 @@ type SearchItem = {
 }
 
 const searchDatabase: SearchItem[] = [
+  {
+    title: 'Convocatoria consultorías',
+    category: 'Sembrando Perú',
+    description: 'Consulta las convocatorias de consultoría por palabra clave, mes y año.',
+    href: '/convocatoria-consultorias',
+    keywords: ['consultorias', 'consultoria', 'convocatoria', 'convocatorias', 'servicios', 'consultores'],
+  },
   ...getPublications('es').map((publication) => ({
     title: publication.title,
     category: 'Publicaciones',
@@ -266,7 +273,7 @@ export default function SiteHeader() {
   }
 
   const currentPath = typeof window !== 'undefined' ? window.location.pathname.replace(/\/+$/, '') || '/' : '/'
-  const isSembrandoPeruActive = currentPath === '/nosotros' || currentPath.startsWith('/nosotros') || currentPath === '/contacto' || currentPath === '/como-trabajamos' || currentPath === '/trabaja-con-nosotros' || currentPath === '/nuestro-equipo' || currentPath === '/mecanismo-de-quejas'
+  const isSembrandoPeruActive = currentPath === '/nosotros' || currentPath.startsWith('/nosotros') || currentPath === '/contacto' || currentPath === '/como-trabajamos' || currentPath === '/trabaja-con-nosotros' || currentPath.startsWith('/convocatoria-consultorias') || currentPath === '/nuestro-equipo' || currentPath === '/mecanismo-de-quejas'
   const isInformateActive = currentPath === '/blog' || currentPath.startsWith('/blog/') || currentPath === '/publicaciones' || currentPath.startsWith('/publicaciones/') || currentPath === '/noticias' || currentPath === '/campanas'
 
   return (
@@ -297,7 +304,7 @@ export default function SiteHeader() {
               <path d="M1.4 1.4L6 6l4.6-4.6" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
             </svg>
           </button>
-          <div className="nav-dropdown__menu" role="menu">
+          <div className="nav-dropdown__menu nav-dropdown__menu--sembrando" role="menu">
             <a href="/nosotros#historia" role="menuitem" onClick={closeAll}>
               {t('Nuestra historia')}
             </a>
@@ -305,7 +312,10 @@ export default function SiteHeader() {
               {t('¿Cómo trabajamos?')}
             </a>
             <a href="/trabaja-con-nosotros" role="menuitem" onClick={closeAll}>
-              {t('Trabaja con nosotros')}
+              {t('Bolsa laboral')}
+            </a>
+            <a href="/convocatoria-consultorias" role="menuitem" onClick={closeAll}>
+              {t('Convocatoria consultorías')}
             </a>
             <a href="/contacto" role="menuitem" onClick={closeAll}>
               {t('Contáctanos')}

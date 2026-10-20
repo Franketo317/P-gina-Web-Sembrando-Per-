@@ -322,6 +322,13 @@
   font-size: 14px;
 }
 
+@media (min-width: 901px) {
+  :is(.home-page, .about-page, .blog-page, .contact-page, .donation-page) > header.site-header-root .nav-dropdown__menu--sembrando {
+    min-width: 280px;
+    width: max-content;
+  }
+}
+
 @media (max-width: 1120px) {
   :is(.home-page, .about-page, .blog-page, .contact-page, .donation-page) > header.site-header-root .about-navigation.site-navigation {
     gap: 12px;

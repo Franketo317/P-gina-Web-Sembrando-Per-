@@ -137,9 +137,9 @@ export function BlogFooter() {
             <nav className="blog-footer__links" aria-label={t('Navegación')}>
               <button type="button" onClick={toggleLanguage} lang={language === 'es' ? 'en' : 'es'}>{language === 'es' ? 'English' : 'Español'}</button>
               <a href="/contacto">{t('Contáctanos')}</a>
-              <a href="/trabaja-con-nosotros">{t('Trabaja con nosotros')}</a>
-              <a href="/contacto#privacidad">{t('Políticas de privacidad')}</a>
-              <a href="/mecanismo-de-quejas">{t('Mecanismo de quejas')}</a>
+              <a href="/trabaja-con-nosotros">{t('Bolsa de Trabajo')}</a>
+              <a href="/contacto#privacidad">{t('Políticas')}</a>
+              <a href="/mecanismo-de-quejas">{t('Quejas')}</a>
             </nav>
             <p className="blog-footer__copyright">{t('© 2026 Sembrando. Todos los derechos reservados.')}</p>
           </div>
