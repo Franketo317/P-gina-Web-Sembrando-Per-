@@ -1,4 +1,5 @@
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
+import { ChevronRight } from 'lucide-react'
 import arrowRight1 from './assets/figma/imgArrowRight1.svg'
 import arrowRight2 from './assets/figma/imgArrowRight2.svg'
 import blogImage from './assets/figma/imgBlogImage.png'
@@ -30,6 +31,7 @@ import AlliancesPage from './pages/AlliancesPage'
 import JoinPage from './pages/JoinPage'
 import HowWeWorkPage from './pages/HowWeWorkPage'
 import WorkWithUsPage from './pages/WorkWithUsPage'
+import ConsultanciesPage, { ConsultancyDetailPage } from './pages/ConsultanciesPage'
 import OurTeamPage from './pages/OurTeamPage'
 import ComplaintsMechanismPage from './pages/ComplaintsMechanismPage'
 import ConservationStrategiesPage from './pages/ConservationStrategiesPage'
@@ -44,7 +46,9 @@ import './pages/ParticipationTypography.css'
 const programs = [
   {
     category: 'medio-ambiente',
-    title: 'SEMBRANDO ÁRBOLES',
+    title: 'BOLSA DE TRABAJO',
+    action: 'POSTULA',
+    href: '/trabaja-con-nosotros',
     description:
       'Trabajamos para restaurar los árboles extraídos de manera injusta en la Amazonía, protegiendo bosques y la biodiversidad.',
     image: blogImage5,
@@ -52,7 +56,9 @@ const programs = [
   },
   {
     category: 'educacion',
-    title: 'SEMBRANDO EDUCACIÓN',
+    title: 'VOLUNTARIADO',
+    action: 'ÚNETE',
+    href: '/sumate',
     description: 'Promovemos la igualdad social a través de procesos de alfabetización.',
     image: blogImage4,
     alt: 'Niños participando en actividades educativas',
@@ -60,6 +66,8 @@ const programs = [
   {
     category: 'salud',
     title: 'SEMBRANDO SALUD',
+    action: 'Apoya esta iniciativa',
+    href: '/donacion',
     description:
       'Trabajamos para prevenir la anemia infantil en niños de las regiones de Selva y Sierra, mejorando su salud y bienestar.',
     image: blogImage3,
@@ -67,12 +75,10 @@ const programs = [
   },
 ]
 
-type ProgramCategory = (typeof programs)[number]['category']
-
-const programCategories: { id: ProgramCategory; label: string }[] = [
-  { id: 'medio-ambiente', label: 'Medio ambiente' },
-  { id: 'educacion', label: 'Educación' },
-  { id: 'salud', label: 'Salud' },
+const programCategories = [
+  { id: 'medio-ambiente', label: 'Reforestación', href: '/reforestacion' },
+  { id: 'educacion', label: 'Educación', href: '/educacion' },
+  { id: 'salud', label: 'Salud', href: '/salud' },
 ]
 
 const heroSlides = [
@@ -138,7 +144,7 @@ const articles = [
   },
 ]
 
-function ProgramCard({ category, title, description, image, alt }: (typeof programs)[number]) {
+function ProgramCard({ category, title, action, href, image, alt }: (typeof programs)[number]) {
   const { t } = useLanguage()
 
   return (
@@ -146,9 +152,8 @@ function ProgramCard({ category, title, description, image, alt }: (typeof progr
       <img className="program-card__image" src={image} alt={alt} />
       <div className="program-card__body">
         <h3>{t(title)}</h3>
-        <p>{t(description)}</p>
-        <a className="button button--green program-card__action" href="/donacion">
-          {t('Apoya esta iniciativa')}
+        <a className="program-card__action" href={href} aria-label={`${t(action)}: ${t(title)}`}>
+          {t(action)} <ChevronRight aria-hidden="true" size={24} strokeWidth={3} />
         </a>
       </div>
     </article>
@@ -156,21 +161,7 @@ function ProgramCard({ category, title, description, image, alt }: (typeof progr
 }
 
 function ProgramsSection() {
-  const [activeCategory, setActiveCategory] = useState<ProgramCategory | null>(() => {
-    const requestedCategory = programCategories.find(
-      (category) => window.location.hash === `#programas-${category.id}`,
-    )
-    return requestedCategory?.id ?? null
-  })
   const { t } = useLanguage()
-  const visiblePrograms = activeCategory
-    ? programs.filter((program) => program.category === activeCategory)
-    : programs.slice(0, 2)
-
-  useEffect(() => {
-    if (!activeCategory || window.location.hash !== `#programas-${activeCategory}`) return
-    document.getElementById(`programas-filter-${activeCategory}`)?.scrollIntoView({ block: 'center' })
-  }, [activeCategory])
 
   return (
     <section className="programs-section" id="programas" aria-labelledby="programs-title">
@@ -178,22 +169,20 @@ function ProgramsSection() {
         <h2 id="programs-title">{t('NUESTRO TRABAJO')}</h2>
         <p>{t('Trabajamos por un futuro sostenible desde diferentes frentes.')}</p>
       </div>
-      <div className="program-filters" role="group" aria-label={t('Filtrar iniciativas por categoría')}>
+      <nav className="program-filters" aria-label={t('NUESTRO TRABAJO')}>
         {programCategories.map((category) => (
-          <button
-            className={`program-filter program-filter--${category.id}${activeCategory === category.id ? ' is-active' : ''}`}
+          <a
+            className={`program-filter program-filter--${category.id}`}
             id={`programas-filter-${category.id}`}
-            type="button"
-            aria-pressed={activeCategory === category.id}
-            onClick={() => setActiveCategory(activeCategory === category.id ? null : category.id)}
+            href={category.href}
             key={category.id}
           >
             {t(category.label)}
-          </button>
+          </a>
         ))}
-      </div>
-      <div className={`program-grid${activeCategory ? ' program-grid--filtered' : ''}`} aria-live="polite">
-        {visiblePrograms.map((program) => <ProgramCard key={program.category} {...program} />)}
+      </nav>
+      <div className="program-grid">
+        {programs.slice(0, 2).map((program) => <ProgramCard key={program.category} {...program} />)}
       </div>
     </section>
   )
@@ -287,6 +276,10 @@ function App() {
   const currentPath = window.location.pathname.replace(/\/+$/, '') || '/'
   const { t } = useLanguage()
 
+  if (currentPath === '/membresia') {
+    return <DonationPage isMembership />
+  }
+
   if (currentPath === '/donacion') {
     return <DonationPage />
   }
@@ -358,6 +351,14 @@ function App() {
     return <WorkWithUsPage />
   }
 
+  if (currentPath === '/convocatoria-consultorias') {
+    return <ConsultanciesPage />
+  }
+
+  if (currentPath.startsWith('/convocatoria-consultorias/')) {
+    return <ConsultancyDetailPage slug={currentPath.slice('/convocatoria-consultorias/'.length)} />
+  }
+
   if (currentPath === '/nuestro-equipo') {
     return <OurTeamPage />
   }
@@ -376,15 +377,19 @@ function App() {
 
         <section className="community-section" id="unete" aria-labelledby="community-title">
           <div className="community-section__inner">
-            <h2 id="community-title">{t('ÚNETE A LA COMUNIDAD')}</h2>
-            <p className="community-section__description">
-              {t('Recibe avances mensuales sobre nuestras jornadas de plantación, historias de impacto en nuestras comunidades y noticias sobre cómo estamos protegiendo nuestros ecosistemas.')}
-            </p>
-            <CommunitySignupForm />
+            <div className="community-section__signup">
+              <h2 id="community-title">{t('ÚNETE A LA COMUNIDAD')}</h2>
+              <p className="community-section__description">
+                {t('Recibe avances mensuales sobre nuestras jornadas de plantación, historias de impacto en nuestras comunidades y noticias sobre cómo estamos protegiendo nuestros ecosistemas.')}
+              </p>
+              <CommunitySignupForm />
 
-            <div className="community-section__info" aria-label="Información de contacto">
-              <PeruOfficeInfo />
+              <div className="community-section__info" aria-label="Información de contacto">
+                <PeruOfficeInfo />
+              </div>
+            </div>
 
+            <div className="community-section__updates">
               <div className="community-section__subscribe">
                 <span>{t('Suscríbete a nuestro boletín')}</span>
               </div>

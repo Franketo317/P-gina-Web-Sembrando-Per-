@@ -6,6 +6,8 @@ import forestImage from '../assets/figma/imgBlogImage1.png'
 import plantingImage from '../assets/figma/blog-featured-forest.jpg'
 import communityImage from '../assets/figma/blog-featured-community.jpg'
 import reforestationImage from '../assets/figma/blog-article-reforestation.jpg'
+import nurseryImage from '../assets/figma/imgBuildingBlocks169.jpg'
+import communityPanorama from '../assets/figma/inicio1.JPG?url'
 import './ReforestationPage.css'
 
 const actions = [
@@ -37,15 +39,17 @@ export default function ReforestationPage() {
           <p>{t('Los bosques son parte del futuro de las comunidades rurales. En Sembrando Perú trabajamos para recuperar áreas degradadas de la Amazonía y fortalecer el vínculo de las familias con su territorio. La reforestación reúne a agricultores y comunidades alrededor de un propósito compartido: cuidar la naturaleza y construir un entorno con más oportunidades para las próximas generaciones.')}</p>
         </section>
 
-        <section className="reforestation-threats" style={{ backgroundImage: `url(${plantingImage})` }} aria-labelledby="reforestation-threats-title">
+        <section className="reforestation-threats" aria-labelledby="reforestation-threats-title">
+          <img className="reforestation-threats__image" src={plantingImage} alt={t('Participación comunitaria en una jornada de plantación')} loading="lazy" />
           <div className="reforestation-threats__inner">
             <div className="reforestation-threats__panel">
-              <h2 id="reforestation-threats-title">{t('AMENAZAS')}</h2>
-              <p>{t('La tala indiscriminada y la degradación de los bosques ponen en riesgo los ecosistemas y la vida de las comunidades que dependen de ellos. La pérdida de cobertura forestal también reduce los espacios donde se refugia la biodiversidad.')}</p>
-              <p>{t('Recuperar estos espacios requiere continuidad y participación local. La restauración busca recuperar las funciones del ecosistema y los beneficios que brinda a la población.')}</p>
+              <h2 id="reforestation-threats-title">{t('AMENAZAS')}:</h2>
+              <p>{t('La tala indiscriminada y la degradación de los bosques ponen en riesgo los ecosistemas y la vida de las comunidades que dependen de ellos. La pérdida de cobertura forestal también reduce los espacios donde se refugia la biodiversidad.')} {t('Recuperar estos espacios requiere continuidad y participación local. La restauración busca recuperar las funciones del ecosistema y los beneficios que brinda a la población.')}</p>
             </div>
           </div>
         </section>
+
+        <img className="reforestation-panorama" src={nurseryImage} alt={t('Vivero de plantas para la reforestación de Sembrando Perú')} loading="lazy" />
 
         <section className="reforestation-actions" aria-labelledby="reforestation-actions-title">
           <div className="reforestation-actions__copy">
@@ -53,8 +57,9 @@ export default function ReforestationPage() {
             <p>{t('Trabajamos junto a quienes viven en el territorio, reconociendo que la conservación ambiental y el bienestar de las comunidades están conectados. Por eso:')}</p>
             <ul>{actions.map((action) => <li key={action}>{t(action)}</li>)}</ul>
           </div>
-          <img src={reforestationImage} alt={t('Trabajo comunitario para recuperar los bosques')} loading="lazy" />
         </section>
+
+        <img className="reforestation-panorama reforestation-panorama--after-actions" src={communityPanorama} alt={t('Familias de una comunidad participando en actividades de Sembrando Perú')} loading="lazy" />
 
         <section className="reforestation-stories" aria-labelledby="reforestation-stories-title">
           <div className="reforestation-stories__inner">

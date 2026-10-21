@@ -2,7 +2,7 @@
    UNIFIED SITE HEADER (Sembrando Perú - Referencia visual)
    Distribution: Logo (tarjeta blanca sobresaliente) →
                  Sembrando Perú → Nuestro trabajo → Infórmate →
-                 lupa → ES|Español → Donación | Voluntariado | Alianzas
+                 lupa → ES|Español → Donación | Voluntariado | Membresía
    ======================================================== */
 
 header.site-header {
@@ -398,7 +398,7 @@ header.site-header * {
 
 /* ---------------------------------------------
    4. TRES BOTONES DE ACCIÓN JUNTOS (pegados sin gaps)
-   Donación → Voluntariado → Alianzas
+   Donación → Voluntariado → Membresía
    --------------------------------------------- */
 .site-header__cta-group {
   display: flex;
@@ -453,7 +453,7 @@ header.site-header * {
   filter: brightness(0.9) !important;
 }
 
-/* 3. Alianzas — verde oscuro de la marca */
+/* 3. Membresía — verde oscuro de la marca */
 .site-header__btn--alliances {
   background-color: #02734d !important;
   color: #ffffff !important;
@@ -795,4 +795,3 @@ header.site-header * {
     width: 54px !important;
   }
 }
-

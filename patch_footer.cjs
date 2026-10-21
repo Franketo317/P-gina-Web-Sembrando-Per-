@@ -22,7 +22,7 @@ const newFooter = `function BlogFooter() {
                 <span className="blog-footer__logo-text">SEMBRANDO<br/>PERÚ</span>
               </div>
             </a>
-            <p>Esperanza para un futuro mejor</p>
+            <p>Esperanza para un futuro mejor.</p>
           </div>
           <div className="blog-footer__column">
             <h3>Navegación</h3>

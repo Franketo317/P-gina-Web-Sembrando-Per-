@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { Mail } from 'lucide-react'
 import arrowRight from '../assets/figma/imgArrowRight.svg'
 import arrowRight1 from '../assets/figma/imgArrowRight1.svg'
 import arrowRight2 from '../assets/figma/imgArrowRight2.svg'
@@ -19,6 +20,7 @@ import socialX from '../assets/figma/imgPlatformXTwitterColorNegative.svg'
 
 import blogHeroBackground from '../assets/figma/about-values-background.png'
 import './BlogPage.css'
+import './BlogFooter.css'
 
 const categories = [
   { label: 'Reforestación', count: 12 },
@@ -102,12 +104,11 @@ const socials = [
 ]
 
 export function BlogFooter() {
-  const { t } = useLanguage()
+  const { t, language, toggleLanguage } = useLanguage()
 
   return (
     <footer className="blog-footer" id="contacto">
       <div className="blog-footer__main">
-        <h2>{t('HAGAMOS EL CAMBIO POSIBLE!')}</h2>
         <div className="blog-footer__content">
           <div className="blog-footer__brand">
             <a href="/" aria-label="Sembrando Perú, inicio">
@@ -116,33 +117,33 @@ export function BlogFooter() {
                 <span className="blog-footer__logo-text">SEMBRANDO<br/>PERÚ</span>
               </div>
             </a>
-            <p>{t('Esperanza para un futuro mejor')}</p>
+            <p className="blog-footer__tagline">{t('Esperanza para un futuro mejor')}</p>
           </div>
-          <div className="blog-footer__column">
-            <h3>{t('Navegación')}</h3>
-            <a href="/">{t('Inicio')}</a><a href="/nosotros">{t('Nosotros')}</a><a href="/publicaciones">{t('Publicaciones')}</a><a href="/contacto">{t('Contáctanos')}</a>
-          </div>
-          <div className="blog-footer__column blog-footer__contact">
-            <h3>{t('Contacto')}</h3>
-            <a href="mailto:contacto@sembrandoperu.org">contacto@sembrandoperu.org</a>
-            <a href="tel:+51921462828">+51 921 462 828</a>
-            <p>Av. Arequipa 2447 – Office 409, Lince District,<br/>Lima, Peru</p>
-          </div>
-          <div className="blog-footer__column">
-            <h3>{t('Involúcrate')}</h3>
-            <a href="/#unete">{t('Voluntariado')}</a><a href="/donacion">{t('DONACIONES')}</a><a href="#contacto">{t('Transparencia')}</a>
-          </div>
-        </div>
-        <div className="blog-footer__socialbar">
-          <div className="blog-footer__follow">
-            <span>{t('SÍGUENOS :')}</span>
-            {socials.map((social) => <a href={social.href ?? '#redes'} target={social.href ? '_blank' : undefined} rel={social.href ? 'noreferrer' : undefined} aria-label={social.label} key={social.label}><img src={social.image} alt="" /></a>)}
-          </div>
+          <nav className="blog-footer__actions" aria-label={t('Involúcrate')}>
+            <a href="/reforestacion">{t('Reforestación')}</a>
+            <a href="/educacion">{t('Educación')}</a>
+            <a href="/salud">{t('Salud')}</a>
+            <a href="/mecanismo-de-quejas">{t('Mecanismo de quejas')}</a>
+          </nav>
         </div>
       </div>
-      <div className="blog-footer__legal">
-        <span>{t('© 2026 Sembrando. Todos los derechos reservados.')}</span>
-        <a href="/contacto#privacidad">{t('Políticas de privacidad')}</a>
+      <div className="blog-footer__socialbar">
+        <div className="blog-footer__bottom">
+          <div className="blog-footer__follow">
+            <a href="mailto:contacto@sembrandoperu.org" aria-label={t('Contacto')}><Mail aria-hidden="true" /></a>
+            {socials.map((social) => <a href={social.href ?? '#redes'} target={social.href ? '_blank' : undefined} rel={social.href ? 'noreferrer' : undefined} aria-label={social.label} key={social.label}><img src={social.image} alt="" /></a>)}
+          </div>
+          <div className="blog-footer__details">
+            <nav className="blog-footer__links" aria-label={t('Navegación')}>
+              <button type="button" onClick={toggleLanguage} lang={language === 'es' ? 'en' : 'es'}>{language === 'es' ? 'English' : 'Español'}</button>
+              <a href="/contacto">{t('Contáctanos')}</a>
+              <a href="/trabaja-con-nosotros">{t('Bolsa de Trabajo')}</a>
+              <a href="/contacto#privacidad">{t('Políticas')}</a>
+              <a href="/mecanismo-de-quejas">{t('Quejas')}</a>
+            </nav>
+            <p className="blog-footer__copyright">{t('© 2026 Sembrando. Todos los derechos reservados.')}</p>
+          </div>
+        </div>
       </div>
     </footer>
   )

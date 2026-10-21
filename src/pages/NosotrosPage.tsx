@@ -1,5 +1,5 @@
 import aboutHero from '../assets/figma/about-hero-background.png'
-import storyCard from '../assets/figma/about-story-card.png'
+import storyCard from '../assets/figma/nosotros.JPG?url'
 import SiteHeader from '../components/SiteHeader'
 import { useLanguage } from '../components/LanguageContext'
 import SocialLinks from '../components/SocialLinks'

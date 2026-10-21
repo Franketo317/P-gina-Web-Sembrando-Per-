@@ -38,6 +38,7 @@
 }
 
 .news-banner p { margin: 0; font-size: clamp(21px, 2.2vw, 28px); line-height: 1.4; }
+.publications-page .news-banner p { font-size: 17px; }
 .news-intro { max-width: 860px; margin: auto; padding: 72px 32px 88px; text-align: center; }
 .news-intro p { margin: 0 0 16px; font-size: 18px; line-height: 1.75; }
 .news-intro p:last-child { margin-bottom: 0; }

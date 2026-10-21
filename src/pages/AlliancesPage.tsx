@@ -4,7 +4,7 @@ import SocialLinks from '../components/SocialLinks'
 import { useLanguage } from '../components/LanguageContext'
 import { BlogFooter } from './BlogPage'
 import { CollapsibleSection } from './DonationPage'
-import heroImage from "../assets/figma/alianzas3.JPG";
+import heroImage from '../assets/figma/alianzas3.jpg'
 import communityImage from '../assets/figma/blog-article-community.jpg'
 import './AlliancesPage.css'
 
@@ -109,12 +109,6 @@ export default function AlliancesPage() {
             <h1 id="alliances-title">{text.title}<br />{text.titleEnd}</h1>
             <p>{text.lead}</p>
           </div>
-          <aside className="alliances-invitation">
-            <Handshake aria-hidden="true" />
-            <h2>{text.invitation}</h2>
-            <p>{text.invitationText}</p>
-            <a className="alliances-action" href="/contacto">{text.action}<ArrowRight aria-hidden="true" /></a>
-          </aside>
         </section>
         <nav className="donation-breadcrumbs" aria-label={t('Ruta de navegación')}>
           <ol>

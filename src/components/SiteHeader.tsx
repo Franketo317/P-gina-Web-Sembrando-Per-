@@ -15,6 +15,13 @@ type SearchItem = {
 }
 
 const searchDatabase: SearchItem[] = [
+  {
+    title: 'Convocatoria consultorías',
+    category: 'Sembrando Perú',
+    description: 'Consulta las convocatorias de consultoría por palabra clave, mes y año.',
+    href: '/convocatoria-consultorias',
+    keywords: ['consultorias', 'consultoria', 'convocatoria', 'convocatorias', 'servicios', 'consultores'],
+  },
   ...getPublications('es').map((publication) => ({
     title: publication.title,
     category: 'Publicaciones',
@@ -64,6 +71,20 @@ const searchDatabase: SearchItem[] = [
     description: 'Ponte en contacto con nuestro equipo en Lima, formulario de atención y canales de consulta.',
     href: '/contacto',
     keywords: ['contacto', 'contactanos', 'telefono', 'correo', 'oficina', 'sede', 'lima', 'whatsapp', 'formulario'],
+  },
+  {
+    title: 'Membresía',
+    category: 'Sembrando Perú',
+    description: 'Conoce la sección de membresía de Sembrando Perú.',
+    href: '/membresia',
+    keywords: ['membresia', 'miembro', 'membresías', 'apoyar', 'donacion'],
+  },
+  {
+    title: 'Alianzas',
+    category: 'Sembrando Perú',
+    description: 'Conoce las alianzas comunitarias e institucionales de Sembrando Perú.',
+    href: '/alianzas',
+    keywords: ['alianzas', 'aliados', 'cooperación', 'instituciones'],
   },
 
   // NUESTRO TRABAJO (Áreas y proyectos)
@@ -266,7 +287,7 @@ export default function SiteHeader() {
   }
 
   const currentPath = typeof window !== 'undefined' ? window.location.pathname.replace(/\/+$/, '') || '/' : '/'
-  const isSembrandoPeruActive = currentPath === '/nosotros' || currentPath.startsWith('/nosotros') || currentPath === '/contacto' || currentPath === '/como-trabajamos' || currentPath === '/trabaja-con-nosotros' || currentPath === '/nuestro-equipo' || currentPath === '/mecanismo-de-quejas'
+  const isSembrandoPeruActive = currentPath === '/nosotros' || currentPath.startsWith('/nosotros') || currentPath === '/contacto' || currentPath === '/como-trabajamos' || currentPath === '/trabaja-con-nosotros' || currentPath.startsWith('/convocatoria-consultorias') || currentPath === '/nuestro-equipo' || currentPath === '/mecanismo-de-quejas' || currentPath === '/membresia' || currentPath === '/alianzas'
   const isInformateActive = currentPath === '/blog' || currentPath.startsWith('/blog/') || currentPath === '/publicaciones' || currentPath.startsWith('/publicaciones/') || currentPath === '/noticias' || currentPath === '/campanas'
 
   return (
@@ -297,15 +318,21 @@ export default function SiteHeader() {
               <path d="M1.4 1.4L6 6l4.6-4.6" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
             </svg>
           </button>
-          <div className="nav-dropdown__menu" role="menu">
+          <div className="nav-dropdown__menu nav-dropdown__menu--sembrando" role="menu">
             <a href="/nosotros#historia" role="menuitem" onClick={closeAll}>
               {t('Nuestra historia')}
             </a>
             <a href="/como-trabajamos" role="menuitem" onClick={closeAll}>
               {t('¿Cómo trabajamos?')}
             </a>
+            <a href="/alianzas" role="menuitem" onClick={closeAll}>
+              {t('Alianzas')}
+            </a>
             <a href="/trabaja-con-nosotros" role="menuitem" onClick={closeAll}>
-              {t('Trabaja con nosotros')}
+              {t('Bolsa laboral')}
+            </a>
+            <a href="/convocatoria-consultorias" role="menuitem" onClick={closeAll}>
+              {t('Convocatoria consultorías')}
             </a>
             <a href="/contacto" role="menuitem" onClick={closeAll}>
               {t('Contáctanos')}
@@ -387,8 +414,8 @@ export default function SiteHeader() {
           <a className="about-navigation__btn about-navigation__btn--volunteer" href="/sumate" onClick={closeAll}>
             {t('SÚMATE')} <img src={arrowRight} alt="" />
           </a>
-          <a className="about-navigation__btn about-navigation__btn--alliances" href="/alianzas" onClick={closeAll}>
-            {t('ALIANZAS')} <img src={arrowRight} alt="" />
+          <a className="about-navigation__btn about-navigation__btn--alliances" href="/membresia" onClick={closeAll}>
+            {t('MEMBRESÍA')} <img src={arrowRight} alt="" />
           </a>
         </div>
         <LanguageSwitcher className="about-navigation__language-mobile" />
@@ -436,8 +463,8 @@ export default function SiteHeader() {
           <a className="header-action-btn header-action-btn--volunteer" href="/sumate" onClick={closeAll}>
             {t('SÚMATE')}
           </a>
-          <a className="header-action-btn header-action-btn--alliances" href="/alianzas" onClick={closeAll}>
-            {t('ALIANZAS')}
+          <a className="header-action-btn header-action-btn--alliances" href="/membresia" onClick={closeAll}>
+            {t('MEMBRESÍA')}
           </a>
         </div>
       </div>

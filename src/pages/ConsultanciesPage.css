@@ -1,0 +1,360 @@
+@import url('https://fonts.googleapis.com/css2?family=Fjalla+One&family=Open+Sans:wght@400;600;700&display=swap');
+
+.consultancies-page {
+  --font-consultancy-heading: 'Fjalla One', 'Oswald', sans-serif;
+  --font-consultancy-body: 'Open Sans', Arial, sans-serif;
+  color: #191c1d;
+  font-family: var(--font-avenir);
+}
+
+.consultancies-hero {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  padding: 90px max(24px, calc((100% - 1150px) / 2));
+  background-color: #006445;
+  background-size: cover;
+  background-position: center 48%;
+  isolation: isolate;
+}
+
+.consultancies-hero::before {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: linear-gradient(90deg, rgb(0 25 16 / 60%), rgb(0 25 16 / 12%) 85%);
+  content: '';
+}
+
+.consultancies-hero h1 {
+  margin: 0;
+  color: #fff;
+  font-family: var(--font-display);
+  font-size: clamp(42px, 4.5vw, 76px);
+  font-weight: 400;
+  line-height: 1.22;
+  text-shadow: 0 2px 12px rgb(0 0 0 / 25%);
+}
+
+.consultancies-hero h1 span {
+  display: block;
+}
+
+.consultancies-hero .hero-socials--banner {
+  top: 24px !important;
+  right: max(24px, calc((100% - 1150px) / 2));
+}
+
+.consultancies-main {
+  width: min(1150px, calc(100% - 48px));
+  margin: 0 auto;
+  padding: 16px 0 72px;
+  font-family: var(--font-consultancy-body);
+}
+
+.consultancies-filters {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 20px;
+}
+
+.consultancies-filters label {
+  min-width: 0;
+}
+
+.consultancies-filters input,
+.consultancies-filters select {
+  width: 100%;
+  height: 34px;
+  padding: 6px 10px;
+  border: 1px solid #cbd2ce;
+  border-radius: 0;
+  background: #fff;
+  color: #34483d;
+  font: inherit;
+  font-size: 14px;
+}
+
+.consultancies-filters button {
+  min-height: 34px;
+  border: 0;
+  background: #383838;
+  color: #fff;
+  font-family: var(--font-consultancy-heading);
+  font-size: 14px;
+  font-weight: 400;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.consultancies-filters button:hover {
+  background: #006445;
+}
+
+.consultancies-subscribe {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  margin: 18px 0 28px;
+  font-size: 16px;
+  line-height: 1.4;
+  text-decoration: none;
+}
+
+.consultancies-subscribe svg {
+  color: #02734d;
+}
+
+.consultancies-subscribe:hover {
+  text-decoration: underline;
+}
+
+.consultancies-results {
+  display: grid;
+  gap: 26px;
+}
+
+.consultancies-notice {
+  margin: 0 0 26px;
+  color: #68756c;
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+.consultancies-main > .consultancies-notice {
+  margin: 0 15px 16px;
+  font-size: 12px;
+}
+
+.consultancies-notice a {
+  color: #02734d;
+  text-underline-offset: 3px;
+}
+
+.consultancies-clear {
+  margin: 0 0 24px;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: #02734d;
+  font: inherit;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.consultancies-more {
+  display: block;
+  width: min(300px, 100%);
+  min-height: 72px;
+  margin: 58px auto 0;
+  border: 0;
+  background: #383838;
+  color: #fff;
+  font-family: var(--font-consultancy-heading);
+  font-size: 23px;
+  font-weight: 400;
+  cursor: pointer;
+}
+
+.consultancies-more:hover {
+  background: #006445;
+}
+
+.consultancy-card {
+  display: grid;
+  grid-template-columns: 265px minmax(0, 1fr);
+  gap: 20px;
+  padding: 0 15px 26px;
+  border-bottom: 1px solid #e2e9e3;
+}
+
+.consultancy-card img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 1.6;
+  object-fit: cover;
+}
+
+.consultancy-card:nth-of-type(3n) img {
+  aspect-ratio: 1.3;
+}
+
+.consultancy-card:last-child {
+  padding-bottom: 0;
+  border-bottom: 0;
+}
+
+.consultancy-card h2 {
+  margin: 14px 0 12px;
+  font-family: var(--font-consultancy-heading);
+  font-size: 28px;
+  font-weight: 400;
+  line-height: 1.32;
+  letter-spacing: -0.4px;
+}
+
+.consultancy-card h2 a {
+  text-decoration: none;
+}
+
+.consultancy-card h2 a:hover {
+  text-decoration: underline;
+}
+
+.consultancy-card time {
+  display: block;
+  color: #68756c;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.consultancy-card p {
+  margin-top: 12px;
+  line-height: 1.6;
+}
+
+.consultancy-card__more {
+  display: inline-block;
+  margin-top: 14px;
+  color: #02734d;
+}
+
+.consultancies-empty {
+  padding: 40px 24px;
+  border-top: 1px solid #e2e9e3;
+  border-bottom: 1px solid #e2e9e3;
+  text-align: center;
+}
+
+.consultancies-empty h2 {
+  margin: 0 0 14px;
+  color: #006445;
+  font-family: var(--font-display);
+  font-size: 28px;
+  font-weight: 400;
+}
+
+.consultancies-empty p {
+  line-height: 1.6;
+}
+
+.consultancies-empty__actions {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 14px;
+  margin-top: 22px;
+}
+
+.consultancies-empty__actions a,
+.consultancies-empty__actions button {
+  padding: 10px 20px;
+  border: 1px solid #02734d;
+  border-radius: 0;
+  background: #02734d;
+  color: #fff;
+  font: inherit;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.consultancy-detail {
+  width: min(1000px, calc(100% - 48px));
+  margin: 0 auto;
+  padding: 64px 0 80px;
+}
+
+.consultancy-detail__back {
+  display: inline-block;
+  margin-bottom: 26px;
+  color: #02734d;
+  text-underline-offset: 4px;
+}
+
+.consultancy-detail h1 {
+  margin: 0 0 30px;
+  font-family: var(--font-display);
+  font-size: clamp(30px, 4vw, 46px);
+  font-weight: 400;
+  line-height: 1.25;
+}
+
+.consultancy-detail__image {
+  display: block;
+  width: 100%;
+  max-height: 420px;
+  aspect-ratio: 2;
+  object-fit: cover;
+}
+
+.consultancy-detail section {
+  margin-top: 30px;
+}
+
+.consultancy-detail h2 {
+  margin: 0 0 12px;
+  color: #006445;
+  font-family: var(--font-display);
+  font-size: 28px;
+  font-weight: 400;
+}
+
+.consultancy-detail p,
+.consultancy-detail li {
+  line-height: 1.7;
+}
+
+.consultancy-detail ul {
+  padding-left: 22px;
+}
+
+.consultancy-detail__source {
+  margin: 36px 0 24px;
+  color: #68756c;
+  font-size: 14px;
+}
+
+.consultancy-detail__source a {
+  color: #02734d;
+}
+
+.consultancy-detail__contact {
+  display: inline-block;
+  padding: 12px 22px;
+  background: #02734d;
+  color: #fff;
+  text-decoration: none;
+}
+
+.consultancies-empty__actions button {
+  background: #fff;
+  color: #02734d;
+}
+
+@media (max-width: 800px) {
+  .consultancies-filters {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 14px;
+  }
+
+  .consultancy-card {
+    grid-template-columns: 200px minmax(0, 1fr);
+    padding-inline: 0;
+  }
+}
+
+@media (max-width: 540px) {
+  .consultancies-hero {
+    padding-top: 110px;
+  }
+
+  .consultancies-filters,
+  .consultancy-card {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .consultancies-empty {
+    padding-inline: 0;
+  }
+}
