@@ -163,7 +163,7 @@ function DonationHero({ isMembership }: { isMembership: boolean }) {
 
   return (
     <section className={`donation-hero${isFormPinned ? ' is-form-pinned' : ''}`} aria-labelledby="donation-hero-title">
-      <img className="donation-hero__image" src={heroImage} alt="Manos plantando un árbol joven" />
+      <img className="donation-hero__image" src={heroImage} alt={t("Manos plantando un árbol joven")} />
       <div className="donation-hero__shade" />
       <SocialLinks />
       <div className="donation-hero__content">
@@ -175,7 +175,7 @@ function DonationHero({ isMembership }: { isMembership: boolean }) {
         ) : (
           <>
             <h1 id="donation-hero-title">{t('ÚNETE AL CAMBIO,')}<br />{t('DONA HOY!')}</h1>
-            <p>Tu donación hace posible más acciones de reforestación, educación y desarrollo sostenible en las comunidades del Perú.</p>
+            <p>{t("Tu donación hace posible más acciones de reforestación, educación y desarrollo sostenible en las comunidades del Perú.")}</p>
           </>
         )}
       </div>
@@ -266,7 +266,7 @@ function ImpactAreas() {
       <div className="donation-impact__grid">
         {impactAreas.map((area) => (
           <article className="donation-impact-card" key={area.title}>
-            <img src={area.image} alt={area.alt} />
+            <img src={area.image} alt={t(area.alt)} />
             <div><h3>{t(area.title)}</h3><p>{t(area.description)}</p></div>
           </article>
         ))}
@@ -340,7 +340,7 @@ export default function DonationPage({ isMembership = false }: { isMembership?: 
           <div className="donation-how__copy">
             <p>{t('Tu donación se destina directamente a nuestras jornadas de reforestación, la producción de plantines en viveros y talleres de educación ambiental. Cada aporte asegura la transparencia y continuidad de nuestros proyectos en las comunidades.')}</p>
           </div>
-          <img className="donation-how__image" src={impactImage} alt="Integrantes de Sembrando Perú trabajando junto a la comunidad" />
+          <img className="donation-how__image" src={impactImage} alt={t("Integrantes de Sembrando Perú trabajando junto a la comunidad")} />
         </CollapsibleSection>
         <ImpactAreas />
         <DonationFaq />

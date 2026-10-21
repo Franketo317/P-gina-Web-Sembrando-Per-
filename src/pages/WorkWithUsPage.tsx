@@ -1,6 +1,6 @@
-import { useState, type FormEvent } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import opportunitiesHero from '../assets/figma/imgBuildingBlocks169.jpg'
-import SocialLinks from '../components/SocialLinks'
+import teamPhoto from '../assets/figma/equipo.jpeg'
 import SiteHeader from '../components/SiteHeader'
 import { useLanguage } from '../components/LanguageContext'
 import { BlogFooter } from './BlogPage'
@@ -9,31 +9,44 @@ import './WorkWithUsPage.css'
 type Opportunity = {
   title: string
   area: string
+  location: 'remote' | 'hybrid' | 'onsite'
   description: string
   href: string
 }
 
 const opportunities: Opportunity[] = []
 
-const opportunityAreas = ['Medio ambiente', 'Educación', 'Salud']
+const locationOptions = [
+  { value: 'remote', label: 'Remoto' },
+  { value: 'hybrid', label: 'Híbrido' },
+  { value: 'onsite', label: 'En el lugar' },
+] as const
 
 export default function WorkWithUsPage() {
   const { t } = useLanguage()
-  const [searchText, setSearchText] = useState('')
-  const [searchTerm, setSearchTerm] = useState('')
-  const [selectedArea, setSelectedArea] = useState('')
+  const [selectedLocations, setSelectedLocations] = useState<string[]>([])
+  const locationFilterRef = useRef<HTMLDetailsElement>(null)
 
-  const visibleOpportunities = opportunities.filter((opportunity) => {
-    const matchesSearch = `${opportunity.title} ${opportunity.description}`
-      .toLocaleLowerCase()
-      .includes(searchTerm.toLocaleLowerCase())
-    const matchesArea = !selectedArea || opportunity.area === selectedArea
-    return matchesSearch && matchesArea
-  })
+  useEffect(() => {
+    function closeFilter(event: PointerEvent) {
+      const filter = locationFilterRef.current
+      if (filter && event.target instanceof Node && !filter.contains(event.target)) filter.open = false
+    }
+    document.addEventListener('pointerdown', closeFilter)
+    return () => document.removeEventListener('pointerdown', closeFilter)
+  }, [])
 
-  function handleSearch(event: FormEvent<HTMLFormElement>) {
-    event.preventDefault()
-    setSearchTerm(searchText.trim())
+  const visibleOpportunities = opportunities.filter(opportunity =>
+    selectedLocations.length === 0 || selectedLocations.includes(opportunity.location)
+  )
+  const filterLabel = selectedLocations.length
+    ? locationOptions.filter(option => selectedLocations.includes(option.value)).map(option => t(option.label)).join(', ')
+    : t('Tipo de ubicación del empleo')
+
+  function toggleLocation(value: string) {
+    setSelectedLocations(current => current.includes(value)
+      ? current.filter(location => location !== value)
+      : [...current, value])
   }
 
   return (
@@ -44,42 +57,55 @@ export default function WorkWithUsPage() {
         style={{ backgroundImage: `url(${opportunitiesHero})` }}
         aria-labelledby="opportunities-title"
       >
-        <h1 id="opportunities-title">{t('CONVOCATORIA')}</h1>
-        <SocialLinks placement="banner" />
+        <h1 id="opportunities-title">{t('Sembrando Perú - Bolsa Laboral')}</h1>
       </section>
 
       <main className="opportunities-main">
-        <header className="opportunities-intro">
-          
-        </header>
+        <section className="opportunities-intro" aria-labelledby="opportunities-intro-title">
+          <div className="opportunities-intro__copy">
+            <h2 id="opportunities-intro-title">{t('Bolsa laboral')}</h2>
+            <p>{t('Estamos buscando personas apasionadas, profesionales e inspiradoras para unirse a nuestro equipo.')}</p>
+          </div>
+          <img
+            className="opportunities-intro__image"
+            src={teamPhoto}
+            alt={t('Integrante de Sembrando Perú preparando plantas para una jornada de reforestación')}
+          />
+        </section>
 
         <section className="opportunities-section" aria-label={t('Convocatorias')}>
-          <form className="opportunities-filters" onSubmit={handleSearch}>
-            <label className="opportunities-search">
-              <span className="visually-hidden">{t('Buscar convocatorias')}</span>
-              <input
-                type="search"
-                value={searchText}
-                onChange={(event) => setSearchText(event.currentTarget.value)}
-                placeholder={t('Buscar convocatorias')}
-              />
-            </label>
-            <label className="opportunities-area">
-              <span className="visually-hidden">{t('Área de trabajo')}</span>
-              <select
-                value={selectedArea}
-                onChange={(event) => setSelectedArea(event.currentTarget.value)}
-              >
-                <option value="">{t('Todas las áreas')}</option>
-                {opportunityAreas.map((area) => (
-                  <option key={area} value={area}>{t(area)}</option>
+          <div className="opportunities-section__header">
+            <h2 className="opportunities-section__title">{t('¿Quieres formar parte de nuestro equipo?')}</h2>
+            <details
+              className="opportunities-location"
+              ref={locationFilterRef}
+              onKeyDown={event => {
+                if (event.key === 'Escape') {
+                  event.currentTarget.open = false
+                  event.currentTarget.querySelector('summary')?.focus()
+                }
+              }}
+            >
+              <summary aria-label={t('Tipo de ubicación del empleo')}>
+                <span>{filterLabel}</span>
+                <svg viewBox="0 0 12 8" width="12" height="8" aria-hidden="true">
+                  <path d="M1 2l5 4 5-4" fill="none" stroke="currentColor" strokeWidth="1.5" />
+                </svg>
+              </summary>
+              <div className="opportunities-location__options" role="group" aria-label={t('Tipo de ubicación del empleo')}>
+                {locationOptions.map(option => (
+                  <label key={option.value}>
+                    <input
+                      type="checkbox"
+                      checked={selectedLocations.includes(option.value)}
+                      onChange={() => toggleLocation(option.value)}
+                    />
+                    <span>{t(option.label)}</span>
+                  </label>
                 ))}
-              </select>
-            </label>
-            <button className="opportunities-search-button" type="submit">
-              {t('Buscar')}
-            </button>
-          </form>
+              </div>
+            </details>
+          </div>
 
           {visibleOpportunities.length > 0 ? (
             <div className="opportunities-list">
@@ -98,7 +124,7 @@ export default function WorkWithUsPage() {
             </div>
           ) : (
             <p className="opportunities-empty" role="status">
-              {t('No hay convocatorias abiertas')}
+              {t('Actualmente, no hay ninguna oferta de trabajo disponible.')}
             </p>
           )}
         </section>

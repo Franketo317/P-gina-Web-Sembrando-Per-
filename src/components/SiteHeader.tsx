@@ -22,13 +22,6 @@ const searchDatabase: SearchItem[] = [
     href: '/convocatoria-consultorias',
     keywords: ['consultorias', 'consultoria', 'convocatoria', 'convocatorias', 'servicios', 'consultores'],
   },
-  ...getPublications('es').map((publication) => ({
-    title: publication.title,
-    category: 'Publicaciones',
-    description: publication.description,
-    href: `/publicaciones/articulo/${publication.slug}`,
-    keywords: [publication.format, publication.category, 'publicaciones', 'guia', 'materiales'],
-  })),
   // SEMBRANDO PERÚ (Institucional)
   {
     title: '¿Quiénes somos? / Nosotros',
@@ -78,13 +71,6 @@ const searchDatabase: SearchItem[] = [
     description: 'Conoce la sección de membresía de Sembrando Perú.',
     href: '/membresia',
     keywords: ['membresia', 'miembro', 'membresías', 'apoyar', 'donacion'],
-  },
-  {
-    title: 'Alianzas',
-    category: 'Sembrando Perú',
-    description: 'Conoce las alianzas comunitarias e institucionales de Sembrando Perú.',
-    href: '/alianzas',
-    keywords: ['alianzas', 'aliados', 'cooperación', 'instituciones'],
   },
 
   // NUESTRO TRABAJO (Áreas y proyectos)
@@ -204,13 +190,28 @@ export default function SiteHeader() {
   const [openDropdown, setOpenDropdown] = useState<string | null>(null)
   const [searchOpen, setSearchOpen] = useState(false)
   const [searchQuery, setSearchQuery] = useState('')
-  const [searchResults, setSearchResults] = useState<SearchItem[] | null>(null)
+  const [submittedSearch, setSubmittedSearch] = useState('')
   const [hasSearched, setHasSearched] = useState(false)
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
 
   const headerRef = useRef<HTMLElement>(null)
   const searchInputRef = useRef<HTMLInputElement>(null)
-  const { t } = useLanguage()
+  const { t, language } = useLanguage()
+  const searchableItems: SearchItem[] = [
+    ...getPublications(language).map(publication => ({
+      title: publication.title,
+      category: t('Publicaciones'),
+      description: publication.description,
+      href: `/publicaciones/articulo/${publication.slug}`,
+      keywords: [publication.format, t(publication.category), 'publications', 'guide', 'resources', 'publicaciones', 'guia', 'materiales'],
+    })),
+    ...searchDatabase,
+  ]
+  const searchTerms = normalizeText(submittedSearch).split(/\s+/).filter(Boolean)
+  const searchResults = searchableItems.filter(item => {
+    const searchableText = normalizeText(`${t(item.title)} ${t(item.description)} ${t(item.category)} ${item.title} ${item.description} ${item.keywords.join(' ')}`)
+    return searchTerms.every(term => searchableText.includes(term))
+  })
 
   // Handle outside click & Escape key
   useEffect(() => {
@@ -245,7 +246,7 @@ export default function SiteHeader() {
       }, 50)
     } else {
       setSearchQuery('')
-      setSearchResults(null)
+      setSubmittedSearch('')
       setHasSearched(false)
     }
   }, [searchOpen])
@@ -271,29 +272,18 @@ export default function SiteHeader() {
     const query = normalizeText(searchQuery)
     if (!query) return
 
-    const terms = query.split(/\s+/).filter(Boolean)
-    const results = searchDatabase.filter((item) => {
-      const titleNorm = normalizeText(item.title)
-      const descNorm = normalizeText(item.description)
-      const catNorm = normalizeText(item.category)
-      const kwNorm = item.keywords.map(normalizeText).join(' ')
-
-      const fullString = `${titleNorm} ${descNorm} ${catNorm} ${kwNorm}`
-      return terms.every((term) => fullString.includes(term))
-    })
-
-    setSearchResults(results)
+    setSubmittedSearch(query)
     setHasSearched(true)
   }
 
   const currentPath = typeof window !== 'undefined' ? window.location.pathname.replace(/\/+$/, '') || '/' : '/'
-  const isSembrandoPeruActive = currentPath === '/nosotros' || currentPath.startsWith('/nosotros') || currentPath === '/contacto' || currentPath === '/como-trabajamos' || currentPath === '/trabaja-con-nosotros' || currentPath.startsWith('/convocatoria-consultorias') || currentPath === '/nuestro-equipo' || currentPath === '/mecanismo-de-quejas' || currentPath === '/membresia' || currentPath === '/alianzas'
+  const isSembrandoPeruActive = currentPath === '/nosotros' || currentPath.startsWith('/nosotros') || currentPath === '/contacto' || currentPath === '/como-trabajamos' || currentPath === '/trabaja-con-nosotros' || currentPath.startsWith('/convocatoria-consultorias') || currentPath === '/nuestro-equipo' || currentPath === '/mecanismo-de-quejas' || currentPath === '/membresia'
   const isInformateActive = currentPath === '/blog' || currentPath.startsWith('/blog/') || currentPath === '/publicaciones' || currentPath.startsWith('/publicaciones/') || currentPath === '/noticias' || currentPath === '/campanas'
 
   return (
     <header className="about-header site-header-root" ref={headerRef}>
       {/* Brand logo block (protruding below header) */}
-      <a className="about-header__brand" href="/" aria-label="Sembrando Perú, inicio" onClick={closeAll}>
+      <a className="about-header__brand" href="/" aria-label={t("Sembrando Perú, inicio")} onClick={closeAll}>
         <img src={logo} alt="Sembrando Perú" />
       </a>
 
@@ -324,9 +314,6 @@ export default function SiteHeader() {
             </a>
             <a href="/como-trabajamos" role="menuitem" onClick={closeAll}>
               {t('¿Cómo trabajamos?')}
-            </a>
-            <a href="/alianzas" role="menuitem" onClick={closeAll}>
-              {t('Alianzas')}
             </a>
             <a href="/trabaja-con-nosotros" role="menuitem" onClick={closeAll}>
               {t('Bolsa laboral')}
@@ -414,7 +401,7 @@ export default function SiteHeader() {
           <a className="about-navigation__btn about-navigation__btn--volunteer" href="/sumate" onClick={closeAll}>
             {t('SÚMATE')} <img src={arrowRight} alt="" />
           </a>
-          <a className="about-navigation__btn about-navigation__btn--alliances" href="/membresia" onClick={closeAll}>
+          <a className="about-navigation__btn about-navigation__btn--membership" href="/membresia" onClick={closeAll}>
             {t('MEMBRESÍA')} <img src={arrowRight} alt="" />
           </a>
         </div>
@@ -463,7 +450,7 @@ export default function SiteHeader() {
           <a className="header-action-btn header-action-btn--volunteer" href="/sumate" onClick={closeAll}>
             {t('SÚMATE')}
           </a>
-          <a className="header-action-btn header-action-btn--alliances" href="/membresia" onClick={closeAll}>
+          <a className="header-action-btn header-action-btn--membership" href="/membresia" onClick={closeAll}>
             {t('MEMBRESÍA')}
           </a>
         </div>
@@ -471,7 +458,7 @@ export default function SiteHeader() {
 
       {/* Search Panel Dropdown */}
       {searchOpen && (
-        <div className="header-search-panel" role="region" aria-label="Buscador del sitio">
+        <div className="header-search-panel" role="region" aria-label={t("Buscador del sitio")}>
           <div className="header-search-panel__container">
             <button
               type="button"
@@ -485,7 +472,7 @@ export default function SiteHeader() {
               </svg>
             </button>
 
-            <h2 className="header-search-panel__title">¿QUÉ TE GUSTARÍA BUSCAR?</h2>
+            <h2 className="header-search-panel__title">{t("¿QUÉ TE GUSTARÍA BUSCAR?")}</h2>
 
             <form className="header-search-panel__form" onSubmit={handleSearchSubmit}>
               <div className="header-search-panel__input-wrap">
@@ -493,19 +480,19 @@ export default function SiteHeader() {
                   ref={searchInputRef}
                   type="search"
                   className="header-search-panel__input"
-                  placeholder="Escribe un tema o una palabra clave…"
+                  placeholder={t("Escribe un tema o una palabra clave…")}
                   value={searchQuery}
                   onChange={(e) => {
                     setSearchQuery(e.target.value)
                     if (hasSearched) {
                       setHasSearched(false)
-                      setSearchResults(null)
+                      setSubmittedSearch('')
                     }
                   }}
                   autoComplete="off"
                 />
                 <button type="submit" className="header-search-panel__submit">
-                  <span>BUSCAR</span>
+                  <span>{t("BUSCAR")}</span>
                   <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
                     <circle cx="11" cy="11" r="8" />
                     <line x1="21" y1="21" x2="16.65" y2="16.65" />
@@ -525,16 +512,14 @@ export default function SiteHeader() {
                         className="header-search-panel__result-item"
                         onClick={closeAll}
                       >
-                        <span className="header-search-panel__result-category">{item.category}</span>
-                        <h3 className="header-search-panel__result-title">{item.title}</h3>
-                        <p className="header-search-panel__result-desc">{item.description}</p>
+                        <span className="header-search-panel__result-category">{t(item.category)}</span>
+                        <h3 className="header-search-panel__result-title">{t(item.title)}</h3>
+                        <p className="header-search-panel__result-desc">{t(item.description)}</p>
                       </a>
                     ))}
                   </div>
                 ) : (
-                  <p className="header-search-panel__no-results">
-                    No encontramos resultados para tu búsqueda.
-                  </p>
+                  <p className="header-search-panel__no-results">{t("No encontramos resultados para tu búsqueda.")}</p>
                 )}
               </div>
             )}

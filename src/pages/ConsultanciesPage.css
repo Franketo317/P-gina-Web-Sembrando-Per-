@@ -163,7 +163,7 @@
 
 .consultancy-card {
   display: grid;
-  grid-template-columns: 265px minmax(0, 1fr);
+  grid-template-columns: 300px minmax(0, 1fr);
   gap: 20px;
   padding: 0 15px 26px;
   border-bottom: 1px solid #e2e9e3;
@@ -188,7 +188,7 @@
 .consultancy-card h2 {
   margin: 14px 0 12px;
   font-family: var(--font-consultancy-heading);
-  font-size: 28px;
+  font-size: 23px;
   font-weight: 400;
   line-height: 1.32;
   letter-spacing: -0.4px;
@@ -339,7 +339,7 @@
   }
 
   .consultancy-card {
-    grid-template-columns: 200px minmax(0, 1fr);
+    grid-template-columns: 220px minmax(0, 1fr);
     padding-inline: 0;
   }
 }

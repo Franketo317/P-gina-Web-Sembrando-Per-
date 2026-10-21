@@ -12,9 +12,9 @@ export default function CampaignDetailPage({ slug }: { slug: string }) {
 
   useEffect(() => {
     const previousTitle = document.title
-    document.title = `${campaign?.title ?? 'Campaña no encontrada'} | Sembrando Perú`
+    document.title = `${t(campaign?.title ?? 'Campaña no encontrada')} | Sembrando Perú`
     return () => { document.title = previousTitle }
-  }, [campaign])
+  }, [campaign, t])
 
   if (!campaign) return (
     <div className="home-page campaign-detail"><SiteHeader /><main className="campaign-detail__intro">

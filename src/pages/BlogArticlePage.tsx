@@ -95,10 +95,10 @@ export default function BlogArticlePage({ slug }: Props) {
           <a className="blog-article__back" href="/publicaciones#articulos">{t('← Volver a Últimos artículos')}</a>
           <article>
             <header className="blog-article__header">
-              <div className="blog-meta"><span>{t(article.category)}</span><i /><time>{article.date}</time></div>
+              <div className="blog-meta"><span>{t(article.category)}</span><i /><time>{t(article.date)}</time></div>
               <h1>{t(article.title)}</h1>
             </header>
-            <img className="blog-article__hero" src={article.image} alt={article.alt} />
+            <img className="blog-article__hero" src={article.image} alt={t(article.alt)} />
             <div className="blog-article__body">
               <p className="blog-article__introduction">{t(article.introduction)}</p>
               {article.sections.map((section) => (
@@ -115,10 +115,10 @@ export default function BlogArticlePage({ slug }: Props) {
               {related.map((item) => (
                 <article className="blog-related-card" key={item.slug}>
                   <a className="blog-related-card__image-link" href={`/publicaciones/articulo/${item.slug}`} aria-label={`${t('Leer')} ${t(item.title)}`}>
-                    <img src={item.image} alt={item.alt} />
+                    <img src={item.image} alt={t(item.alt)} />
                   </a>
                   <div className="blog-related-card__content">
-                    <div className="blog-meta"><span>{t(item.category)}</span><i /><time>{item.date}</time></div>
+                    <div className="blog-meta"><span>{t(item.category)}</span><i /><time>{t(item.date)}</time></div>
                     <h3>{t(item.title)}</h3>
                     <a href={`/publicaciones/articulo/${item.slug}`}>{t('Leer artículo')} <img src={arrowRight} alt="" /></a>
                   </div>

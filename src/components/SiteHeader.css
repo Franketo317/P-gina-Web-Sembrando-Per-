@@ -454,13 +454,13 @@ header.site-header * {
 }
 
 /* 3. Membresía — verde oscuro de la marca */
-.site-header__btn--alliances {
+.site-header__btn--membership {
   background-color: #02734d !important;
   color: #ffffff !important;
   border: none !important;
 }
 
-.site-header__btn--alliances:hover {
+.site-header__btn--membership:hover {
   filter: brightness(0.85) !important;
 }
 
@@ -733,7 +733,7 @@ header.site-header * {
   color: #ffffff;
 }
 
-.site-header__mobile-btn--alliances {
+.site-header__mobile-btn--membership {
   background-color: transparent;
   color: #ffffff;
   border: 1.5px solid rgba(255, 255, 255, 0.8);

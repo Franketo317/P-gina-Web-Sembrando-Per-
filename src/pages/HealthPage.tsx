@@ -53,7 +53,8 @@ export default function HealthPage() {
         </section>
 
         <section className="reforestation-intro health-intro" aria-label={t('Salud y bienestar en las comunidades')}>
-          <p>{t('El bienestar de los niños y sus familias es parte esencial del futuro de las comunidades. En Sembrando Perú trabajamos para contribuir a la prevención de la anemia infantil y fortalecer la salud en las zonas rurales de la Selva y la Sierra.')} {t('Nuestro enfoque conecta la prevención en salud con la educación comunitaria y la participación de las familias. Entendemos que el desarrollo sostenible también significa crear condiciones para que las nuevas generaciones crezcan con bienestar y oportunidades.')}</p>
+          <p>{t('El bienestar de los niños y sus familias es parte esencial del futuro de las comunidades. En Sembrando Perú trabajamos para contribuir a la prevención de la anemia infantil y fortalecer la salud en las zonas rurales de la Selva y la Sierra.')}</p>
+          <p>{t('Nuestro enfoque conecta la prevención en salud con la educación comunitaria y la participación de las familias. Entendemos que el desarrollo sostenible también significa crear condiciones para que las nuevas generaciones crezcan con bienestar y oportunidades.')}</p>
         </section>
 
         <section className="reforestation-threats health-challenges" aria-labelledby="health-challenges-title">

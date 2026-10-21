@@ -213,7 +213,7 @@
   color: #fff;
 }
 
-:is(.home-page, .about-page, .blog-page, .contact-page, .donation-page) > header.site-header-root .header-action-btn--alliances {
+:is(.home-page, .about-page, .blog-page, .contact-page, .donation-page) > header.site-header-root .header-action-btn--membership {
   background: var(--forest);
 }
 
@@ -517,7 +517,7 @@
     color: #171717;
   }
 
-  :is(.home-page, .about-page, .blog-page, .contact-page, .donation-page) > header.site-header-root .about-navigation__btn--alliances {
+  :is(.home-page, .about-page, .blog-page, .contact-page, .donation-page) > header.site-header-root .about-navigation__btn--membership {
     background: var(--forest);
   }
 

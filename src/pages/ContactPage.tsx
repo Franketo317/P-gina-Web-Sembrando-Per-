@@ -28,7 +28,11 @@ function ContactHero() {
     <section className="contact-hero" aria-labelledby="contact-title">
       <img className="contact-hero__image" src={heroImage} alt="" />
       <div className="contact-hero__content">
-        <h1 id="contact-title">{t('CONTÁCTANOS')}</h1>
+        <h1 id="contact-title">
+          <span>{t('¡ÚNETE A')}</span>{' '}
+          <span>{t('NUESTRA')}</span>{' '}
+          <span>{t('COMUNIDAD!')}</span>
+        </h1>
       </div>
       <SocialLinks placement="banner" />
     </section>
@@ -45,17 +49,15 @@ export default function ContactPage() {
       <main>
         <section className="community-section contact-community" id="unete" aria-labelledby="community-title">
           <div className="community-section__inner contact-community__inner">
-            <h2 id="community-title">{t('ÚNETE A LA COMUNIDAD')}</h2>
-            <p className="community-section__description">
-              {t('Recibe avances mensuales sobre nuestras jornadas de plantación, historias de impacto en nuestras comunidades y noticias sobre cómo estamos protegiendo nuestros ecosistemas.')}
-            </p>
-            <CommunitySignupForm />
-          </div>
-        </section>
-        <section className="contact-office" aria-labelledby="contact-office-title">
-          <div className="contact-office__inner">
-            <div className="community-section__info">
-              <PeruOfficeInfo heading="EN PERÚ" headingId="contact-office-title" />
+            <div className="community-section__signup">
+              <h2 id="community-title">{t('ÚNETE A LA COMUNIDAD')}</h2>
+              <p className="community-section__description">
+                {t('Recibe avances mensuales sobre nuestras jornadas de plantación, historias de impacto en nuestras comunidades y noticias sobre cómo estamos protegiendo nuestros ecosistemas.')}
+              </p>
+              <CommunitySignupForm />
+              <div className="community-section__info" aria-label={t('Información de contacto')}>
+                <PeruOfficeInfo />
+              </div>
             </div>
           </div>
         </section>

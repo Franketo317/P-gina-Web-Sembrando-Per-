@@ -158,7 +158,7 @@ export function CommunitySignupForm() {
           {loading ? t('Enviando...') : t('Unirme al cambio')}
         </button>
         {submitted && <p role="status">{t('Gracias por unirte a nuestra comunidad.')}</p>}
-        {errorMessage && <p role="alert" className="error-text">{errorMessage}</p>}
+        {errorMessage && <p role="alert" className="error-text">{t(errorMessage)}</p>}
       </div>
     </form>
   )
