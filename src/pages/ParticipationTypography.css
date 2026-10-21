@@ -1,0 +1,6 @@
+/* Shared reading font for Donación, Súmate and Alianzas. */
+:is(.donation-page, .join-page) main,
+:is(.donation-page, .join-page) main :is(p, li, label, input, select, textarea, summary, a, button),
+.donation-quick-donate {
+  font-family: var(--font-inter);
+}

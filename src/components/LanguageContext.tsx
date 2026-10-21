@@ -180,6 +180,8 @@ const translations: Record<string, string> = {
   'ÚNETE': 'JOIN US',
   'SÚMATE': 'JOIN US',
   'MEMBRESÍA': 'MEMBERSHIP',
+  'Membresía general': 'General membership',
+  'Alianzas': 'Partnerships',
   '¡Hazte miembro de Sembrando Perú hoy!': 'Become a member of Sembrando Perú today!',
   '¡Hazte miembro de Sembrando Perú!': 'Become a member of Sembrando Perú!',
   '¿POR QUÉ SER MIEMBRO DE SEMBRANDO PERÚ?': 'WHY BECOME A MEMBER OF SEMBRANDO PERÚ?',

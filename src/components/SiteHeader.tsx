@@ -79,6 +79,13 @@ const searchDatabase: SearchItem[] = [
     href: '/membresia',
     keywords: ['membresia', 'miembro', 'membresías', 'apoyar', 'donacion'],
   },
+  {
+    title: 'Alianzas',
+    category: 'Sembrando Perú',
+    description: 'Conoce las alianzas comunitarias e institucionales de Sembrando Perú.',
+    href: '/alianzas',
+    keywords: ['alianzas', 'aliados', 'cooperación', 'instituciones'],
+  },
 
   // NUESTRO TRABAJO (Áreas y proyectos)
   {
@@ -280,7 +287,7 @@ export default function SiteHeader() {
   }
 
   const currentPath = typeof window !== 'undefined' ? window.location.pathname.replace(/\/+$/, '') || '/' : '/'
-  const isSembrandoPeruActive = currentPath === '/nosotros' || currentPath.startsWith('/nosotros') || currentPath === '/contacto' || currentPath === '/como-trabajamos' || currentPath === '/trabaja-con-nosotros' || currentPath.startsWith('/convocatoria-consultorias') || currentPath === '/nuestro-equipo' || currentPath === '/mecanismo-de-quejas' || currentPath === '/membresia'
+  const isSembrandoPeruActive = currentPath === '/nosotros' || currentPath.startsWith('/nosotros') || currentPath === '/contacto' || currentPath === '/como-trabajamos' || currentPath === '/trabaja-con-nosotros' || currentPath.startsWith('/convocatoria-consultorias') || currentPath === '/nuestro-equipo' || currentPath === '/mecanismo-de-quejas' || currentPath === '/membresia' || currentPath === '/alianzas'
   const isInformateActive = currentPath === '/blog' || currentPath.startsWith('/blog/') || currentPath === '/publicaciones' || currentPath.startsWith('/publicaciones/') || currentPath === '/noticias' || currentPath === '/campanas'
 
   return (
@@ -317,6 +324,9 @@ export default function SiteHeader() {
             </a>
             <a href="/como-trabajamos" role="menuitem" onClick={closeAll}>
               {t('¿Cómo trabajamos?')}
+            </a>
+            <a href="/alianzas" role="menuitem" onClick={closeAll}>
+              {t('Alianzas')}
             </a>
             <a href="/trabaja-con-nosotros" role="menuitem" onClick={closeAll}>
               {t('Bolsa laboral')}

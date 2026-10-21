@@ -223,15 +223,15 @@
   right: 0;
   left: 0;
   z-index: 13;
-  padding: 28px 24px;
-  background: #fff;
-  color: #111;
+  padding: 22px 24px 20px;
+  background: var(--forest-deep);
+  color: #fff;
   box-shadow: 0 10px 24px rgb(0 0 0 / 20%);
 }
 
 :is(.home-page, .about-page, .blog-page, .contact-page, .donation-page) > header.site-header-root .header-search-panel__container {
   position: relative;
-  width: min(100%, 900px);
+  width: min(100%, 1200px);
   margin: 0 auto;
 }
 
@@ -249,37 +249,80 @@
 }
 
 :is(.home-page, .about-page, .blog-page, .contact-page, .donation-page) > header.site-header-root .header-search-panel__title {
-  margin: 0 40px 16px 0;
+  margin: 0 36px 28px;
+  text-align: center;
   font-family: var(--font-display);
   font-size: 24px;
+  font-weight: 400;
+  line-height: 1.3;
 }
 
 :is(.home-page, .about-page, .blog-page, .contact-page, .donation-page) > header.site-header-root .header-search-panel__form {
-  margin: 0;
+  width: min(100%, 800px);
+  margin: 0 auto;
 }
 
 :is(.home-page, .about-page, .blog-page, .contact-page, .donation-page) > header.site-header-root .header-search-panel__input-wrap {
   display: flex;
-  border: 1px solid #b8b8b8;
+  align-items: stretch;
+  min-height: 40px;
+  border: 1px solid #b8d6c6;
+  background: #edf5ef;
+}
+
+:is(.home-page, .about-page, .blog-page, .contact-page, .donation-page) > header.site-header-root .header-search-panel__input-wrap:focus-within {
+  outline: 2px solid #b8dfc8;
+  outline-offset: 3px;
 }
 
 :is(.home-page, .about-page, .blog-page, .contact-page, .donation-page) > header.site-header-root .header-search-panel__input {
-  width: 100%;
+  flex: 1 1 0;
+  width: 0;
   min-width: 0;
-  padding: 12px 14px;
+  padding: 10px 16px;
   border: 0;
+  border-radius: 0;
+  background: transparent;
+  color: #173e2c;
+  font-family: var(--font-inter);
+  font-size: 14px;
+  line-height: 1.4;
+}
+
+:is(.home-page, .about-page, .blog-page, .contact-page, .donation-page) > header.site-header-root .header-search-panel__input::placeholder {
+  color: #536c5d;
+  opacity: 1;
+}
+
+:is(.home-page, .about-page, .blog-page, .contact-page, .donation-page) > header.site-header-root .header-search-panel__input:focus-visible {
+  outline: none;
 }
 
 :is(.home-page, .about-page, .blog-page, .contact-page, .donation-page) > header.site-header-root .header-search-panel__submit {
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  flex: 0 0 auto;
+  min-width: 100px;
   gap: 8px;
-  padding: 0 18px;
+  padding: 0 16px;
   border: 0;
-  background: var(--forest);
+  border-radius: 0;
+  white-space: nowrap;
+  background: #004e37;
   color: #fff;
+  font-family: var(--font-display);
+  font-size: 15px;
+  font-weight: 400;
   cursor: pointer;
+}
+
+:is(.home-page, .about-page, .blog-page, .contact-page, .donation-page) > header.site-header-root .header-search-panel__submit:hover {
+  background: #003d2b;
+}
+
+:is(.home-page, .about-page, .blog-page, .contact-page, .donation-page) > header.site-header-root .header-search-panel__submit svg {
+  flex-shrink: 0;
 }
 
 :is(.home-page, .about-page, .blog-page, .contact-page, .donation-page) > header.site-header-root .header-search-panel__results {

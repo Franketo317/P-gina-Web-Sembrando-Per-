@@ -34,8 +34,8 @@ function loadTurnstile() {
   return scriptPromise
 }
 
-export default function Turnstile({ siteKey, resetKey, onToken }: {
-  siteKey: string; resetKey: number; onToken: (token: string) => void
+export default function Turnstile({ siteKey, resetKey, onToken, action = 'join' }: {
+  siteKey: string; resetKey: number; onToken: (token: string) => void; action?: 'join' | 'community'
 }) {
   const container = useRef<HTMLDivElement>(null)
   const [failed, setFailed] = useState(false)
@@ -51,14 +51,14 @@ export default function Turnstile({ siteKey, resetKey, onToken }: {
       if (disposed || !container.current) return
       api = loaded
       widget = loaded.render(container.current, {
-        sitekey: siteKey, action: 'join', language, size: 'flexible',
+        sitekey: siteKey, action, language, size: 'flexible',
         callback: (token: string) => { if (!disposed) { setFailed(false); onToken(token) } },
         'expired-callback': () => { if (!disposed) onToken('') },
         'error-callback': () => { if (!disposed) { onToken(''); setFailed(true) } },
       })
     }).catch(() => { if (!disposed) setFailed(true) })
     return () => { disposed = true; if (api && widget !== undefined) api.remove(widget) }
-  }, [siteKey, resetKey, retry, onToken, language])
+  }, [siteKey, resetKey, retry, onToken, language, action])
   return <div className="join-captcha">
     <div ref={container} />
     {(!siteKey || failed) && <p role="alert">{t('La verificación no está disponible en este momento. Intenta nuevamente más tarde.')}</p>}

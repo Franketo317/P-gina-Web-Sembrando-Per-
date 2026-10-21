@@ -1,4 +1,4 @@
-# CAPTCHA de producción para Súmate
+# CAPTCHA de producción para Súmate, Inicio y Contáctanos
 
 Dominio autorizado: https://sembrando-peru-oficial.vercel.app
 El frontend y la función rechazan el envío desde localhost y otros dominios,
@@ -46,9 +46,20 @@ Con Supabase CLI disponible, desde la raíz del repositorio:
     supabase login
     supabase link --project-ref TU_REFERENCIA_REAL_DE_SUPABASE
     supabase functions deploy submit-join --no-verify-jwt
+    supabase functions deploy submit-community --no-verify-jwt
 
 `config.toml` configura la función como pública porque no requiere inicio de
 sesión. La función valida origen, campos y CAPTCHA antes de insertar.
+
+Para los formularios de Inicio y Contáctanos, aplica también
+`migrations/20261019000000_community_captcha.sql`. Conserva los registros de
+`comunidad_registros` y revoca las escrituras públicas para que no se pueda
+omitir el CAPTCHA insertando desde el navegador. Si la tabla ya existe,
+comprueba que contiene `first_name`, `last_name`, `email`, `country`, `consent`
+y `tipo_formulario`, como utilizaba el formulario anterior.
+Publica `submit-community` y aplica esta migración antes de desplegar el frontend.
+Ambos formularios reutilizan el mismo widget y claves de Turnstile; la acción
+del token es `community`, mientras que Súmate conserva `join`.
 
 ## 5. Publicar el frontend y comprobar
 
@@ -61,7 +72,7 @@ el envío todavía no funcionará.
 
 Pruebas con servicios simulados, sin enviar solicitudes reales:
 
-    node --test src/pages/joinValidation.test.mjs supabase/functions/submit-join/handler.test.mjs
+    node --test src/pages/joinValidation.test.mjs supabase/functions/submit-join/handler.test.mjs supabase/functions/submit-community/handler.test.mjs
     npm run build
 
 Referencias oficiales:
