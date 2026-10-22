@@ -106,7 +106,7 @@ const searchDatabase: SearchItem[] = [
     title: 'Voluntariado y Comunidad',
     category: 'Nuestro Trabajo',
     description: 'Únete a nuestras jornadas de plantación, voluntariado social y actividades en comunidad.',
-    href: '/#unete',
+    href: '/voluntariado',
     keywords: ['voluntariado', 'unete', 'comunidad', 'voluntarios', 'jornadas', 'participacion'],
   },
 

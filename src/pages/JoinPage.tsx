@@ -7,6 +7,8 @@ import SocialLinks from '../components/SocialLinks'
 import { useLanguage } from '../components/LanguageContext'
 import { BlogFooter } from './BlogPage'
 import heroImage from '../assets/figma/5.jpeg'
+import volunteerHero from '../assets/figma/imgBlogImage4.png'
+import { VolunteeringIntroduction, VolunteeringParticipation, VolunteeringResources } from './VolunteeringSections'
 import { joinAvailability, joinFields, validateJoinForm, type JoinErrors, type JoinField } from './joinValidation'
 import { supabase } from '../supabaseClient' // 👈 Ajusta la ruta a tu cliente si está en otro nivel
 import './JoinPage.css'
@@ -49,7 +51,7 @@ const questions = [
   },
 ]
 
-export default function JoinPage() {
+export default function JoinPage({ volunteering = false }: { volunteering?: boolean }) {
   const { t } = useLanguage()
   const [submitted, setSubmitted] = useState(false)
   const [submitting, setSubmitting] = useState(false)
@@ -154,24 +156,42 @@ export default function JoinPage() {
   }
 
   return (
-    <div className="home-page join-page">
+    <div className={`home-page join-page${volunteering ? ' volunteer-page' : ''}`}>
       <SiteHeader />
       <main>
         <section className="join-hero" aria-labelledby="join-title">
-          <img src={heroImage} alt={t('Participación comunitaria en una jornada de Sembrando Perú')} />
+          <img src={volunteering ? volunteerHero : heroImage} alt={t('Participación comunitaria en una jornada de Sembrando Perú')} />
+          {volunteering ? (
+            <div className="volunteer-campaign">
+              <div className="volunteer-campaign__identity">
+                <Sprout size={140} strokeWidth={1.5} aria-hidden="true" />
+                <span>{t('VOLUNTARIADO')}</span>
+                <span>{t('SEMBRANDO PERÚ')}</span>
+              </div>
+              <div className="volunteer-campaign__message">
+                <h1 id="join-title">{t('¡Llegó la hora de actuar!')}<br />{t('Dale tu tiempo a la comunidad')}</h1>
+                <a href="#participar">{t('QUIERO SER VOLUNTARIO')} <ArrowRight size={20} aria-hidden="true" /></a>
+              </div>
+            </div>
+          ) : (
           <div className="join-hero__content">
             <h1 id="join-title">{t('SÉ PARTE DE SEMBRANDO PERÚ')}</h1>
             <p>{t('Tu tiempo, tus ideas y tus conocimientos pueden aportar al bienestar de nuestras comunidades y al cuidado de la naturaleza.')}</p>
             <a className="join-button" href="#participar">{t('QUIERO SUMARME')} <ArrowRight size={18} aria-hidden="true" /></a>
           </div>
+          )}
           <SocialLinks placement="banner" />
         </section>
 
-        <section className="join-section join-intro" aria-labelledby="join-ways">
-          <p className="join-eyebrow">{t('JUNTOS PODEMOS HACER MÁS')}</p>
-          <h2 id="join-ways">{t('ENCUENTRA TU FORMA DE PARTICIPAR')}</h2>
+        {volunteering && <VolunteeringIntroduction />}
+
+        <section className={`join-section join-intro${volunteering ? ' volunteer-participation' : ''}`} aria-labelledby="join-ways">
+          {volunteering ? (
+            <a className="volunteer-participation__button" href="#participar">{t('QUIERO PARTICIPAR')} <ArrowRight size={22} aria-hidden="true" /></a>
+          ) : <p className="join-eyebrow">{t('JUNTOS PODEMOS HACER MÁS')}</p>}
+          <h2 id="join-ways">{volunteering ? t('¿CÓMO PUEDES PARTICIPAR?') : t('ENCUENTRA TU FORMA DE PARTICIPAR')}</h2>
           <p>{t('Apoya campañas, comparte lo que sabes o colabora en actividades comunitarias. Cuéntanos qué te motiva y exploremos cómo puedes aportar.')}</p>
-          <div className="join-areas">
+          {!volunteering && <div className="join-areas">
             {areas.map(({ title, description, icon: Icon }) => (
               <article key={title}>
                 <Icon size={30} strokeWidth={1.5} aria-hidden="true" />
@@ -179,10 +199,12 @@ export default function JoinPage() {
                 <a href="#participar">{t('Me interesa')} <ArrowRight size={16} aria-hidden="true" /></a>
               </article>
             ))}
-          </div>
+          </div>}
         </section>
 
-        <section className="join-process" aria-labelledby="join-steps">
+        {volunteering && <VolunteeringParticipation />}
+
+        {!volunteering && <section className="join-process" aria-labelledby="join-steps">
           <div className="join-section">
             <h2 id="join-steps">{t('¿CÓMO SUMARTE?')}</h2>
             <ol>
@@ -193,6 +215,7 @@ export default function JoinPage() {
           </div>
         </section>
 
+        }
         <section className="join-section join-registration" id="participar" aria-labelledby="join-form-title">
           <div className="join-registration__intro">
             <p className="join-eyebrow">{t('EL PRIMER PASO EMPIEZA CONTIGO')}</p>
@@ -243,6 +266,8 @@ export default function JoinPage() {
             {submitted && <p className="join-form__status" role="status">{t('Tu solicitud se registró correctamente. Gracias por tu interés en sumarte a Sembrando Perú.')}</p>}
           </form>
         </section>
+
+        {volunteering && <VolunteeringResources />}
 
         <section className="join-faq" aria-labelledby="join-faq-title">
           <div className="join-section">

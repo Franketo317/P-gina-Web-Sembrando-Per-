@@ -57,7 +57,7 @@ const programs = [
     category: 'educacion',
     title: 'VOLUNTARIADO',
     action: 'ÚNETE',
-    href: '/sumate',
+    href: '/voluntariado',
     description: 'Promovemos la igualdad social a través de procesos de alfabetización.',
     image: blogImage4,
     alt: 'Niños participando en actividades educativas',
@@ -150,7 +150,7 @@ function ProgramCard({ category, title, action, href, image, alt }: (typeof prog
     <article className={`program-card program-card--${category}`}>
       <img className="program-card__image" src={image} alt={t(alt)} />
       <div className="program-card__body">
-        <h3>{t(title)}</h3>
+        <h3><a className="program-card__title-link" href={href}>{t(title)}</a></h3>
         <a className="program-card__action" href={href} aria-label={`${t(action)}: ${t(title)}`}>
           {t(action)} <ChevronRight aria-hidden="true" size={24} strokeWidth={3} />
         </a>
@@ -281,6 +281,10 @@ function App() {
 
   if (currentPath === '/donacion') {
     return <DonationPage />
+  }
+
+  if (currentPath === '/voluntariado') {
+    return <JoinPage volunteering />
   }
 
   if (currentPath === '/sumate') {

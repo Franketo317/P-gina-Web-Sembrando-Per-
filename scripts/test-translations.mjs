@@ -19,7 +19,7 @@ try {
   const { strategies } = await server.ssrLoadModule('/src/pages/conservationStrategies.ts')
   const { consultancies } = await server.ssrLoadModule('/src/pages/consultancies.ts')
   const { getPublications } = await server.ssrLoadModule('/src/pages/publications.ts')
-  const routes = ['/', '/nosotros', '/como-trabajamos', '/reforestacion', '/educacion', '/salud', '/trabaja-con-nosotros', '/nuestro-equipo', '/mecanismo-de-quejas', '/contacto', '/donacion', '/sumate', '/noticias', '/publicaciones', '/campanas', '/estrategias-conservacion', '/convocatoria-consultorias',
+  const routes = ['/', '/nosotros', '/como-trabajamos', '/reforestacion', '/educacion', '/salud', '/trabaja-con-nosotros', '/nuestro-equipo', '/mecanismo-de-quejas', '/contacto', '/donacion', '/sumate', '/voluntariado', '/noticias', '/publicaciones', '/campanas', '/estrategias-conservacion', '/convocatoria-consultorias',
     ...campaigns.map(item => `/campanas/${item.slug}`),
     ...strategies.map(item => `/estrategias-conservacion/${item.slug}`),
     ...consultancies.map(item => `/convocatoria-consultorias/${item.slug}`),
