@@ -1,0 +1,31 @@
+.donation-footer { background: #fff; color: #111; font-family: Arial, Helvetica, sans-serif; }
+.donation-footer__main { display: grid; grid-template-columns: 130px minmax(0, 1fr) 280px; align-items: start; gap: 64px; width: min(calc(100% - 64px), 1120px); box-sizing: border-box; margin: 0 auto; padding: 90px 0 28px; }
+.donation-footer__brand { display: block; }
+.donation-footer__brand img { display: block; width: 130px; height: 154px; object-fit: contain; }
+.donation-footer__links { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 22px; padding-top: 14px; }
+.donation-footer__links > div { display: flex; flex-direction: column; gap: 26px; }
+.donation-footer__links a { width: fit-content; color: #111; font-size: 18px; font-weight: 600; line-height: 1.4; text-decoration: none; }
+.donation-footer__links a:hover { text-decoration: underline; text-underline-offset: 4px; }
+.donation-footer .donation-footer__social .hero-socials { position: static; display: flex; justify-content: flex-start; gap: 22px; flex-wrap: wrap; }
+.donation-footer .donation-footer__social .hero-socials a { width: 28px; height: 28px; border-radius: 0; background: transparent; color: #111; box-shadow: none; backdrop-filter: none; }
+.donation-footer .donation-footer__social .hero-socials svg { width: 26px; height: 26px; }
+.donation-footer__copyright { margin: 0; padding: 0 24px 20px; font-size: 18px; line-height: 1.5; text-align: center; }
+.donation-footer a:focus-visible { outline: 3px solid #02734d; outline-offset: 5px; }
+@media (max-width: 1280px) {
+  .donation-footer__main { grid-template-columns: 130px minmax(0, 1fr) 230px; gap: 64px; }
+  .donation-footer .donation-footer__social .hero-socials { gap: 16px; }
+  .donation-footer__links a { font-size: 16px; }
+}
+@media (max-width: 1000px) {
+  .donation-footer__main { grid-template-columns: 130px minmax(0, 1fr); gap: 36px; padding: 64px 28px 32px; }
+  .donation-footer__brand img { width: 120px; height: 130px; }
+  .donation-footer__social { grid-column: 1 / -1; }
+  .donation-footer .donation-footer__social .hero-socials { justify-content: center; }
+}
+@media (max-width: 540px) {
+  .donation-footer__main { grid-template-columns: 1fr; padding: 44px 24px 28px; }
+  .donation-footer__brand img { margin: 0 auto; }
+  .donation-footer__links { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; }
+  .donation-footer__links a { font-size: 14px; }
+  .donation-footer__copyright { font-size: 13px; }
+}

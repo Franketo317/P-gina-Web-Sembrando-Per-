@@ -8,7 +8,7 @@ import { useLanguage } from '../components/LanguageContext'
 import { BlogFooter } from './BlogPage'
 import heroImage from '../assets/figma/5.jpeg'
 import volunteerHero from '../assets/figma/imgBlogImage4.png'
-import { VolunteeringIntroduction, VolunteeringParticipation, VolunteeringResources } from './VolunteeringSections'
+import { VolunteeringIntroduction, VolunteeringParticipation, VolunteeringResources, VolunteeringToolkitIntro, VolunteeringClosing } from './VolunteeringSections'
 import { joinAvailability, joinFields, validateJoinForm, type JoinErrors, type JoinField } from './joinValidation'
 import { supabase } from '../supabaseClient' // 👈 Ajusta la ruta a tu cliente si está en otro nivel
 import './JoinPage.css'
@@ -186,9 +186,7 @@ export default function JoinPage({ volunteering = false }: { volunteering?: bool
         {volunteering && <VolunteeringIntroduction />}
 
         <section className={`join-section join-intro${volunteering ? ' volunteer-participation' : ''}`} aria-labelledby="join-ways">
-          {volunteering ? (
-            <a className="volunteer-participation__button" href="#participar">{t('QUIERO PARTICIPAR')} <ArrowRight size={22} aria-hidden="true" /></a>
-          ) : <p className="join-eyebrow">{t('JUNTOS PODEMOS HACER MÁS')}</p>}
+          {!volunteering && <p className="join-eyebrow">{t('JUNTOS PODEMOS HACER MÁS')}</p>}
           <h2 id="join-ways">{volunteering ? t('¿CÓMO PUEDES PARTICIPAR?') : t('ENCUENTRA TU FORMA DE PARTICIPAR')}</h2>
           <p>{t('Apoya campañas, comparte lo que sabes o colabora en actividades comunitarias. Cuéntanos qué te motiva y exploremos cómo puedes aportar.')}</p>
           {!volunteering && <div className="join-areas">
@@ -218,11 +216,13 @@ export default function JoinPage({ volunteering = false }: { volunteering?: bool
         }
         <section className="join-section join-registration" id="participar" aria-labelledby="join-form-title">
           <div className="join-registration__intro">
+            {volunteering ? <VolunteeringToolkitIntro /> : <>
             <p className="join-eyebrow">{t('EL PRIMER PASO EMPIEZA CONTIGO')}</p>
             <h2 id="join-form-title">{t('QUIERO SUMARME')}</h2>
             <p>{t('Déjanos conocerte. No necesitas tener una propuesta definida: tu interés en participar es un buen comienzo.')}</p>
             <p>{t('Los campos con * son obligatorios. Completa la verificación de seguridad para enviar tu solicitud.')}</p>
             <a href="mailto:contacto@sembrandoperu.org">contacto@sembrandoperu.org</a>
+            </>}
           </div>
           <form className="join-form" noValidate onSubmit={handleSubmit} aria-busy={submitting}
             onBlur={event => validateField(event.target, event.currentTarget, true)}
@@ -269,7 +269,7 @@ export default function JoinPage({ volunteering = false }: { volunteering?: bool
 
         {volunteering && <VolunteeringResources />}
 
-        <section className="join-faq" aria-labelledby="join-faq-title">
+        {volunteering ? <VolunteeringClosing /> : <section className="join-faq" aria-labelledby="join-faq-title">
           <div className="join-section">
             <p className="join-eyebrow">{t('RESOLVEMOS TUS DUDAS')}</p>
             <h2 id="join-faq-title">{t('PREGUNTAS FRECUENTES')}</h2>
@@ -283,7 +283,7 @@ export default function JoinPage({ volunteering = false }: { volunteering?: bool
             </div>
             <p className="join-faq__contact">{t('¿Tienes otra pregunta?')} <a href="mailto:contacto@sembrandoperu.org">{t('Escríbenos')}</a></p>
           </div>
-        </section>
+        </section>}
       </main>
       <BlogFooter />
     </div>
