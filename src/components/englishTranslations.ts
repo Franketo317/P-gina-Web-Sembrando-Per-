@@ -1,5 +1,8 @@
 // English copy for page content, forms, search results and accessibility labels.
 export const englishTranslations: Record<string, string> = {
+  "Trabajamos con agricultores y familias en la reforestación y el cuidado de los bosques, fortaleciendo el compromiso de las comunidades con el futuro de la Amazonía.": "We work with farmers and families to reforest and care for forests, strengthening communities' commitment to the future of the Amazon.",
+  "Unimos la restauración de bosques, la educación y la prevención en salud para cuidar la naturaleza y crear más oportunidades para los niños y las familias rurales.": "We combine forest restoration, education and preventive health to care for nature and create more opportunities for children and rural families.",
+  "Conectamos a voluntarios y organizaciones para compartir conocimientos y herramientas con las comunidades rurales e impulsar la conservación, la educación y el bienestar.": "We connect volunteers and organizations to share knowledge and tools with rural communities and advance conservation, education and well-being.",
   "Ver más preguntas": "Show more questions",
   "Ver menos preguntas": "Show fewer questions",
   "Carlos Velez": "Carlos Velez",
