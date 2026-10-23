@@ -69,6 +69,7 @@
 
 .news-page--news .news-item h2 { font-family: var(--font-display); font-size: clamp(24px, 2.3vw, 30px); font-weight: 500; line-height: 1.25; }
 .news-page--news .news-item time { color: #929292; font-size: 13px; font-weight: 600; }
+.news-page--news .news-item__description { max-width: 760px; margin: 12px 0 0; color: #555e58; font-size: 16px; line-height: 1.6; }
 .news-page--news .news-search__submit,
 .news-page--news .news-more button { background: #383838; font-family: var(--font-display); font-weight: 500; }
 .news-page--news .news-search__submit { font-size: 14px; }
