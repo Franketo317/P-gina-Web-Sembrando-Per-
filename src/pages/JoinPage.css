@@ -64,19 +64,28 @@
 .join-form label.join-form__consent { flex-direction: row; align-items: flex-start; font-size: 15px; line-height: 1.5; }
 .join-form__consent input { flex-shrink: 0; width: 18px; height: 18px; margin-top: 3px; accent-color: #02734d; }
 .join-form .join-form__status { margin: 0; padding: 16px; border-left: 3px solid #02734d; background: white; font-size: 16px; }
-.join-faq { background: #f8f8f5; }
-.join-faq__list { margin-top: 28px; border-top: 1px solid #cbd5cc; }
-.join-faq details { border-bottom: 1px solid #cbd5cc; }
-.join-faq summary { display: flex; align-items: center; justify-content: space-between; gap: 20px; padding: 22px 0; color: #172e25; font: 400 20px var(--font-display); list-style: none; cursor: pointer; }
+.join-faq { background: #fff; color: #111; }
+.join-faq > .join-section { width: min(100% - 48px, 1120px); padding-block: 44px; }
+.join-faq__heading { display: flex; align-items: center; justify-content: space-between; gap: 24px; }
+.join-faq__heading h2 { margin: 0; color: var(--forest-deep); font-size: clamp(26px, 2.4vw, 32px); }
+.join-faq__collapse { display: grid; place-items: center; padding: 8px; border: 0; background: transparent; color: var(--forest-deep); cursor: pointer; }
+.join-faq__collapse .is-collapsed { transform: rotate(180deg); }
+.join-faq__list { display: grid; gap: 8px; margin-top: 28px; }
+.join-faq details { border: 1px solid #d3dfd5; }
+.join-faq details[open] { border-color: var(--forest); }
+.join-page .join-faq summary { display: flex; align-items: center; justify-content: space-between; gap: 16px; min-height: 54px; padding: 14px 16px; color: #111; font: 500 clamp(14px, 1.2vw, 16px)/1.4 var(--font-inter); list-style: none; cursor: pointer; }
 .join-faq summary::-webkit-details-marker { display: none; }
-.join-faq summary:hover, .join-faq details[open] summary { color: #02734d; }
+.join-faq summary:hover { background: #f1f6eb; }
 .join-faq summary:focus-visible { outline: 3px solid #78aa2d; outline-offset: 4px; }
-.join-faq__toggle { position: relative; flex-shrink: 0; width: 20px; height: 20px; color: #02734d; }
+.join-faq__toggle { position: relative; flex-shrink: 0; width: 24px; height: 24px; color: var(--forest); }
 .join-faq__toggle::before, .join-faq__toggle::after { content: ''; position: absolute; background: currentColor; }
-.join-faq__toggle::before { width: 16px; height: 2px; top: 9px; left: 2px; }
-.join-faq__toggle::after { width: 2px; height: 16px; top: 2px; left: 9px; }
+.join-faq__toggle::before { width: 20px; height: 2px; top: 11px; left: 2px; }
+.join-faq__toggle::after { width: 2px; height: 20px; top: 2px; left: 11px; }
 .join-faq details[open] .join-faq__toggle::after { display: none; }
-.join-faq details p { max-width: 850px; margin: 0; padding-bottom: 24px; overflow-wrap: anywhere; }
+.join-faq details p { max-width: none; margin: 0; padding: 0 16px 16px; font-size: 14px; line-height: 1.45; overflow-wrap: anywhere; }
+.join-faq__actions { display: flex; justify-content: center; margin-top: 22px; }
+.join-page .join-faq__more { min-height: 42px; padding: 10px 18px; border: 0; border-radius: 8px; background: var(--forest); color: #fff; font: 500 16px/1.4 var(--font-inter); cursor: pointer; }
+.join-page .join-faq__more:hover { background: var(--forest-deep); }
 .join-faq__contact { margin: 28px 0 0; }
 .join-faq__contact a { color: #02734d; text-underline-offset: 4px; }
 .join-page .donation-about h2, .join-page .donation-how h2, .join-page .donation-impact h2 { font-size: clamp(22px, 2.4vw, 34px); }

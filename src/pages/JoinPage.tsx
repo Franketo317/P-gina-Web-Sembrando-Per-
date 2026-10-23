@@ -1,5 +1,5 @@
 import { useRef, useState, type FormEvent } from 'react'
-import { BookOpen, HeartHandshake, Megaphone, Sprout, ArrowRight, ChevronRight, Home } from 'lucide-react'
+import { BookOpen, HeartHandshake, Megaphone, Sprout, ArrowRight, ChevronRight, ChevronUp, Home } from 'lucide-react'
 import SiteHeader from '../components/SiteHeader'
 import DonationFooter from '../components/DonationFooter'
 import Turnstile from '../components/Turnstile'
@@ -106,6 +106,7 @@ function JoinParticipationSections() {
           </div>
         </div>
       </CollapsibleSection>
+      <JoinWelcomeSection />
       <CollapsibleSection
         title={t('SEMBREMOS UN FUTURO SOSTENIBLE PARA EL PERÚ')}
         titleId="join-impact-title"
@@ -175,6 +176,8 @@ function JoinWelcomeSection() {
 
 export default function JoinPage({ volunteering = false }: { volunteering?: boolean }) {
   const { t } = useLanguage()
+  const [faqExpanded, setFaqExpanded] = useState(true)
+  const [showAllFaq, setShowAllFaq] = useState(false)
   const [submitted, setSubmitted] = useState(false)
   const [submitting, setSubmitting] = useState(false)
   const sending = useRef(false)
@@ -373,21 +376,27 @@ export default function JoinPage({ volunteering = false }: { volunteering?: bool
 
         {volunteering && <VolunteeringResources />}
 
-        {!volunteering && <JoinWelcomeSection />}
-
         {volunteering ? <VolunteeringClosing /> : <section className="join-faq" aria-labelledby="join-faq-title">
           <div className="join-section">
-            <p className="join-eyebrow">{t('RESOLVEMOS TUS DUDAS')}</p>
-            <h2 id="join-faq-title">{t('PREGUNTAS FRECUENTES')}</h2>
-            <div className="join-faq__list">
-              {questions.map(({ question, answer }) => (
-                <details key={question}>
+            <div className="join-faq__heading">
+              <h2 id="join-faq-title">{t('PREGUNTAS FRECUENTES')}</h2>
+              <button className="join-faq__collapse" type="button" aria-label={t('PREGUNTAS FRECUENTES')} aria-expanded={faqExpanded} aria-controls="join-faq-content" onClick={() => setFaqExpanded(value => !value)}>
+                <ChevronUp className={faqExpanded ? '' : 'is-collapsed'} size={24} aria-hidden="true" />
+              </button>
+            </div>
+            <div id="join-faq-content" hidden={!faqExpanded}>
+            <div className="join-faq__list" id="join-faq-questions">
+              {questions.slice(0, showAllFaq ? questions.length : 5).map(({ question, answer }, index) => (
+                <details key={question} name="join-faq" open={index === 0 ? true : undefined}>
                   <summary>{t(question)}<span className="join-faq__toggle" aria-hidden="true" /></summary>
                   <p>{t(answer)}</p>
                 </details>
               ))}
             </div>
-            <p className="join-faq__contact">{t('¿Tienes otra pregunta?')} <a href="mailto:contacto@sembrandoperu.org">{t('Escríbenos')}</a></p>
+            <div className="join-faq__actions">
+              <button className="join-faq__more" type="button" aria-expanded={showAllFaq} aria-controls="join-faq-questions" onClick={() => setShowAllFaq(value => !value)}>{t(showAllFaq ? 'Ver menos preguntas' : 'Ver más preguntas')}</button>
+            </div>
+            </div>
           </div>
         </section>}
       </main>
