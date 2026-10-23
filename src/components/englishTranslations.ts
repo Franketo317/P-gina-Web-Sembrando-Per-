@@ -1,5 +1,12 @@
 // English copy for page content, forms, search results and accessibility labels.
 export const englishTranslations: Record<string, string> = {
+  "Carlos Velez": "Carlos Velez",
+  "Andrea Tuesta": "Andrea Tuesta",
+  "Ricardo Garces": "Ricardo Garces",
+  "Solance Vargas": "Solance Vargas",
+  "Samarit López": "Samarit López",
+  "Dirección General": "General Management",
+  "Coordinación General": "General Coordination",
   "Información de contacto": "Contact information",
   "En Sembrando Perú respetamos y protegemos la privacidad de las personas que visitan nuestro sitio web": "At Sembrando Perú, we respect and protect the privacy of people who visit our website",
   "y participan en nuestras actividades.": "and take part in our activities.",

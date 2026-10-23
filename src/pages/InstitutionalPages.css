@@ -132,12 +132,25 @@
 
 .team-roster > h2 {
   margin: 0 0 36px;
-  color: #173f30;
-  font-family: var(--font-display);
-  font-size: clamp(32px, 4vw, 44px);
-  font-weight: 500;
+  color: #111;
+  font-family: 'Roboto', sans-serif;
+  font-size: 20px;
+  font-weight: 700;
   line-height: 1.2;
-  text-transform: uppercase;
+  text-transform: none;
+}
+
+.team-roster__members {
+  display: grid;
+  gap: 0;
+  margin: 0;
+  padding: 0;
+  color: #111;
+  font-family: 'Roboto', sans-serif;
+  font-size: clamp(17px, 1.8vw, 20px);
+  font-weight: 300;
+  line-height: 1.4;
+  list-style: none;
 }
 
 .team-roster__areas {
@@ -376,7 +389,7 @@
 
   .team-roster > h2 {
     margin-bottom: 28px;
-    font-size: 32px;
+    font-size: 20px;
   }
 
   .team-roster__area h3 {
