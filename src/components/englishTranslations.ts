@@ -1,5 +1,7 @@
 // English copy for page content, forms, search results and accessibility labels.
 export const englishTranslations: Record<string, string> = {
+  "Ver más preguntas": "Show more questions",
+  "Ver menos preguntas": "Show fewer questions",
   "Carlos Velez": "Carlos Velez",
   "Andrea Tuesta": "Andrea Tuesta",
   "Ricardo Garces": "Ricardo Garces",
