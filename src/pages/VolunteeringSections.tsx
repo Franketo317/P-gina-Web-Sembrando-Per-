@@ -98,17 +98,15 @@ export function VolunteeringToolkitIntro() {
   const { t } = useLanguage()
   return (
     <>
-      <h2 id="join-form-title">{t('¡PREPÁRATE PARA SER PARTE DE SEMBRANDO PERÚ!')}</h2>
-      <p className="volunteer-toolkit__subtitle">{t('Conoce nuestra guía y completa el formulario para participar.')}</p>
+      <h2 id="join-form-title">{t('¡SÚMATE AL VOLUNTARIADO DE SEMBRANDO PERÚ!')}</h2>
+      <p className="volunteer-toolkit__subtitle">{t('Completa este formulario y participa en nuestras iniciativas.')}</p>
       <div className="volunteer-toolkit__intro">
         <div>
-          <h3>{t('Guía de voluntariado de Sembrando Perú')}</h3>
-          <p>{t('Encuentra nuestras áreas de participación, los pasos para sumarte y recomendaciones para preparar tu primera actividad.')}</p>
-          <a href="/recursos/guia-voluntariado.md" download>{t('DESCARGAR GUÍA (ESPAÑOL)')} <ArrowRight size={18} aria-hidden="true" /></a>
+          <p>{t('Comparte tu tiempo y tus habilidades en acciones de reforestación, educación o bienestar familiar.')}</p>
+          <p>{t('¡Juntos es posible!')}</p>
         </div>
         <img src={logo} alt={t('Sembrando Perú')} loading="lazy" />
       </div>
-      <p className="volunteer-toolkit__note">{t('La guía se descarga directamente. Para registrar tu interés, completa tus datos a continuación.')}</p>
     </>
   )
 }
@@ -167,7 +165,6 @@ export function VolunteeringResources() {
     { title: 'Formulario de inscripción', description: 'Registra tu interés y cuéntanos cómo te gustaría participar.', href: '#participar', image: communityPhoto },
     { title: 'Reforestación', description: 'Conoce nuestras acciones para cuidar los bosques.', href: '/reforestacion', image: forestPhoto },
     { title: 'Educación', description: 'Descubre cómo acompañamos el aprendizaje comunitario.', href: '/educacion', image: educationPhoto },
-    { title: 'Guía de voluntariado', description: 'Descarga los pasos y recomendaciones para sumarte a Sembrando Perú.', href: '/recursos/guia-voluntariado.md', image: organizationPhoto, download: true },
     { title: 'Salud', description: 'Conoce nuestro trabajo por el bienestar de las familias.', href: '/salud', image: healthPhoto },
     { title: 'Publicaciones', description: 'Explora historias e iniciativas de nuestras comunidades.', href: '/publicaciones', image: plantingPhoto },
   ]
@@ -178,7 +175,7 @@ export function VolunteeringResources() {
         <p className="volunteer-resources__subtitle">{t('CONOCE LOS RECURSOS E INICIATIVAS DE SEMBRANDO PERÚ:')}</p>
         <div className="volunteer-resources__grid">
           {resources.map(resource => (
-            <a key={resource.href} href={resource.href} download={resource.download || undefined}>
+            <a key={resource.href} href={resource.href}>
               <img src={resource.image} alt="" loading="lazy" />
               <div><h3>{t(resource.title)}</h3><p>{t(resource.description)}</p></div>
             </a>
