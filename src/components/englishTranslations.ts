@@ -30,7 +30,6 @@ export const englishTranslations: Record<string, string> = {
   "Andrea Tuesta": "Andrea Tuesta",
   "Ricardo Garces": "Ricardo Garces",
   "Solance Vargas": "Solance Vargas",
-  "Samarit López": "Samarit López",
   "Dirección General": "General Management",
   "Coordinación General": "General Coordination",
   "Información de contacto": "Contact information",
