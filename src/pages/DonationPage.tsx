@@ -55,6 +55,18 @@ const questions = [
     question: '¿Sembrando Perú ofrece beneficios fiscales para mi aporte?',
     answer: 'Para consultar sobre comprobantes y beneficios aplicables, escríbenos a contacto@sembrandoperu.org.',
   },
+  {
+    question: '¿Puedo elegir el monto y la frecuencia de mi donación?',
+    answer: 'Sí. Antes de continuar a PayPal, puedes elegir el monto y si deseas hacer una donación mensual o única.',
+  },
+  {
+    question: '¿Qué iniciativas apoya mi donación?',
+    answer: 'Tu donación apoya iniciativas de reforestación, educación ambiental y trabajo comunitario en las regiones donde trabajamos.',
+  },
+  {
+    question: '¿Cómo puedo resolver una duda sobre mi donación?',
+    answer: 'Escríbenos a contacto@sembrandoperu.org y nuestro equipo podrá orientarte.',
+  },
 ]
 
 const membershipQuestions = [
@@ -368,9 +380,8 @@ function DonationFaq({ isMembership = false }: { isMembership?: boolean }) {
   const [isExpanded, setIsExpanded] = useState(true)
   const [showMoreQuestions, setShowMoreQuestions] = useState(false)
   const { t } = useLanguage()
-  const faqQuestions = isMembership
-    ? membershipQuestions.slice(0, showMoreQuestions ? membershipQuestions.length : 4)
-    : questions
+  const allQuestions = isMembership ? membershipQuestions : questions
+  const faqQuestions = allQuestions.slice(0, showMoreQuestions ? allQuestions.length : 4)
 
   return (
     <section className="donation-faq" aria-labelledby="donation-faq-title">
@@ -401,21 +412,17 @@ function DonationFaq({ isMembership = false }: { isMembership?: boolean }) {
               </details>
             ))}
           </div>
-          {isMembership ? (
-            <button
-              type="button"
-              aria-expanded={showMoreQuestions}
-              aria-controls="donation-faq-list"
-              onClick={() => {
-                if (showMoreQuestions && openQuestion >= 4) setOpenQuestion(0)
-                setShowMoreQuestions((showing) => !showing)
-              }}
-            >
-              {t(showMoreQuestions ? 'Ver menos preguntas' : 'Ver más preguntas')}
-            </button>
-          ) : (
-            <a href="#donation-faq-title">{t('Ver más preguntas')}</a>
-          )}
+          <button
+            type="button"
+            aria-expanded={showMoreQuestions}
+            aria-controls="donation-faq-list"
+            onClick={() => {
+              if (showMoreQuestions && openQuestion >= 4) setOpenQuestion(0)
+              setShowMoreQuestions((showing) => !showing)
+            }}
+          >
+            {t(showMoreQuestions ? 'Ver menos preguntas' : 'Ver más preguntas')}
+          </button>
         </div>
       )}
     </section>
