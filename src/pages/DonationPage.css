@@ -688,7 +688,7 @@
   line-height: 1.5;
 }
 
-.donation-faq #donation-faq-content > a {
+.donation-faq #donation-faq-content > :is(a, button) {
   min-height: 27px;
   display: inline-flex;
   align-items: center;
@@ -700,6 +700,11 @@
   font-family: var(--font-league);
   font-size: 10px;
   text-decoration: none;
+}
+
+.donation-faq #donation-faq-content > button {
+  border: 0;
+  cursor: pointer;
 }
 
 @media (min-width: 1500px) {
@@ -1060,7 +1065,7 @@
     font-size: 16px;
   }
 
-  .donation-faq #donation-faq-content > a {
+  .donation-faq #donation-faq-content > :is(a, button) {
     min-height: 38px;
     padding: 0 18px;
     font-size: 18px;
