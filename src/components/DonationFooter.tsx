@@ -8,9 +8,9 @@ export default function DonationFooter({ showJoinOptions = false }: { showJoinOp
   return (
     <footer className="donation-footer">
       {showJoinOptions && <nav className="donation-footer__join-options" aria-label={t('Otras formas de apoyar a Sembrando Perú')}>
-        <a className="donation-footer__join-option donation-footer__join-option--sumate" href="/sumate#participar">
-          <h2>{t('SÚMATE')}</h2>
-          <p>{t('Comparte tu tiempo, tus ideas y tus conocimientos para apoyar a nuestras comunidades y cuidar la naturaleza.')}</p>
+        <a className="donation-footer__join-option donation-footer__join-option--donation" href="/donacion">
+          <h2>{t('DONACIÓN')}</h2>
+          <p>{t('Tu donación hace posible más acciones de reforestación, educación y desarrollo sostenible en las comunidades del Perú.')}</p>
         </a>
         <a className="donation-footer__join-option donation-footer__join-option--membership" href="/membresia">
           <h2>{t('MEMBRESÍA')}</h2>
