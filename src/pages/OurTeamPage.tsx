@@ -11,7 +11,6 @@ const teamMembers = [
   { name: 'Andrea Tuesta', role: 'Dirección General' },
   { name: 'Ricardo Garces', role: 'Coordinación General' },
   { name: 'Solance Vargas', role: 'Coordinación General' },
-  { name: 'Samarit López', role: 'Coordinación General' },
 ]
 
 export default function OurTeamPage() {

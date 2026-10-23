@@ -111,8 +111,8 @@ export function ArticleListingPage({ section }: { section: 'noticias' | 'publica
                 <div className="news-item__body">
                   {'format' in article && <span className="publication-format">{article.format}</span>}
                   <h2><a href={`/publicaciones/articulo/${article.slug}`}>{t(article.title)}</a></h2>
-                  {isPublications && <p>{t(article.description)}</p>}
                   <time dateTime={article.publishedAt}>{new Intl.DateTimeFormat(locale, { day: '2-digit', month: 'short', year: 'numeric', timeZone: 'UTC' }).format(new Date(`${article.publishedAt}T12:00:00Z`))}</time>
+                  {!isPublications && <p className="news-item__description">{t(article.description)}</p>}
                 </div>
               </article>
             ))}
