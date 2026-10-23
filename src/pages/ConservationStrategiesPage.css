@@ -88,7 +88,7 @@
   font-size: 18px;
   font-weight: 300;
   line-height: 1.45;
-  text-align: justify;
+  text-align: center;
 }
 
 .strategies-section {
@@ -189,7 +189,7 @@
 .strategy-detail {
   width: min(100%, 840px);
   margin: 0 auto;
-  padding: 48px 24px 72px;
+  padding: 64px 24px 80px;
   font-family: var(--font-avenir);
   font-size: 20px;
   font-weight: 400;
@@ -201,24 +201,14 @@
   text-underline-offset: 4px;
 }
 
-.strategy-detail__back {
-  display: inline-block;
-  margin-bottom: 28px;
-}
-
 .strategy-detail p {
-  margin: 12px 0 0;
+  margin: 0;
   font-size: inherit;
   line-height: inherit;
   text-align: justify;
 }
 
-.strategy-detail .strategy-detail__lead {
-  margin: 0 0 36px;
-  font-size: inherit;
-}
-
-.strategy-detail section + section {
+.strategy-detail p + p {
   margin-top: 32px;
 }
 

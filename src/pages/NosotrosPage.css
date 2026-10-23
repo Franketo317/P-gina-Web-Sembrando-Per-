@@ -232,7 +232,7 @@
   font-size: 20px;
   color: #25372f;
   line-height: 1.55;
-  text-align: justify;
+  text-align: center;
 }
 
 .about-fact {
@@ -765,7 +765,7 @@
   .about-story__history p {
     margin-bottom: 18px;
     font-size: 17px;
-    text-align: justify;
+    text-align: center;
   }
 
   .about-fact {
