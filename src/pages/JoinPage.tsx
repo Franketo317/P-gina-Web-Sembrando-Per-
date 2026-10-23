@@ -299,12 +299,11 @@ export default function JoinPage({ volunteering = false }: { volunteering?: bool
               </div>
             </div>
           ) : (
-          <div className="join-hero__content join-hero__content--centered">
+          <div className="join-hero__content join-hero__content--left">
             <div className="join-hero__title-panel">
               <h1 id="join-title">{t('SÉ PARTE DE SEMBRANDO PERÚ')}</h1>
             </div>
             <p>{t('Tu tiempo, tus ideas y tus conocimientos pueden aportar al bienestar de nuestras comunidades y al cuidado de la naturaleza.')}</p>
-            <a className="join-button" href="#participar">{t('QUIERO SUMARME')} <ArrowRight size={18} aria-hidden="true" /></a>
           </div>
           )}
           <SocialLinks placement="banner" />
