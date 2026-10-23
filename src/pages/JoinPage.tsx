@@ -81,7 +81,7 @@ function JoinParticipationSections() {
             <div className="join-about-option__content">
               <h3>{t('PARA MÍ')}</h3>
               <p>{t('Al sumarte a Sembrando Perú, te unes a una comunidad comprometida con el bienestar de las personas y el cuidado de la naturaleza. Tu participación nos ayuda a impulsar iniciativas de reforestación, educación y salud junto a comunidades de todo el Perú.')}</p>
-              <a href="#participar">{t('Quiero sumarme')}</a>
+              <a href="/voluntariado#participar">{t('Quiero sumarme')}</a>
             </div>
           </article>
           <article className="join-about-option">
@@ -89,7 +89,7 @@ function JoinParticipationSections() {
             <div className="join-about-option__content">
               <h3>{t('PARA UN AMIGO O FAMILIAR')}</h3>
               <p>{t('Invita a alguien especial a compartir su tiempo y sus ideas para apoyar a nuestras comunidades y cuidar la naturaleza.')}</p>
-              <a href={`mailto:?subject=${encodeURIComponent(t('Súmate a Sembrando Perú'))}&body=${encodeURIComponent(t('Te invito a conocer cómo sumarte a Sembrando Perú: '))}${encodeURIComponent(`${window.location.origin}/sumate#participar`)}`}>{t('Invitar a alguien')}</a>
+              <a href={`mailto:?subject=${encodeURIComponent(t('Súmate a Sembrando Perú'))}&body=${encodeURIComponent(t('Te invito a conocer cómo sumarte a Sembrando Perú: '))}${encodeURIComponent(`${window.location.origin}/voluntariado#participar`)}`}>{t('Invitar a alguien')}</a>
             </div>
           </article>
         </div>
@@ -320,15 +320,9 @@ export default function JoinPage({ volunteering = false }: { volunteering?: bool
 
         {volunteering && <VolunteeringParticipation />}
 
-        <section className="join-section join-registration" id="participar" aria-labelledby="join-form-title">
+        {volunteering && <section className="join-section join-registration" id="participar" aria-labelledby="join-form-title">
           <div className="join-registration__intro">
-            {volunteering ? <VolunteeringToolkitIntro /> : <>
-            <p className="join-eyebrow">{t('EL PRIMER PASO EMPIEZA CONTIGO')}</p>
-            <h2 id="join-form-title">{t('QUIERO SUMARME')}</h2>
-            <p>{t('Déjanos conocerte. No necesitas tener una propuesta definida: tu interés en participar es un buen comienzo.')}</p>
-            <p>{t('Los campos con * son obligatorios. Completa la verificación de seguridad para enviar tu solicitud.')}</p>
-            <a href="mailto:contacto@sembrandoperu.org">contacto@sembrandoperu.org</a>
-            </>}
+            <VolunteeringToolkitIntro />
           </div>
           <form className="join-form" noValidate onSubmit={handleSubmit} aria-busy={submitting}
             onBlur={event => validateField(event.target, event.currentTarget, true)}
@@ -353,7 +347,7 @@ export default function JoinPage({ volunteering = false }: { volunteering?: bool
                 ) : !isDev ? (
                   <p>
                     {t('El envío de solicitudes está disponible en nuestro sitio oficial.')}{' '}
-                    <a href={`${joinProductionOrigin}/sumate#participar`}>{t('Ir al sitio oficial')}</a>
+                    <a href={`${joinProductionOrigin}/voluntariado#participar`}>{t('Ir al sitio oficial')}</a>
                   </p>
                 ) : null}
               </div>
@@ -371,7 +365,7 @@ export default function JoinPage({ volunteering = false }: { volunteering?: bool
             </div>
             {submitted && <p className="join-form__status" role="status">{t('Tu solicitud se registró correctamente. Gracias por tu interés en sumarte a Sembrando Perú.')}</p>}
           </form>
-        </section>
+        </section>}
 
         {volunteering && <VolunteeringResources />}
 
