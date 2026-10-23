@@ -1,23 +1,31 @@
 import { useRef, useState, type FormEvent } from 'react'
-import { BookOpen, HeartHandshake, Megaphone, Sprout, ArrowRight } from 'lucide-react'
+import { BookOpen, HeartHandshake, Megaphone, Sprout, ArrowRight, ChevronRight, Home } from 'lucide-react'
 import SiteHeader from '../components/SiteHeader'
+import DonationFooter from '../components/DonationFooter'
 import Turnstile from '../components/Turnstile'
 import { joinProductionOrigin } from '../lib/submitJoin'
 import SocialLinks from '../components/SocialLinks'
 import { useLanguage } from '../components/LanguageContext'
 import { BlogFooter } from './BlogPage'
 import heroImage from '../assets/figma/5.jpeg'
+import donationHeroImage from '../assets/figma/donacion.jpg'
 import volunteerHero from '../assets/figma/imgBlogImage4.png'
+import reforestationImage from '../assets/figma/blog-article-reforestation.jpg'
+import educationImage from '../assets/figma/educacion.JPG'
+import healthImage from '../assets/figma/blog-article-health.jpg'
+import communicationImage from '../assets/figma/equipo2.jpg'
+import communityImage from '../assets/figma/blog-article-community.jpg'
 import { VolunteeringIntroduction, VolunteeringParticipation, VolunteeringResources, VolunteeringToolkitIntro, VolunteeringClosing } from './VolunteeringSections'
+import { CollapsibleSection, donationImpactAreas } from './DonationPage'
 import { joinAvailability, joinFields, validateJoinForm, type JoinErrors, type JoinField } from './joinValidation'
 import { supabase } from '../supabaseClient' // 👈 Ajusta la ruta a tu cliente si está en otro nivel
 import './JoinPage.css'
 
 const areas = [
-  { title: 'Reforestación', description: 'Participa en el cuidado de nuestros bosques y comparte tu interés por la naturaleza.', icon: Sprout },
-  { title: 'Educación', description: 'Comparte conocimientos y acompaña iniciativas de aprendizaje comunitario.', icon: BookOpen },
-  { title: 'Salud', description: 'Aporta a la prevención y la promoción del bienestar de niños y familias.', icon: HeartHandshake },
-  { title: 'Comunicación', description: 'Ayúdanos a contar historias y dar a conocer nuestras iniciativas.', icon: Megaphone },
+  { title: 'Reforestación', description: 'Participa en el cuidado de nuestros bosques y comparte tu interés por la naturaleza.', icon: Sprout, image: reforestationImage },
+  { title: 'Educación', description: 'Comparte conocimientos y acompaña iniciativas de aprendizaje comunitario.', icon: BookOpen, image: educationImage },
+  { title: 'Salud', description: 'Aporta a la prevención y la promoción del bienestar de niños y familias.', icon: HeartHandshake, image: healthImage },
+  { title: 'Comunicación', description: 'Ayúdanos a contar historias y dar a conocer nuestras iniciativas.', icon: Megaphone, image: communicationImage },
 ]
 
 const questions = [
@@ -50,6 +58,120 @@ const questions = [
     answer: 'Escríbenos directamente a contacto@sembrandoperu.org con el asunto “Quiero sumarme a Sembrando Perú”. Incluye tu nombre, ciudad o país, área de interés y disponibilidad para que el equipo conozca tu propuesta.',
   },
 ]
+
+function JoinParticipationSections() {
+  const { t } = useLanguage()
+
+  return (
+    <>
+      <nav className="donation-breadcrumbs" aria-label={t('Ruta de navegación')}>
+        <ol>
+          <li><a href="/" aria-label={t('Inicio')}><Home aria-hidden="true" /></a></li>
+          <li><ChevronRight aria-hidden="true" /><span aria-current="page">{t('Súmate')}</span></li>
+        </ol>
+      </nav>
+      <CollapsibleSection
+        title={t('¿POR QUÉ SUMARTE A SEMBRANDO PERÚ?')}
+        titleId="join-about-title"
+        sectionClassName="donation-about"
+      >
+        <div className="join-about-options">
+          <article className="join-about-option">
+            <img src={communityImage} alt={t('Integrantes de Sembrando Perú trabajando junto a la comunidad')} loading="lazy" />
+            <div className="join-about-option__content">
+              <h3>{t('PARA MÍ')}</h3>
+              <p>{t('Al sumarte a Sembrando Perú, te unes a una comunidad comprometida con el bienestar de las personas y el cuidado de la naturaleza. Tu participación nos ayuda a impulsar iniciativas de reforestación, educación y salud junto a comunidades de todo el Perú.')}</p>
+              <a href="#participar">{t('Quiero sumarme')}</a>
+            </div>
+          </article>
+          <article className="join-about-option">
+            <img src={heroImage} alt={t('Voluntarios de Sembrando Perú participando en una actividad comunitaria')} loading="lazy" />
+            <div className="join-about-option__content">
+              <h3>{t('PARA UN AMIGO O FAMILIAR')}</h3>
+              <p>{t('Invita a alguien especial a compartir su tiempo y sus ideas para apoyar a nuestras comunidades y cuidar la naturaleza.')}</p>
+              <a href={`mailto:?subject=${encodeURIComponent(t('Súmate a Sembrando Perú'))}&body=${encodeURIComponent(t('Te invito a conocer cómo sumarte a Sembrando Perú: '))}${encodeURIComponent(`${window.location.origin}/sumate#participar`)}`}>{t('Invitar a alguien')}</a>
+            </div>
+          </article>
+        </div>
+      </CollapsibleSection>
+      <CollapsibleSection
+        title={t('¿CÓMO PUEDES CONTRIBUIR A SEMBRANDO PERÚ?')}
+        titleId="join-how-title"
+        sectionClassName="donation-how"
+      >
+        <div className="join-how-layout">
+          <img className="donation-how__image" src={heroImage} alt={t('Integrantes de Sembrando Perú trabajando junto a la comunidad')} loading="lazy" />
+          <div className="donation-how__copy">
+            <p>{t('Puedes participar en jornadas de reforestación, apoyar la producción de plantines en viveros, compartir tus conocimientos y colaborar en talleres de educación ambiental. Cuéntanos tus intereses y disponibilidad para explorar oportunidades junto a las comunidades.')}</p>
+          </div>
+        </div>
+      </CollapsibleSection>
+      <CollapsibleSection
+        title={t('SEMBREMOS UN FUTURO SOSTENIBLE PARA EL PERÚ')}
+        titleId="join-impact-title"
+        sectionClassName="donation-impact"
+      >
+        <p className="donation-impact__intro">{t('Tus aportes impulsan el trabajo integral de Sembrando Perú, promoviendo iniciativas ecológicas y comunitarias en nuestras regiones clave.')}</p>
+        <div className="donation-impact__grid">
+          {donationImpactAreas.map(({ title, description, image, alt }) => (
+            <article className="donation-impact-card" key={title}>
+              <img src={image} alt={t(alt)} loading="lazy" />
+              <div><h3>{t(title)}</h3><p>{t(description)}</p></div>
+            </article>
+          ))}
+        </div>
+      </CollapsibleSection>
+      <section className="donation-how donation-purpose" aria-labelledby="join-purpose-title">
+        <h2 id="join-purpose-title">{t('Un propósito que nos une')}</h2>
+        <p className="donation-purpose__intro">{t('En Sembrando Perú, el cuidado de la naturaleza y el bienestar de las comunidades van de la mano. Tu apoyo nos ayuda a seguir trabajando en estos compromisos:')}</p>
+        <div className="donation-purpose__grid">
+          <article className="donation-purpose__card">
+            <p className="donation-purpose__message">{t('Cada árbol es una oportunidad para recuperar nuestros paisajes. Tu apoyo acompaña la siembra, el cuidado de plantas y el trabajo con las comunidades para proteger su entorno.')}</p>
+            <h3>{t('CUIDAMOS NUESTROS BOSQUES')}</h3>
+            <p className="donation-purpose__area">{t('Reforestación y naturaleza')}</p>
+          </article>
+          <article className="donation-purpose__card">
+            <p className="donation-purpose__message">{t('Compartir conocimientos abre nuevas posibilidades. Junto a las familias, impulsamos el aprendizaje y la conciencia ambiental para que el cuidado de la naturaleza forme parte de la vida comunitaria.')}</p>
+            <h3>{t('SEMBRAMOS APRENDIZAJES')}</h3>
+            <p className="donation-purpose__area">{t('Educación y participación')}</p>
+          </article>
+          <article className="donation-purpose__card">
+            <p className="donation-purpose__message">{t('El futuro también se construye cuidando a las personas. Tu aporte acompaña iniciativas de prevención, educación y participación que ponen en el centro a los niños y sus familias.')}</p>
+            <h3>{t('CULTIVAMOS BIENESTAR')}</h3>
+            <p className="donation-purpose__area">{t('Salud y comunidad')}</p>
+          </article>
+        </div>
+      </section>
+    </>
+  )
+}
+
+function JoinWelcomeSection() {
+  const { t } = useLanguage()
+  const resources = [
+    { title: 'FICHAS INFORMATIVAS SOBRE NUESTROS PROYECTOS', image: heroImage, href: '/publicaciones', download: false },
+    { title: 'FONDOS DE PANTALLA PARA TUS DISPOSITIVOS', image: reforestationImage, href: reforestationImage, download: true },
+    { title: 'SUSCRIPCIÓN AL BOLETÍN DE SEMBRANDO PERÚ', image: communityImage, href: '/#unete', download: false },
+  ]
+
+  return (
+    <CollapsibleSection
+      title={t('TE DAMOS LA BIENVENIDA')}
+      titleId="join-welcome-title"
+      sectionClassName="donation-how donation-welcome join-welcome"
+    >
+      <p className="donation-welcome__intro">{t('Gracias por tu interés en sumarte a Sembrando Perú. Explora estos recursos para conocer nuestros proyectos y seguir conectado con el cuidado de la naturaleza y el bienestar de las comunidades:')}</p>
+      <div className="donation-welcome__grid">
+        {resources.map(resource => (
+          <a className="donation-welcome__card" href={resource.href} download={resource.download || undefined} key={resource.title}>
+            <div className="donation-welcome__preview"><img src={resource.image} alt="" loading="lazy" /></div>
+            <h3>{t(resource.title)}</h3>
+          </a>
+        ))}
+      </div>
+    </CollapsibleSection>
+  )
+}
 
 export default function JoinPage({ volunteering = false }: { volunteering?: boolean }) {
   const { t } = useLanguage()
@@ -159,8 +281,8 @@ export default function JoinPage({ volunteering = false }: { volunteering?: bool
     <div className={`home-page join-page${volunteering ? ' volunteer-page' : ''}`}>
       <SiteHeader />
       <main>
-        <section className="join-hero" aria-labelledby="join-title">
-          <img src={volunteering ? volunteerHero : heroImage} alt={t('Participación comunitaria en una jornada de Sembrando Perú')} />
+        <section className={`join-hero${!volunteering ? ' join-hero--donation' : ''}`} aria-labelledby="join-title">
+          <img src={volunteering ? volunteerHero : donationHeroImage} alt={t('Participación comunitaria en una jornada de Sembrando Perú')} />
           {volunteering ? (
             <div className="volunteer-campaign">
               <div className="volunteer-campaign__identity">
@@ -174,8 +296,10 @@ export default function JoinPage({ volunteering = false }: { volunteering?: bool
               </div>
             </div>
           ) : (
-          <div className="join-hero__content">
-            <h1 id="join-title">{t('SÉ PARTE DE SEMBRANDO PERÚ')}</h1>
+          <div className="join-hero__content join-hero__content--centered">
+            <div className="join-hero__title-panel">
+              <h1 id="join-title">{t('SÉ PARTE DE SEMBRANDO PERÚ')}</h1>
+            </div>
             <p>{t('Tu tiempo, tus ideas y tus conocimientos pueden aportar al bienestar de nuestras comunidades y al cuidado de la naturaleza.')}</p>
             <a className="join-button" href="#participar">{t('QUIERO SUMARME')} <ArrowRight size={18} aria-hidden="true" /></a>
           </div>
@@ -185,35 +309,15 @@ export default function JoinPage({ volunteering = false }: { volunteering?: bool
 
         {volunteering && <VolunteeringIntroduction />}
 
-        <section className={`join-section join-intro${volunteering ? ' volunteer-participation' : ''}`} aria-labelledby="join-ways">
-          {!volunteering && <p className="join-eyebrow">{t('JUNTOS PODEMOS HACER MÁS')}</p>}
-          <h2 id="join-ways">{volunteering ? t('¿CÓMO PUEDES PARTICIPAR?') : t('ENCUENTRA TU FORMA DE PARTICIPAR')}</h2>
+        {!volunteering && <JoinParticipationSections />}
+
+        {volunteering && <section className="join-section join-intro volunteer-participation" aria-labelledby="join-ways">
+          <h2 id="join-ways">{t('¿CÓMO PUEDES PARTICIPAR?')}</h2>
           <p>{t('Apoya campañas, comparte lo que sabes o colabora en actividades comunitarias. Cuéntanos qué te motiva y exploremos cómo puedes aportar.')}</p>
-          {!volunteering && <div className="join-areas">
-            {areas.map(({ title, description, icon: Icon }) => (
-              <article key={title}>
-                <Icon size={30} strokeWidth={1.5} aria-hidden="true" />
-                <h3>{t(title)}</h3><p>{t(description)}</p>
-                <a href="#participar">{t('Me interesa')} <ArrowRight size={16} aria-hidden="true" /></a>
-              </article>
-            ))}
-          </div>}
-        </section>
+        </section>}
 
         {volunteering && <VolunteeringParticipation />}
 
-        {!volunteering && <section className="join-process" aria-labelledby="join-steps">
-          <div className="join-section">
-            <h2 id="join-steps">{t('¿CÓMO SUMARTE?')}</h2>
-            <ol>
-              <li><span aria-hidden="true">01</span><div><h3>{t('Cuéntanos sobre ti')}</h3><p>{t('Completa tus datos, intereses y disponibilidad en el formulario.')}</p></div></li>
-              <li><span aria-hidden="true">02</span><div><h3>{t('Envía tu presentación')}</h3><p>{t('Completa la verificación de seguridad y envía tu solicitud desde esta página.')}</p></div></li>
-              <li><span aria-hidden="true">03</span><div><h3>{t('Exploremos oportunidades')}</h3><p>{t('La participación se coordina según las actividades disponibles y tu perfil.')}</p></div></li>
-            </ol>
-          </div>
-        </section>
-
-        }
         <section className="join-section join-registration" id="participar" aria-labelledby="join-form-title">
           <div className="join-registration__intro">
             {volunteering ? <VolunteeringToolkitIntro /> : <>
@@ -269,6 +373,8 @@ export default function JoinPage({ volunteering = false }: { volunteering?: bool
 
         {volunteering && <VolunteeringResources />}
 
+        {!volunteering && <JoinWelcomeSection />}
+
         {volunteering ? <VolunteeringClosing /> : <section className="join-faq" aria-labelledby="join-faq-title">
           <div className="join-section">
             <p className="join-eyebrow">{t('RESOLVEMOS TUS DUDAS')}</p>
@@ -285,7 +391,7 @@ export default function JoinPage({ volunteering = false }: { volunteering?: bool
           </div>
         </section>}
       </main>
-      <BlogFooter />
+      {volunteering ? <BlogFooter /> : <DonationFooter showJoinOptions />}
     </div>
   )
 }

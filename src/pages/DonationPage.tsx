@@ -11,7 +11,7 @@ import SocialLinks from '../components/SocialLinks'
 import DonationFooter from '../components/DonationFooter'
 import './DonationPage.css'
 
-const impactAreas = [
+export const donationImpactAreas = [
   {
     title: 'REFORESTACIÓN Y RESTAURACIÓN ECOLÓGICA',
     description: 'Los bosques y ecosistemas locales sufren constantemente debido a la deforestación y la pérdida de biodiversidad. Sembrando Perú trabaja junto a voluntarios y comunidades locales para reforestar áreas degradadas, instalar viveros comunitarios y proteger especies nativas. Estas acciones ayudan a mitigar el cambio climático y aseguran un entorno saludable para las futuras generaciones.',
@@ -275,7 +275,7 @@ function ImpactAreas() {
     >
       <p className="donation-impact__intro">{t('Tus aportes impulsan el trabajo integral de Sembrando Perú, promoviendo iniciativas ecológicas y comunitarias en nuestras regiones clave.')}</p>
       <div className="donation-impact__grid">
-        {impactAreas.map((area) => (
+        {donationImpactAreas.map((area) => (
           <article className="donation-impact-card" key={area.title}>
             <img src={area.image} alt={t(area.alt)} />
             <div><h3>{t(area.title)}</h3><p>{t(area.description)}</p></div>
@@ -404,14 +404,29 @@ export default function DonationPage({ isMembership = false }: { isMembership?: 
         <DonationPurpose />
         <DonationFaq />
         <nav className="donation-next-steps" aria-label={t('Otras formas de apoyar a Sembrando Perú')}>
-          <a className="donation-next-steps__join" href="/sumate">
-            <h2>{t('SÚMATE')}</h2>
-            <p>{t('Comparte tu tiempo, tus ideas y tus conocimientos para apoyar a nuestras comunidades y cuidar la naturaleza.')}</p>
-          </a>
-          <a className="donation-next-steps__membership" href="/membresia">
-            <h2>{t('MEMBRESÍA')}</h2>
-            <p>{t('Forma parte de una comunidad comprometida con la reforestación, la educación y el bienestar de las familias del Perú.')}</p>
-          </a>
+          {isMembership ? (
+            <>
+              <a className="donation-next-steps__join" href="/donacion">
+                <h2>{t('DONACIÓN')}</h2>
+                <p>{t('Apoya nuestras iniciativas de reforestación, educación y desarrollo sostenible en las comunidades del Perú.')}</p>
+              </a>
+              <a className="donation-next-steps__membership" href="/sumate">
+                <h2>{t('SÚMATE')}</h2>
+                <p>{t('Comparte tu tiempo, tus ideas y tus conocimientos para apoyar a nuestras comunidades y cuidar la naturaleza.')}</p>
+              </a>
+            </>
+          ) : (
+            <>
+              <a className="donation-next-steps__join" href="/sumate">
+                <h2>{t('SÚMATE')}</h2>
+                <p>{t('Comparte tu tiempo, tus ideas y tus conocimientos para apoyar a nuestras comunidades y cuidar la naturaleza.')}</p>
+              </a>
+              <a className="donation-next-steps__membership" href="/membresia">
+                <h2>{t('MEMBRESÍA')}</h2>
+                <p>{t('Forma parte de una comunidad comprometida con la reforestación, la educación y el bienestar de las familias del Perú.')}</p>
+              </a>
+            </>
+          )}
         </nav>
       </main>
       <DonationFooter />

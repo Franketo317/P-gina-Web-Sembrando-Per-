@@ -3,10 +3,20 @@ import SocialLinks from './SocialLinks'
 import { useLanguage } from './LanguageContext'
 import './DonationFooter.css'
 
-export default function DonationFooter() {
+export default function DonationFooter({ showJoinOptions = false }: { showJoinOptions?: boolean }) {
   const { t } = useLanguage()
   return (
     <footer className="donation-footer">
+      {showJoinOptions && <nav className="donation-footer__join-options" aria-label={t('Otras formas de apoyar a Sembrando Perú')}>
+        <a className="donation-footer__join-option donation-footer__join-option--sumate" href="/sumate#participar">
+          <h2>{t('SÚMATE')}</h2>
+          <p>{t('Comparte tu tiempo, tus ideas y tus conocimientos para apoyar a nuestras comunidades y cuidar la naturaleza.')}</p>
+        </a>
+        <a className="donation-footer__join-option donation-footer__join-option--membership" href="/membresia">
+          <h2>{t('MEMBRESÍA')}</h2>
+          <p>{t('Forma parte de una comunidad comprometida con la reforestación, la educación y el bienestar de las familias del Perú.')}</p>
+        </a>
+      </nav>}
       <div className="donation-footer__main">
         <a className="donation-footer__brand" href="/" aria-label={t('Sembrando Perú, inicio')}>
           <img src={logo} alt={t('Sembrando Perú')} />
