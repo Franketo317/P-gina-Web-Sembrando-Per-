@@ -54,7 +54,7 @@ function OrganizationStory() {
         aria-labelledby="about-fact-title"
       >
         <div className="about-fact__content">
-          <h2 id="about-fact-title">{t('¿SABÍAS QUE?')}</h2>
+          <h2 id="about-fact-title">{t('¿Sabías que?')}</h2>
           <p>{t('La labor de Sembrando Perú integra la protección de los bosques, la educación rural y la salud infantil para contribuir al bienestar de las comunidades.')}</p>
         </div>
       </section>

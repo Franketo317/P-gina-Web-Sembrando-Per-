@@ -8,10 +8,10 @@ import communityImage from '../assets/figma/blog-article-community.jpg'
 import SiteHeader from '../components/SiteHeader'
 import { useLanguage } from '../components/LanguageContext'
 import SocialLinks from '../components/SocialLinks'
-import { BlogFooter } from './BlogPage'
+import DonationFooter from '../components/DonationFooter'
 import './DonationPage.css'
 
-const impactAreas = [
+export const donationImpactAreas = [
   {
     title: 'REFORESTACIÓN Y RESTAURACIÓN ECOLÓGICA',
     description: 'Los bosques y ecosistemas locales sufren constantemente debido a la deforestación y la pérdida de biodiversidad. Sembrando Perú trabaja junto a voluntarios y comunidades locales para reforestar áreas degradadas, instalar viveros comunitarios y proteger especies nativas. Estas acciones ayudan a mitigar el cambio climático y aseguran un entorno saludable para las futuras generaciones.',
@@ -128,15 +128,20 @@ function DonationHero({ isMembership }: { isMembership: boolean }) {
       const headerBounds = header.getBoundingClientRect()
       const formBounds = form.getBoundingClientRect()
       const formSlotBounds = formSlot.getBoundingClientRect()
-      const mainBounds = main.getBoundingClientRect()
+      const stopBoundary = main.querySelector('.donation-next-steps') ?? main
+      const boundaryBounds = stopBoundary.getBoundingClientRect()
       const minimumPinnedTop = headerBounds.height + 16
       if (pinnedTopRef.current === null || pinnedTopRef.current < minimumPinnedTop) {
         pinnedTopRef.current = Math.max(minimumPinnedTop, formSlotBounds.top)
       }
       const stickyTop = pinnedTopRef.current
       formSlot.style.setProperty('--donation-form-sticky-top', `${stickyTop}px`)
+      // Move the card up with the content when it reaches the full-width links.
+      const bottomLimit = stopBoundary === main ? boundaryBounds.bottom : boundaryBounds.top
+      const constrainedTop = Math.min(stickyTop, bottomLimit - formBounds.height - 24)
+      formSlot.style.setProperty('--donation-form-offset-top', `${constrainedTop}px`)
       const shouldPinForm = window.innerWidth >= 621
-        && mainBounds.bottom > stickyTop + formBounds.height + 16
+        && formSlotBounds.top <= stickyTop
       const isCurrentlyPinned = formSlot.classList.contains('is-pinned')
       if (shouldPinForm) {
         formSlot.style.setProperty('--donation-form-sticky-left', `${formSlotBounds.left}px`)
@@ -155,15 +160,21 @@ function DonationHero({ isMembership }: { isMembership: boolean }) {
     updateDonateButtonVisibility()
     window.addEventListener('scroll', updateDonateButtonVisibility, { passive: true })
     window.addEventListener('resize', updateDonateButtonVisibility)
+    const resizeObserver = new ResizeObserver(updateDonateButtonVisibility)
+    const pageMain = formSlotRef.current?.closest('.donation-page')?.querySelector('main')
+    const donationForm = formSlotRef.current?.querySelector('.donation-form')
+    if (pageMain) resizeObserver.observe(pageMain)
+    if (donationForm) resizeObserver.observe(donationForm)
     return () => {
       window.removeEventListener('scroll', updateDonateButtonVisibility)
       window.removeEventListener('resize', updateDonateButtonVisibility)
+      resizeObserver.disconnect()
     }
   }, [])
 
   return (
     <section className={`donation-hero${isFormPinned ? ' is-form-pinned' : ''}`} aria-labelledby="donation-hero-title">
-      <img className="donation-hero__image" src={heroImage} alt="Manos plantando un árbol joven" />
+      <img className="donation-hero__image" src={heroImage} alt={t("Manos plantando un árbol joven")} />
       <div className="donation-hero__shade" />
       <SocialLinks />
       <div className="donation-hero__content">
@@ -175,7 +186,7 @@ function DonationHero({ isMembership }: { isMembership: boolean }) {
         ) : (
           <>
             <h1 id="donation-hero-title">{t('ÚNETE AL CAMBIO,')}<br />{t('DONA HOY!')}</h1>
-            <p>Tu donación hace posible más acciones de reforestación, educación y desarrollo sostenible en las comunidades del Perú.</p>
+            <p>{t("Tu donación hace posible más acciones de reforestación, educación y desarrollo sostenible en las comunidades del Perú.")}</p>
           </>
         )}
       </div>
@@ -264,14 +275,60 @@ function ImpactAreas() {
     >
       <p className="donation-impact__intro">{t('Tus aportes impulsan el trabajo integral de Sembrando Perú, promoviendo iniciativas ecológicas y comunitarias en nuestras regiones clave.')}</p>
       <div className="donation-impact__grid">
-        {impactAreas.map((area) => (
+        {donationImpactAreas.map((area) => (
           <article className="donation-impact-card" key={area.title}>
-            <img src={area.image} alt={area.alt} />
+            <img src={area.image} alt={t(area.alt)} />
             <div><h3>{t(area.title)}</h3><p>{t(area.description)}</p></div>
           </article>
         ))}
       </div>
     </CollapsibleSection>
+  )
+}
+
+function DonationWelcome() {
+  const { t } = useLanguage()
+  const resources = [
+    { title: 'FICHAS INFORMATIVAS SOBRE NUESTROS PROYECTOS', image: impactImage, href: '/publicaciones', download: false },
+    { title: 'FONDOS DE PANTALLA PARA TUS DISPOSITIVOS', image: reforestationImage, href: reforestationImage, download: true },
+    { title: 'SUSCRIPCIÓN AL BOLETÍN DE SEMBRANDO PERÚ', image: communityImage, href: '/#unete', download: false },
+  ]
+  return (
+    <CollapsibleSection title={t('TE DAMOS LA BIENVENIDA')} titleId="donation-welcome-title" sectionClassName="donation-how donation-welcome">
+      <p className="donation-welcome__intro">{t('Gracias por apoyar a Sembrando Perú. Conoce estos recursos para acercarte a nuestros proyectos y seguir conectado con el cuidado de la naturaleza y el bienestar de las comunidades:')}</p>
+      <div className="donation-welcome__grid">
+        {resources.map(resource => (
+          <a className="donation-welcome__card" href={resource.href} download={resource.download || undefined} key={resource.title}>
+            <div className="donation-welcome__preview"><img src={resource.image} alt="" loading="lazy" /></div>
+            <h3>{t(resource.title)}</h3>
+          </a>
+        ))}
+      </div>
+    </CollapsibleSection>
+  )
+}
+
+function DonationPurpose() {
+  const { t } = useLanguage()
+  const messages = [
+    { title: 'CUIDAMOS NUESTROS BOSQUES', area: 'Reforestación y naturaleza', text: 'Cada árbol es una oportunidad para recuperar nuestros paisajes. Tu apoyo acompaña la siembra, el cuidado de plantas y el trabajo con las comunidades para proteger su entorno.' },
+    { title: 'SEMBRAMOS APRENDIZAJES', area: 'Educación y participación', text: 'Compartir conocimientos abre nuevas posibilidades. Junto a las familias, impulsamos el aprendizaje y la conciencia ambiental para que el cuidado de la naturaleza forme parte de la vida comunitaria.' },
+    { title: 'CULTIVAMOS BIENESTAR', area: 'Salud y comunidad', text: 'El futuro también se construye cuidando a las personas. Tu aporte acompaña iniciativas de prevención, educación y participación que ponen en el centro a los niños y sus familias.' },
+  ]
+  return (
+    <section className="donation-how donation-purpose" aria-labelledby="donation-purpose-title">
+      <h2 id="donation-purpose-title">{t('Un propósito que nos une')}</h2>
+      <p className="donation-purpose__intro">{t('En Sembrando Perú, el cuidado de la naturaleza y el bienestar de las comunidades van de la mano. Tu apoyo nos ayuda a seguir trabajando en estos compromisos:')}</p>
+      <div className="donation-purpose__grid">
+        {messages.map(message => (
+          <article className="donation-purpose__card" key={message.title}>
+            <p className="donation-purpose__message">{t(message.text)}</p>
+            <h3>{t(message.title)}</h3>
+            <p className="donation-purpose__area">{t(message.area)}</p>
+          </article>
+        ))}
+      </div>
+    </section>
   )
 }
 
@@ -340,12 +397,39 @@ export default function DonationPage({ isMembership = false }: { isMembership?: 
           <div className="donation-how__copy">
             <p>{t('Tu donación se destina directamente a nuestras jornadas de reforestación, la producción de plantines en viveros y talleres de educación ambiental. Cada aporte asegura la transparencia y continuidad de nuestros proyectos en las comunidades.')}</p>
           </div>
-          <img className="donation-how__image" src={impactImage} alt="Integrantes de Sembrando Perú trabajando junto a la comunidad" />
+          <img className="donation-how__image" src={impactImage} alt={t("Integrantes de Sembrando Perú trabajando junto a la comunidad")} />
         </CollapsibleSection>
+        <DonationWelcome />
         <ImpactAreas />
+        <DonationPurpose />
         <DonationFaq />
+        <nav className="donation-next-steps" aria-label={t('Otras formas de apoyar a Sembrando Perú')}>
+          {isMembership ? (
+            <>
+              <a className="donation-next-steps__join" href="/donacion">
+                <h2>{t('DONACIÓN')}</h2>
+                <p>{t('Apoya nuestras iniciativas de reforestación, educación y desarrollo sostenible en las comunidades del Perú.')}</p>
+              </a>
+              <a className="donation-next-steps__membership" href="/sumate">
+                <h2>{t('SÚMATE')}</h2>
+                <p>{t('Comparte tu tiempo, tus ideas y tus conocimientos para apoyar a nuestras comunidades y cuidar la naturaleza.')}</p>
+              </a>
+            </>
+          ) : (
+            <>
+              <a className="donation-next-steps__join" href="/sumate">
+                <h2>{t('SÚMATE')}</h2>
+                <p>{t('Comparte tu tiempo, tus ideas y tus conocimientos para apoyar a nuestras comunidades y cuidar la naturaleza.')}</p>
+              </a>
+              <a className="donation-next-steps__membership" href="/membresia">
+                <h2>{t('MEMBRESÍA')}</h2>
+                <p>{t('Forma parte de una comunidad comprometida con la reforestación, la educación y el bienestar de las familias del Perú.')}</p>
+              </a>
+            </>
+          )}
+        </nav>
       </main>
-      <BlogFooter />
+      <DonationFooter />
     </div>
   )
 }

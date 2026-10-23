@@ -43,7 +43,7 @@ export default function ConservationStrategiesPage() {
                   <div className="strategy__content">
                     <h2>
                       <a href={`/estrategias-conservacion/${strategy.slug}`}>
-                        {t(`Estrategia ${index + 1}`)}: {t(strategy.title)} <span aria-hidden="true">›</span>
+                        {t('Estrategia')} {index + 1}: {t(strategy.title)} <span aria-hidden="true">›</span>
                       </a>
                     </h2>
                     <p>{t(strategy.description)}</p>

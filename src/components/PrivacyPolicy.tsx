@@ -11,7 +11,7 @@ const paragraphs = [
 ]
 
 export default function PrivacyPolicy() {
-  const { t } = useLanguage()
+  const { t, language } = useLanguage()
   const policyRef = useRef<HTMLDetailsElement>(null)
 
   useEffect(() => {
@@ -33,9 +33,9 @@ export default function PrivacyPolicy() {
     <section className="contact-privacy" aria-labelledby="privacy-title">
       <details className="contact-privacy__details" id="privacidad" ref={policyRef}>
         <summary><h2 id="privacy-title">{t('Políticas de privacidad')}</h2><span aria-hidden="true" className="contact-privacy__toggle" /></summary>
-        <div className="contact-privacy__content" lang="es">
-          <p>En Sembrando Perú respetamos y protegemos la privacidad de las personas que visitan nuestro sitio web <a href="https://sembrandoperu.org">https://sembrandoperu.org</a> y participan en nuestras actividades.</p>
-          {paragraphs.map(paragraph => <p key={paragraph}>{paragraph}</p>)}
+        <div className="contact-privacy__content" lang={language}>
+          <p>{t('En Sembrando Perú respetamos y protegemos la privacidad de las personas que visitan nuestro sitio web')}{' '}<a href="https://sembrandoperu.org">https://sembrandoperu.org</a>{' '}{t('y participan en nuestras actividades.')}</p>
+          {paragraphs.map(paragraph => <p key={paragraph}>{t(paragraph)}</p>)}
         </div>
       </details>
     </section>

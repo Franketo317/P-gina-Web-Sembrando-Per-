@@ -27,7 +27,6 @@ import CampaignDetailPage from './pages/CampaignDetailPage'
 import NewsPage from './pages/NewsPage'
 import ContactPage from './pages/ContactPage'
 import DonationPage from './pages/DonationPage'
-import AlliancesPage from './pages/AlliancesPage'
 import JoinPage from './pages/JoinPage'
 import HowWeWorkPage from './pages/HowWeWorkPage'
 import WorkWithUsPage from './pages/WorkWithUsPage'
@@ -58,7 +57,7 @@ const programs = [
     category: 'educacion',
     title: 'VOLUNTARIADO',
     action: 'ÚNETE',
-    href: '/sumate',
+    href: '/voluntariado',
     description: 'Promovemos la igualdad social a través de procesos de alfabetización.',
     image: blogImage4,
     alt: 'Niños participando en actividades educativas',
@@ -149,9 +148,9 @@ function ProgramCard({ category, title, action, href, image, alt }: (typeof prog
 
   return (
     <article className={`program-card program-card--${category}`}>
-      <img className="program-card__image" src={image} alt={alt} />
+      <img className="program-card__image" src={image} alt={t(alt)} />
       <div className="program-card__body">
-        <h3>{t(title)}</h3>
+        <h3><a className="program-card__title-link" href={href}>{t(title)}</a></h3>
         <a className="program-card__action" href={href} aria-label={`${t(action)}: ${t(title)}`}>
           {t(action)} <ChevronRight aria-hidden="true" size={24} strokeWidth={3} />
         </a>
@@ -197,7 +196,7 @@ function ArticleCard({
 
   return (
     <article className="article-card">
-      <img className="article-card__image" src={image} alt={alt} />
+      <img className="article-card__image" src={image} alt={t(alt)} />
       <div className="article-card__body">
         <h3><a href="/publicaciones">{t(title)}</a></h3>
       </div>
@@ -225,7 +224,7 @@ function HomeHero() {
         <img
           className={`hero-section__image${index === activeSlide ? ' is-active' : ''}`}
           src={item.image}
-          alt={item.alt}
+          alt={t(item.alt)}
           aria-hidden={index !== activeSlide}
           key={item.image}
           style={{ objectPosition: item.position }}
@@ -284,8 +283,8 @@ function App() {
     return <DonationPage />
   }
 
-  if (currentPath === '/alianzas') {
-    return <AlliancesPage />
+  if (currentPath === '/voluntariado') {
+    return <JoinPage volunteering />
   }
 
   if (currentPath === '/sumate') {
@@ -384,7 +383,7 @@ function App() {
               </p>
               <CommunitySignupForm />
 
-              <div className="community-section__info" aria-label="Información de contacto">
+              <div className="community-section__info" aria-label={t("Información de contacto")}>
                 <PeruOfficeInfo />
               </div>
             </div>

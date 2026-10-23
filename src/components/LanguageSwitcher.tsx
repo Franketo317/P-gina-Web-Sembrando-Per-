@@ -42,7 +42,7 @@ export default function LanguageSwitcher({ className }: Props) {
       <button
         className="language-switcher"
         type="button"
-        aria-label={language === 'en' ? 'Cambiar idioma a español' : 'Cambiar idioma a inglés'}
+        aria-label={language === 'en' ? 'Change language to Spanish' : 'Cambiar idioma a inglés'}
         aria-haspopup="menu"
         aria-expanded={menuOpen}
         aria-controls={menuId}

@@ -30,15 +30,15 @@ export default function ValuesSection() {
       <div className="home-values__layout">
         <div className="home-values__gallery" aria-label={t('Acciones de Sembrando Perú')}>
           <div className="home-values__photo home-values__photo--wide">
-            <img src={childrenImage} alt="Niños participando en actividades educativas" />
+            <img src={childrenImage} alt={t("Niños participando en actividades educativas")} />
             <span>{t(valuesData[0].title)}</span>
           </div>
           <div className="home-values__photo">
-            <img src={learningImage} alt="Jornada comunitaria de salud" />
+            <img src={learningImage} alt={t("Jornada comunitaria de salud")} />
             <span>{t(valuesData[1].title)}</span>
           </div>
           <div className="home-values__photo">
-            <img src={forestImage} alt="Equipo de Sembrando Perú en un bosque" />
+            <img src={forestImage} alt={t("Equipo de Sembrando Perú en un bosque")} />
             <span>{t(valuesData[2].title)}</span>
           </div>
         </div>

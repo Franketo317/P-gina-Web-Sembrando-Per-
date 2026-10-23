@@ -1,4 +1,5 @@
 import type { ReactNode } from 'react'
+import { useLanguage } from './LanguageContext'
 
 type SocialItem = {
   label: string
@@ -61,10 +62,11 @@ type SocialLinksProps = {
 }
 
 export default function SocialLinks({ placement }: SocialLinksProps) {
+  const { t } = useLanguage()
   return (
     <div
       className={`hero-socials${placement ? ` hero-socials--${placement}` : ''}`}
-      aria-label="Redes sociales"
+      aria-label={t('Redes sociales')}
     >
       {socialLinks.map((social) => (
         <a

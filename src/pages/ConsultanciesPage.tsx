@@ -80,7 +80,7 @@ export default function ConsultanciesPage() {
               <a href={`/convocatoria-consultorias/${item.slug}`} tabIndex={-1} aria-hidden="true"><img src={item.image} alt="" loading="lazy" /></a>
               <div>
                 <h2><a href={`/convocatoria-consultorias/${item.slug}`}>{t(item.title)}</a></h2>
-                <time dateTime={item.publishedAt}>{new Intl.DateTimeFormat(language === 'es' ? 'es-PE' : 'en-US', { day: 'numeric', month: 'short', year: 'numeric' }).format(new Date(`${item.publishedAt}T12:00:00`))} · {t('Fecha referencial')}</time>
+                <time dateTime={item.publishedAt}>{new Intl.DateTimeFormat(language === 'es' ? 'es-PE' : 'en-US', { day: 'numeric', month: 'short', year: 'numeric' }).format(new Date(`${item.publishedAt}T12:00:00`))}</time>
               </div>
             </article>
           )) : (

@@ -1,5 +1,50 @@
-.health-hero {
+.health-page .health-hero {
+  height: 450px;
+  box-sizing: border-box;
+  align-items: flex-end;
+  padding: 64px max(24px, calc((100% - 850px) / 2));
   background-position: center top;
+}
+
+.health-page .health-hero::before {
+  background: linear-gradient(180deg, rgb(0 0 0 / 3%) 35%, rgb(0 0 0 / 28%));
+}
+
+.health-page .health-hero h1 {
+  font-size: clamp(44px, 4vw, 64px);
+  line-height: 1.1;
+}
+
+.health-page .health-intro {
+  display: block;
+  min-height: 0;
+  padding: 68px 24px 20px;
+  background: #fff;
+  color: #111;
+}
+
+.health-page main .health-intro p {
+  max-width: 565px;
+  margin: 0 auto 24px;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 18px;
+  line-height: 1.5;
+  text-align: justify;
+}
+
+.health-page main .health-intro p:last-child {
+  margin-bottom: 0;
+}
+
+@media (max-width: 760px) {
+  .health-page .health-hero {
+    height: 380px;
+    padding: 48px 24px;
+  }
+
+  .health-page .health-intro {
+    padding: 40px 24px 20px;
+  }
 }
 
 .health-challenges .reforestation-threats__image {

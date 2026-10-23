@@ -667,6 +667,16 @@
   text-transform: uppercase;
 }
 
+.program-card__title-link {
+  color: inherit;
+  text-decoration: none;
+}
+
+.program-card__title-link:focus-visible {
+  outline: 3px solid #fff;
+  outline-offset: 3px;
+}
+
 .program-card--educacion .program-card__action {
   background: #f3c442;
 }
@@ -1932,10 +1942,7 @@
   background: #18261e;
 }
 
-.about-page .about-hero,
 .how-we-work-page .work-hero,
-.work-with-us-page .opportunities-hero,
-.contact-page .contact-hero,
 .institutional-page .institutional-hero {
   box-sizing: border-box;
   height: clamp(480px, calc(100vh - 180px), 620px);
@@ -2068,8 +2075,6 @@
 @media (max-width: 900px) {
   .about-page .about-hero,
   .how-we-work-page .work-hero,
-  .work-with-us-page .opportunities-hero,
-  .contact-page .contact-hero,
   .institutional-page .institutional-hero {
     height: clamp(500px, 65svh, 580px);
     min-height: 500px;
@@ -2130,8 +2135,6 @@
 @media (max-width: 420px) {
   .about-page .about-hero,
   .how-we-work-page .work-hero,
-  .work-with-us-page .opportunities-hero,
-  .contact-page .contact-hero,
   .institutional-page .institutional-hero {
     height: clamp(500px, 65svh, 560px);
     min-height: 500px;

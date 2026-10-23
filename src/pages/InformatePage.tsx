@@ -63,7 +63,7 @@ export default function InformatePage({ section }: { section: 'noticias' | 'camp
                   <img className="informate-card__image" src={item.image} alt={t(item.alt)} />
                 </a>
                 <div className="informate-card__body">
-                  {item.date && item.category && <div className="blog-meta"><span>{t(item.category)}</span><i /><time>{item.date}</time></div>}
+                  {item.date && item.category && <div className="blog-meta"><span>{t(item.category)}</span><i /><time>{t(item.date)}</time></div>}
                   <h3><a href={item.href}>{t(item.title)}</a></h3>
                   <p>{t(item.description)}</p>
                   <a className="informate-card__link" href={item.href}>{t(isNews ? 'Leer más' : 'Conoce esta iniciativa')} <span aria-hidden="true">→</span></a>

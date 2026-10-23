@@ -111,9 +111,9 @@ export function BlogFooter() {
       <div className="blog-footer__main">
         <div className="blog-footer__content">
           <div className="blog-footer__brand">
-            <a href="/" aria-label="Sembrando Perú, inicio">
+            <a href="/" aria-label={t("Sembrando Perú, inicio")}>
               <div className="blog-footer__logo-horizontal">
-                <img src={logo} alt="Sembrando Perú Icon" />
+                <img src={logo} alt={t("Sembrando Perú Icon")} />
                 <span className="blog-footer__logo-text">SEMBRANDO<br/>PERÚ</span>
               </div>
             </a>
@@ -200,9 +200,9 @@ export default function BlogPage() {
             <div className="blog-featured__grid">
               {featuredArticles.map((article) => (
                 <article className="featured-card" key={article.title}>
-                  <img className="featured-card__image" src={article.image} alt={article.alt} />
+                  <img className="featured-card__image" src={article.image} alt={t(article.alt)} />
                   <div className="featured-card__content">
-                    <div className="blog-meta"><span>{t(article.category)}</span><i /><time>{article.date}</time></div>
+                    <div className="blog-meta"><span>{t(article.category)}</span><i /><time>{t(article.date)}</time></div>
                     <h3>{t(article.title)}</h3>
                     <p>{t(article.description)}</p>
                     <a href={`/publicaciones/articulo/${article.slug}`}>{t('Leer artículo')} <img src={article.arrow} alt="" /></a>
@@ -222,9 +222,9 @@ export default function BlogPage() {
             <div className="blog-latest__list">
               {filteredArticles.length ? filteredArticles.map((article) => (
                 <article className="latest-card" key={article.title}>
-                  <img className="latest-card__image" src={article.image} alt={article.alt} />
+                  <img className="latest-card__image" src={article.image} alt={t(article.alt)} />
                   <div className="latest-card__content">
-                    <div className="blog-meta"><span>{t(article.category)}</span><i /><time>{article.date}</time></div>
+                    <div className="blog-meta"><span>{t(article.category)}</span><i /><time>{t(article.date)}</time></div>
                     <h3>{t(article.title)}</h3>
                     <p>{t(article.description)}</p>
                     <a href={`/publicaciones/articulo/${article.slug}`}>{t('Leer más')} <img src={arrowRight} alt="" /></a>
@@ -256,7 +256,7 @@ export default function BlogPage() {
             {popularArticles.map((article) => (
               <a className="popular-post" href="#articulos" key={article.title}>
                 <img src={article.image} alt="" />
-                <span><strong>{t(article.title)}</strong><time>{article.date}</time></span>
+                <span><strong>{t(article.title)}</strong><time>{t(article.date)}</time></span>
               </a>
             ))}
           </section>
