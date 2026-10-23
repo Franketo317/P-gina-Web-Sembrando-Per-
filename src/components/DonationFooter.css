@@ -1,7 +1,8 @@
 .donation-footer { background: #fff; color: #111; font-family: Arial, Helvetica, sans-serif; }
 .donation-footer__join-options { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); }
 .donation-footer__join-option { display: flex; flex-direction: column; justify-content: center; min-height: 200px; box-sizing: border-box; padding: 30px 48px; color: #fff; text-decoration: none; }
-.donation-footer__join-option--sumate { background: #78aa2d; }
+.donation-footer__join-option--donation { background: #f9a22f; }
+.donation-footer__join-option--donation { background: #78aa2d; }
 .donation-footer__join-option--membership { background: #006c48; }
 .donation-footer__join-option h2 { margin: 0 0 12px; font-family: var(--font-display); font-size: 32px; font-weight: 400; line-height: 1.2; }
 .donation-footer__join-option p { max-width: 500px; margin: 0; font-size: 18px; line-height: 1.5; }

@@ -1,11 +1,11 @@
 import { useRef, useState, type FormEvent } from 'react'
-import { BookOpen, HeartHandshake, Megaphone, Sprout, ArrowRight, ChevronRight, Home } from 'lucide-react'
+import { BookOpen, HeartHandshake, Megaphone, Sprout, ArrowRight, ChevronRight, ChevronUp, Home } from 'lucide-react'
 import SiteHeader from '../components/SiteHeader'
 import DonationFooter from '../components/DonationFooter'
 import Turnstile from '../components/Turnstile'
 import { joinProductionOrigin } from '../lib/submitJoin'
-import SocialLinks from '../components/SocialLinks'
 import { useLanguage } from '../components/LanguageContext'
+import SocialLinks from '../components/SocialLinks'
 import { BlogFooter } from './BlogPage'
 import heroImage from '../assets/figma/5.jpeg'
 import donationHeroImage from '../assets/figma/donacion.jpg'
@@ -81,7 +81,7 @@ function JoinParticipationSections() {
             <div className="join-about-option__content">
               <h3>{t('PARA MÍ')}</h3>
               <p>{t('Al sumarte a Sembrando Perú, te unes a una comunidad comprometida con el bienestar de las personas y el cuidado de la naturaleza. Tu participación nos ayuda a impulsar iniciativas de reforestación, educación y salud junto a comunidades de todo el Perú.')}</p>
-              <a href="#participar">{t('Quiero sumarme')}</a>
+              <a href="/voluntariado#participar">{t('Quiero sumarme')}</a>
             </div>
           </article>
           <article className="join-about-option">
@@ -89,7 +89,7 @@ function JoinParticipationSections() {
             <div className="join-about-option__content">
               <h3>{t('PARA UN AMIGO O FAMILIAR')}</h3>
               <p>{t('Invita a alguien especial a compartir su tiempo y sus ideas para apoyar a nuestras comunidades y cuidar la naturaleza.')}</p>
-              <a href={`mailto:?subject=${encodeURIComponent(t('Súmate a Sembrando Perú'))}&body=${encodeURIComponent(t('Te invito a conocer cómo sumarte a Sembrando Perú: '))}${encodeURIComponent(`${window.location.origin}/sumate#participar`)}`}>{t('Invitar a alguien')}</a>
+              <a href={`mailto:?subject=${encodeURIComponent(t('Súmate a Sembrando Perú'))}&body=${encodeURIComponent(t('Te invito a conocer cómo sumarte a Sembrando Perú: '))}${encodeURIComponent(`${window.location.origin}/voluntariado#participar`)}`}>{t('Invitar a alguien')}</a>
             </div>
           </article>
         </div>
@@ -106,6 +106,7 @@ function JoinParticipationSections() {
           </div>
         </div>
       </CollapsibleSection>
+      <JoinWelcomeSection />
       <CollapsibleSection
         title={t('SEMBREMOS UN FUTURO SOSTENIBLE PARA EL PERÚ')}
         titleId="join-impact-title"
@@ -175,6 +176,8 @@ function JoinWelcomeSection() {
 
 export default function JoinPage({ volunteering = false }: { volunteering?: boolean }) {
   const { t } = useLanguage()
+  const [faqExpanded, setFaqExpanded] = useState(true)
+  const [showAllFaq, setShowAllFaq] = useState(false)
   const [submitted, setSubmitted] = useState(false)
   const [submitting, setSubmitting] = useState(false)
   const sending = useRef(false)
@@ -296,15 +299,14 @@ export default function JoinPage({ volunteering = false }: { volunteering?: bool
               </div>
             </div>
           ) : (
-          <div className="join-hero__content join-hero__content--centered">
+          <div className="join-hero__content join-hero__content--left">
             <div className="join-hero__title-panel">
               <h1 id="join-title">{t('SÉ PARTE DE SEMBRANDO PERÚ')}</h1>
             </div>
             <p>{t('Tu tiempo, tus ideas y tus conocimientos pueden aportar al bienestar de nuestras comunidades y al cuidado de la naturaleza.')}</p>
-            <a className="join-button" href="#participar">{t('QUIERO SUMARME')} <ArrowRight size={18} aria-hidden="true" /></a>
           </div>
           )}
-          <SocialLinks placement="banner" />
+          {volunteering && <SocialLinks placement="banner" />}
         </section>
 
         {volunteering && <VolunteeringIntroduction />}
@@ -318,15 +320,9 @@ export default function JoinPage({ volunteering = false }: { volunteering?: bool
 
         {volunteering && <VolunteeringParticipation />}
 
-        <section className="join-section join-registration" id="participar" aria-labelledby="join-form-title">
+        {volunteering && <section className="join-section join-registration" id="participar" aria-labelledby="join-form-title">
           <div className="join-registration__intro">
-            {volunteering ? <VolunteeringToolkitIntro /> : <>
-            <p className="join-eyebrow">{t('EL PRIMER PASO EMPIEZA CONTIGO')}</p>
-            <h2 id="join-form-title">{t('QUIERO SUMARME')}</h2>
-            <p>{t('Déjanos conocerte. No necesitas tener una propuesta definida: tu interés en participar es un buen comienzo.')}</p>
-            <p>{t('Los campos con * son obligatorios. Completa la verificación de seguridad para enviar tu solicitud.')}</p>
-            <a href="mailto:contacto@sembrandoperu.org">contacto@sembrandoperu.org</a>
-            </>}
+            <VolunteeringToolkitIntro />
           </div>
           <form className="join-form" noValidate onSubmit={handleSubmit} aria-busy={submitting}
             onBlur={event => validateField(event.target, event.currentTarget, true)}
@@ -351,7 +347,7 @@ export default function JoinPage({ volunteering = false }: { volunteering?: bool
                 ) : !isDev ? (
                   <p>
                     {t('El envío de solicitudes está disponible en nuestro sitio oficial.')}{' '}
-                    <a href={`${joinProductionOrigin}/sumate#participar`}>{t('Ir al sitio oficial')}</a>
+                    <a href={`${joinProductionOrigin}/voluntariado#participar`}>{t('Ir al sitio oficial')}</a>
                   </p>
                 ) : null}
               </div>
@@ -369,25 +365,31 @@ export default function JoinPage({ volunteering = false }: { volunteering?: bool
             </div>
             {submitted && <p className="join-form__status" role="status">{t('Tu solicitud se registró correctamente. Gracias por tu interés en sumarte a Sembrando Perú.')}</p>}
           </form>
-        </section>
+        </section>}
 
         {volunteering && <VolunteeringResources />}
 
-        {!volunteering && <JoinWelcomeSection />}
-
         {volunteering ? <VolunteeringClosing /> : <section className="join-faq" aria-labelledby="join-faq-title">
           <div className="join-section">
-            <p className="join-eyebrow">{t('RESOLVEMOS TUS DUDAS')}</p>
-            <h2 id="join-faq-title">{t('PREGUNTAS FRECUENTES')}</h2>
-            <div className="join-faq__list">
-              {questions.map(({ question, answer }) => (
-                <details key={question}>
+            <div className="join-faq__heading">
+              <h2 id="join-faq-title">{t('PREGUNTAS FRECUENTES')}</h2>
+              <button className="join-faq__collapse" type="button" aria-label={t('PREGUNTAS FRECUENTES')} aria-expanded={faqExpanded} aria-controls="join-faq-content" onClick={() => setFaqExpanded(value => !value)}>
+                <ChevronUp className={faqExpanded ? '' : 'is-collapsed'} size={24} aria-hidden="true" />
+              </button>
+            </div>
+            <div id="join-faq-content" hidden={!faqExpanded}>
+            <div className="join-faq__list" id="join-faq-questions">
+              {questions.slice(0, showAllFaq ? questions.length : 5).map(({ question, answer }, index) => (
+                <details key={question} name="join-faq" open={index === 0 ? true : undefined}>
                   <summary>{t(question)}<span className="join-faq__toggle" aria-hidden="true" /></summary>
                   <p>{t(answer)}</p>
                 </details>
               ))}
             </div>
-            <p className="join-faq__contact">{t('¿Tienes otra pregunta?')} <a href="mailto:contacto@sembrandoperu.org">{t('Escríbenos')}</a></p>
+            <div className="join-faq__actions">
+              <button className="join-faq__more" type="button" aria-expanded={showAllFaq} aria-controls="join-faq-questions" onClick={() => setShowAllFaq(value => !value)}>{t(showAllFaq ? 'Ver menos preguntas' : 'Ver más preguntas')}</button>
+            </div>
+            </div>
           </div>
         </section>}
       </main>

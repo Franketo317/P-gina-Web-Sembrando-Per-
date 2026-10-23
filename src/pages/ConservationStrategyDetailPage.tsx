@@ -27,13 +27,9 @@ export default function ConservationStrategyDetailPage({ slug }: { slug: string 
               <SocialLinks placement="banner" />
             </section>
             <article className="strategy-detail">
-              <a className="strategy-detail__back" href="/estrategias-conservacion">← {t('Todas las estrategias')}</a>
-              <p className="strategy-detail__lead">{t(strategy.description)}</p>
+              <p>{t(strategy.description)}</p>
               {strategy.sections.map((section) => (
-                <section key={section.title}>
-                  <h2>{t(section.title)}</h2>
-                  <p>{t(section.text)}</p>
-                </section>
+                <p key={section.title}>{t(section.text)}</p>
               ))}
             </article>
           </>

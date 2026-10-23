@@ -57,6 +57,37 @@ const questions = [
   },
 ]
 
+const membershipQuestions = [
+  {
+    question: '¿Qué significa ser miembro de Sembrando Perú?',
+    answer: 'Ser miembro es apoyar la continuidad de nuestras iniciativas y formar parte de una comunidad comprometida con el cuidado de la naturaleza y el bienestar de las familias del Perú.',
+  },
+  {
+    question: '¿Cómo puedo hacerme miembro?',
+    answer: 'Visita el apartado «Tu contribución» de esta página y continúa a PayPal. Allí podrás revisar el monto y las opciones de frecuencia disponibles antes de confirmar tu aporte.',
+  },
+  {
+    question: '¿A qué se destina mi aporte como miembro?',
+    answer: 'Tu contribución ayuda a sostener iniciativas de reforestación, educación y salud junto a comunidades rurales. Este apoyo permite acompañar el cuidado de los bosques y el bienestar de las familias.',
+  },
+  {
+    question: '¿Ser miembro también me permite participar como voluntario?',
+    answer: 'Puedes expresar tu interés en participar desde la sección Voluntariado. La membresía y el voluntariado son formas de apoyo complementarias; la participación en actividades se coordina con el equipo según las oportunidades disponibles.',
+  },
+  {
+    question: '¿Puedo elegir el monto y la frecuencia de mi aporte?',
+    answer: 'Sí. Antes de confirmar tu aporte en PayPal, puedes revisar y elegir el monto y la frecuencia disponibles.',
+  },
+  {
+    question: '¿Tengo que participar en actividades para ser miembro?',
+    answer: 'No. La membresía ayuda a sostener nuestras iniciativas. Si además quieres participar en actividades, puedes expresar tu interés en la sección Voluntariado.',
+  },
+  {
+    question: '¿Dónde puedo consultar más información sobre mi aporte?',
+    answer: 'Puedes escribirnos a contacto@sembrandoperu.org para resolver tus dudas sobre tu aporte y el trabajo que apoyas.',
+  },
+]
+
 function DonationForm() {
   const { t } = useLanguage()
 
@@ -332,10 +363,14 @@ function DonationPurpose() {
   )
 }
 
-function DonationFaq() {
+function DonationFaq({ isMembership = false }: { isMembership?: boolean }) {
   const [openQuestion, setOpenQuestion] = useState(0)
   const [isExpanded, setIsExpanded] = useState(true)
+  const [showMoreQuestions, setShowMoreQuestions] = useState(false)
   const { t } = useLanguage()
+  const faqQuestions = isMembership
+    ? membershipQuestions.slice(0, showMoreQuestions ? membershipQuestions.length : 4)
+    : questions
 
   return (
     <section className="donation-faq" aria-labelledby="donation-faq-title">
@@ -356,8 +391,8 @@ function DonationFaq() {
       </div>
       {isExpanded && (
         <div id="donation-faq-content">
-          <div className="donation-faq__list">
-            {questions.map((item, index) => (
+          <div className="donation-faq__list" id="donation-faq-list">
+            {faqQuestions.map((item, index) => (
               <details key={item.question} open={openQuestion === index} onToggle={(event) => {
                 if ((event.currentTarget as HTMLDetailsElement).open) setOpenQuestion(index)
               }}>
@@ -366,7 +401,21 @@ function DonationFaq() {
               </details>
             ))}
           </div>
-          <a href="#donation-faq-title">{t('Ver más preguntas')}</a>
+          {isMembership ? (
+            <button
+              type="button"
+              aria-expanded={showMoreQuestions}
+              aria-controls="donation-faq-list"
+              onClick={() => {
+                if (showMoreQuestions && openQuestion >= 4) setOpenQuestion(0)
+                setShowMoreQuestions((showing) => !showing)
+              }}
+            >
+              {t(showMoreQuestions ? 'Ver menos preguntas' : 'Ver más preguntas')}
+            </button>
+          ) : (
+            <a href="#donation-faq-title">{t('Ver más preguntas')}</a>
+          )}
         </div>
       )}
     </section>
@@ -402,7 +451,7 @@ export default function DonationPage({ isMembership = false }: { isMembership?: 
         <DonationWelcome />
         <ImpactAreas />
         <DonationPurpose />
-        <DonationFaq />
+        <DonationFaq isMembership={isMembership} />
         <nav className="donation-next-steps" aria-label={t('Otras formas de apoyar a Sembrando Perú')}>
           {isMembership ? (
             <>

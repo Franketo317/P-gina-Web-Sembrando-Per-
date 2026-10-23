@@ -6,7 +6,7 @@ export const strategies = [
   {
     slug: 'socio-estrategico-local',
     title: 'Socio estratégico local',
-    description: 'En Sembrando Perú trabajamos junto a agricultores y familias para proteger los bosques que forman parte de su vida. La participación de las comunidades en la reforestación fortalece el cuidado de la Amazonía y el compromiso con su futuro.',
+    description: 'Trabajamos con agricultores y familias en la reforestación y el cuidado de los bosques, fortaleciendo el compromiso de las comunidades con el futuro de la Amazonía.',
     image: localFamiliesImage,
     alt: 'Familias y agricultores de la comunidad',
     sections: [
@@ -19,7 +19,7 @@ export const strategies = [
   {
     slug: 'sostenibilidad-integral',
     title: 'Sostenibilidad integral',
-    description: 'El bienestar de las comunidades y la protección de la naturaleza están conectados. Unimos la restauración de bosques con la educación y la prevención en salud para contribuir a un futuro con más oportunidades para los niños y sus familias.',
+    description: 'Unimos la restauración de bosques, la educación y la prevención en salud para cuidar la naturaleza y crear más oportunidades para los niños y las familias rurales.',
     image: communityActivityImage,
     alt: 'Actividad comunitaria de Sembrando Perú',
     sections: [
@@ -32,7 +32,7 @@ export const strategies = [
   {
     slug: 'alianzas-y-voluntariado-activo',
     title: 'Alianzas y voluntariado activo',
-    description: 'Proteger la naturaleza requiere sumar esfuerzos. Articulamos la participación de voluntarios y organizaciones para acercar conocimientos y herramientas a las comunidades rurales. Juntos buscamos ampliar el alcance de las iniciativas de conservación, educación y bienestar.',
+    description: 'Conectamos a voluntarios y organizaciones para compartir conocimientos y herramientas con las comunidades rurales e impulsar la conservación, la educación y el bienestar.',
     image: volunteerImage,
     alt: 'Voluntariado en una actividad de plantación',
     sections: [
