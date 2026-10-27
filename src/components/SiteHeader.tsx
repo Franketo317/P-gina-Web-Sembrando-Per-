@@ -1,4 +1,4 @@
-import { useState, useRef, useEffect, type FormEvent } from 'react'
+import { useState, useRef, useEffect, useLayoutEffect, type FormEvent } from 'react'
 import logo from '../assets/figma/imgImage4.png'
 import arrowRight from '../assets/figma/imgArrowRight.svg'
 import LanguageSwitcher from './LanguageSwitcher'
@@ -196,6 +196,7 @@ export default function SiteHeader() {
 
   const headerRef = useRef<HTMLElement>(null)
   const searchInputRef = useRef<HTMLInputElement>(null)
+  const searchPanelRef = useRef<HTMLDivElement>(null)
   const { t, language } = useLanguage()
   const searchableItems: SearchItem[] = [
     ...getPublications(language).map(publication => ({
@@ -238,11 +239,29 @@ export default function SiteHeader() {
     }
   }, [])
 
+  // Reserve the panel's actual height so it pushes the banner below the header.
+  useLayoutEffect(() => {
+    const page = headerRef.current?.parentElement
+    const panel = searchPanelRef.current
+    if (!page || !searchOpen || !panel) return
+
+    const updateSearchHeight = () => {
+      page.style.setProperty('--site-search-panel-height', `${panel.getBoundingClientRect().height}px`)
+    }
+    updateSearchHeight()
+    const observer = new ResizeObserver(updateSearchHeight)
+    observer.observe(panel)
+    return () => {
+      observer.disconnect()
+      page.style.removeProperty('--site-search-panel-height')
+    }
+  }, [searchOpen])
+
   // Focus input when search opens
   useEffect(() => {
     if (searchOpen) {
       setTimeout(() => {
-        searchInputRef.current?.focus()
+        searchInputRef.current?.focus({ preventScroll: true })
       }, 50)
     } else {
       setSearchQuery('')
@@ -433,6 +452,7 @@ export default function SiteHeader() {
           className={`header-search-btn${searchOpen ? ' is-active' : ''}`}
           aria-label={t('Buscar en el sitio')}
           aria-expanded={searchOpen}
+          aria-controls="site-search-panel"
           onClick={toggleSearch}
         >
           <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" strokeWidth="2.3" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
@@ -458,7 +478,7 @@ export default function SiteHeader() {
 
       {/* Search Panel Dropdown */}
       {searchOpen && (
-        <div className="header-search-panel" role="region" aria-label={t("Buscador del sitio")}>
+        <div ref={searchPanelRef} id="site-search-panel" className="header-search-panel" role="region" aria-label={t("Buscador del sitio")}>
           <div className="header-search-panel__container">
             <button
               type="button"
