@@ -7,7 +7,6 @@ import educationImage from '../assets/figma/imgBlogImage4.png'
 import communityImage from '../assets/figma/blog-article-community.jpg'
 import SiteHeader from '../components/SiteHeader'
 import { useLanguage } from '../components/LanguageContext'
-import SocialLinks from '../components/SocialLinks'
 import DonationFooter from '../components/DonationFooter'
 import './DonationPage.css'
 
@@ -216,10 +215,9 @@ function DonationHero({ isMembership }: { isMembership: boolean }) {
   }, [])
 
   return (
-    <section className={`donation-hero${isFormPinned ? ' is-form-pinned' : ''}`} aria-labelledby="donation-hero-title">
+    <section className={`donation-hero${!isMembership ? ' donation-hero--compact' : ''}${isFormPinned ? ' is-form-pinned' : ''}`} aria-labelledby="donation-hero-title">
       <img className="donation-hero__image" src={heroImage} alt={t("Manos plantando un árbol joven")} />
       <div className="donation-hero__shade" />
-      <SocialLinks />
       <div className="donation-hero__content">
         {isMembership ? (
           <>

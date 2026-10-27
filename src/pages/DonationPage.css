@@ -48,6 +48,20 @@
   isolation: isolate;
 }
 
+@media (min-width: 621px) {
+  .donation-hero.donation-hero--compact {
+    min-height: 390px;
+    padding-top: 24px;
+    padding-bottom: 24px;
+  }
+}
+
+@media (min-width: 1500px) {
+  .donation-hero.donation-hero--compact {
+    min-height: 430px;
+  }
+}
+
 .donation-hero.is-form-pinned {
   z-index: 9;
 }

@@ -306,7 +306,7 @@ export default function JoinPage({ volunteering = false }: { volunteering?: bool
             <p>{t('Tu tiempo, tus ideas y tus conocimientos pueden aportar al bienestar de nuestras comunidades y al cuidado de la naturaleza.')}</p>
           </div>
           )}
-          {volunteering && <SocialLinks placement="banner" />}
+          {volunteering && <SocialLinks />}
         </section>
 
         {volunteering && <VolunteeringIntroduction />}

@@ -7,6 +7,30 @@
 }
 .volunteer-page .join-hero > img { object-position: center 42%; }
 .volunteer-page .join-hero::before { background: rgb(0 0 0 / 82%); }
+.volunteer-page .join-hero > .hero-socials {
+  top: 10px;
+  right: max(24px, calc((100% - 1140px) / 2));
+  gap: 8px;
+  flex-wrap: nowrap;
+}
+.volunteer-page .join-hero > .hero-socials a {
+  width: 36px;
+  height: 36px;
+  flex-shrink: 0;
+  background: rgb(235 238 240 / 65%);
+  color: #292929;
+  box-shadow: none;
+}
+.volunteer-page .join-hero > .hero-socials a:hover {
+  background: #fff;
+}
+.volunteer-page .join-hero > .hero-socials a:focus-visible {
+  outline: 2px solid #fff;
+  outline-offset: 3px;
+}
+.volunteer-page .join-hero > .hero-socials svg { width: 24px; height: 24px; }
+.volunteer-page .join-hero > .hero-socials a[aria-label='TikTok'] { order: 1; }
+.volunteer-page .join-hero > .hero-socials a[aria-label='LinkedIn'] { order: 2; }
 .volunteer-page .join-hero h1 { max-width: none; margin: 0; font-family: var(--font-poppins); font-weight: 700; font-size: clamp(28px, 3.3vw, 52px); line-height: 1.3; }
 .volunteer-campaign { width: min(100%, 1190px); min-height: 380px; box-sizing: border-box; display: grid; grid-template-columns: 250px minmax(0, 1fr); align-items: center; gap: 42px; padding: 34px 48px; border: 7px solid transparent; border-radius: 28px; background: linear-gradient(#07100bef, #07100bef) padding-box, linear-gradient(110deg, #478fb6, #b5d59c) border-box; }
 .volunteer-campaign__identity { display: flex; flex-direction: column; align-items: center; color: #a8cf95; text-align: center; font: 500 25px/1.2 var(--font-display); }
