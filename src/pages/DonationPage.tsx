@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from 'react'
 import { ChevronRight, Home, Info, LockKeyhole, Mountain, Sprout, TreePine } from 'lucide-react'
 import heroImage from '../assets/figma/donacion.jpg'
+import membershipHeroImage from '../assets/figma/membresia-hero.png'
 import impactImage from '../assets/figma/5.jpeg'
 import reforestationImage from '../assets/figma/blog-article-reforestation.jpg'
 import educationImage from '../assets/figma/imgBlogImage4.png'
@@ -216,7 +217,7 @@ function DonationHero({ isMembership }: { isMembership: boolean }) {
 
   return (
     <section className={`donation-hero${!isMembership ? ' donation-hero--compact' : ''}${isFormPinned ? ' is-form-pinned' : ''}`} aria-labelledby="donation-hero-title">
-      <img className="donation-hero__image" src={heroImage} alt={t("Manos plantando un árbol joven")} />
+      <img className="donation-hero__image" src={isMembership ? membershipHeroImage : heroImage} alt={t("Manos plantando un árbol joven")} />
       <div className="donation-hero__shade" />
       <div className="donation-hero__content">
         {isMembership ? (

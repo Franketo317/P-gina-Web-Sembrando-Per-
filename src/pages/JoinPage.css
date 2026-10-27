@@ -9,13 +9,13 @@
 .join-button { display: inline-flex; align-items: center; justify-content: center; gap: 12px; padding: 15px 24px; border: 0; background: #02734d; color: white; font: 400 17px var(--font-display); text-decoration: none; cursor: pointer; }
 .join-hero .join-button { background: #f9a22f; color: #173526; }
 .join-page:not(.volunteer-page) .join-hero { min-height: clamp(460px, 46vw, 600px); }
-.join-page:not(.volunteer-page) .join-hero::before { background: linear-gradient(90deg, rgb(0 0 0 / 48%), rgb(0 0 0 / 8%)); }
+.join-page:not(.volunteer-page) .join-hero::before { background: linear-gradient(90deg, rgb(0 0 0 / 12%), rgb(0 0 0 / 0%)); }
 .join-page:not(.volunteer-page) .join-hero__content { max-width: 650px; }
 .join-hero__title-panel { width: fit-content; max-width: 100%; margin-bottom: 22px; padding: 18px 24px; background: #111; }
 .join-page:not(.volunteer-page) .join-hero h1 { margin: 0; font-size: clamp(30px, 3.6vw, 50px); line-height: 1.12; }
 .join-page:not(.volunteer-page) .join-hero p { max-width: 560px; margin-bottom: 0; font-size: 17px; }
-.join-page:not(.volunteer-page) .join-hero--donation { justify-content: flex-start; min-height: clamp(430px, 38vw, 560px); padding-inline: max(24px, 7%, calc((100% - 1400px) / 2)); }
-.join-page:not(.volunteer-page) .join-hero--donation::before { background: rgb(0 0 0 / 46%); }
+.join-page:not(.volunteer-page) .join-hero--donation { justify-content: flex-start; min-height: clamp(430px, 38vw, 560px); padding-inline: max(40px, calc((100% - 1120px) / 2)); }
+.join-page:not(.volunteer-page) .join-hero--donation::before { background: linear-gradient(90deg, rgb(0 0 0 / 24%), rgb(0 0 0 / 8%)); }
 .join-page:not(.volunteer-page) .join-hero__content--left { display: flex; flex-direction: column; align-items: flex-start; max-width: 760px; text-align: left; }
 .join-page:not(.volunteer-page) .join-hero__content--left p { margin-inline: 0; }
 .join-page:not(.volunteer-page) .join-hero__content--left .join-hero__title-panel { margin-inline: 0; }
@@ -138,7 +138,7 @@
 @media (max-width: 640px) {
   .join-hero { padding: 86px 24px 40px; }
   .join-page:not(.volunteer-page) .join-hero { min-height: 440px; }
-  .join-page:not(.volunteer-page) .join-hero--donation { min-height: 440px; padding-inline: 24px; }
+  .join-page:not(.volunteer-page) .join-hero--donation { min-height: 440px; padding-inline: 40px; }
   .join-hero__title-panel { padding: 14px 16px; }
   .join-page:not(.volunteer-page) .join-hero h1 { font-size: clamp(28px, 8vw, 36px); }
   .join-page:not(.volunteer-page) .join-hero p { font-size: 16px; }

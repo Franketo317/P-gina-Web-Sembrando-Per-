@@ -8,7 +8,7 @@ import { useLanguage } from '../components/LanguageContext'
 import SocialLinks from '../components/SocialLinks'
 import { BlogFooter } from './BlogPage'
 import heroImage from '../assets/figma/5.jpeg'
-import donationHeroImage from '../assets/figma/donacion.jpg'
+import sumateHeroImage from '../assets/figma/sumate-hero.png'
 import volunteerHero from '../assets/figma/imgBlogImage4.png'
 import reforestationImage from '../assets/figma/blog-article-reforestation.jpg'
 import educationImage from '../assets/figma/educacion.JPG'
@@ -285,7 +285,7 @@ export default function JoinPage({ volunteering = false }: { volunteering?: bool
       <SiteHeader />
       <main>
         <section className={`join-hero${!volunteering ? ' join-hero--donation' : ''}`} aria-labelledby="join-title">
-          <img src={volunteering ? volunteerHero : donationHeroImage} alt={t('Participación comunitaria en una jornada de Sembrando Perú')} />
+          <img src={volunteering ? volunteerHero : sumateHeroImage} alt={t('Participación comunitaria en una jornada de Sembrando Perú')} />
           {volunteering ? (
             <div className="volunteer-campaign">
               <div className="volunteer-campaign__identity">
