@@ -1,13 +1,13 @@
 import { useEffect, useRef, useState } from 'react'
 import { ChevronRight, Home, Info, LockKeyhole, Mountain, Sprout, TreePine } from 'lucide-react'
 import heroImage from '../assets/figma/donacion.jpg'
+import membershipHeroImage from '../assets/figma/membresia-hero.png'
 import impactImage from '../assets/figma/5.jpeg'
 import reforestationImage from '../assets/figma/blog-article-reforestation.jpg'
 import educationImage from '../assets/figma/imgBlogImage4.png'
 import communityImage from '../assets/figma/blog-article-community.jpg'
 import SiteHeader from '../components/SiteHeader'
 import { useLanguage } from '../components/LanguageContext'
-import SocialLinks from '../components/SocialLinks'
 import DonationFooter from '../components/DonationFooter'
 import './DonationPage.css'
 
@@ -156,6 +156,7 @@ function DonationHero({ isMembership }: { isMembership: boolean }) {
   const { t } = useLanguage()
 
   useEffect(() => {
+    let previousSearchHeight = 0
     const updateDonateButtonVisibility = () => {
       const formSlot = formSlotRef.current
       const page = formSlot?.closest('.donation-page')
@@ -173,7 +174,12 @@ function DonationHero({ isMembership }: { isMembership: boolean }) {
       const formSlotBounds = formSlot.getBoundingClientRect()
       const stopBoundary = main.querySelector('.donation-next-steps') ?? main
       const boundaryBounds = stopBoundary.getBoundingClientRect()
-      const minimumPinnedTop = headerBounds.height + 16
+      const searchHeight = header.querySelector('.header-search-panel')?.getBoundingClientRect().height ?? 0
+      if (searchHeight !== previousSearchHeight) {
+        pinnedTopRef.current = null
+        previousSearchHeight = searchHeight
+      }
+      const minimumPinnedTop = headerBounds.height + searchHeight + 16
       if (pinnedTopRef.current === null || pinnedTopRef.current < minimumPinnedTop) {
         pinnedTopRef.current = Math.max(minimumPinnedTop, formSlotBounds.top)
       }
@@ -206,20 +212,23 @@ function DonationHero({ isMembership }: { isMembership: boolean }) {
     const resizeObserver = new ResizeObserver(updateDonateButtonVisibility)
     const pageMain = formSlotRef.current?.closest('.donation-page')?.querySelector('main')
     const donationForm = formSlotRef.current?.querySelector('.donation-form')
+    const page = formSlotRef.current?.closest('.donation-page')
+    const searchLayoutObserver = new MutationObserver(updateDonateButtonVisibility)
+    if (page) searchLayoutObserver.observe(page, { attributes: true, attributeFilter: ['style'] })
     if (pageMain) resizeObserver.observe(pageMain)
     if (donationForm) resizeObserver.observe(donationForm)
     return () => {
       window.removeEventListener('scroll', updateDonateButtonVisibility)
       window.removeEventListener('resize', updateDonateButtonVisibility)
       resizeObserver.disconnect()
+      searchLayoutObserver.disconnect()
     }
   }, [])
 
   return (
-    <section className={`donation-hero${isFormPinned ? ' is-form-pinned' : ''}`} aria-labelledby="donation-hero-title">
-      <img className="donation-hero__image" src={heroImage} alt={t("Manos plantando un árbol joven")} />
+    <section className={`donation-hero${!isMembership ? ' donation-hero--compact' : ''}${isFormPinned ? ' is-form-pinned' : ''}`} aria-labelledby="donation-hero-title">
+      <img className="donation-hero__image" src={isMembership ? membershipHeroImage : heroImage} alt={t("Manos plantando un árbol joven")} />
       <div className="donation-hero__shade" />
-      <SocialLinks />
       <div className="donation-hero__content">
         {isMembership ? (
           <>

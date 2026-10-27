@@ -8,22 +8,22 @@
 .donation-footer__join-option p { max-width: 500px; margin: 0; font-size: 18px; line-height: 1.5; }
 .donation-footer__join-option:hover { filter: brightness(0.96); }
 .donation-footer__join-option:focus-visible { outline: 3px solid #006445; outline-offset: -6px; }
-.donation-footer__main { display: grid; grid-template-columns: 130px minmax(0, 1fr) 280px; align-items: start; gap: 64px; width: min(calc(100% - 64px), 1120px); box-sizing: border-box; margin: 0 auto; padding: 90px 0 28px; }
+.donation-footer__main { display: grid; grid-template-columns: 130px minmax(0, 1fr) 224px; align-items: start; gap: 106px; width: min(calc(100% - 64px), 1080px); box-sizing: border-box; margin: 0 auto; padding: 100px 0 28px; }
 .donation-footer__brand { display: block; }
-.donation-footer__brand img { display: block; width: 130px; height: 154px; object-fit: contain; }
-.donation-footer__links { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 22px; padding-top: 14px; }
-.donation-footer__links > div { display: flex; flex-direction: column; gap: 26px; }
-.donation-footer__links a { width: fit-content; color: #111; font-size: 18px; font-weight: 600; line-height: 1.4; text-decoration: none; }
+.donation-footer__brand img { display: block; width: 130px; height: 124px; object-fit: contain; }
+.donation-footer__links { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 22px; padding-top: 10px; }
+.donation-footer__links > div { display: flex; flex-direction: column; gap: 18px; }
+.donation-footer__links a { width: fit-content; color: #111; font-family: Arial, Helvetica, sans-serif; font-size: 14px; font-weight: 700; line-height: 20px; text-decoration: none; }
 .donation-footer__links a:hover { text-decoration: underline; text-underline-offset: 4px; }
-.donation-footer .donation-footer__social .hero-socials { position: static; display: flex; justify-content: flex-start; gap: 22px; flex-wrap: wrap; }
-.donation-footer .donation-footer__social .hero-socials a { width: 28px; height: 28px; border-radius: 0; background: transparent; color: #111; box-shadow: none; backdrop-filter: none; }
-.donation-footer .donation-footer__social .hero-socials svg { width: 26px; height: 26px; }
-.donation-footer__copyright { margin: 0; padding: 0 24px 20px; font-size: 18px; line-height: 1.5; text-align: center; }
+.donation-footer .donation-footer__social .hero-socials { position: static; display: flex; justify-content: flex-start; gap: 16px; flex-wrap: wrap; }
+.donation-footer .donation-footer__social .hero-socials a { width: 24px; height: 24px; border-radius: 0; background: transparent; color: #111; box-shadow: none; backdrop-filter: none; }
+.donation-footer .donation-footer__social .hero-socials svg { width: 24px; height: 24px; }
+.donation-footer__copyright { margin: 0; padding: 0 24px 20px; font-family: Arial, Helvetica, sans-serif; font-size: 14px; font-weight: 400; line-height: 1.5; text-align: center; }
 .donation-footer a:focus-visible { outline: 3px solid #02734d; outline-offset: 5px; }
 @media (max-width: 1280px) {
-  .donation-footer__main { grid-template-columns: 130px minmax(0, 1fr) 230px; gap: 64px; }
+  .donation-footer__main { grid-template-columns: 130px minmax(0, 1fr) 200px; gap: 64px; }
   .donation-footer .donation-footer__social .hero-socials { gap: 16px; }
-  .donation-footer__links a { font-size: 16px; }
+  .donation-footer__links a { font-size: 14px; }
 }
 @media (max-width: 1000px) {
   .donation-footer__join-option { min-height: 200px; padding: 30px 48px; }
