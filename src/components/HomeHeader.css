@@ -14,13 +14,13 @@
 
 :is(.home-page, .about-page, .blog-page, .contact-page, .donation-page) > header.site-header-root + main {
   margin-top: calc(74px + var(--site-search-panel-height, 0px));
-  transition: margin-top 350ms cubic-bezier(0.22, 1, 0.36, 1);
+  transition: margin-top 550ms cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 :is(.home-page, .about-page, .blog-page, .contact-page, .donation-page) > header.site-header-root .about-header__brand {
   position: absolute;
   inset: 0 auto auto 14px;
-  z-index: 12;
+  z-index: 15;
   width: 90px;
   height: 100px;
   display: grid;
@@ -228,21 +228,19 @@
   background: var(--forest-deep);
   color: #fff;
   box-shadow: 0 10px 24px rgb(0 0 0 / 20%);
-  animation: site-search-reveal 350ms cubic-bezier(0.22, 1, 0.36, 1) both;
+  animation: site-search-reveal 550ms cubic-bezier(0.22, 1, 0.36, 1) both;
 }
 
 @keyframes site-search-reveal {
-  from { clip-path: inset(0 0 100%); opacity: 0; }
-  to { clip-path: inset(0); opacity: 1; }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  :is(.home-page, .about-page, .blog-page, .contact-page, .donation-page) > header.site-header-root + main {
-    transition: none;
+  from {
+    clip-path: inset(0 0 100%);
+    opacity: 0;
+    transform: translateY(-48px);
   }
-
-  :is(.home-page, .about-page, .blog-page, .contact-page, .donation-page) > header.site-header-root .header-search-panel {
-    animation: none;
+  to {
+    clip-path: inset(0);
+    opacity: 1;
+    transform: translateY(0);
   }
 }
 
