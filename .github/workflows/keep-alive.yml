@@ -2,9 +2,9 @@ name: Supabase Keep-Alive
 
 on:
   schedule:
-    # Se ejecuta a las 00:00 UTC cada 3 días
-    - cron: '0 0 */3 * *'
-  workflow_dispatch: # Permite probarlo manualmente cuando quieras
+    # Se ejecuta todos los días a las 12:00 UTC
+    - cron: '0 12 * * *'
+  workflow_dispatch:
 
 jobs:
   ping:
