@@ -515,8 +515,10 @@ export const englishTranslations: Record<string, string> = {
   "Tu empresa puede contribuir a recuperar los bosques y fortalecer el aprendizaje en la Selva Central.": "Your company can help restore forests and strengthen learning in the Central Rainforest.",
   "Realiza una donación desde S/ 6,000.": "Make a donation starting at S/ 6,000.",
   "Sé parte del cambio": "Be part of the change",
+  "Creemos que cada persona puede contribuir a un futuro más sostenible. Conoce nuestras oportunidades de voluntariado y súmate a nuestras iniciativas.": "We believe everyone can contribute to a more sustainable future. Explore our volunteer opportunities and join our initiatives.",
   "¡Súmate al voluntariado!": "Join us as a volunteer!",
   "Quiero ser voluntario": "I want to volunteer",
   "Tu tiempo y tus conocimientos pueden contribuir al bienestar y la salud de las comunidades rurales.": "Your time and knowledge can support the well-being and health of rural communities.",
-  "Tu tiempo y tus conocimientos pueden contribuir al cuidado de los bosques junto a las comunidades.": "Your time and knowledge can help communities care for their forests."
+  "Tu tiempo y tus conocimientos pueden contribuir al cuidado de los bosques junto a las comunidades.": "Your time and knowledge can help communities care for their forests.",
+  "Comparte tu tiempo y tus conocimientos para contribuir a un futuro sostenible junto a las comunidades.": "Share your time and knowledge to help build a sustainable future alongside communities."
 }

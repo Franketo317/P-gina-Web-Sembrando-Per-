@@ -4,6 +4,7 @@ import SocialLinks from '../components/SocialLinks'
 import SiteHeader from '../components/SiteHeader'
 import { useLanguage } from '../components/LanguageContext'
 import { BlogFooter } from './BlogPage'
+import ProgramVolunteerCta from '../components/ProgramVolunteerCta'
 import './HowWeWorkPage.css'
 
 const workMethodCards = [
@@ -97,6 +98,7 @@ export default function HowWeWorkPage() {
             ))}
           </div>
         </section>
+        <ProgramVolunteerCta variant="work" description="Comparte tu tiempo y tus conocimientos para contribuir a un futuro sostenible junto a las comunidades." />
       </main>
       <BlogFooter />
     </div>
