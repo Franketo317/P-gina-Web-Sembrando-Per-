@@ -133,6 +133,13 @@ const searchDatabase: SearchItem[] = [
     keywords: ['campanas', 'iniciativas', 'reforestacion', 'educacion', 'salud'],
   },
   {
+    title: 'Alianzas empresariales',
+    category: 'Infórmate',
+    description: 'Conoce cómo colaborar con Sembrando Perú desde tu empresa.',
+    href: '/alianzas-empresariales',
+    keywords: ['alianzas', 'empresas', 'empresarial', 'colaboracion', 'responsabilidad social'],
+  },
+  {
     title: 'Artículo: Sembrando futuro por nuestros bosques',
     category: 'Infórmate',
     description: 'Conoce nuestras acciones de reforestación y el impacto ambiental generado en la Amazonía.',
@@ -297,7 +304,7 @@ export default function SiteHeader() {
 
   const currentPath = typeof window !== 'undefined' ? window.location.pathname.replace(/\/+$/, '') || '/' : '/'
   const isSembrandoPeruActive = currentPath === '/nosotros' || currentPath.startsWith('/nosotros') || currentPath === '/contacto' || currentPath === '/como-trabajamos' || currentPath === '/trabaja-con-nosotros' || currentPath.startsWith('/convocatoria-consultorias') || currentPath === '/nuestro-equipo' || currentPath === '/mecanismo-de-quejas' || currentPath === '/membresia'
-  const isInformateActive = currentPath === '/blog' || currentPath.startsWith('/blog/') || currentPath === '/publicaciones' || currentPath.startsWith('/publicaciones/') || currentPath === '/noticias' || currentPath === '/campanas'
+  const isInformateActive = currentPath === '/blog' || currentPath.startsWith('/blog/') || currentPath === '/publicaciones' || currentPath.startsWith('/publicaciones/') || currentPath === '/noticias' || currentPath === '/campanas' || currentPath === '/alianzas-empresariales'
 
   return (
     <header className="about-header site-header-root" ref={headerRef}>
@@ -408,6 +415,9 @@ export default function SiteHeader() {
             </a>
             <a href="/campanas" role="menuitem" onClick={closeAll}>
               {t('CAMPAÑAS')}
+            </a>
+            <a href="/alianzas-empresariales" role="menuitem" onClick={closeAll}>
+              {t('Alianzas empresariales')}
             </a>
           </div>
         </div>

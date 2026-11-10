@@ -38,6 +38,7 @@ import ReforestationPage from './pages/ReforestationPage'
 import EducationPage from './pages/EducationPage'
 import HealthPage from './pages/HealthPage'
 import ConservationStrategyDetailPage from './pages/ConservationStrategyDetailPage'
+import AlliancesPage from './pages/AlliancesPage'
 import './App.css'
 import './pages/NosotrosPage.css'
 import './pages/ParticipationTypography.css'
@@ -305,6 +306,10 @@ function App() {
 
   if (currentPath === '/campanas') {
     return <CampaignsPage />
+  }
+
+  if (currentPath === '/alianzas-empresariales') {
+    return <AlliancesPage />
   }
 
   if (currentPath.startsWith('/campanas/')) {
