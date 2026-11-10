@@ -2,15 +2,18 @@ name: Supabase Keep-Alive
 
 on:
   schedule:
-    # Se ejecuta todos los días a las 12:00 UTC
+    # Se ejecuta automáticamente todos los días a las 12:00 UTC
     - cron: '0 12 * * *'
-  workflow_dispatch:
+  workflow_dispatch: # Permite probarlo manualmente cuando quieras
 
 jobs:
   ping:
     runs-on: ubuntu-latest
     steps:
-      - name: Ping Supabase REST API
+      - name: Ping Supabase API
         run: |
-          curl -i -X GET "${{ secrets.SUPABASE_URL }}/rest/v1/" \
-            -H "apikey: ${{ secrets.SUPABASE_ANON_KEY }}"
+          node -e '
+            fetch("https://jiserranntipokqubswo.supabase.co/rest/v1/")
+              .then(res => console.log("Supabase Ping Status:", res.status))
+              .catch(err => { console.error(err); process.exit(1); });
+          '
