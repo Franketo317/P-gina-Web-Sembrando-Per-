@@ -20,11 +20,24 @@
   height: 600px;
   min-height: 0;
   display: flex;
+  flex-direction: column;
   align-items: flex-start;
   padding: 190px max(24px, calc((100% - 1150px) / 2)) 80px;
   background-position: center 45%;
   background-size: cover;
   isolation: isolate;
+}
+
+.reforestation-hero__subtitle {
+  max-width: 620px;
+  margin: 16px 0 0;
+  color: #fff;
+  font-family: var(--font-avenir);
+  font-size: clamp(18px, 2vw, 25px);
+  font-weight: 500;
+  line-height: 1.4;
+  text-align: left;
+  text-shadow: 0 2px 12px rgb(0 0 0 / 30%);
 }
 
 .reforestation-hero::before {
@@ -72,6 +85,118 @@
   font-size: 20px;
   line-height: 1.55;
   text-align: justify;
+}
+
+.reforestation-actions li strong {
+  color: #174f37;
+  font-weight: 700;
+}
+
+.program-conclusion {
+  width: min(900px, calc(100% - 48px));
+  margin: 44px auto 52px;
+  padding: 28px 24px;
+  text-align: center;
+}
+
+.program-conclusion h2 {
+  color: #02734d;
+}
+
+.reforestation-page main .program-conclusion p {
+  max-width: 760px;
+  margin: 14px auto 0;
+  font-size: 17px;
+  line-height: 1.55;
+  text-align: center;
+}
+
+.program-volunteer-cta {
+  position: relative;
+  display: block;
+  width: 100%;
+  margin: 32px auto 0;
+  padding: 22px 28px;
+  border: 1px solid #e4edda;
+  border-radius: 10px;
+  background: linear-gradient(110deg, #f1f7e8 0%, #e8f3d9 100%);
+  color: #164b34;
+}
+
+.program-volunteer-cta__inner {
+  display: grid;
+  grid-template-columns: minmax(280px, 1.1fr) 1px minmax(260px, 1fr) auto;
+  align-items: center;
+  gap: 24px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.program-volunteer-cta__identity {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.program-volunteer-cta__identity > svg {
+  flex: 0 0 auto;
+  color: #07583e;
+}
+
+.reforestation-page main .program-volunteer-cta h2 {
+  margin: 0;
+  color: #164b34;
+  font-family: var(--font-avenir);
+  font-size: clamp(19px, 1.7vw, 23px);
+  font-weight: 700;
+  line-height: 1.2;
+  text-align: left;
+}
+
+.program-volunteer-cta__divider {
+  position: relative;
+  z-index: 1;
+  width: 1px;
+  height: 48px;
+  background: #b5c7a5;
+}
+
+.reforestation-page main .program-volunteer-cta p {
+  position: relative;
+  z-index: 1;
+  margin: 0;
+  color: #273d31;
+  font-family: var(--font-avenir);
+  font-size: 14px;
+  line-height: 1.4;
+  text-align: left;
+}
+
+.program-volunteer-cta__inner > a {
+  position: relative;
+  z-index: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  min-height: 40px;
+  padding: 10px 17px;
+  border-radius: 999px;
+  background: #07583e;
+  color: #fff;
+  font-family: var(--font-avenir);
+  font-size: 14px;
+  font-weight: 700;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: background .2s ease, transform .2s ease;
+}
+
+.program-volunteer-cta__inner > a:hover {
+  transform: translateY(-1px);
+  background: #03472f;
 }
 
 .reforestation-threats {
@@ -172,8 +297,8 @@
 }
 
 .reforestation-stories {
-  margin-bottom: 48px;
-  padding: 64px 24px;
+  margin-bottom: 0;
+  padding: 64px 24px 34px;
   background: #f3f6ef;
 }
 
@@ -239,6 +364,29 @@
 }
 
 @media (max-width: 900px) {
+  .program-volunteer-cta {
+    padding: 24px;
+  }
+
+  .program-volunteer-cta__inner {
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: 18px;
+  }
+
+  .program-volunteer-cta__divider {
+    display: none;
+  }
+
+  .reforestation-page main .program-volunteer-cta p {
+    grid-column: 1;
+    grid-row: 2;
+  }
+
+  .program-volunteer-cta__inner > a {
+    grid-column: 2;
+    grid-row: 1 / span 2;
+  }
+
   .reforestation-stories__grid {
     grid-template-columns: 1fr;
     max-width: 580px;
@@ -248,6 +396,37 @@
 }
 
 @media (max-width: 760px) {
+  .reforestation-hero__subtitle {
+    max-width: 520px;
+    font-size: 18px;
+  }
+
+  .program-conclusion {
+    margin: 32px auto 38px;
+    padding: 22px 12px;
+  }
+
+  .program-volunteer-cta {
+    margin-top: 30px;
+    padding: 22px;
+  }
+
+  .program-volunteer-cta__inner {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 14px;
+    width: 100%;
+  }
+
+  .reforestation-page main .program-volunteer-cta p,
+  .program-volunteer-cta__inner > a {
+    grid-column: 1;
+    grid-row: auto;
+  }
+
+  .program-volunteer-cta__inner > a {
+    width: fit-content;
+  }
+
   .reforestation-hero {
     height: 500px;
     padding-top: 160px;
@@ -259,6 +438,10 @@
   .reforestation-actions,
   .reforestation-stories {
     padding: 48px 22px;
+  }
+
+  .reforestation-stories {
+    padding-bottom: 26px;
   }
 
   .reforestation-page main p,

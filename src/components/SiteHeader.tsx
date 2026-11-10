@@ -376,7 +376,7 @@ export default function SiteHeader() {
           </button>
           <div className="nav-dropdown__menu" role="menu">
             <a href="/estrategias-conservacion" role="menuitem" onClick={closeAll}>
-              {t('Estrategias de conservación')}
+              {t('Reto 300')}
             </a>
             <a href="/reforestacion" role="menuitem" onClick={closeAll}>
               {t('Reforestación')}

@@ -2,6 +2,7 @@ import SiteHeader from '../components/SiteHeader'
 import SocialLinks from '../components/SocialLinks'
 import { useLanguage } from '../components/LanguageContext'
 import { BlogFooter } from './BlogPage'
+import ProgramVolunteerCta from '../components/ProgramVolunteerCta'
 import learningImage from '../assets/figma/principios.JPG'
 import classroomImage from '../assets/figma/imgBlogImage4.png'
 import communityImage from '../assets/figma/blog-featured-community.jpg'
@@ -10,10 +11,9 @@ import './ReforestationPage.css'
 import './EducationPage.css'
 
 const actions = [
-  'Promovemos la alfabetización como parte de nuestro compromiso con la igualdad de oportunidades en las comunidades rurales.',
-  'Impulsamos la educación comunitaria, trabajando de manera participativa con niños y familias.',
-  'Acercamos la educación ambiental al cuidado de los árboles, los bosques y el entorno donde viven las comunidades.',
-  'Integramos el aprendizaje con la conservación ambiental y la prevención en salud, reconociendo que el bienestar de las familias requiere un enfoque integral.',
+  { title: 'Alfabetización', text: 'Promovemos la lectura y la escritura para ampliar las oportunidades de aprendizaje en las comunidades.' },
+  { title: 'Educación comunitaria', text: 'Fomentamos espacios de aprendizaje participativo donde niños y familias fortalecen sus capacidades.' },
+  { title: 'Educación ambiental', text: 'Impulsamos el aprendizaje sobre el cuidado de los árboles, los bosques y los recursos naturales.' },
 ]
 
 const stories = [
@@ -27,14 +27,14 @@ const stories = [
   {
     href: '/estrategias-conservacion/sostenibilidad-integral',
     title: 'Educación, naturaleza y bienestar',
-    description: 'Descubre el enfoque que conecta la educación comunitaria con la conservación y el bienestar infantil.',
+    description: 'Descubre cómo conectamos la educación comunitaria con la conservación y el bienestar infantil.',
     image: classroomImage,
     alt: 'Niños y voluntarios compartiendo una actividad educativa',
   },
   {
     href: '/blog/articulo/sembrando-futuro-juntos-por-nuestros-bosques',
     title: 'Aprender a cuidar nuestros bosques',
-    description: 'La participación en la reforestación fortalece el vínculo entre las familias y el entorno que comparten.',
+    description: 'La participación en actividades de reforestación permite acercar el cuidado de la naturaleza a las familias.',
     image: plantingImage,
     alt: 'Actividad de plantación y cuidado del entorno',
   },
@@ -49,19 +49,20 @@ export default function EducationPage() {
       <main>
         <section className="reforestation-hero education-hero" style={{ backgroundImage: `url(${learningImage})` }} aria-labelledby="education-title">
           <h1 id="education-title">{t('EDUCACIÓN')}</h1>
+          <p className="reforestation-hero__subtitle">{t('Aprender hoy, transformar el mañana.')}</p>
           <SocialLinks placement="banner" />
         </section>
 
         <section className="reforestation-intro education-intro" aria-label={t('Educación y comunidades')}>
-          <p>{t('La educación abre oportunidades para las personas y fortalece el futuro de las comunidades. En Sembrando Perú promovemos la alfabetización y el aprendizaje en las zonas rurales, como parte de nuestro compromiso con el desarrollo sostenible y la igualdad social.')} {t('Trabajamos con niños y familias desde una visión que conecta el conocimiento con la vida cotidiana. La educación comunitaria y ambiental acompaña el cuidado de los bosques y el bienestar de quienes habitan estos territorios.')} {t('Nuestro propósito es contribuir a que las nuevas generaciones crezcan con oportunidades de aprender, participar y cuidar su entorno. Este esfuerzo se integra con nuestras iniciativas de conservación y prevención en salud.')}</p>
+          <p>{t('En Sembrando Perú promovemos la alfabetización, el aprendizaje comunitario y la educación ambiental para contribuir al desarrollo de niños y familias en las comunidades rurales.')}</p>
         </section>
 
         <section className="reforestation-threats education-challenges" aria-labelledby="education-challenges-title">
           <img className="reforestation-threats__image" src={classroomImage} alt={t('Niños y voluntarios compartiendo una actividad educativa')} loading="lazy" />
           <div className="reforestation-threats__inner">
             <div className="reforestation-threats__panel">
-              <h2 id="education-challenges-title">{t('RETOS EDUCATIVOS')}:</h2>
-              <p>{t('El analfabetismo y las brechas de acceso a una educación de calidad son parte de los desafíos que afrontan las comunidades rurales. Atender estas necesidades significa reconocer la realidad de las familias y fortalecer sus oportunidades de aprendizaje.')} {t('Para Sembrando Perú, la educación forma parte de una respuesta integral: aprender, cuidar la naturaleza y promover el bienestar son compromisos que se construyen con la participación de las comunidades.')}</p>
+              <h2 id="education-challenges-title">{t('La educación abre caminos')}</h2>
+              <p>{t('Las comunidades rurales enfrentan desafíos relacionados con el analfabetismo y las dificultades de acceso a una educación de calidad. Estas brechas limitan las oportunidades de aprendizaje y desarrollo de niños y familias.')}</p>
             </div>
           </div>
         </section>
@@ -70,17 +71,22 @@ export default function EducationPage() {
 
         <section className="reforestation-actions" aria-labelledby="education-actions-title">
           <div className="reforestation-actions__copy">
-            <h2 id="education-actions-title">{t('¿QUÉ HACEMOS POR LA EDUCACIÓN?')}</h2>
-            <p>{t('Acompañamos el desarrollo de las comunidades con iniciativas que vinculan el aprendizaje y el bienestar. Nuestro enfoque reúne estos ejes:')}</p>
-            <ul>{actions.map((action) => <li key={action}>{t(action)}</li>)}</ul>
+            <h2 id="education-actions-title">{t('¿Cómo contribuimos a la educación?')}</h2>
+            <ul>{actions.map((action) => <li key={action.title}><strong>{t(action.title)}:</strong> {t(action.text)}</li>)}</ul>
           </div>
         </section>
 
         <img className="reforestation-panorama reforestation-panorama--after-actions" src={plantingImage} alt={t('Actividad de plantación y cuidado del entorno')} loading="lazy" />
 
+        <section className="program-conclusion" aria-labelledby="education-conclusion-title">
+          <h2 id="education-conclusion-title">{t('Aprender también es cuidar nuestro entorno')}</h2>
+          <p>{t('La educación y la conservación ambiental están conectadas. A través del aprendizaje, buscamos que las nuevas generaciones comprendan la importancia de proteger los bosques y participen en su cuidado.')}</p>
+          <p>{t('Tu tiempo y tus conocimientos pueden contribuir a generar nuevas oportunidades de aprendizaje en las comunidades rurales.')}</p>
+        </section>
+
         <section className="reforestation-stories" aria-labelledby="education-stories-title">
           <div className="reforestation-stories__inner">
-            <h2 id="education-stories-title">{t('APRENDIZAJE QUE NOS CONECTA')}</h2>
+            <h2 id="education-stories-title">{t('Historias y experiencias')}</h2>
             <div className="reforestation-stories__grid">
               {stories.map((story) => (
                 <article className="reforestation-story" key={story.href}>
@@ -95,6 +101,7 @@ export default function EducationPage() {
                 </article>
               ))}
             </div>
+            <ProgramVolunteerCta description="Tu tiempo y tus conocimientos pueden contribuir a generar nuevas oportunidades de aprendizaje en las comunidades rurales." />
           </div>
         </section>
       </main>

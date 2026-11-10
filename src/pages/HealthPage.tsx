@@ -2,6 +2,7 @@ import SiteHeader from '../components/SiteHeader'
 import SocialLinks from '../components/SocialLinks'
 import { useLanguage } from '../components/LanguageContext'
 import { BlogFooter } from './BlogPage'
+import ProgramVolunteerCta from '../components/ProgramVolunteerCta'
 import healthHero from '../assets/figma/salud.jpeg'
 import healthImage from '../assets/figma/blog-article-health.jpg'
 import communityImage from '../assets/figma/blog-featured-community.jpg'
@@ -10,10 +11,9 @@ import './ReforestationPage.css'
 import './HealthPage.css'
 
 const actions = [
-  'Impulsamos acciones de prevención en salud como parte de nuestro compromiso con el bienestar de niños y familias de comunidades rurales.',
-  'Promovemos la educación comunitaria vinculada a la salud y la nutrición, desde un enfoque participativo.',
-  'Trabajamos con las familias para contribuir a la prevención de la anemia infantil en comunidades de la Selva y la Sierra.',
-  'Conectamos las iniciativas de salud con la alfabetización y la conservación ambiental, entendiendo el desarrollo sostenible como un esfuerzo integral.',
+  { title: 'Prevención en salud', text: 'Impulsamos acciones de prevención para contribuir al bienestar de niños y familias de las comunidades rurales.' },
+  { title: 'Educación en salud y nutrición', text: 'Promovemos la educación comunitaria sobre salud y alimentación saludable, desde un enfoque participativo.' },
+  { title: 'Participación de las familias', text: 'Trabajamos junto a las familias para prevenir la anemia infantil y fortalecer hábitos saludables en la comunidad.' },
 ]
 
 const stories = [
@@ -49,20 +49,20 @@ export default function HealthPage() {
       <main>
         <section className="reforestation-hero health-hero" style={{ backgroundImage: `url(${healthHero})` }} aria-labelledby="health-title">
           <h1 id="health-title">{t('SALUD')}</h1>
+          <p className="reforestation-hero__subtitle">{t('Bienestar para las niñas, niños y familias de las comunidades.')}</p>
           <SocialLinks placement="banner" />
         </section>
 
         <section className="reforestation-intro health-intro" aria-label={t('Salud y bienestar en las comunidades')}>
-          <p>{t('El bienestar de los niños y sus familias es parte esencial del futuro de las comunidades. En Sembrando Perú trabajamos para contribuir a la prevención de la anemia infantil y fortalecer la salud en las zonas rurales de la Selva y la Sierra.')}</p>
-          <p>{t('Nuestro enfoque conecta la prevención en salud con la educación comunitaria y la participación de las familias. Entendemos que el desarrollo sostenible también significa crear condiciones para que las nuevas generaciones crezcan con bienestar y oportunidades.')}</p>
+          <p>{t('En Sembrando Perú trabajamos para contribuir a la prevención de la anemia infantil y fortalecer la salud en las zonas rurales de la Selva y la Sierra, con un enfoque que conecta la prevención, la educación y la participación de las familias.')}</p>
         </section>
 
         <section className="reforestation-threats health-challenges" aria-labelledby="health-challenges-title">
           <img className="reforestation-threats__image" src={nutritionImage} alt={t('Participación de familias en una actividad comunitaria')} loading="lazy" />
           <div className="reforestation-threats__inner">
             <div className="reforestation-threats__panel">
-              <h2 id="health-challenges-title">{t('RETOS PARA EL BIENESTAR INFANTIL')}:</h2>
-              <p>{t('La anemia infantil y las necesidades de salud de las comunidades rurales forman parte de los desafíos que motivan nuestro trabajo. Abordarlos requiere una mirada cercana a la realidad de los niños y sus familias.')} {t('La prevención y la educación comunitaria son parte de nuestro compromiso. Buscamos articular esfuerzos que conecten el bienestar de las personas con el desarrollo de sus comunidades.')}</p>
+              <h2 id="health-challenges-title">{t('Retos para el bienestar infantil')}</h2>
+              <p>{t('La anemia infantil y las necesidades de salud de las comunidades rurales son desafíos que motivan nuestro trabajo. Abordarlos requiere una mirada cercana a la realidad de los niños y sus familias, a través de la prevención y la educación comunitaria.')}</p>
             </div>
           </div>
         </section>
@@ -71,17 +71,21 @@ export default function HealthPage() {
 
         <section className="reforestation-actions" aria-labelledby="health-actions-title">
           <div className="reforestation-actions__copy">
-            <h2 id="health-actions-title">{t('¿QUÉ HACEMOS POR LA SALUD?')}</h2>
-            <p>{t('Acompañamos el bienestar de las comunidades desde una visión que reúne prevención, educación y participación. Nuestro trabajo se orienta a estos ejes:')}</p>
-            <ul>{actions.map((action) => <li key={action}>{t(action)}</li>)}</ul>
+            <h2 id="health-actions-title">{t('¿Qué hacemos por la salud?')}</h2>
+            <ul>{actions.map((action) => <li key={action.title}><strong>{t(action.title)}:</strong> {t(action.text)}</li>)}</ul>
           </div>
         </section>
 
         <img className="reforestation-panorama reforestation-panorama--after-actions" src={communityImage} alt={t('Familias de una comunidad de Sembrando Perú')} loading="lazy" />
 
+        <section className="program-conclusion" aria-labelledby="health-conclusion-title">
+          <h2 id="health-conclusion-title">{t('Cuidar su salud es sembrar su futuro')}</h2>
+          <p>{t('Con prevención, educación y el compromiso de las familias, generamos más oportunidades para que las nuevas generaciones crezcan sanas y con bienestar en sus comunidades.')}</p>
+        </section>
+
         <section className="reforestation-stories" aria-labelledby="health-stories-title">
           <div className="reforestation-stories__inner">
-            <h2 id="health-stories-title">{t('HISTORIAS DE CUIDADO Y BIENESTAR')}</h2>
+            <h2 id="health-stories-title">{t('Historias y experiencias')}</h2>
             <div className="reforestation-stories__grid">
               {stories.map((story) => (
                 <article className="reforestation-story" key={story.href}>
@@ -96,6 +100,7 @@ export default function HealthPage() {
                 </article>
               ))}
             </div>
+            <ProgramVolunteerCta description="Tu tiempo y tus conocimientos pueden contribuir al bienestar y la salud de las comunidades rurales." />
           </div>
         </section>
       </main>
