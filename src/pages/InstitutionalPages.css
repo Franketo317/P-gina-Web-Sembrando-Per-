@@ -130,69 +130,379 @@
   text-align: center;
 }
 
-.team-roster > h2 {
-  margin: 0 0 36px;
-  color: #111;
-  font-family: 'Roboto', sans-serif;
-  font-size: 20px;
-  font-weight: 700;
-  line-height: 1.2;
-  text-transform: none;
+.team-roster > h2,
+.team-roster__area h3,
+.team-volunteer-voices__heading h2 {
+  font-family: var(--font-display);
+  font-weight: 400;
+  text-transform: uppercase;
 }
 
-.team-roster__members {
-  display: grid;
-  gap: 0;
-  margin: 0;
-  padding: 0;
-  color: #111;
-  font-family: 'Roboto', sans-serif;
-  font-size: clamp(17px, 1.8vw, 20px);
-  font-weight: 300;
-  line-height: 1.4;
-  list-style: none;
+.team-roster > h2 {
+  margin: 0 0 10px;
+  color: #064b35;
+  font-size: clamp(30px, 3.2vw, 40px);
+  line-height: 1.15;
+}
+
+.team-roster__note {
+  margin: 0 0 32px;
+  color: #607066;
+  font-size: 13px;
+  line-height: 1.5;
 }
 
 .team-roster__areas {
   display: grid;
-  gap: 40px;
+  gap: 34px;
 }
 
 .team-roster__area h3 {
+  display: flex;
+  align-items: center;
+  gap: 18px;
   margin: 0 0 18px;
-  color: #006445;
-  font-family: var(--font-display);
-  font-size: 28px;
-  font-weight: 500;
-  line-height: 1.25;
+  color: #064b35;
+  font-size: clamp(22px, 2.4vw, 30px);
+  line-height: 1.2;
+  text-align: center;
+}
+
+.team-roster__area h3::before,
+.team-roster__area h3::after {
+  height: 1px;
+  flex: 1;
+  background: #bac6bb;
+  content: '';
 }
 
 .team-roster__area ul {
   display: grid;
-  gap: 20px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
   margin: 0;
   padding: 0;
   list-style: none;
 }
 
-.team-roster__area li {
-  display: grid;
-  gap: 4px;
+.team-roster__area .team-roster__cards--coordination {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
 }
 
-.team-roster__name {
-  color: #191c1d;
+.team-card {
+  display: grid;
+  grid-template-columns: 116px minmax(0, 1fr);
+  align-items: center;
+  gap: 12px;
+  min-width: 0;
+  min-height: 164px;
+  border-radius: 24px;
+  padding: 14px;
+  background: #f0f7e8;
+  text-align: left;
+  transition: transform 220ms ease, box-shadow 220ms ease, background-color 220ms ease;
+}
+
+.team-card:hover {
+  transform: translateY(-6px);
+  background: #eaf4df;
+  box-shadow: 0 12px 26px rgb(23 63 48 / 14%);
+}
+
+.team-card__portrait img {
+  transition: transform 300ms ease;
+}
+
+.team-card:hover .team-card__portrait img {
+  transform: scale(1.08);
+}
+
+.team-card__portrait {
+  width: 116px;
+  aspect-ratio: 1;
+  overflow: hidden;
+  border: 3px solid #fff;
+  border-radius: 50%;
+  background: #dcebd0;
+  box-shadow: 0 2px 8px rgb(23 63 48 / 12%);
+}
+
+.team-card__portrait img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.team-card__content {
+  min-width: 0;
+}
+
+.team-card h4 {
+  margin: 0;
+  color: #07583c;
   font-family: var(--font-avenir);
-  font-size: 20px;
-  font-weight: 600;
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.team-card__role {
+  display: inline-flex;
+  margin-top: 6px;
+  border-radius: 999px;
+  padding: 5px 10px;
+  color: #fff;
+  background: #589b24;
+  font-size: 11px;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.team-card p {
+  margin: 8px 0 0;
+  color: #354336;
+  font-size: 13px;
   line-height: 1.4;
 }
 
-.team-roster__role {
-  color: #343a36;
+.team-volunteer-callout {
+  position: relative;
+  width: 100vw;
+  margin: 72px 0 0;
+  margin-left: calc(50% - 50vw);
+  overflow: hidden;
+  padding: 66px 24px;
+  color: #fff;
+  background: #00583e;
+}
+
+.team-volunteer-callout::before,
+.team-volunteer-callout::after {
+  position: absolute;
+  right: -5%;
+  left: -5%;
+  height: 22px;
+  background: #a5cf4d;
+  content: '';
+}
+
+.team-volunteer-callout::before {
+  top: -13px;
+  border-radius: 50% 50% 0 0 / 100% 100% 0 0;
+}
+
+.team-volunteer-callout::after {
+  bottom: -13px;
+  border-radius: 0 0 50% 50% / 0 0 100% 100%;
+}
+
+.team-volunteer-callout__inner {
+  display: grid;
+  grid-template-columns: auto auto minmax(0, 1fr);
+  align-items: center;
+  gap: 20px;
+  width: min(1120px, 100%);
+  margin: 0 auto;
+}
+
+.team-volunteer-callout__icon {
+  width: 84px;
+  height: 84px;
+  stroke-width: 1.4;
+}
+
+.team-volunteer-callout__count {
+  color: #c7ef39;
+  font-family: var(--font-display);
+  font-size: clamp(62px, 8vw, 100px);
+  font-weight: 700;
+  line-height: .9;
+  white-space: nowrap;
+}
+
+.team-volunteer-callout__copy {
+  padding-left: 22px;
+  border-left: 1px solid rgb(255 255 255 / 55%);
+}
+
+.team-volunteer-callout__copy h2 {
+  max-width: 540px;
+  color: #fff;
+  font-family: var(--font-display);
+  font-size: clamp(25px, 3vw, 38px);
+  font-weight: 500;
+  line-height: 1.15;
+}
+
+.team-volunteer-callout__copy p {
+  max-width: 700px;
+  margin-top: 16px;
+  color: #f0f7f2;
   font-family: var(--font-avenir);
-  font-size: 16px;
+  font-size: 15px;
+  line-height: 1.55;
+}
+
+.team-volunteer-callout__button {
+  grid-column: 2 / 4;
+  justify-self: center;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  min-height: 48px;
+  border-radius: 999px;
+  padding: 12px 26px;
+  color: #064b35;
+  background: #d7f45a;
+  font-family: var(--font-avenir);
+  font-weight: 700;
+  text-decoration: none;
+  text-transform: uppercase;
+  transition: background-color .18s ease, transform .18s ease;
+}
+
+.team-volunteer-callout__button:hover {
+  transform: translateY(-2px);
+  background: #ecff91;
+}
+
+.team-volunteer-voices {
+  width: min(1120px, calc(100% - 48px));
+  margin: 0 auto;
+  padding: 58px 0 72px;
+}
+
+.team-volunteer-voices__heading {
+  margin-bottom: 28px;
+  text-align: center;
+}
+
+.team-volunteer-voices__heading h2 {
+  color: #064b35;
+  font-size: clamp(28px, 3.2vw, 38px);
+  line-height: 1.2;
+}
+
+.team-volunteer-voices__heading p {
+  margin-top: 6px;
+  color: #445247;
+  font-family: var(--font-avenir);
+  font-size: 15px;
   line-height: 1.5;
+}
+
+.team-volunteer-voices__grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.team-voice-card {
+  display: grid;
+  grid-template-columns: 102px minmax(0, 1fr);
+  align-items: stretch;
+  gap: 14px;
+  min-width: 0;
+  border-radius: 22px;
+  padding: 14px;
+  background: #f7f7ef;
+  transition: transform 220ms ease, box-shadow 220ms ease, background-color 220ms ease;
+}
+
+.team-voice-card:hover {
+  transform: translateY(-6px);
+  background: #f3f5e8;
+  box-shadow: 0 14px 28px rgb(23 63 48 / 13%);
+}
+
+.team-voice-card > img {
+  transition: transform 300ms ease;
+}
+
+.team-voice-card:hover > img {
+  transform: scale(1.04);
+}
+
+.team-voice-card > img {
+  display: block;
+  width: 102px;
+  height: 100%;
+  min-height: 178px;
+  border-radius: 16px;
+  object-fit: cover;
+  object-position: center;
+}
+
+.team-voice-card__content {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.team-voice-card__content > p {
+  margin: 4px 0 14px;
+  color: #263b2d;
+  font-family: var(--font-avenir);
+  font-size: 13px;
+  line-height: 1.45;
+}
+
+.team-voice-card__quote {
+  height: 23px;
+  color: #5d9828;
+  font-family: Georgia, serif;
+  font-size: 44px;
+  font-weight: 700;
+  line-height: .9;
+}
+
+.team-voice-card h3 {
+  margin-top: auto;
+  color: #102e24;
+  font-family: var(--font-avenir);
+  font-size: 15px;
+  font-weight: 700;
+}
+
+.team-voice-card__role {
+  display: inline-flex;
+  margin-top: 5px;
+  border-radius: 999px;
+  padding: 4px 8px;
+  color: #38581c;
+  background: #e3efc5;
+  font-family: var(--font-avenir);
+  font-size: 10px;
+  font-weight: 600;
+  line-height: 1.3;
+}
+
+.team-volunteer-voices__note {
+  margin-top: 16px;
+  color: #66736a;
+  font-family: var(--font-avenir);
+  font-size: 12px;
+  line-height: 1.45;
+  text-align: center;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .team-card,
+  .team-card__portrait img,
+  .team-voice-card,
+  .team-voice-card > img {
+    transition: none;
+  }
+
+  .team-card:hover,
+  .team-voice-card:hover,
+  .team-card:hover .team-card__portrait img,
+  .team-voice-card:hover > img {
+    transform: none;
+  }
 }
 
 .team-roster__empty {
@@ -387,17 +697,82 @@
     text-align: center;
   }
 
-  .team-roster > h2 {
-    margin-bottom: 28px;
-    font-size: 20px;
+  .team-roster__areas {
+    gap: 28px;
   }
 
-  .team-roster__area h3 {
-    font-size: 24px;
+  .team-roster__area .team-roster__cards,
+  .team-roster__area .team-roster__cards--coordination {
+    grid-template-columns: 1fr;
   }
 
-  .team-roster__name {
-    font-size: 18px;
+  .team-card {
+    grid-template-columns: 100px minmax(0, 1fr);
+    min-height: 144px;
+    gap: 14px;
+    padding: 12px;
+  }
+
+  .team-card__portrait {
+    width: 100px;
+  }
+
+  .team-card h4 {
+    font-size: 17px;
+  }
+
+  .team-volunteer-callout {
+    margin-top: 52px;
+    padding: 54px 20px;
+  }
+
+  .team-volunteer-callout__inner {
+    grid-template-columns: auto 1fr;
+    gap: 14px;
+    max-width: 560px;
+  }
+
+  .team-volunteer-callout__icon {
+    width: 56px;
+    height: 56px;
+  }
+
+  .team-volunteer-callout__count {
+    font-size: 64px;
+  }
+
+  .team-volunteer-callout__copy {
+    grid-column: 1 / -1;
+    padding: 0;
+    border: 0;
+  }
+
+  .team-volunteer-callout__copy h2 {
+    font-size: 28px;
+  }
+
+  .team-volunteer-callout__button {
+    grid-column: 1 / -1;
+    justify-self: start;
+  }
+
+  .team-volunteer-voices {
+    width: min(100% - 36px, 560px);
+    padding: 48px 0 56px;
+  }
+
+  .team-volunteer-voices__grid {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+
+  .team-voice-card {
+    grid-template-columns: 96px minmax(0, 1fr);
+  }
+
+  .team-voice-card > img {
+    width: 96px;
+    min-height: 160px;
   }
 
   .team-roster__empty {
@@ -406,6 +781,18 @@
 
   .complaints-content__intro {
     margin-bottom: 42px;
+  }
+
+  @media (min-width: 701px) and (max-width: 980px) {
+    .team-volunteer-voices__grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .team-voice-card:last-child {
+      grid-column: 1 / -1;
+      width: calc(50% - 9px);
+      justify-self: center;
+    }
   }
 
   .complaints-content__section {
