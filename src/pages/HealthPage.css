@@ -1,8 +1,9 @@
 .health-page .health-hero {
   height: 450px;
   box-sizing: border-box;
-  align-items: flex-end;
-  padding: 64px max(24px, calc((100% - 850px) / 2));
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 64px clamp(28px, 6vw, 110px);
   background-position: center top;
 }
 
@@ -15,6 +16,12 @@
   line-height: 1.1;
 }
 
+.health-page .health-hero__subtitle {
+  max-width: 360px;
+  margin-top: 12px;
+  text-wrap: pretty;
+}
+
 .health-page .health-intro {
   display: block;
   min-height: 0;
@@ -24,12 +31,12 @@
 }
 
 .health-page main .health-intro p {
-  max-width: 565px;
+  max-width: 760px;
   margin: 0 auto 24px;
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-avenir);
   font-size: 18px;
   line-height: 1.5;
-  text-align: justify;
+  text-align: center;
 }
 
 .health-page main .health-intro p:last-child {
@@ -40,6 +47,10 @@
   .health-page .health-hero {
     height: 380px;
     padding: 48px 24px;
+  }
+
+  .health-page .health-hero__subtitle {
+    max-width: min(100%, 360px);
   }
 
   .health-page .health-intro {

@@ -5,8 +5,7 @@ import nursery from '../assets/figma/imgBuildingBlocks169.jpg'
 import community from '../assets/figma/blog-article-community.jpg'
 import forest from '../assets/figma/imgBlogImage1.png'
 
-// Editorial examples requested for the website; these are not official vacancies.
-// Dates are illustrative and are labelled as such in the interface.
+
 export const consultancies = [
   {
     slug: 'restauracion-ecologica-especies-nativas',
