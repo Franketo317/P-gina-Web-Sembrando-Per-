@@ -353,9 +353,6 @@ export default function SiteHeader() {
             <a href="/nuestro-equipo" role="menuitem" onClick={closeAll}>
               {t('Nuestro equipo')}
             </a>
-            <a href="/mecanismo-de-quejas" role="menuitem" onClick={closeAll}>
-              {t('Mecanismo de quejas')}
-            </a>
           </div>
         </div>
 

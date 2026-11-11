@@ -101,7 +101,10 @@ export default function EducationPage() {
                 </article>
               ))}
             </div>
-            <ProgramVolunteerCta description="Tu tiempo y tus conocimientos pueden contribuir a generar nuevas oportunidades de aprendizaje en las comunidades rurales." />
+            <ProgramVolunteerCta
+              description="Tu tiempo y tus conocimientos pueden contribuir a generar nuevas oportunidades de aprendizaje en las comunidades rurales."
+              buttonLabel="Súmate al voluntariado"
+            />
           </div>
         </section>
       </main>

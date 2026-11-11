@@ -2,7 +2,7 @@ import { ArrowRight, Users } from 'lucide-react'
 import { useLanguage } from './LanguageContext'
 import './ProgramVolunteerCta.css'
 
-export default function ProgramVolunteerCta({ description, variant = 'default' }: { description: string; variant?: 'default' | 'work' }) {
+export default function ProgramVolunteerCta({ description, buttonLabel, variant = 'default' }: { description: string; buttonLabel?: string; variant?: 'default' | 'work' }) {
   const { t } = useLanguage()
   const isWorkVariant = variant === 'work'
 
@@ -21,7 +21,7 @@ export default function ProgramVolunteerCta({ description, variant = 'default' }
         </div>
         <span className="program-volunteer-cta__divider" aria-hidden="true" />
         <p>{t(description)}</p>
-        <a href="/voluntariado">{t(isWorkVariant ? 'Súmate al voluntariado' : 'Quiero ser voluntario')} <ArrowRight size={18} aria-hidden="true" /></a>
+        <a href="/voluntariado">{t(buttonLabel ?? (isWorkVariant ? 'Súmate al voluntariado' : 'Quiero ser voluntario'))} <ArrowRight size={18} aria-hidden="true" /></a>
       </div>
     </aside>
   )

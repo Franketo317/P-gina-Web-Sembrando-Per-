@@ -19,8 +19,8 @@ function AboutHero() {
         aria-labelledby="about-title"
       >
         <div className="about-hero__content">
-          <h1 id="about-title">{t('NUESTRA HISTORIA')}</h1>
-          <p>{t('Acompañamos a comunidades rurales para proteger los bosques y construir un futuro sostenible.')}</p>
+          <h1 id="about-title">{t('QUIÉNES SOMOS')}</h1>
+          <p>{t('Protegemos los bosques, sembramos oportunidades')}</p>
         </div>
         <SocialLinks placement="banner" />
       </section>
@@ -44,7 +44,7 @@ function OrganizationStory() {
             {t('Sembrando Perú es una organización sin fines de lucro comprometida con la protección de la Amazonía peruana y el desarrollo sostenible de las comunidades rurales.')}
           </p>
           <p>
-            {t('Sembrando Perú nació con una misión clara y profundamente social: mitigar la deforestación, contribuir a la mejora de la educación en zonas rurales y apoyar la lucha contra la anemia infantil en las comunidades más vulnerables del país. Su creación surge como respuesta a la creciente degradación de los bosques nativos, la falta de acceso a educación de calidad y los graves problemas de salud que afectan a miles de niños en áreas rurales y altoandinas.')}
+            {t('Sembrando Perú nació con el propósito de responder a tres desafíos que afectan a las comunidades rurales del país: la deforestación de los bosques nativos, las brechas en el acceso a la educación y la anemia infantil. Nuestra labor conecta la conservación ambiental con el desarrollo humano, porque proteger los recursos naturales y mejorar la calidad de vida son fundamentales para construir un futuro sostenible.')}
           </p>
         </div>
       </section>
@@ -54,8 +54,8 @@ function OrganizationStory() {
         aria-labelledby="about-fact-title"
       >
         <div className="about-fact__content">
-          <h2 id="about-fact-title">{t('¿Sabías que?')}</h2>
-          <p>{t('La labor de Sembrando Perú integra la protección de los bosques, la educación rural y la salud infantil para contribuir al bienestar de las comunidades.')}</p>
+          <h2 id="about-fact-title">{t('Nuestros compromisos')}</h2>
+          <p>{t('Protección del medioambiente, educación para el desarrollo y bienestar y salud infantil: creemos que el bienestar de las comunidades y el cuidado de la naturaleza deben avanzar juntos.')}</p>
         </div>
       </section>
       <section className="about-peru" aria-labelledby="about-peru-title">

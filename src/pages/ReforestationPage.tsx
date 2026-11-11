@@ -83,7 +83,10 @@ export default function ReforestationPage() {
                 </article>
               ))}
             </div>
-            <ProgramVolunteerCta description="Tu tiempo y tus conocimientos pueden contribuir al cuidado de los bosques junto a las comunidades." />
+            <ProgramVolunteerCta
+              description="Tu tiempo y tus conocimientos pueden contribuir al cuidado de los bosques junto a las comunidades."
+              buttonLabel="Súmate al voluntariado"
+            />
           </div>
         </section>
       </main>

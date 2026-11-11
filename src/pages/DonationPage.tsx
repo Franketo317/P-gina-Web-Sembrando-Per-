@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react'
-import { ChevronRight, Home, Info, LockKeyhole, Mountain, Sprout, TreePine } from 'lucide-react'
+import { ChevronRight, Home, Info, LockKeyhole, BookOpen, Sprout, TreePine, UsersRound, ArrowRight, CreditCard, MousePointer2 } from 'lucide-react'
 import heroImage from '../assets/figma/donacion.jpg'
 import membershipHeroImage from '../assets/figma/membresia-hero.png'
 import impactImage from '../assets/figma/5.jpeg'
@@ -13,26 +13,20 @@ import './DonationPage.css'
 
 export const donationImpactAreas = [
   {
-    title: 'REFORESTACIÓN Y RESTAURACIÓN ECOLÓGICA',
-    description: 'Los bosques y ecosistemas locales sufren constantemente debido a la deforestación y la pérdida de biodiversidad. Sembrando Perú trabaja junto a voluntarios y comunidades locales para reforestar áreas degradadas, instalar viveros comunitarios y proteger especies nativas. Estas acciones ayudan a mitigar el cambio climático y aseguran un entorno saludable para las futuras generaciones.',
+    title: 'Reforestación de ecosistemas',
+    description: 'Contribuye a la recuperación de áreas degradadas y al cuidado de los bosques.',
     image: reforestationImage,
     alt: 'Jornada de reforestación en la Amazonía',
   },
   {
-    title: 'EDUCACIÓN Y CONCIENCIA AMBIENTAL',
-    description: 'El cambio duradero empieza en las aulas y comunidades. Desarrollamos talleres participativos, programas de sensibilización y proyectos de huertos escolares para formar a niños y jóvenes como agentes de cambio ecológico. Empoderamos a las comunidades con herramientas de reciclaje, conservación y gestión sostenible de sus propios recursos.',
+    title: 'Trabajo con comunidades',
+    description: 'Apoya iniciativas que involucran a familias y comunidades locales.',
     image: educationImage,
     alt: 'Niños participando en una actividad educativa',
   },
   {
-    title: 'CONSERVACIÓN DE BIODIVERSIDAD Y FAUNA NATIVA',
-    description: 'Protegemos los hábitats naturales y las especies en peligro mediante el monitoreo ambiental y la creación de corredores biológicos. En Sembrando Perú impulsamos alianzas estratégicas para resguardar la flora y fauna local, asegurando el equilibrio de los ecosistemas en nuestras zonas de intervención y promoviendo prácticas de coexistencia sostenible.',
-    image: communityImage,
-    alt: 'Trabajo comunitario para proteger los ecosistemas locales',
-  },
-  {
-    title: 'VOLUNTARIADO Y GESTIÓN COMUNITARIA',
-    description: 'Fomentamos la participación activa de jóvenes y familias en jornadas de siembra, limpieza de espacios naturales y organización comunitaria. Capacitamos a los líderes locales en gestión ambiental sostenible para que cada proyecto permanezca en el tiempo y genere un impacto positivo duradero en sus propias regiones.',
+    title: 'Educación ambiental',
+    description: 'Promueve el aprendizaje y el cuidado del medioambiente.',
     image: impactImage,
     alt: 'Voluntarios participando en una jornada de siembra',
   },
@@ -40,32 +34,20 @@ export const donationImpactAreas = [
 
 const questions = [
   {
-    question: '¿Cómo se usa mi donación para hacer una diferencia?',
-    answer: 'Tu aporte ayuda a financiar directamente nuestras jornadas de reforestación, educación ambiental y trabajo comunitario en la Amazonía peruana.',
+    question: '¿Cómo puedo donar?',
+    answer: 'Revisa las opciones disponibles en PayPal antes de confirmar tu aporte.',
   },
   {
-    question: '¿Cómo se utilizan los fondos de manera eficiente?',
-    answer: 'Cada contribución se destina a los programas y actividades de Sembrando Perú, con seguimiento y evaluación de nuestros proyectos.',
+    question: '¿En qué se utiliza mi donación?',
+    answer: 'Tu aporte puede contribuir a la reforestación de ecosistemas, al trabajo con comunidades y a la educación ambiental.',
   },
   {
-    question: '¿El proyecto tiene beneficios para mí?',
-    answer: 'Tu donación contribuye a mejorar el futuro de las comunidades y los ecosistemas. Te mantendremos al tanto de los avances e impacto.',
+    question: '¿Es seguro realizar mi aporte?',
+    answer: 'La plataforma de pago muestra las opciones disponibles antes de que confirmes una contribución.',
   },
   {
-    question: '¿Sembrando Perú ofrece beneficios fiscales para mi aporte?',
-    answer: 'Para consultar sobre comprobantes y beneficios aplicables, escríbenos a contacto@sembrandoperu.org.',
-  },
-  {
-    question: '¿Puedo elegir el monto y la frecuencia de mi donación?',
-    answer: 'Sí. Antes de continuar a PayPal, puedes elegir el monto y si deseas hacer una donación mensual o única.',
-  },
-  {
-    question: '¿Qué iniciativas apoya mi donación?',
-    answer: 'Tu donación apoya iniciativas de reforestación, educación ambiental y trabajo comunitario en las regiones donde trabajamos.',
-  },
-  {
-    question: '¿Cómo puedo resolver una duda sobre mi donación?',
-    answer: 'Escríbenos a contacto@sembrandoperu.org y nuestro equipo podrá orientarte.',
+    question: '¿Puedo solicitar una constancia de donación?',
+    answer: 'Escríbenos a contacto@sembrandoperu.org para consultar sobre constancias de donación.',
   },
 ]
 
@@ -108,31 +90,32 @@ function DonationForm() {
       <h2>{t('TU CONTRIBUCIÓN')}</h2>
       <div className="donation-form__impact">
         <strong className="donation-form__tree-count">+1,200</strong>
-        <p className="donation-form__tree-caption">{t('árboles sembrados por voluntarios y aliados en todo el Perú')}</p>
+        <p className="donation-form__tree-caption">{t('árboles sembrados por voluntarios y aliados en todo el Perú.')}</p>
       </div>
       <section className="donation-form__examples" aria-labelledby="donation-form-impact-title">
-        <h3 id="donation-form-impact-title">{t('Tu aporte hace esto')}</h3>
+        <h3 id="donation-form-impact-title">{t('Elige tu aporte')}</h3>
+        <p className="donation-form__modalities">{t('Modalidad: Pago único | Pago mensual')}</p>
         <ul>
           <li>
             <span className="donation-form__impact-icon"><Sprout aria-hidden="true" /></span>
-            <strong>S/ 10</strong>
-            <span>{t('siembra 1 árbol nativo')}</span>
+            <strong>{t('1 árbol')}</strong>
+            <span className="donation-form__amount">US$ 7</span>
           </li>
           <li>
             <span className="donation-form__impact-icon"><TreePine aria-hidden="true" /></span>
-            <strong>S/ 30</strong>
-            <span>{t('cuida 5 plántulas durante un mes')}</span>
+            <strong>{t('5 árboles')}</strong>
+            <span className="donation-form__amount">US$ 35</span>
           </li>
           <li>
-            <span className="donation-form__impact-icon"><Mountain aria-hidden="true" /></span>
-            <strong>S/ 100</strong>
-            <span>{t('apoya una jornada de reforestación')}</span>
+            <span className="donation-form__impact-icon"><BookOpen aria-hidden="true" /></span>
+            <strong>{t('15 árboles')}</strong>
+            <span className="donation-form__amount">US$ 105</span>
           </li>
         </ul>
       </section>
       <div className="donation-form__secure-note">
         <LockKeyhole aria-hidden="true" />
-        <p>{t('Pago seguro con PayPal. Al continuar eliges si tu aporte es mensual o único, y el monto.')}</p>
+        <p>{t('Pago seguro con PayPal. Al continuar eliges el tipo de pago y el monto de tu aporte.')}</p>
       </div>
       <div className="donation-form__payment-methods" aria-label={t('Métodos de pago')}>
         <a
@@ -144,7 +127,7 @@ function DonationForm() {
           <span aria-hidden="true">P</span>{t('Donar con PayPal o tarjeta')}
         </a>
       </div>
-      <p>{t('Tu aporte transforma vidas y protege nuestros bosques.')}</p>
+        <p>{t('Tu aporte transforma vidas y protege nuestros bosques.')}</p>
     </div>
   )
 }
@@ -384,6 +367,82 @@ function DonationPurpose() {
   )
 }
 
+function DonationJourney() {
+  const { t } = useLanguage()
+  const choices = [
+    { title: '1 árbol – US$ 7', description: 'Tu primer paso hacia un Perú más verde. Contribuyes a la siembra y recuperación de nuestros bosques.', image: reforestationImage, icon: Sprout },
+    { title: '5 árboles – US$ 35', description: 'Multiplica tu impacto. Apoyas la siembra de cinco árboles y el cuidado de ecosistemas locales.', image: educationImage, icon: BookOpen },
+    { title: '15 árboles – US$ 105', description: 'Haz crecer el cambio. Contribuyes a la siembra de quince árboles y al fortalecimiento de nuestros proyectos de reforestación.', image: communityImage, icon: TreePine },
+  ]
+  const impact = [
+    { title: 'Reforestación', description: 'Recuperamos y conservamos nuestros bosques.', icon: Sprout },
+    { title: 'Comunidades', description: 'Fortalecemos capacidades y generamos oportunidades.', icon: UsersRound },
+    { title: 'Educación ambiental', description: 'Promovemos conciencia y acción por la naturaleza.', icon: BookOpen },
+  ]
+  const steps = [
+    { title: 'Elige tu aporte', description: 'Revisa las opciones de aporte disponibles.', icon: MousePointer2 },
+    { title: 'Realiza tu pago', description: 'Continúa con PayPal o tarjeta.', icon: CreditCard },
+    { title: 'Genera impacto', description: 'Tu donación impulsa más árboles, educación y comunidades resilientes.', icon: Sprout },
+  ]
+
+  return (
+    <>
+      <section className="donation-choices" aria-labelledby="donation-choices-title">
+        <div className="donation-journey__heading">
+          <h2 id="donation-choices-title">{t('Elige cómo quieres dejar huella')}</h2>
+          <p>{t('Con tu aporte, contribuyes directamente a la reforestación y al cuidado de nuestros bosques.')}</p>
+        </div>
+        <div className="donation-choices__grid">
+          {choices.map(({ title, description, image, icon: Icon }) => (
+            <a className="donation-choice" href="#aportar" key={title}>
+              <img src={image} alt="" loading="lazy" />
+              <div className="donation-choice__body">
+                <span className="donation-choice__icon"><Icon size={23} aria-hidden="true" /></span>
+                <h3>{t(title)}</h3>
+                <p>{t(description)}</p>
+              </div>
+            </a>
+          ))}
+        </div>
+      </section>
+
+      <section className="donation-impact-summary" aria-labelledby="donation-impact-summary-title">
+        <h2 id="donation-impact-summary-title">{t('¿Qué logra tu donación?')}</h2>
+        <p>{t('Tu aporte se destina directamente a nuestras jornadas de reforestación, la producción de plantines en viveros y talleres de educación ambiental, generando un impacto real y duradero.')}</p>
+        <div className="donation-impact-summary__grid">
+          {impact.map(({ title, description, icon: Icon }) => (
+            <article key={title}>
+              <span><Icon size={27} aria-hidden="true" /></span>
+              <h3>{t(title)}</h3>
+              <p>{t(description)}</p>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      <section className="donation-steps" aria-labelledby="donation-steps-title">
+        <h2 id="donation-steps-title">{t('¿Cómo donar?')}</h2>
+        <ol>
+          {steps.map(({ title, description, icon: Icon }, index) => (
+            <li key={title}>
+              <span className="donation-step__icon"><Icon size={24} aria-hidden="true" /></span>
+              <span className="donation-step__number">0{index + 1}</span>
+              <div><h3>{t(title)}</h3><p>{t(description)}</p></div>
+              {index < steps.length - 1 && <ArrowRight className="donation-step__arrow" size={24} aria-hidden="true" />}
+            </li>
+          ))}
+        </ol>
+        <div className="donation-closing">
+          <span className="donation-closing__trees"><TreePine size={40} aria-hidden="true" /></span>
+          <h3>{t('Tu aporte siembra futuro')}</h3>
+          <p>{t('Juntos podemos recuperar nuestros bosques y construir un Perú más verde y sostenible.')}</p>
+          <a href="#aportar">{t('Quiero donar')} <ArrowRight size={18} aria-hidden="true" /></a>
+        </div>
+      </section>
+    </>
+  )
+}
+
 function DonationFaq({ isMembership = false }: { isMembership?: boolean }) {
   const [openQuestion, setOpenQuestion] = useState(0)
   const [isExpanded, setIsExpanded] = useState(true)
@@ -447,12 +506,14 @@ export default function DonationPage({ isMembership = false }: { isMembership?: 
       <main>
         <DonationHero isMembership={isMembership} />
         <DonationBreadcrumbs isMembership={isMembership} />
+        {!isMembership && <DonationJourney />}
+        {isMembership && <>
         <CollapsibleSection
           title={t(isMembership ? '¿POR QUÉ SER MIEMBRO DE SEMBRANDO PERÚ?' : '¿POR QUÉ DONAR A SEMBRANDO PERÚ?')}
           titleId="donation-about-title"
           sectionClassName="donation-about"
         >
-          <p>{t(isMembership ? 'Al hacerte miembro de Sembrando Perú, te sumas a una comunidad comprometida con el bienestar de las personas y el cuidado de la naturaleza. Tu apoyo nos ayuda a planificar y sostener iniciativas de reforestación, educación y salud junto a comunidades de todo el Perú.' : 'Sembrando Perú trabaja para proteger y recuperar nuestros bosques, fortalecer a las comunidades mediante la reforestación, la educación ambiental y el fortalecimiento de las capacidades locales. Tu donación financia directamente la siembra de árboles, el mantenimiento de viveros y el desarrollo de un entorno más verde y saludable para todos.')}</p>
+          <p>{t(isMembership ? 'Al hacerte miembro de Sembrando Perú, te sumas a una comunidad comprometida con el bienestar de las personas y el cuidado de la naturaleza. Tu apoyo acompaña iniciativas de reforestación, educación y salud junto a comunidades rurales.' : 'Tu aporte contribuye al trabajo de Sembrando Perú en reforestación, educación ambiental y trabajo con las comunidades rurales. Cada árbol que sembramos hoy es una oportunidad para el mañana.')}</p>
         </CollapsibleSection>
         <CollapsibleSection
           title={t('¿CÓMO CONTRIBUYES CON TU DONACIÓN A SEMBRANDO PERÚ?')}
@@ -460,13 +521,14 @@ export default function DonationPage({ isMembership = false }: { isMembership?: 
           sectionClassName="donation-how"
         >
           <div className="donation-how__copy">
-            <p>{t('Tu donación se destina directamente a nuestras jornadas de reforestación, la producción de plantines en viveros y talleres de educación ambiental. Cada aporte asegura la transparencia y continuidad de nuestros proyectos en las comunidades.')}</p>
+            <p>{t('Tu aporte puede contribuir a la recuperación de áreas degradadas, al trabajo con comunidades locales y a la educación ambiental.')}</p>
           </div>
           <img className="donation-how__image" src={impactImage} alt={t("Integrantes de Sembrando Perú trabajando junto a la comunidad")} />
         </CollapsibleSection>
         <DonationWelcome />
         <ImpactAreas />
         <DonationPurpose />
+        </>}
         <DonationFaq isMembership={isMembership} />
         <nav className="donation-next-steps" aria-label={t('Otras formas de apoyar a Sembrando Perú')}>
           {isMembership ? (

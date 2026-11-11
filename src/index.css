@@ -67,3 +67,50 @@ p {
 a {
   color: inherit;
 }
+
+:where(a, button, summary, [role='button'], input, select, textarea) {
+  transition:
+    color 180ms ease,
+    background-color 180ms ease,
+    border-color 180ms ease,
+    box-shadow 180ms ease,
+    outline-color 180ms ease,
+    opacity 180ms ease,
+    filter 180ms ease,
+    transform 180ms ease;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  a:hover,
+  button:hover:not(:disabled),
+  [role='button']:hover {
+    filter: brightness(.96);
+  }
+
+  button:hover:not(:disabled),
+  [role='button']:hover {
+    transform: translateY(-1px);
+  }
+}
+
+:where(a, button, [role='button'], summary, input, select, textarea):active {
+  transform: scale(.985);
+}
+
+:where(button, [role='button']):disabled {
+  cursor: not-allowed;
+  filter: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    animation-duration: .01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: .01ms !important;
+  }
+}

@@ -9,10 +9,10 @@ import './HowWeWorkPage.css'
 
 const workMethodCards = [
   {
-    title: 'TRABAJAMOS JUNTO A LAS COMUNIDADES',
-    label: 'PARTICIPACIÓN LOCAL',
+    title: 'SOCIO ESTRATÉGICO LOCAL',
+    label: 'TRABAJO LOCAL',
     text:
-      'Los programas de reforestación de Sembrando Perú involucran activamente a las comunidades locales, especialmente a agricultores y sus familias. Su participación en las jornadas de plantación fortalece el compromiso con la conservación de la Amazonía y los bosques peruanos.',
+      'Trabajamos con agricultores y familias rurales, promoviendo su participación en la reforestación y el cuidado de los bosques.',
     href: '/#programas',
     icon: (
       <svg viewBox="0 0 64 64" aria-hidden="true">
@@ -21,10 +21,10 @@ const workMethodCards = [
     ),
   },
   {
-    title: 'IMPULSAMOS ACCIONES EN EL TERRITORIO',
-    label: 'REFORESTACIÓN',
+    title: 'SOSTENIBILIDAD INTEGRAL',
+    label: 'ENFOQUE INTEGRAL',
     text:
-      'Las jornadas de plantación contribuyen a restaurar bosques degradados de la Amazonía y proteger su biodiversidad.',
+      'Integramos la restauración de bosques, la educación ambiental, la alfabetización y la prevención en salud para generar un desarrollo sostenible en las comunidades.',
     href: '/#programas',
     icon: (
       <svg viewBox="0 0 64 64" aria-hidden="true">
@@ -34,10 +34,10 @@ const workMethodCards = [
     ),
   },
   {
-    title: 'BUSCAMOS UN IMPACTO DURADERO',
-    label: 'DESARROLLO SOSTENIBLE',
+    title: 'ALIANZAS Y VOLUNTARIADO ACTIVO',
+    label: 'PARTICIPACIÓN ACTIVA',
     text:
-      'Integramos la conservación ambiental y el desarrollo de las comunidades rurales para contribuir al bienestar de las familias.',
+      'Promovemos la participación de voluntarios y la colaboración con organizaciones interesadas en contribuir a nuestras iniciativas.',
     href: '/#programas',
     icon: (
       <svg viewBox="0 0 64 64" aria-hidden="true">
@@ -58,24 +58,21 @@ export default function HowWeWorkPage() {
         style={{ backgroundImage: `url(${aboutHero})` }}
         aria-labelledby="work-title"
       >
-        <h1 id="work-title">{t('NUESTROS PRINCIPIOS')}</h1>
+        <h1 id="work-title">{t('CÓMO TRABAJAMOS')}</h1>
+        <p className="work-hero__subtitle">{t('Trabajamos junto a las comunidades rurales para proteger los bosques y mejorar su calidad de vida.')}</p>
         <SocialLinks placement="banner" />
       </section>
       <main>
         <section className="work-intro" aria-label={t('Sobre nuestro enfoque')}>
           <p>
-            {t('Protegemos la Amazonía peruana y promovemos el desarrollo sostenible junto a las comunidades rurales. A través de la reforestación activa con especies nativas, no solo restauramos ecosistemas degradados, sino que empoderamos a las familias locales creando economías verdes y sostenibles. Trabajamos mano a mano con la población para asegurar que el cuidado de la biodiversidad vaya alineado con la seguridad alimentaria, la educación y la erradicación de la anemia infantil, transformando el futuro de nuestra selva desde sus raíces.')}
+            {t('En Sembrando Perú promovemos la participación de agricultores, familias y voluntarios en iniciativas que integran la conservación ambiental, la educación y la salud.')}
           </p>
         </section>
         <section
           className="work-community"
           style={{ backgroundImage: `url(${communityWorkImage})` }}
           aria-label={t('Nuestro trabajo junto a las comunidades')}
-        >
-          <div className="work-community__message">
-            <p>{t('Nuestro trabajo se construye junto a las comunidades rurales: restauramos ecosistemas, promovemos la educación y acompañamos iniciativas de salud para fortalecer el bienestar local.')}</p>
-          </div>
-        </section>
+        />
         <section className="work-areas work-areas--single" aria-label={t('Nuestras áreas de trabajo')}>
           <div className="work-areas__grid">
             {workMethodCards.map((item) => (
@@ -98,7 +95,7 @@ export default function HowWeWorkPage() {
             ))}
           </div>
         </section>
-        <ProgramVolunteerCta variant="work" description="Comparte tu tiempo y tus conocimientos para contribuir a un futuro sostenible junto a las comunidades." />
+        <ProgramVolunteerCta variant="work" description="Creemos que cada persona puede contribuir a construir un futuro más sostenible." />
       </main>
       <BlogFooter />
     </div>

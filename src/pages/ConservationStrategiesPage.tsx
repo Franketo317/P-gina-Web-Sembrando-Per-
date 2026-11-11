@@ -8,8 +8,8 @@ import { BlogFooter } from './BlogPage'
 import './ConservationStrategiesPage.css'
 
 const impactSteps = [
-  { icon: Handshake, title: 'Tu empresa aporta', text: 'Realiza una donación desde S/ 6,000.' },
-  { icon: Sprout, title: 'Reforestamos', text: 'Recuperamos áreas de la Selva Central con 300 árboles (0,5 ha).' },
+  { icon: Handshake, title: 'Tu empresa aporta', text: 'Conversa con nuestro equipo para definir el aporte y las condiciones de colaboración.' },
+  { icon: Sprout, title: 'Reforestamos', text: 'Contribuimos a recuperar áreas degradadas de la Selva Central junto a las comunidades.' },
   { icon: BookOpen, title: 'Educamos', text: 'Fortalecemos el aprendizaje de los niños y las comunidades de la zona.' },
 ]
 
@@ -62,10 +62,8 @@ export default function ConservationStrategiesPage() {
         </section>
 
         <section className="reto-donation" aria-label={t('Aporte empresarial')}>
-          <p>{t('¿Cuánto puede aportar tu empresa?')}<small className="reto-donation__note">{t('Contribución referencial')}</small></p>
-          <strong><small>{t('Desde')}</small>S/ 6,000</strong>
-          <span className="reto-donation__equals">=</span>
-          <div className="reto-donation__area"><TreePine size={38} aria-hidden="true" /><b>0.5 {t('hectárea')}<small>(300 {t('árboles')})</small></b></div>
+          <p>{t('¿Cuánto puede aportar tu empresa?')}</p>
+          <div className="reto-donation__area"><Handshake size={38} aria-hidden="true" /><b>{t('Conversemos sobre una propuesta')}<small>{t('El aporte se define según la propuesta y las condiciones acordadas.')}</small></b></div>
         </section>
 
         <section className="reto-benefits" aria-labelledby="reto-benefits-title">
@@ -80,7 +78,7 @@ export default function ConservationStrategiesPage() {
         <section className="reto-cta">
           <div className="reto-cta__badge"><Leaf size={38} aria-hidden="true" /><Award size={21} aria-hidden="true" /></div>
           <p><strong>{t('Súmate al Reto 300')}</strong><br />{t('Tu empresa puede contribuir a recuperar los bosques y fortalecer el aprendizaje en la Selva Central.')}</p>
-          <a className="reto-button reto-button--light" href="/donacion">{t('Quiero sumar a mi empresa')} <ArrowRight size={19} aria-hidden="true" /></a>
+          <a className="reto-button reto-button--light" href="/alianzas#conversemos">{t('Quiero sumar a mi empresa')} <ArrowRight size={19} aria-hidden="true" /></a>
         </section>
       </main>
       <BlogFooter />

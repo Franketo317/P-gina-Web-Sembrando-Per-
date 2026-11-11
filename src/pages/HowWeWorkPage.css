@@ -181,6 +181,16 @@
   text-shadow: 0 2px 18px rgb(0 0 0 / 35%);
 }
 
+.work-hero__subtitle {
+  max-width: 580px;
+  margin-top: 14px;
+  color: #fff;
+  font-family: var(--font-avenir);
+  font-size: clamp(18px, 2vw, 24px);
+  line-height: 1.45;
+  text-shadow: 0 2px 18px rgb(0 0 0 / 35%);
+}
+
 .work-intro {
   display: grid;
   min-height: 240px;

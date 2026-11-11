@@ -337,7 +337,7 @@
 /* Keep the campaign typography and spacing aligned with the rest of the site. */
 .reto-hero__copy{font-family:var(--font-avenir)}
 .reto-hero__eyebrow{display:block;margin:0 0 14px;font-family:var(--font-avenir);font-size:clamp(12px,1.1vw,15px);font-weight:700;line-height:1.4;letter-spacing:.1em}
-.reto-hero h1{transform:none;font-family:var(--font-display);font-size:clamp(52px,7vw,88px);font-weight:600;line-height:1.08;letter-spacing:0}
+.reto-hero h1{transform:none;font-family:var(--font-display);font-size:clamp(52px,7vw,88px);font-weight:400;line-height:1.08;letter-spacing:0}
 .reto-hero__lead{margin:18px 0 26px;font-family:var(--font-avenir);font-size:clamp(22px,2.8vw,34px);font-weight:600;line-height:1.22}
 .reto-button{font-family:var(--font-avenir);font-weight:700}
 .reto-intro__copy,.reto-step__body,.reto-benefit,.reto-cta{font-family:var(--font-avenir)}

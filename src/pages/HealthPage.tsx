@@ -100,7 +100,10 @@ export default function HealthPage() {
                 </article>
               ))}
             </div>
-            <ProgramVolunteerCta description="Tu tiempo y tus conocimientos pueden contribuir al bienestar y la salud de las comunidades rurales." />
+            <ProgramVolunteerCta
+              description="Tu tiempo y tus conocimientos pueden contribuir al bienestar y la salud de las comunidades rurales."
+              buttonLabel="Súmate al voluntariado"
+            />
           </div>
         </section>
       </main>
