@@ -383,9 +383,9 @@ function DonationJourney() {
     { title: 'Educación ambiental', description: 'Promovemos conciencia y acción por la naturaleza.', icon: BookOpen },
   ]
   const steps = [
-    { title: 'Elige tu aporte', description: 'Revisa las opciones de aporte disponibles.', icon: MousePointer2 },
-    { title: 'Realiza tu pago', description: 'Continúa con PayPal o tarjeta.', icon: CreditCard },
-    { title: 'Genera impacto', description: 'Tu donación impulsa más árboles, educación y comunidades resilientes.', icon: Sprout },
+    { title: 'Elige tu aporte', description: 'Selecciona la cantidad de árboles que deseas financiar.', icon: MousePointer2 },
+    { title: 'Realiza tu pago', description: 'Dona de forma segura con PayPal o tarjeta.', icon: CreditCard },
+    { title: 'Genera impacto', description: 'Tu donación se convierte en más árboles, educación y comunidades resilientes.', icon: Sprout },
   ]
 
   return (

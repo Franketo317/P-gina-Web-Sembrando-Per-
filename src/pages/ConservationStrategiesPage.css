@@ -371,3 +371,11 @@
 .reto-donation__area b{font-size:17px}
 @media(max-width:850px){.reto-donation{display:flex;flex-wrap:wrap;justify-content:center;gap:18px}.reto-donation>p{flex:0 0 100%;max-width:none;text-align:center}.reto-donation>strong{min-width:0}}
 @media(max-width:600px){.reto-steps{margin:12px 0 22px;padding:28px 18px 30px;border-radius:18px}.reto-intro{padding-bottom:30px}.reto-benefits{padding:28px 0 34px}}
+
+.conservation-strategies-page .reto-button,
+.conservation-strategies-page .reto-intro__image,
+.conservation-strategies-page .reto-goal,
+.conservation-strategies-page .reto-steps,
+.conservation-strategies-page .reto-step,
+.conservation-strategies-page .reto-donation,
+.conservation-strategies-page .reto-cta{border-radius:0}

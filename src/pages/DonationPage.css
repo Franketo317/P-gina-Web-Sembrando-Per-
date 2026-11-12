@@ -1407,7 +1407,7 @@
 .donation-impact-summary__grid article > span { display: grid; place-items: center; width: 58px; height: 58px; margin-bottom: 8px; border-radius: 50%; background: #e6f0ce; color: #398144; }
 .donation-impact-summary__grid h3 { margin: 0 0 4px; color: #17482f; font: 700 18px/1.2 var(--donation-heading-font); }
 .donation-impact-summary__grid article > p { max-width: 230px; color: #39483e; font: 400 13px/1.4 var(--donation-body-font); }
-.donation-steps { width: 100%; max-width: none; padding: 34px max(24px, calc((100% - 1120px) / 2)) 22px; background: #f0f6df; }
+.donation-steps { width: 100%; max-width: none; margin-top: 40px; padding: 34px max(24px, calc((100% - 1120px) / 2)) 22px; background: #f0f6df; }
 .donation-steps > h2 { width: min(100%, 1120px); margin: 0 auto 22px; }
 .donation-steps ol { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 28px; width: min(100%, 1120px); margin: 0 auto; padding: 0; list-style: none; }
 .donation-steps li { position: relative; display: flex; align-items: center; gap: 14px; min-height: 86px; padding: 13px 16px; border-radius: 48px; background: #fff; }

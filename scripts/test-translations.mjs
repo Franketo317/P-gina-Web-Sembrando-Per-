@@ -9,6 +9,7 @@ try {
   const { translateText } = await server.ssrLoadModule('/src/components/translate.ts')
   const { translations } = await server.ssrLoadModule('/src/components/translations.ts')
   assert.equal(translateText('RETOS EDUCATIVOS', 'en'), 'EDUCATIONAL CHALLENGES')
+  assert.equal(translateText('TRANSFORMA', 'en'), 'TRANSFORMS')
   assert.equal(translateText('  retos educativos  ', 'en'), 'EDUCATIONAL CHALLENGES')
   assert.equal(translateText('¿QUÉ HACEMOS POR LA SALUD?', 'es'), '¿QUÉ HACEMOS POR LA SALUD?')
   assert.equal(translateText('contacto@sembrandoperu.org', 'en'), 'contacto@sembrandoperu.org')
@@ -19,7 +20,7 @@ try {
   const { strategies } = await server.ssrLoadModule('/src/pages/conservationStrategies.ts')
   const { consultancies } = await server.ssrLoadModule('/src/pages/consultancies.ts')
   const { getPublications } = await server.ssrLoadModule('/src/pages/publications.ts')
-  const routes = ['/', '/nosotros', '/como-trabajamos', '/reforestacion', '/educacion', '/salud', '/trabaja-con-nosotros', '/nuestro-equipo', '/mecanismo-de-quejas', '/contacto', '/donacion', '/sumate', '/voluntariado', '/noticias', '/publicaciones', '/campanas', '/estrategias-conservacion', '/convocatoria-consultorias',
+  const routes = ['/', '/nosotros', '/como-trabajamos', '/reforestacion', '/educacion', '/salud', '/trabaja-con-nosotros', '/nuestro-equipo', '/mecanismo-de-quejas', '/contacto', '/donacion', '/membresia', '/sumate', '/voluntariado', '/noticias', '/publicaciones', '/campanas', '/estrategias-conservacion', '/convocatoria-consultorias',
     ...campaigns.map(item => `/campanas/${item.slug}`),
     ...strategies.map(item => `/estrategias-conservacion/${item.slug}`),
     ...consultancies.map(item => `/convocatoria-consultorias/${item.slug}`),
@@ -27,6 +28,17 @@ try {
     ...['sembrando-futuro-juntos-por-nuestros-bosques', 'transformando-vidas-comunidades', 'jornada-reforestacion-madre-de-dios', 'guardianas-del-bosque', 'prevencion-anemia-nuevos-enfoques'].map(slug => `/blog/articulo/${slug}`),
   ]
   const spanishSentences = Object.entries(translations).filter(([es, en]) => es !== en && es.length > 35)
+  const donationLabels = [
+    '¿Qué logra tu donación?',
+    '¿Cómo donar?',
+    '¿Cómo puedo donar?',
+    '¿En qué se utiliza mi donación?',
+    '¿Es seguro realizar mi aporte?',
+    '¿Puedo solicitar una constancia de donación?',
+    'Realiza tu pago',
+    'Genera impacto',
+    'Trabajo con comunidades',
+  ]
   const removeMarkup = html => html.replace(/<[^>]+>/g, ' ').replace(/&#x27;|&#39;/g, "'").replace(/&quot;/g, '"').replace(/&amp;/g, '&').replace(/\s+/g, ' ').trim()
   for (const pathname of routes) {
     const render = language => {
@@ -38,6 +50,9 @@ try {
     assert.ok(english.includes('EN | English'), `English not selected on ${pathname}`)
     const visibleEnglish = removeMarkup(english)
     for (const [sentence] of spanishSentences) assert.ok(!visibleEnglish.includes(sentence), `Untranslated content on ${pathname}: ${sentence}`)
+    if (pathname === '/donacion' || pathname === '/membresia') {
+      for (const label of donationLabels) assert.ok(!visibleEnglish.includes(label), `Untranslated donation label on ${pathname}: ${label}`)
+    }
   }
   console.log(`PASS: ${routes.length} pages rendered in English and Spanish; no untranslated Spanish sentences found.`)
 } finally {

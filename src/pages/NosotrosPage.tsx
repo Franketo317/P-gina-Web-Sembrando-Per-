@@ -34,17 +34,14 @@ function OrganizationStory() {
   return (
     <>
       <div className="about-mission-strip">
-        <p>{t('Sembrando Perú impulsa soluciones sostenibles para proteger la Amazonía y fortalecer el bienestar de las comunidades rurales.')}</p>
+        <p>{t('Sembrando Perú es una organización sin fines de lucro comprometida con la protección de la Amazonía peruana y el desarrollo sostenible de las comunidades rurales.')}</p>
       </div>
       <section className="about-story" id="quienes-somos" aria-labelledby="about-story-title">
         <div className="about-story__history">
           <h2 id="about-story-title">{t('QUIÉNES SOMOS')}</h2>
           <img className="about-story__rule" src={greenLine} alt="" />
           <p>
-            {t('Sembrando Perú es una organización sin fines de lucro comprometida con la protección de la Amazonía peruana y el desarrollo sostenible de las comunidades rurales.')}
-          </p>
-          <p>
-            {t('Sembrando Perú nació con el propósito de responder a tres desafíos que afectan a las comunidades rurales del país: la deforestación de los bosques nativos, las brechas en el acceso a la educación y la anemia infantil. Nuestra labor conecta la conservación ambiental con el desarrollo humano, porque proteger los recursos naturales y mejorar la calidad de vida son fundamentales para construir un futuro sostenible.')}
+            {t('Sembrando Perú nació con el propósito de responder a tres desafíos que afectan a las comunidades rurales del país: la deforestación de los bosques nativos, las brechas en el acceso a la educación y la anemia infantil. Nuestra labor surge de la necesidad de conectar la conservación ambiental con el desarrollo humano, reconociendo que la protección de los recursos naturales y la mejora de la calidad de vida de las personas son fundamentales para construir un futuro sostenible.')}
           </p>
         </div>
       </section>
