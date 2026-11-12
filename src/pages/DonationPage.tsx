@@ -1,11 +1,14 @@
 import { useEffect, useRef, useState } from 'react'
 import { ChevronRight, Home, Info, LockKeyhole, BookOpen, Sprout, TreePine, UsersRound, ArrowRight, CreditCard, MousePointer2 } from 'lucide-react'
-import heroImage from '../assets/figma/donacion.jpg'
+import heroImage from '../assets/figma/DONAR1.jpg'
 import membershipHeroImage from '../assets/figma/membresia-hero.png'
 import impactImage from '../assets/figma/5.jpeg'
 import reforestationImage from '../assets/figma/blog-article-reforestation.jpg'
 import educationImage from '../assets/figma/imgBlogImage4.png'
 import communityImage from '../assets/figma/blog-article-community.jpg'
+import donationOptionOneImage from '../assets/figma/DONAR2.jpg'
+import donationOptionFiveImage from '../assets/figma/DONAR3.JPG'
+import donationOptionFifteenImage from '../assets/figma/DONAR4.JPG'
 import SiteHeader from '../components/SiteHeader'
 import { useLanguage } from '../components/LanguageContext'
 import DonationFooter from '../components/DonationFooter'
@@ -370,9 +373,9 @@ function DonationPurpose() {
 function DonationJourney() {
   const { t } = useLanguage()
   const choices = [
-    { title: '1 árbol – US$ 7', description: 'Tu primer paso hacia un Perú más verde. Contribuyes a la siembra y recuperación de nuestros bosques.', image: reforestationImage, icon: Sprout },
-    { title: '5 árboles – US$ 35', description: 'Multiplica tu impacto. Apoyas la siembra de cinco árboles y el cuidado de ecosistemas locales.', image: educationImage, icon: BookOpen },
-    { title: '15 árboles – US$ 105', description: 'Haz crecer el cambio. Contribuyes a la siembra de quince árboles y al fortalecimiento de nuestros proyectos de reforestación.', image: communityImage, icon: TreePine },
+    { title: '1 árbol – US$ 7', description: 'Tu primer paso hacia un Perú más verde. Contribuyes a la siembra y recuperación de nuestros bosques.', image: donationOptionOneImage, icon: Sprout },
+    { title: '5 árboles – US$ 35', description: 'Multiplica tu impacto. Apoyas la siembra de cinco árboles y el cuidado de ecosistemas locales.', image: donationOptionFiveImage, icon: BookOpen },
+    { title: '15 árboles – US$ 105', description: 'Haz crecer el cambio. Contribuyes a la siembra de quince árboles y al fortalecimiento de nuestros proyectos de reforestación.', image: donationOptionFifteenImage, icon: TreePine },
   ]
   const impact = [
     { title: 'Reforestación', description: 'Recuperamos y conservamos nuestros bosques.', icon: Sprout },

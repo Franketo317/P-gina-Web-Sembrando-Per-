@@ -4,6 +4,7 @@ import carlosPhoto from '../assets/figma/team-carlos.png'
 import andreaPhoto from '../assets/figma/team-andrea.png'
 import ricardoPhoto from '../assets/figma/team-ricardo.png'
 import solancePhoto from '../assets/figma/team-solance.png'
+import josePhoto from '../assets/figma/team-jose.png'
 import volunteerMariana from '../assets/figma/volunteer-mariana.png'
 import volunteerDiego from '../assets/figma/volunteer-diego.png'
 import volunteerLucia from '../assets/figma/volunteer-lucia.png'
@@ -40,6 +41,20 @@ const teamMembers = [
     role: 'Coordinación General',
     description: 'Apoya la organización y el seguimiento de las iniciativas de Sembrando Perú.',
     photo: solancePhoto,
+    portraitPosition: 'center 38%',
+  },
+  {
+    name: 'José Vásquez',
+    role: 'Dirección de Comunicaciones',
+    description: 'Contribuye a la comunicación institucional y a la difusión de las iniciativas de la organización.',
+    photo: josePhoto,
+    portraitPosition: 'center 38%',
+  },
+  {
+    name: 'NOMBRE APELLIDO',
+    role: 'Área por definir',
+    description: 'Información del integrante por completar.',
+    photo: volunteerMariana,
     portraitPosition: 'center 38%',
   },
 ]
@@ -124,6 +139,7 @@ export default function OurTeamPage() {
                   <li className="team-card" key={member.name}>
                     <div className="team-card__portrait">
                       <img
+                        className={member.name === 'José Vásquez' ? 'team-card__portrait-image--jose' : undefined}
                         src={member.photo}
                         alt={t(member.name)}
                         style={{ objectPosition: member.portraitPosition }}

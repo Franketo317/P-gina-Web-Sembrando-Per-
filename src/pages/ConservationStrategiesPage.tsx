@@ -1,6 +1,6 @@
 import { ArrowRight, BookOpen, Handshake, Leaf, Sprout, TreePine, Award, BarChart3 } from 'lucide-react'
-import retoHero from '../assets/figma/reto-300-hero.png'
-import retoForest from '../assets/figma/reto-300-forest.png'
+import retoHero from '../assets/figma/RETO1.jpg'
+import retoForest from '../assets/figma/RETO2.JPG'
 import SiteHeader from '../components/SiteHeader'
 import SocialLinks from '../components/SocialLinks'
 import { useLanguage } from '../components/LanguageContext'

@@ -7,7 +7,7 @@ import { getPublications } from './publications'
 import { useLanguage } from '../components/LanguageContext'
 import { articles, featuredArticles, BlogFooter } from './BlogPage'
 import forestImage from '../assets/figma/about-values-background.png'
-import publicationsImage from '../assets/figma/publicaciones.jpg'
+import publicationsImage from '../assets/figma/DONAR1.jpg'
 import './NewsPage.css'
 
 const news = [...featuredArticles, ...articles].sort((a, b) => b.publishedAt.localeCompare(a.publishedAt))

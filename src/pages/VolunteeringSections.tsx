@@ -1,10 +1,10 @@
 import { ArrowRight, Sprout, BookOpen, Heart, Users, TreePine, Binoculars, Pencil, CalendarCheck, ChevronRight } from 'lucide-react'
 import { useLanguage } from '../components/LanguageContext'
-import communityPhoto from '../assets/figma/equipo2.jpg'
+import communityPhoto from '../assets/figma/voluntariado2.jpg'
 import forestPhoto from '../assets/figma/blog-article-reforestation.jpg'
 import educationPhoto from '../assets/figma/imgBlogImage4.png'
 import healthPhoto from '../assets/figma/blog-article-health.jpg'
-import plantingPhoto from '../assets/figma/imgBlogImage5.png'
+import plantingPhoto from '../assets/figma/voluntariado3.jpg'
 import './VolunteeringPage.css'
 
 export function VolunteeringParticipation() {

@@ -3,12 +3,12 @@ import SocialLinks from '../components/SocialLinks'
 import { useLanguage } from '../components/LanguageContext'
 import { BlogFooter } from './BlogPage'
 import ProgramVolunteerCta from '../components/ProgramVolunteerCta'
-import forestImage from '../assets/figma/imgBlogImage1.png'
-import plantingImage from '../assets/figma/blog-featured-forest.jpg'
-import communityImage from '../assets/figma/blog-featured-community.jpg'
-import reforestationImage from '../assets/figma/blog-article-reforestation.jpg'
-import nurseryImage from '../assets/figma/imgBuildingBlocks169.jpg'
-import communityPanorama from '../assets/figma/inicio1.JPG?url'
+import forestImage from '../assets/figma/reforestacion1.jpg'
+import plantingImage from '../assets/figma/reforestacion2.jpg'
+import nurseryImage from '../assets/figma/reforestacion3.JPG'
+import communityPanorama from '../assets/figma/reforestacion4.jpg'
+import plantingStoryImage from '../assets/figma/reforestacion5.jpg'
+import communityImage from '../assets/figma/reforestacion6.jpg'
 import './ReforestationPage.css'
 
 const actions = [
@@ -18,9 +18,9 @@ const actions = [
 ]
 
 const stories = [
-  { slug: 'sembrando-futuro-juntos-por-nuestros-bosques', title: 'Sembrando futuro: juntos por nuestros bosques', image: plantingImage, alt: 'Participación comunitaria en una jornada de plantación', text: 'Conoce cómo la participación de las familias acompaña la recuperación de los bosques.' },
+  { slug: 'sembrando-futuro-juntos-por-nuestros-bosques', title: 'Sembrando futuro: juntos por nuestros bosques', image: plantingStoryImage, alt: 'Participación comunitaria en una jornada de plantación', text: 'Conoce cómo la participación de las familias acompaña la recuperación de los bosques.' },
   { slug: 'transformando-vidas-comunidades', title: 'Comunidades que construyen su futuro', image: communityImage, alt: 'Familias de una comunidad de Sembrando Perú', text: 'El trabajo colectivo une la conservación ambiental con nuevas oportunidades.' },
-  { slug: 'jornada-reforestacion-madre-de-dios', title: 'Una jornada para volver a sembrar', image: reforestationImage, alt: 'Actividad de reforestación en comunidad', text: 'Descubre el valor de sumar esfuerzos y compartir conocimientos.' },
+  { slug: 'jornada-reforestacion-madre-de-dios', title: 'Una jornada para volver a sembrar', image: forestImage, alt: 'Bosque de la Amazonía en recuperación', text: 'Descubre el valor de sumar esfuerzos y compartir conocimientos.' },
 ]
 
 export default function ReforestationPage() {

@@ -3,10 +3,13 @@ import SocialLinks from '../components/SocialLinks'
 import { useLanguage } from '../components/LanguageContext'
 import { BlogFooter } from './BlogPage'
 import ProgramVolunteerCta from '../components/ProgramVolunteerCta'
-import learningImage from '../assets/figma/principios.JPG'
-import classroomImage from '../assets/figma/imgBlogImage4.png'
-import communityImage from '../assets/figma/blog-featured-community.jpg'
-import plantingImage from '../assets/figma/blog-featured-forest.jpg'
+import learningImage from '../assets/figma/educacion4.jpg'
+import classroomImage from '../assets/figma/educacion1.jpg'
+import communityImage from '../assets/figma/DONAR2.jpg'
+import plantingImage from '../assets/figma/educacion5.jpg'
+import communityLearningImage from '../assets/figma/educacion2.jpg'
+import literacyImage from '../assets/figma/educacion3.jpg'
+import familyLearningImage from '../assets/figma/educacion6.JPG'
 import './ReforestationPage.css'
 import './EducationPage.css'
 
@@ -21,22 +24,22 @@ const stories = [
     href: '/blog/articulo/transformando-vidas-comunidades',
     title: 'Aprender y crecer en comunidad',
     description: 'Conoce cómo el aprendizaje y la participación de las familias forman parte del desarrollo de las comunidades.',
-    image: communityImage,
+    image: communityLearningImage,
     alt: 'Familias de una comunidad de Sembrando Perú',
   },
   {
     href: '/estrategias-conservacion/sostenibilidad-integral',
     title: 'Educación, naturaleza y bienestar',
     description: 'Descubre cómo conectamos la educación comunitaria con la conservación y el bienestar infantil.',
-    image: classroomImage,
+    image: literacyImage,
     alt: 'Niños y voluntarios compartiendo una actividad educativa',
   },
   {
     href: '/blog/articulo/sembrando-futuro-juntos-por-nuestros-bosques',
     title: 'Aprender a cuidar nuestros bosques',
     description: 'La participación en actividades de reforestación permite acercar el cuidado de la naturaleza a las familias.',
-    image: plantingImage,
-    alt: 'Actividad de plantación y cuidado del entorno',
+    image: familyLearningImage,
+    alt: 'Niñas aprendiendo a leer y escribir con una voluntaria',
   },
 ]
 
@@ -67,7 +70,7 @@ export default function EducationPage() {
           </div>
         </section>
 
-        <img className="reforestation-panorama" src={communityImage} alt={t('Familias de una comunidad de Sembrando Perú')} loading="lazy" />
+        <img className="reforestation-panorama" src={communityImage} alt={t('Niños caminando juntos por su comunidad')} loading="lazy" />
 
         <section className="reforestation-actions" aria-labelledby="education-actions-title">
           <div className="reforestation-actions__copy">

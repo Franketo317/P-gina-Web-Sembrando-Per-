@@ -125,7 +125,7 @@
 }
 
 .team-roster {
-  width: min(100%, 880px);
+  width: min(100%, 1120px);
   margin: 0 auto;
   text-align: center;
 }
@@ -186,9 +186,26 @@
 }
 
 .team-roster__area .team-roster__cards--coordination {
-  width: min(100%, 660px);
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+  width: 100%;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
   margin-inline: auto;
+}
+
+.team-roster__cards--coordination .team-card {
+  grid-template-columns: 1fr;
+  justify-items: center;
+  align-content: start;
+  text-align: center;
+}
+
+.team-roster__cards--coordination .team-card__role {
+  justify-content: center;
+}
+
+@media (min-width: 701px) and (max-width: 980px) {
+  .team-roster__area .team-roster__cards--coordination {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
 }
 
 .team-card {
@@ -234,6 +251,14 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
+}
+
+.team-card__portrait-image--jose {
+  transform: scale(1.22);
+}
+
+.team-card:hover .team-card__portrait-image--jose {
+  transform: scale(1.3);
 }
 
 .team-card__content {
