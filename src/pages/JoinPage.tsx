@@ -5,7 +5,9 @@ import DonationFooter from '../components/DonationFooter'
 import { useLanguage } from '../components/LanguageContext'
 import SocialLinks from '../components/SocialLinks'
 import { BlogFooter } from './BlogPage'
-import sumateHeroImage from '../assets/figma/sumate-hero.png'
+import sumateHeroImage from '../assets/figma/sumate1.JPG'
+import sumateImageTwo from '../assets/figma/sumate2.jpg'
+import sumateImageThree from '../assets/figma/sumate3.jpg'
 import volunteerHero from '../assets/figma/voluntariado1.JPG'
 import { VolunteeringParticipation, VolunteeringClosing } from './VolunteeringSections'
 import JoinParticipationForm from './JoinParticipationForm'
@@ -70,6 +72,10 @@ function JoinParticipationSections() {
           <li><ChevronRight aria-hidden="true" /><span aria-current="page">{t('Súmate')}</span></li>
         </ol>
       </nav>
+      <section className="join-sumate-gallery" aria-label={t('Imágenes de participación en Sembrando Perú')}>
+        <img src={sumateImageTwo} alt={t('Personas participando en Sembrando Perú')} loading="lazy" />
+        <img src={sumateImageThree} alt={t('Personas participando en Sembrando Perú')} loading="lazy" />
+      </section>
       <section className="join-sumate-section" aria-labelledby="sumate-options-title">
         <div className="join-sumate-section__heading">
           <h2 id="sumate-options-title">{t('¿Cómo puedes sumarte?')}</h2>

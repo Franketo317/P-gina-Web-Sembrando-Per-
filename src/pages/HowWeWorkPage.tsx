@@ -1,5 +1,7 @@
-import aboutHero from '../assets/figma/Nuestros.jpg'
-import communityWorkImage from '../assets/figma/principios1.JPG'
+import aboutHero from '../assets/figma/como1.JPG'
+import communityWorkImage from '../assets/figma/como2.jpg'
+import communityGalleryImageOne from '../assets/figma/como3.jpg'
+import communityGalleryImageTwo from '../assets/figma/como4.JPG'
 import SocialLinks from '../components/SocialLinks'
 import SiteHeader from '../components/SiteHeader'
 import { useLanguage } from '../components/LanguageContext'
@@ -73,6 +75,10 @@ export default function HowWeWorkPage() {
           style={{ backgroundImage: `url(${communityWorkImage})` }}
           aria-label={t('Nuestro trabajo junto a las comunidades')}
         />
+        <section className="work-community-gallery" aria-label={t('Imágenes de nuestro trabajo con las comunidades')}>
+          <img src={communityGalleryImageOne} alt={t('Trabajo de Sembrando Perú junto a las comunidades')} loading="lazy" />
+          <img src={communityGalleryImageTwo} alt={t('Trabajo de Sembrando Perú junto a las comunidades')} loading="lazy" />
+        </section>
         <section className="work-areas work-areas--single" aria-label={t('Nuestras áreas de trabajo')}>
           <div className="work-areas__grid">
             {workMethodCards.map((item) => (

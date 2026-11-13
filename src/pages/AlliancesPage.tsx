@@ -13,9 +13,10 @@ import SiteHeader from '../components/SiteHeader'
 import SocialLinks from '../components/SocialLinks'
 import { useLanguage } from '../components/LanguageContext'
 import { BlogFooter } from './BlogPage'
-import heroImage from '../assets/figma/imgBlogImage5.png'
-import forestImage from '../assets/figma/blog-article-reforestation.jpg'
-import impactImage from '../assets/figma/blog-article-reforestation.jpg'
+import heroImage from '../assets/figma/alianza1.jpg'
+import forestImage from '../assets/figma/alianza2.JPG'
+import impactImage from '../assets/figma/alianza3.JPG'
+import allianceImageFour from '../assets/figma/alianza4.JPG'
 import './AlliancesPage.css'
 
 const collaborationOptions = [
@@ -133,7 +134,7 @@ export default function AlliancesPage() {
         </section>
 
         <section className="alliances-spotlight" aria-labelledby="alliances-spotlight-title">
-          <img src={impactImage} alt="" loading="lazy" />
+          <img src={allianceImageFour} alt="" loading="lazy" />
           <div className="alliances-spotlight__content">
             <span>{t('Conoce el')}</span>
             <h2 id="alliances-spotlight-title">{t('Reto 300')}</h2>

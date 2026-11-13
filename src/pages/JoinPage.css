@@ -188,6 +188,8 @@
 }
 
 .join-sumate-section { width: min(calc(100% - 48px), 1040px); margin: 0 auto; padding: 36px 0 24px; }
+.join-sumate-gallery { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; width: min(calc(100% - 48px), 1040px); margin: 24px auto 0; }
+.join-sumate-gallery img { display: block; width: 100%; height: clamp(220px, 28vw, 340px); border-radius: 14px; object-fit: cover; }
 .join-sumate-section__heading { margin-bottom: 18px; text-align: center; }
 .join-sumate-section__heading h2,
 .sumate-form-section__heading h2 { margin: 0; color: #07583e; font: 700 clamp(28px, 3vw, 36px)/1.2 var(--font-display); }
@@ -214,6 +216,8 @@
 .sumate-form .join-form__status { color: #087448; font-size: 15px; }
 @media (max-width: 760px) {
   .join-sumate-section { width: min(calc(100% - 40px), 520px); padding-top: 28px; }
+  .join-sumate-gallery { grid-template-columns: 1fr; width: min(calc(100% - 40px), 520px); gap: 14px; }
+  .join-sumate-gallery img { height: clamp(220px, 62vw, 320px); }
   .join-sumate-options { grid-template-columns: 1fr; gap: 14px; }
   .join-sumate-option { min-height: 0; padding: 20px; }
   .sumate-form-section { width: min(calc(100% - 40px), 560px); padding: 24px 20px; }
