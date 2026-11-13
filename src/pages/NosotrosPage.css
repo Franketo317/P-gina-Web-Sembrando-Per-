@@ -301,6 +301,23 @@
   text-align: center;
 }
 
+.about-photo-gallery {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
+  width: min(1200px, calc(100% - 48px));
+  margin: 0 auto;
+  padding: 0 0 64px;
+}
+
+.about-photo-gallery img {
+  display: block;
+  width: 100%;
+  height: clamp(220px, 27vw, 340px);
+  border-radius: 12px;
+  object-fit: cover;
+}
+
 .about-peru__content {
   width: min(100%, 980px);
   margin: 0 auto;
@@ -792,6 +809,17 @@
 
   .about-peru {
     padding: 42px 22px 48px;
+  }
+
+  .about-photo-gallery {
+    grid-template-columns: 1fr;
+    width: min(100% - 44px, 520px);
+    gap: 14px;
+    padding-bottom: 48px;
+  }
+
+  .about-photo-gallery img {
+    height: clamp(220px, 62vw, 320px);
   }
 
   .about-mission-vision {

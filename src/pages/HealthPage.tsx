@@ -3,10 +3,12 @@ import SocialLinks from '../components/SocialLinks'
 import { useLanguage } from '../components/LanguageContext'
 import { BlogFooter } from './BlogPage'
 import ProgramVolunteerCta from '../components/ProgramVolunteerCta'
-import healthHero from '../assets/figma/salud.jpeg'
-import healthImage from '../assets/figma/blog-article-health.jpg'
-import communityImage from '../assets/figma/blog-featured-community.jpg'
-import nutritionImage from '../assets/figma/imgBlogImage3.png'
+import healthHero from '../assets/figma/salud1.jpeg'
+import healthImage from '../assets/figma/salud2.JPG'
+import communityImage from '../assets/figma/saluld3.jpg'
+import nutritionImage from '../assets/figma/salud4.jpeg'
+import healthImageFive from '../assets/figma/salud5.jpeg'
+import healthImageSix from '../assets/figma/salud6.jpeg'
 import './ReforestationPage.css'
 import './HealthPage.css'
 
@@ -35,7 +37,7 @@ const stories = [
     href: '/estrategias-conservacion/sostenibilidad-integral',
     title: 'Salud, educación y naturaleza conectadas',
     description: 'Descubre cómo nuestro enfoque integral vincula el bienestar de las comunidades con la protección de su entorno.',
-    image: nutritionImage,
+    image: healthImageFive,
     alt: 'Participación de familias en una actividad comunitaria',
   },
 ]
@@ -67,7 +69,7 @@ export default function HealthPage() {
           </div>
         </section>
 
-        <img className="reforestation-panorama" src={healthImage} alt={t('Actividad comunitaria relacionada con la salud')} loading="lazy" />
+        <img className="reforestation-panorama" src={healthImageSix} alt={t('Actividad comunitaria relacionada con la salud')} loading="lazy" />
 
         <section className="reforestation-actions" aria-labelledby="health-actions-title">
           <div className="reforestation-actions__copy">

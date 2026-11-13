@@ -1,5 +1,8 @@
-import aboutHero from '../assets/figma/about-hero-background.png'
-import storyCard from '../assets/figma/about-story-card.png?url'
+import aboutHero from '../assets/figma/q1.jpg'
+import storyCard from '../assets/figma/q2.jpg'
+import aboutPhotoThree from '../assets/figma/q3.JPG'
+import aboutPhotoFour from '../assets/figma/q4.JPG'
+import aboutPhotoFive from '../assets/figma/q5.JPG'
 import SiteHeader from '../components/SiteHeader'
 import { useLanguage } from '../components/LanguageContext'
 import SocialLinks from '../components/SocialLinks'
@@ -61,6 +64,11 @@ function OrganizationStory() {
           <img className="about-story__rule" src={greenLine} alt="" />
           <p>{t('Trabajamos con comunidades rurales de la Amazonía y los Andes mediante acciones de restauración de ecosistemas, educación ambiental, alfabetización y prevención en salud, junto a agricultores y familias locales.')}</p>
         </div>
+      </section>
+      <section className="about-photo-gallery" aria-label={t('Imágenes de Sembrando Perú')}>
+        {[aboutPhotoThree, aboutPhotoFour, aboutPhotoFive].map((photo, index) => (
+          <img key={photo} src={photo} alt={t('Sembrando Perú trabaja junto a las comunidades')} loading="lazy" />
+        ))}
       </section>
     </>
   )
