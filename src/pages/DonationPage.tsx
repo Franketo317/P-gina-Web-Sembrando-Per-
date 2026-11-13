@@ -17,19 +17,19 @@ import './DonationPage.css'
 export const donationImpactAreas = [
   {
     title: 'Reforestación de ecosistemas',
-    description: 'Contribuye a la recuperación de áreas degradadas y al cuidado de los bosques.',
+    description: 'Tu membresía apoya la siembra y el cuidado de árboles en áreas degradadas. Junto a agricultores y comunidades, trabajamos para recuperar los bosques, proteger la biodiversidad y promover el cuidado del territorio. Cada aporte ayuda a sostener estas acciones en el tiempo. El cuidado posterior permite que los árboles crezcan y los bosques se recuperen.',
     image: reforestationImage,
     alt: 'Jornada de reforestación en la Amazonía',
   },
   {
     title: 'Trabajo con comunidades',
-    description: 'Apoya iniciativas que involucran a familias y comunidades locales.',
+    description: 'Acompañamos a familias y comunidades rurales en iniciativas de conservación, educación y bienestar. Su participación fortalece capacidades locales, permite compartir conocimientos y generar oportunidades. Tu aporte contribuye a impulsar acciones construidas junto a las comunidades, de acuerdo con su entorno y necesidades.',
     image: educationImage,
     alt: 'Niños participando en una actividad educativa',
   },
   {
     title: 'Educación ambiental',
-    description: 'Promueve el aprendizaje y el cuidado del medioambiente.',
+    description: 'Impulsamos actividades de aprendizaje sobre árboles, bosques y recursos naturales junto a niñas, niños y sus familias. La educación ambiental ayuda a comprender el valor de los ecosistemas y fomenta prácticas para cuidarlos. Tu membresía apoya estos espacios y acerca conocimientos a nuevas generaciones.',
     image: impactImage,
     alt: 'Voluntarios participando en una jornada de siembra',
   },

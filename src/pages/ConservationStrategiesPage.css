@@ -379,3 +379,89 @@
 .conservation-strategies-page .reto-step,
 .conservation-strategies-page .reto-donation,
 .conservation-strategies-page .reto-cta{border-radius:0}
+
+/* Match the reforestation page's typography while retaining campaign hierarchy. */
+.conservation-strategies-page .reto-hero h1 {
+  font-size: clamp(38px, 4.5vw, 72px);
+  font-weight: 400;
+  line-height: 1.1;
+  text-transform: uppercase;
+}
+
+.conservation-strategies-page .reto-hero__lead {
+  font-size: clamp(17px, 1.8vw, 23px);
+  font-weight: 200;
+  line-height: 1.4;
+}
+
+.conservation-strategies-page .reto-hero {
+  padding-right: max(24px, calc((100% - 1150px) / 2));
+  padding-left: max(24px, calc((100% - 1150px) / 2));
+}
+
+.conservation-strategies-page .reto-main h2 {
+  font-size: clamp(32px, 3vw, 40px);
+  font-weight: 400;
+  line-height: 1.2;
+}
+
+.conservation-strategies-page .reto-intro__copy > p:last-child {
+  font-size: clamp(18px, 1.35vw, 20px);
+  line-height: 1.5;
+}
+
+.conservation-strategies-page .reto-step__body h3,
+.conservation-strategies-page .reto-benefit h3 {
+  font-family: var(--font-display);
+  font-size: 22px;
+  font-weight: 400;
+  line-height: 1.25;
+}
+
+.conservation-strategies-page .reto-step__body p,
+.conservation-strategies-page .reto-benefit p {
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+.conservation-strategies-page .reto-donation > p {
+  font-size: 20px;
+  line-height: 1.35;
+}
+
+.conservation-strategies-page .reto-donation__area b {
+  font-size: 18px;
+}
+
+.conservation-strategies-page .reto-donation__area small {
+  font-size: 15px;
+}
+
+.conservation-strategies-page .reto-cta p {
+  font-size: 17px;
+  line-height: 1.55;
+}
+
+.conservation-strategies-page .reto-cta p strong {
+  font-size: 22px;
+  font-weight: 500;
+}
+
+@media (max-width: 760px) {
+  .conservation-strategies-page .reto-main h2 {
+    font-size: clamp(28px, 6vw, 32px);
+  }
+}
+
+@media (max-width: 600px) {
+  .conservation-strategies-page .reto-hero h1 {
+    font-size: clamp(38px, 4.5vw, 72px);
+  }
+}
+
+@media (max-width: 760px) {
+  .conservation-strategies-page .reto-hero {
+    padding-right: 22px;
+    padding-left: 22px;
+  }
+}

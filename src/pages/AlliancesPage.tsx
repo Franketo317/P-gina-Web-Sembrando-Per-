@@ -23,21 +23,25 @@ const collaborationOptions = [
     title: 'Apoyo económico',
     description: 'Contribuye a financiar iniciativas que generan oportunidades y bienestar en las comunidades.',
     Icon: HeartHandshake,
+    href: '/donacion',
   },
   {
     title: 'Voluntariado corporativo',
     description: 'Involucra a tu equipo en experiencias de aprendizaje y acción junto a las comunidades.',
     Icon: UsersRound,
+    href: '/voluntariado',
   },
   {
     title: 'Donaciones en especie',
     description: 'Aporta materiales, equipos o recursos que respondan a las necesidades de cada iniciativa.',
     Icon: PackageOpen,
+    href: '/contacto',
   },
   {
     title: 'Colaboración técnica',
     description: 'Comparte conocimientos y capacidades para fortalecer nuestros proyectos.',
     Icon: GraduationCap,
+    href: '/convocatoria-consultorias',
   },
 ]
 
@@ -84,11 +88,14 @@ export default function AlliancesPage() {
           <div className="alliances-hero__content">
             <h1 id="alliances-title">{t('Construyamos un futuro sostenible juntos')}</h1>
             <p>{t('Invitamos a empresas e instituciones a sumar esfuerzos por la restauración de los bosques, la educación y el bienestar de las comunidades.')}</p>
-            <a className="alliances-button" href="#conversemos">
-              {t('Quiero ser aliado')} <ArrowRight aria-hidden="true" size={18} />
-            </a>
           </div>
         </section>
+
+        <div className="alliances-hero-cta">
+          <a className="alliances-button" href="#conversemos">
+            {t('Quiero ser aliado')} <ArrowRight aria-hidden="true" size={18} />
+          </a>
+        </div>
 
         <section className="alliances-why" aria-labelledby="alliances-why-title">
           <img className="alliances-why__image" src={forestImage} alt={t('Camino rodeado de bosques en una zona de conservación')} loading="lazy" />
@@ -113,10 +120,12 @@ export default function AlliancesPage() {
             <p>{t('Existen distintas maneras en las que tu empresa o institución puede sumarse a nuestra causa.')}</p>
           </div>
           <div className="alliances-options__grid">
-            {collaborationOptions.map(({ title, description, Icon }) => (
+            {collaborationOptions.map(({ title, description, Icon, href }) => (
               <article className="alliances-option-card" key={title}>
-                <span className="alliances-icon"><Icon aria-hidden="true" /></span>
-                <h3>{t(title)}</h3>
+                <a className="alliances-option-card__icon-link" href={href} aria-label={t(title)}>
+                  <span className="alliances-icon"><Icon aria-hidden="true" /></span>
+                </a>
+                <h3><a href={href}>{t(title)}</a></h3>
                 <p>{t(description)}</p>
               </article>
             ))}
@@ -129,7 +138,7 @@ export default function AlliancesPage() {
             <span>{t('Conoce el')}</span>
             <h2 id="alliances-spotlight-title">{t('Reto 300')}</h2>
             <p>{t('Nuestra meta es restaurar 300 hectáreas en la Selva Central durante el 2027.')}</p>
-            <a href="mailto:contacto@sembrandoperu.org?subject=Reto%20300">{t('Conoce cómo sumarte')} <ArrowRight aria-hidden="true" size={17} /></a>
+            <a href="/estrategias-conservacion">{t('Conoce cómo sumarte')} <ArrowRight aria-hidden="true" size={17} /></a>
           </div>
         </section>
 
