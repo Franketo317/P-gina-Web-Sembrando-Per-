@@ -150,7 +150,7 @@ export function BlogFooter() {
 }
 
 
-export function BlogHero({ title = 'PUBLICACIONES' }: { title?: string }) {
+export function BlogHero({ title = 'NOTICIAS' }: { title?: string }) {
   const { t } = useLanguage()
 
   return (
@@ -205,7 +205,7 @@ export default function BlogPage() {
                     <div className="blog-meta"><span>{t(article.category)}</span><i /><time>{t(article.date)}</time></div>
                     <h3>{t(article.title)}</h3>
                     <p>{t(article.description)}</p>
-                    <a href={`/publicaciones/articulo/${article.slug}`}>{t('Leer artículo')} <img src={article.arrow} alt="" /></a>
+                    <a href={`/blog/articulo/${article.slug}`}>{t('Leer artículo')} <img src={article.arrow} alt="" /></a>
                   </div>
                 </article>
               ))}
@@ -227,7 +227,7 @@ export default function BlogPage() {
                     <div className="blog-meta"><span>{t(article.category)}</span><i /><time>{t(article.date)}</time></div>
                     <h3>{t(article.title)}</h3>
                     <p>{t(article.description)}</p>
-                    <a href={`/publicaciones/articulo/${article.slug}`}>{t('Leer más')} <img src={arrowRight} alt="" /></a>
+                    <a href={`/blog/articulo/${article.slug}`}>{t('Leer más')} <img src={arrowRight} alt="" /></a>
                   </div>
                 </article>
               )) : <p className="blog-empty">{t('No hay artículos para este filtro.')}</p>}

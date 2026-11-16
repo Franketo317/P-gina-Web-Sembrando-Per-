@@ -16,15 +16,11 @@ try {
 
   const { default: App } = await server.ssrLoadModule('/src/App.tsx')
   const { LanguageProvider } = await server.ssrLoadModule('/src/components/LanguageContext.tsx')
-  const { campaigns } = await server.ssrLoadModule('/src/pages/campaigns.ts')
   const { strategies } = await server.ssrLoadModule('/src/pages/conservationStrategies.ts')
   const { consultancies } = await server.ssrLoadModule('/src/pages/consultancies.ts')
-  const { getPublications } = await server.ssrLoadModule('/src/pages/publications.ts')
-  const routes = ['/', '/nosotros', '/como-trabajamos', '/reforestacion', '/educacion', '/salud', '/trabaja-con-nosotros', '/nuestro-equipo', '/mecanismo-de-quejas', '/contacto', '/donacion', '/membresia', '/sumate', '/voluntariado', '/noticias', '/publicaciones', '/campanas', '/estrategias-conservacion', '/convocatoria-consultorias',
-    ...campaigns.map(item => `/campanas/${item.slug}`),
+  const routes = ['/', '/nosotros', '/como-trabajamos', '/reforestacion', '/educacion', '/salud', '/trabaja-con-nosotros', '/nuestro-equipo', '/mecanismo-de-quejas', '/contacto', '/donacion', '/membresia', '/sumate', '/voluntariado', '/campanas', '/campanas/sembrando-arboles', '/noticias', '/estrategias-conservacion', '/convocatoria-consultorias',
     ...strategies.map(item => `/estrategias-conservacion/${item.slug}`),
     ...consultancies.map(item => `/convocatoria-consultorias/${item.slug}`),
-    ...getPublications('es').map(item => `/publicaciones/articulo/${item.slug}`),
     ...['sembrando-futuro-juntos-por-nuestros-bosques', 'transformando-vidas-comunidades', 'jornada-reforestacion-madre-de-dios', 'guardianas-del-bosque', 'prevencion-anemia-nuevos-enfoques'].map(slug => `/blog/articulo/${slug}`),
   ]
   const spanishSentences = Object.entries(translations).filter(([es, en]) => es !== en && es.length > 35)

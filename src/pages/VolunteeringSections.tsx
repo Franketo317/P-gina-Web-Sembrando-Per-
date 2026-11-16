@@ -4,7 +4,6 @@ import communityPhoto from '../assets/figma/voluntariado2.jpg'
 import forestPhoto from '../assets/figma/blog-article-reforestation.jpg'
 import educationPhoto from '../assets/figma/imgBlogImage4.png'
 import healthPhoto from '../assets/figma/blog-article-health.jpg'
-import plantingPhoto from '../assets/figma/voluntariado3.jpg'
 import './VolunteeringPage.css'
 
 export function VolunteeringParticipation() {
@@ -83,7 +82,6 @@ export function VolunteeringResources() {
     { title: 'Reforestación', description: 'Conoce nuestras acciones para cuidar los bosques.', href: '/reforestacion', image: forestPhoto },
     { title: 'Educación', description: 'Descubre cómo acompañamos el aprendizaje comunitario.', href: '/educacion', image: educationPhoto },
     { title: 'Salud', description: 'Conoce nuestro trabajo por el bienestar de las familias.', href: '/salud', image: healthPhoto },
-    { title: 'Publicaciones', description: 'Explora historias e iniciativas de nuestras comunidades.', href: '/publicaciones', image: plantingPhoto },
   ]
   return (
     <>

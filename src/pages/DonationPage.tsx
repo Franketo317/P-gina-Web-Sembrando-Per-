@@ -327,7 +327,6 @@ function ImpactAreas() {
 function DonationWelcome() {
   const { t } = useLanguage()
   const resources = [
-    { title: 'FICHAS INFORMATIVAS SOBRE NUESTROS PROYECTOS', image: impactImage, href: '/publicaciones', download: false },
     { title: 'FONDOS DE PANTALLA PARA TUS DISPOSITIVOS', image: reforestationImage, href: reforestationImage, download: true },
     { title: 'SUSCRIPCIÓN AL BOLETÍN DE SEMBRANDO PERÚ', image: communityImage, href: '/#unete', download: false },
   ]

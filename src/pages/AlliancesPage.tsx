@@ -15,7 +15,6 @@ import { useLanguage } from '../components/LanguageContext'
 import { BlogFooter } from './BlogPage'
 import heroImage from '../assets/figma/alianza1.jpg'
 import forestImage from '../assets/figma/alianza2.JPG'
-import impactImage from '../assets/figma/alianza3.JPG'
 import allianceImageFour from '../assets/figma/alianza4.JPG'
 import './AlliancesPage.css'
 

@@ -2022,15 +2022,15 @@
   filter: brightness(1.12);
 }
 
-:is(.home-page, .about-page, .contact-page, .news-page, .campaigns-page) .hero-socials {
+:is(.home-page, .about-page, .contact-page, .news-page) .hero-socials {
   top: 18px;
   right: clamp(20px, 5vw, 84px);
   z-index: 3;
   gap: 10px;
 }
 
-:is(.home-page, .about-page, .contact-page, .news-page, .campaigns-page) .hero-socials a,
-:is(.home-page, .about-page, .contact-page, .news-page, .campaigns-page) .hero-socials__link {
+:is(.home-page, .about-page, .contact-page, .news-page) .hero-socials a,
+:is(.home-page, .about-page, .contact-page, .news-page) .hero-socials__link {
   width: 36px;
   height: 36px;
   background: rgb(255 255 255 / 76%);
@@ -2038,8 +2038,8 @@
   box-shadow: 0 1px 5px rgb(0 0 0 / 20%);
 }
 
-:is(.home-page, .about-page, .contact-page, .news-page, .campaigns-page) .hero-socials a:hover,
-:is(.home-page, .about-page, .contact-page, .news-page, .campaigns-page) .hero-socials__link:hover {
+:is(.home-page, .about-page, .contact-page, .news-page) .hero-socials a:hover,
+:is(.home-page, .about-page, .contact-page, .news-page) .hero-socials__link:hover {
   background: #fff;
   color: #111;
 }
@@ -2052,10 +2052,13 @@
   border-radius: 2px;
   background: rgb(0 0 0 / 92%);
   box-shadow: none;
+  transition: none;
 }
 
 .home-page .hero-section__arrow:hover {
   background: var(--forest-deep);
+  transform: translateY(-50%);
+  filter: none;
 }
 
 .home-page .hero-section__arrow--previous {
@@ -2109,19 +2112,19 @@
     font-size: 18px;
   }
 
-  :is(.home-page, .about-page, .contact-page, .news-page, .campaigns-page) .hero-socials {
+  :is(.home-page, .about-page, .contact-page, .news-page) .hero-socials {
     top: 14px;
     right: 14px;
     gap: 7px;
   }
 
-  :is(.home-page, .about-page, .contact-page, .news-page, .campaigns-page) .hero-socials a,
-  :is(.home-page, .about-page, .contact-page, .news-page, .campaigns-page) .hero-socials__link {
+  :is(.home-page, .about-page, .contact-page, .news-page) .hero-socials a,
+  :is(.home-page, .about-page, .contact-page, .news-page) .hero-socials__link {
     width: 30px;
     height: 30px;
   }
 
-  :is(.home-page, .about-page, .contact-page, .news-page, .campaigns-page) .hero-socials svg {
+  :is(.home-page, .about-page, .contact-page, .news-page) .hero-socials svg {
     width: 16px;
     height: 16px;
   }

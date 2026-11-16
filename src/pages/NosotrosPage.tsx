@@ -66,7 +66,7 @@ function OrganizationStory() {
         </div>
       </section>
       <section className="about-photo-gallery" aria-label={t('Imágenes de Sembrando Perú')}>
-        {[aboutPhotoThree, aboutPhotoFour, aboutPhotoFive].map((photo, index) => (
+        {[aboutPhotoThree, aboutPhotoFour, aboutPhotoFive].map((photo) => (
           <img key={photo} src={photo} alt={t('Sembrando Perú trabaja junto a las comunidades')} loading="lazy" />
         ))}
       </section>
