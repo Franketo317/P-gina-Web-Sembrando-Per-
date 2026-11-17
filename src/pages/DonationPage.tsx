@@ -14,6 +14,8 @@ import { useLanguage } from '../components/LanguageContext'
 import DonationFooter from '../components/DonationFooter'
 import './DonationPage.css'
 
+const PAYPAL_DONATION_URL = 'https://www.paypal.com/donate/?hosted_button_id=CFPZV9GMT4GNU'
+
 export const donationImpactAreas = [
   {
     title: 'Reforestación de ecosistemas',
@@ -51,6 +53,14 @@ const questions = [
   {
     question: '¿Puedo solicitar una constancia de donación?',
     answer: 'Escríbenos a contacto@sembrandoperu.org para consultar sobre constancias de donación.',
+  },
+  {
+    question: '¿Puedo elegir el monto y la frecuencia de mi donación?',
+    answer: 'Sí. Antes de continuar a PayPal, puedes elegir el monto y si deseas hacer una donación mensual o única.',
+  },
+  {
+    question: '¿Cómo puedo resolver una duda sobre mi donación?',
+    answer: 'Escríbenos a contacto@sembrandoperu.org y nuestro equipo podrá orientarte.',
   },
 ]
 
@@ -123,7 +133,7 @@ function DonationForm() {
       <div className="donation-form__payment-methods" aria-label={t('Métodos de pago')}>
         <a
           className="donation-form__paypal"
-          href="https://www.paypal.com/donate/?hosted_button_id=CFPZV9GMT4GNU"
+          href={PAYPAL_DONATION_URL}
           target="_blank"
           rel="noopener noreferrer"
         >
@@ -438,7 +448,9 @@ function DonationJourney() {
           <span className="donation-closing__trees"><TreePine size={40} aria-hidden="true" /></span>
           <h3>{t('Tu aporte siembra futuro')}</h3>
           <p>{t('Juntos podemos recuperar nuestros bosques y construir un Perú más verde y sostenible.')}</p>
-          <a href="#aportar">{t('Quiero donar')} <ArrowRight size={18} aria-hidden="true" /></a>
+          <a href={PAYPAL_DONATION_URL} target="_blank" rel="noopener noreferrer">
+            {t('Quiero donar')} <ArrowRight size={18} aria-hidden="true" />
+          </a>
         </div>
       </section>
     </>
@@ -482,17 +494,19 @@ function DonationFaq({ isMembership = false }: { isMembership?: boolean }) {
               </details>
             ))}
           </div>
-          <button
-            type="button"
-            aria-expanded={showMoreQuestions}
-            aria-controls="donation-faq-list"
-            onClick={() => {
-              if (showMoreQuestions && openQuestion >= 4) setOpenQuestion(0)
-              setShowMoreQuestions((showing) => !showing)
-            }}
-          >
-            {t(showMoreQuestions ? 'Ver menos preguntas' : 'Ver más preguntas')}
-          </button>
+          {allQuestions.length > 4 && (
+            <button
+              type="button"
+              aria-expanded={showMoreQuestions}
+              aria-controls="donation-faq-list"
+              onClick={() => {
+                if (showMoreQuestions && openQuestion >= 4) setOpenQuestion(0)
+                setShowMoreQuestions((showing) => !showing)
+              }}
+            >
+              {t(showMoreQuestions ? 'Ver menos preguntas' : 'Ver más preguntas')}
+            </button>
+          )}
         </div>
       )}
     </section>

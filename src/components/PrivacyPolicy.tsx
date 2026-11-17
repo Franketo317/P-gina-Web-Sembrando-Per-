@@ -1,5 +1,5 @@
 import { useEffect, useRef } from 'react'
-import { ChevronDown, ShieldCheck } from 'lucide-react'
+import { ChevronDown } from 'lucide-react'
 import { useLanguage } from './LanguageContext'
 
 const paragraphs = [
@@ -34,7 +34,6 @@ export default function PrivacyPolicy() {
     <section className="contact-privacy" aria-labelledby="privacy-title">
       <details className="contact-privacy__details" id="privacidad" ref={policyRef}>
         <summary>
-          <span className="contact-disclosure__icon"><ShieldCheck aria-hidden="true" /></span>
           <h2 id="privacy-title">{t('Políticas de privacidad')}</h2>
           <ChevronDown aria-hidden="true" className="contact-disclosure__chevron" />
         </summary>

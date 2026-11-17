@@ -2,7 +2,7 @@ import SiteHeader from '../components/SiteHeader'
 import PrivacyPolicy from '../components/PrivacyPolicy'
 import ComplaintsMechanismContent from '../components/ComplaintsMechanismContent'
 import { useLanguage } from '../components/LanguageContext'
-import { CircleAlert, ChevronDown, Leaf, Mail, MapPin, Phone } from 'lucide-react'
+import { ChevronDown, Mail, MapPin, Phone } from 'lucide-react'
 import heroImage from '../assets/figma/contact-hero.png'
 import socialFacebook from '../assets/figma/imgPlatformFacebookColorNegative.svg'
 import socialInstagram from '../assets/figma/imgSocialIcons1.svg'
@@ -41,11 +41,8 @@ function ContactChannels() {
   return (
     <section className="contact-channels" aria-labelledby="contact-channels-title">
       <div className="contact-channels__intro">
-        <span className="contact-channels__leaf"><Leaf size={31} aria-hidden="true" /></span>
-        <div>
-          <h2 id="contact-channels-title">{t('Nuestros canales de contacto')}</h2>
-          <p>{t('Estamos aquí para escucharte. Puedes encontrarnos en nuestra oficina, por teléfono, correo o redes sociales.')}</p>
-        </div>
+        <h2 id="contact-channels-title">{t('Nuestros canales de contacto')}</h2>
+        <p>{t('Estamos aquí para escucharte. Puedes encontrarnos en nuestra oficina, por teléfono, correo o redes sociales.')}</p>
       </div>
       <div className="contact-channels__list">
         <article className="contact-channel">
@@ -71,7 +68,6 @@ function ComplaintsDisclosure() {
     <section className="contact-complaints" aria-labelledby="complaints-disclosure-title">
       <details className="contact-disclosure">
         <summary>
-          <span className="contact-disclosure__icon"><CircleAlert aria-hidden="true" /></span>
           <h2 id="complaints-disclosure-title">{t('Mecanismo de quejas')}</h2>
           <ChevronDown className="contact-disclosure__chevron" aria-hidden="true" />
         </summary>
@@ -108,7 +104,8 @@ export default function ContactPage() {
                   <img src={social.image} alt="" />
                 ) : (
                   <svg viewBox="0 0 24 24" aria-hidden="true">
-                    <path d="M9 6.75v10.5L17 12 9 6.75Z" fill="currentColor" />
+                    <rect x="3.25" y="6.25" width="17.5" height="11.5" rx="3.2" fill="none" stroke="currentColor" strokeWidth="1.8" />
+                    <path d="M10 9v6l5-3-5-3Z" fill="currentColor" />
                   </svg>
                 )}
               </a>

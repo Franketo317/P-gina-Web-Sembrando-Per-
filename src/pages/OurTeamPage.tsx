@@ -7,7 +7,7 @@ import solancePhoto from '../assets/figma/team-solance.png'
 import josePhoto from '../assets/figma/team-joseVasquez.png'
 import volunteerMariana from '../assets/figma/volunteer-mariana.png'
 import volunteerDiego from '../assets/figma/volunteer-diego.png'
-import volunteerLucia from '../assets/figma/volunteer-lucia.png'
+import volunteerIsabel from '../assets/figma/volunteer-isabel-agurto.png'
 import SocialLinks from '../components/SocialLinks'
 import SiteHeader from '../components/SiteHeader'
 import { useLanguage } from '../components/LanguageContext'
@@ -73,10 +73,10 @@ const volunteerVoices = [
     photo: volunteerDiego,
   },
   {
-    name: 'Lucía Torres',
-    role: 'Voluntaria en salud comunitaria',
-    quote: 'Participar en las actividades de Sembrando Perú reforzó mi compromiso con el ambiente y me motivó a seguir involucrándome.',
-    photo: volunteerLucia,
+    name: 'Isabel Agurto',
+    role: 'Soporte de dirección y desarrollo organizacional',
+    quote: 'En Sembrando Perú aprendí que el voluntariado transforma comunidades y a quienes participamos. Unirnos por un mismo propósito me enseñó a liderar con el corazón. Me llevo amistades, gratitud y ganas de seguir sembrando futuro.',
+    photo: volunteerIsabel,
   },
 ]
 

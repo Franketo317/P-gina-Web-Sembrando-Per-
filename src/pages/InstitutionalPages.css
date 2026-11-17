@@ -438,8 +438,7 @@
 .team-voice-card > img {
   display: block;
   width: 102px;
-  height: 100%;
-  min-height: 178px;
+  height: 178px;
   border-radius: 16px;
   object-fit: cover;
   object-position: center;
@@ -770,7 +769,7 @@
 
   .team-voice-card > img {
     width: 96px;
-    min-height: 160px;
+    height: 160px;
   }
 
   .team-roster__empty {

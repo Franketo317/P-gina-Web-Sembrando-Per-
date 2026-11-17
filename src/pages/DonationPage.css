@@ -1466,3 +1466,199 @@
   .donation-page .donation-next-steps h2 { font-size: 28px; }
   .donation-page .donation-next-steps p { font-size: 16px; }
 }
+
+.donation-page .donation-impact-summary {
+  padding-block: 48px 52px;
+  border-top-color: #e2e8e4;
+}
+
+.donation-page .donation-impact-summary > h2,
+.donation-page .donation-steps > h2 {
+  color: var(--forest-deep);
+  font-family: var(--font-display);
+  font-size: clamp(30px, 3.2vw, 40px);
+  font-weight: 400;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.donation-page .donation-impact-summary > p {
+  max-width: 700px;
+  margin: 0 auto;
+  color: #333b37;
+  font-family: var(--font-avenir);
+  font-size: 17px;
+  line-height: 1.65;
+  text-align: center;
+}
+
+.donation-page .donation-impact-summary__grid {
+  gap: 20px;
+  margin-top: 34px;
+}
+
+.donation-page .donation-impact-summary__grid article {
+  padding-inline: 16px;
+  border-right: 0;
+}
+
+.donation-page .donation-impact-summary__grid article > span {
+  width: auto;
+  height: auto;
+  margin-bottom: 12px;
+  border-radius: 0;
+  background: transparent;
+  color: var(--forest-deep);
+}
+
+.donation-page .donation-impact-summary__grid h3,
+.donation-page .donation-steps li h3 {
+  color: var(--forest-deep);
+  font-family: var(--font-display);
+  font-size: 20px;
+  font-weight: 400;
+  text-transform: uppercase;
+}
+
+.donation-page .donation-impact-summary__grid article > p {
+  max-width: 280px;
+  color: #39423d;
+  font-family: var(--font-avenir);
+  font-size: 15px;
+  line-height: 1.55;
+}
+
+.donation-page .donation-steps {
+  background: #f3f5f2;
+}
+
+.donation-page .donation-steps > h2 {
+  margin-bottom: 30px;
+}
+
+.donation-page .donation-steps li {
+  align-items: flex-start;
+  min-height: 90px;
+  padding: 12px 14px;
+  border-right: 1px solid #d5ded8;
+  border-radius: 0;
+  background: transparent;
+}
+
+.donation-page .donation-steps li:last-child {
+  border-right: 0;
+}
+
+.donation-page .donation-step__icon {
+  flex-basis: 34px;
+  width: 34px;
+  height: 34px;
+  border-radius: 0;
+  background: transparent;
+  color: var(--forest-deep);
+}
+
+.donation-page .donation-step__number {
+  position: static;
+  flex: 0 0 26px;
+  width: auto;
+  height: auto;
+  border-radius: 0;
+  background: transparent;
+  color: var(--forest-deep);
+  font-family: var(--font-display);
+  font-size: 20px;
+  line-height: 1.2;
+}
+
+.donation-page .donation-steps li h3 {
+  margin-bottom: 6px;
+  font-size: 19px;
+}
+
+.donation-page .donation-steps li p {
+  color: #39423d;
+  font-family: var(--font-avenir);
+  font-size: 15px;
+  line-height: 1.5;
+}
+
+.donation-page .donation-step__arrow {
+  color: var(--forest-deep);
+}
+
+.donation-page .donation-closing {
+  padding: 24px 0 0;
+  border-top: 1px solid #d5ded8;
+  border-radius: 0;
+  background: transparent;
+}
+
+.donation-page .donation-closing__trees,
+.donation-page .donation-closing h3 {
+  color: var(--forest-deep);
+}
+
+.donation-page .donation-closing h3 {
+  font-family: var(--font-display);
+  font-weight: 400;
+  text-transform: uppercase;
+}
+
+.donation-page .donation-closing p {
+  color: #39423d;
+  font-family: var(--font-avenir);
+  font-size: 15px;
+  line-height: 1.5;
+}
+
+.donation-page .donation-closing a {
+  border: 1px solid var(--forest-deep);
+  border-radius: 4px;
+  background: var(--forest-deep);
+  color: #fff;
+  font-family: var(--font-avenir);
+}
+
+.donation-page .donation-closing a:hover {
+  background: #02734d;
+}
+
+@media (max-width: 760px) {
+  .donation-page .donation-impact-summary {
+    padding-block: 36px 40px;
+  }
+
+  .donation-page .donation-impact-summary__grid {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+
+  .donation-page .donation-impact-summary__grid article {
+    padding: 0;
+  }
+
+  .donation-page .donation-impact-summary__grid article > p {
+    font-size: 15px;
+  }
+
+  .donation-page .donation-steps ol {
+    gap: 12px;
+  }
+
+  .donation-page .donation-steps li {
+    min-height: 0;
+    padding: 12px 0 28px;
+    border-right: 0;
+    border-bottom: 1px solid #d5ded8;
+  }
+
+  .donation-page .donation-steps li:last-child {
+    border-bottom: 0;
+  }
+
+  .donation-page .donation-step__arrow {
+    bottom: -4px;
+    left: 20px;
+  }
+}

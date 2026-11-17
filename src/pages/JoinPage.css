@@ -86,6 +86,7 @@
 .join-faq details p { max-width: none; margin: 0; padding: 0 16px 16px; font-size: 14px; line-height: 1.45; overflow-wrap: anywhere; }
 .join-faq__actions { display: flex; justify-content: center; margin-top: 22px; }
 .join-page .join-faq__more { min-height: 42px; padding: 10px 18px; border: 0; border-radius: 8px; background: var(--forest); color: #fff; font: 500 16px/1.4 var(--font-inter); cursor: pointer; }
+.join-page button.join-faq__more { border-radius: 3px; }
 .join-page .join-faq__more:hover { background: var(--forest-deep); }
 .join-faq__contact { margin: 28px 0 0; }
 .join-faq__contact a { color: #02734d; text-underline-offset: 4px; }
