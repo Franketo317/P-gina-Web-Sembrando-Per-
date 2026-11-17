@@ -321,7 +321,7 @@ export default function SiteHeader() {
           </button>
           <div className="nav-dropdown__menu nav-dropdown__menu--sembrando" role="menu">
             <a href="/nosotros#historia" role="menuitem" onClick={closeAll}>
-              {t('Nuestra historia')}
+              {t('Quiénes somos')}
             </a>
             <a href="/como-trabajamos" role="menuitem" onClick={closeAll}>
               {t('¿Cómo trabajamos?')}
@@ -372,7 +372,7 @@ export default function SiteHeader() {
           </div>
         </div>
 
-        {/* Dropdown 3: INFÓRMATE */}
+        {/* Dropdown 3: PARTICIPA */}
         <div className={`nav-dropdown${openDropdown === 'informate' ? ' is-open' : ''}${isInformateActive ? ' is-active' : ''}`}>
           <button
             type="button"
@@ -381,7 +381,7 @@ export default function SiteHeader() {
             onClick={() => toggleDropdown('informate')}
           >
             <span className="nav-dropdown__label">
-              {t('INFÓRMATE')}
+              {t('PARTICIPA')}
               {isInformateActive && <span className="nav-dropdown__active-indicator" aria-hidden="true" />}
             </span>
             <svg className="nav-dropdown__chevron" viewBox="0 0 12 8" width="11" height="7" aria-hidden="true">

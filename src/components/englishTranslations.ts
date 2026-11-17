@@ -119,7 +119,7 @@ export const englishTranslations: Record<string, string> = {
   "Hubo un error al procesar tu solicitud. Inténtalo nuevamente.": "There was an error processing your request. Please try again.",
   "Enviando...": "Sending...",
   "SEMBRANDO PERÚ": "SEMBRANDO PERÚ",
-  "INFÓRMATE": "STAY INFORMED",
+  "PARTICIPA": "TAKE PART",
   "Buscar en el sitio": "Search the site",
   "Cerrar buscador": "Close search",
   "Acciones de Sembrando Perú": "Sembrando Perú in action",
