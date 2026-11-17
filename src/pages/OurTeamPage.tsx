@@ -6,7 +6,8 @@ import ricardoPhoto from '../assets/figma/team-ricardo.png'
 import solancePhoto from '../assets/figma/team-solance.png'
 import josePhoto from '../assets/figma/team-joseVasquez.png'
 import volunteerMariana from '../assets/figma/volunteer-mariana.png'
-import volunteerDiego from '../assets/figma/volunteer-diego.png'
+import volunteerAlina from '../assets/figma/volunteer-alina-miranda.png'
+import volunteerEvelyn from '../assets/figma/volunteer-evelyn-estrada.png'
 import volunteerIsabel from '../assets/figma/volunteer-isabel-agurto.png'
 import SocialLinks from '../components/SocialLinks'
 import SiteHeader from '../components/SiteHeader'
@@ -61,16 +62,16 @@ const teamMembers = [
 
 const volunteerVoices = [
   {
-    name: 'Mariana López',
-    role: 'Voluntaria en reforestación',
-    quote: 'Ser parte de Sembrando Perú me permitió conocer de cerca la realidad de las comunidades y aportar al cuidado de sus bosques.',
-    photo: volunteerMariana,
+    name: 'Evelyn Estrada',
+    role: 'Voluntaria',
+    quote: 'En Sembrando Perú he descubierto que liderar va más allá de coordinar un equipo: es unir talentos, impulsar ideas y transformar esfuerzos en acciones que generan impacto. Porque los grandes cambios se construyen cuando muchas personas trabajan por un mismo propósito.',
+    photo: volunteerEvelyn,
   },
   {
-    name: 'Diego Ramírez',
-    role: 'Voluntario en educación',
-    quote: 'Aprendí mucho sobre conservación y educación ambiental, y viví una experiencia muy enriquecedora con la comunidad.',
-    photo: volunteerDiego,
+    name: 'Alina Miranda Pinto',
+    role: 'Coordinadora de TI',
+    quote: 'En Sembrando Perú he aprendido que liderar es conectar talentos, impulsar ideas y trabajar en equipo para transformar realidades. Porque la tecnología y la innovación cobran sentido cuando están al servicio de las personas.',
+    photo: volunteerAlina,
   },
   {
     name: 'Isabel Agurto',
