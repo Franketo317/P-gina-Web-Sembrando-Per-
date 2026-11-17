@@ -328,3 +328,186 @@
   .volunteer-final__copy p { margin-inline: auto; }
   .volunteer-final a { width: 100%; white-space: normal; }
 }
+
+/* Match the site's established forest green, lime and condensed display type. */
+.volunteer-page {
+  color: #171b18;
+  font-family: var(--font-avenir);
+}
+
+.volunteer-page .join-hero.volunteer-hero {
+  min-height: clamp(460px, 38vw, 560px);
+  justify-content: flex-start;
+  padding: 0;
+  background: #004b37;
+}
+
+.volunteer-page .join-hero.volunteer-hero::before {
+  display: block;
+  background: linear-gradient(90deg, rgb(0 70 50 / 92%) 0%, rgb(0 78 57 / 78%) 42%, rgb(0 45 33 / 18%) 100%);
+}
+
+.volunteer-page .join-hero.volunteer-hero > img {
+  inset: 0;
+  z-index: -2;
+  width: 100%;
+  height: 100%;
+  clip-path: none;
+  object-position: center 48%;
+}
+
+.volunteer-page .volunteer-hero h1,
+.volunteer-page main h2,
+.volunteer-page main h3 {
+  font-family: var(--font-display);
+  font-weight: 400;
+  text-transform: uppercase;
+}
+
+.volunteer-hero__content {
+  width: min(60%, 820px);
+  margin: 0 0 0 15.5%;
+  padding: 120px 0 48px;
+}
+.volunteer-hero__badge { display: none; }
+.volunteer-page .volunteer-hero h1 {
+  max-width: 680px;
+  color: #fff;
+  font-size: clamp(48px, 5.4vw, 74px);
+  line-height: 1.12;
+  text-transform: none;
+  text-shadow: 0 2px 12px rgb(0 35 24 / 24%);
+}
+
+.volunteer-page .volunteer-hero p {
+  max-width: 520px;
+  color: #fff;
+  font-size: 18px;
+  line-height: 1.5;
+  text-shadow: 0 1px 8px rgb(0 35 24 / 28%);
+}
+
+.volunteer-hero__badge {
+  border-radius: 0;
+  background: #78aa2d;
+  color: #10271b;
+  font-family: var(--font-display);
+  font-size: 17px;
+  letter-spacing: .04em;
+  text-transform: uppercase;
+}
+
+.volunteer-hero__button,
+.volunteer-page .volunteer-final a {
+  border-radius: 0;
+  background: #78aa2d;
+  color: #13271c;
+  font-family: var(--font-display);
+  font-size: 19px;
+  font-weight: 700;
+  transition: background-color 180ms ease, transform 180ms ease;
+}
+
+.volunteer-hero__button { min-height: 54px; padding: 14px 28px; }
+.volunteer-hero__button:hover,
+.volunteer-page .volunteer-final a:hover { background: #659326; }
+
+.volunteer-page .volunteer-why {
+  padding-block: 64px;
+}
+
+.volunteer-page .volunteer-why h2,
+.volunteer-page .volunteer-activities-heading h2,
+.volunteer-page .volunteer-how h2,
+.volunteer-page .volunteer-faq .join-faq__heading h2 {
+  color: #006445;
+  font-weight: 400;
+  text-transform: uppercase;
+}
+
+.volunteer-page .volunteer-why > .volunteer-why__content > p,
+.volunteer-page .volunteer-activities-heading p {
+  color: #34483b;
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+.volunteer-page .volunteer-audience {
+  border: 0;
+  border-radius: 0;
+  box-shadow: 0 5px 18px rgb(23 63 48 / 10%);
+}
+
+.volunteer-page .volunteer-audience > div {
+  border-radius: 0;
+  background: rgb(0 77 55 / 90%);
+  color: #fff;
+}
+
+.volunteer-page .volunteer-how {
+  padding-block: 48px 56px;
+  background: #f2f4f1;
+}
+
+.volunteer-page .volunteer-how li {
+  min-height: 88px;
+  border: 1px solid #dce5dc;
+  border-radius: 0;
+  box-shadow: 0 4px 14px rgb(23 63 48 / 6%);
+}
+
+.volunteer-bottom {
+  align-items: stretch;
+  width: min(1120px, calc(100% - 48px));
+  padding-block: 56px;
+}
+
+.volunteer-page .volunteer-faq .join-faq__heading h2 {
+  font-size: clamp(28px, 3vw, 36px);
+}
+
+.volunteer-page .volunteer-faq .join-faq__list { gap: 10px; }
+.volunteer-page .volunteer-faq details { border: 0; border-bottom: 1px solid #c8d4ca; border-radius: 0; }
+.volunteer-page .volunteer-faq summary { min-height: 48px; padding: 12px 16px; font-size: 15px; }
+.volunteer-page .volunteer-faq details p { padding: 0 16px 16px; font-size: 15px; line-height: 1.55; }
+.volunteer-page .volunteer-faq .join-faq__actions { gap: 12px; margin-top: 18px; }
+.volunteer-page .volunteer-faq .join-faq__more { min-height: 42px; padding: 10px 16px; border-radius: 4px; font-size: 14px; }
+
+.volunteer-page .volunteer-bottom .volunteer-final { display: flex; align-items: center; padding: 0; background: transparent; }
+.volunteer-page .volunteer-final__card {
+  align-items: flex-start;
+  gap: 18px;
+  padding: 30px 28px;
+  border: 0;
+  border-radius: 0;
+  background: #f2f4f1;
+  box-shadow: none;
+  text-align: left;
+}
+.volunteer-page .volunteer-final__card::before { display: block; width: 5px; background: #78aa2d; }
+.volunteer-page .volunteer-final__icon { width: 56px; height: 56px; border-radius: 0; background: #e1ebdf; color: #006445; }
+.volunteer-page .volunteer-final h2 { font-size: clamp(25px, 2.6vw, 32px); }
+.volunteer-page .volunteer-final p { font-size: 15px; line-height: 1.55; }
+.volunteer-page .volunteer-final a { min-height: 46px; padding: 11px 18px; font-size: 15px; }
+
+@media (max-width: 760px) {
+  .volunteer-page .join-hero.volunteer-hero { min-height: 500px; padding: 0; }
+  .volunteer-page .join-hero.volunteer-hero > img { inset: 0; width: 100%; height: 100%; clip-path: none; }
+  .volunteer-page .join-hero.volunteer-hero::before { background: linear-gradient(90deg, rgb(0 70 50 / 90%), rgb(0 45 33 / 54%)); }
+  .volunteer-page .volunteer-hero h1 { font-size: clamp(40px, 10vw, 58px); }
+  .volunteer-hero__content { width: min(100% - 48px, 560px); margin: 0 auto; padding: 82px 0 36px; }
+  .volunteer-page .volunteer-why { padding-block: 40px; }
+  .volunteer-page .volunteer-why__photo { height: 260px; }
+  .volunteer-page .volunteer-benefits { gap: 12px; }
+  .volunteer-page .volunteer-benefits li { padding-inline: 6px; }
+  .volunteer-page .volunteer-benefits li strong { font-size: 12px; }
+  .volunteer-bottom { width: min(100% - 40px, 540px); padding-block: 40px; }
+  .volunteer-page .volunteer-bottom .volunteer-final { display: block; }
+  .volunteer-page .volunteer-final__card { align-items: center; text-align: center; }
+  .volunteer-page .volunteer-final__card::before { inset: 0 0 auto; width: auto; height: 5px; }
+  .volunteer-page .volunteer-final a { width: 100%; white-space: normal; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .volunteer-page * { scroll-behavior: auto !important; transition-duration: .01ms !important; }
+}
