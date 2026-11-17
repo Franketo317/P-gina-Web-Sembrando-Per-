@@ -3,7 +3,6 @@ import logo from '../assets/figma/imgImage4.png'
 import arrowRight from '../assets/figma/imgArrowRight.svg'
 import LanguageSwitcher from './LanguageSwitcher'
 import { useLanguage } from './LanguageContext'
-import { getPublications } from '../pages/publications'
 import './HomeHeader.css'
 
 type SearchItem = {
@@ -112,13 +111,6 @@ const searchDatabase: SearchItem[] = [
 
   // INFÓRMATE
   {
-    title: 'Publicaciones',
-    category: 'Infórmate',
-    description: 'Historias de impacto, avances ambientales y novedades de nuestras actividades en el Perú.',
-    href: '/publicaciones',
-    keywords: ['blog', 'noticias', 'articulos', 'historias', 'novedades', 'publicaciones'],
-  },
-  {
     title: 'Últimas Noticias de Impacto',
     category: 'Infórmate',
     description: 'Conoce las acciones recientes de reforestación, salud y educación en nuestras comunidades.',
@@ -126,11 +118,11 @@ const searchDatabase: SearchItem[] = [
     keywords: ['ultimas noticias', 'noticias', 'reciente', 'impacto'],
   },
   {
-    title: 'Campañas',
+    title: 'Voluntariado',
     category: 'Infórmate',
-    description: 'Conoce nuestras iniciativas de reforestación, educación y salud.',
-    href: '/campanas',
-    keywords: ['campanas', 'iniciativas', 'reforestacion', 'educacion', 'salud'],
+    description: 'Conoce cómo participar en nuestras actividades de voluntariado.',
+    href: '/voluntariado',
+    keywords: ['voluntariado', 'voluntarios', 'participacion', 'comunidad'],
   },
   {
     title: 'Alianzas empresariales',
@@ -143,35 +135,35 @@ const searchDatabase: SearchItem[] = [
     title: 'Artículo: Sembrando futuro por nuestros bosques',
     category: 'Infórmate',
     description: 'Conoce nuestras acciones de reforestación y el impacto ambiental generado en la Amazonía.',
-    href: '/publicaciones/articulo/sembrando-futuro-juntos-por-nuestros-bosques',
+    href: '/blog/articulo/sembrando-futuro-juntos-por-nuestros-bosques',
     keywords: ['sembrando futuro', 'bosques', 'madre de dios', 'medio ambiente', 'plantas nativas'],
   },
   {
     title: 'Artículo: Transformando vidas en nuestras comunidades',
     category: 'Infórmate',
     description: 'Historias y acciones para mejorar la vida de niños y familias en zonas rurales.',
-    href: '/publicaciones/articulo/transformando-vidas-comunidades',
+    href: '/blog/articulo/transformando-vidas-comunidades',
     keywords: ['transformando vidas', 'comunidad', 'familias', 'desarrollo', 'historias'],
   },
   {
     title: 'Artículo: Jornada de reforestación en Madre de Dios',
     category: 'Infórmate',
     description: 'Voluntarios y familias unidas para restaurar áreas degradadas en la selva peruana.',
-    href: '/publicaciones/articulo/jornada-reforestacion-madre-de-dios',
+    href: '/blog/articulo/jornada-reforestacion-madre-de-dios',
     keywords: ['jornada', 'madre de dios', 'voluntariado 2026', 'siembra'],
   },
   {
     title: 'Artículo: Guardianas del bosque: historias locales',
     category: 'Infórmate',
     description: 'Mujeres líderes que protegen la biodiversidad y transmiten saberes ancestrales en la Amazonía.',
-    href: '/publicaciones/articulo/guardianas-del-bosque',
+    href: '/blog/articulo/guardianas-del-bosque',
     keywords: ['guardianas', 'mujeres', 'liderazgo', 'conservacion', 'saberes'],
   },
   {
     title: 'Artículo: Prevención de anemia: nuevos enfoques',
     category: 'Infórmate',
     description: 'Estrategias comunitarias y atención médica para combatir la desnutrición y anemia infantil.',
-    href: '/publicaciones/articulo/prevencion-anemia-nuevos-enfoques',
+    href: '/blog/articulo/prevencion-anemia-nuevos-enfoques',
     keywords: ['anemia', 'prevencion anemia', 'salud infantil', 'nutricion'],
   },
 
@@ -204,15 +196,8 @@ export default function SiteHeader() {
   const headerRef = useRef<HTMLElement>(null)
   const searchInputRef = useRef<HTMLInputElement>(null)
   const searchPanelRef = useRef<HTMLDivElement>(null)
-  const { t, language } = useLanguage()
+  const { t } = useLanguage()
   const searchableItems: SearchItem[] = [
-    ...getPublications(language).map(publication => ({
-      title: publication.title,
-      category: t('Publicaciones'),
-      description: publication.description,
-      href: `/publicaciones/articulo/${publication.slug}`,
-      keywords: [publication.format, t(publication.category), 'publications', 'guide', 'resources', 'publicaciones', 'guia', 'materiales'],
-    })),
     ...searchDatabase,
   ]
   const searchTerms = normalizeText(submittedSearch).split(/\s+/).filter(Boolean)
@@ -304,7 +289,7 @@ export default function SiteHeader() {
 
   const currentPath = typeof window !== 'undefined' ? window.location.pathname.replace(/\/+$/, '') || '/' : '/'
   const isSembrandoPeruActive = currentPath === '/nosotros' || currentPath.startsWith('/nosotros') || currentPath === '/contacto' || currentPath === '/como-trabajamos' || currentPath === '/trabaja-con-nosotros' || currentPath.startsWith('/convocatoria-consultorias') || currentPath === '/nuestro-equipo' || currentPath === '/mecanismo-de-quejas' || currentPath === '/membresia'
-  const isInformateActive = currentPath === '/blog' || currentPath.startsWith('/blog/') || currentPath === '/publicaciones' || currentPath.startsWith('/publicaciones/') || currentPath === '/noticias' || currentPath === '/campanas' || currentPath === '/alianzas-empresariales'
+  const isInformateActive = currentPath === '/noticias' || currentPath === '/voluntariado' || currentPath === '/campanas' || currentPath.startsWith('/campanas/') || currentPath === '/alianzas-empresariales'
 
   return (
     <header className="about-header site-header-root" ref={headerRef}>
@@ -336,7 +321,7 @@ export default function SiteHeader() {
           </button>
           <div className="nav-dropdown__menu nav-dropdown__menu--sembrando" role="menu">
             <a href="/nosotros#historia" role="menuitem" onClick={closeAll}>
-              {t('Nuestra historia')}
+              {t('Quiénes somos')}
             </a>
             <a href="/como-trabajamos" role="menuitem" onClick={closeAll}>
               {t('¿Cómo trabajamos?')}
@@ -352,9 +337,6 @@ export default function SiteHeader() {
             </a>
             <a href="/nuestro-equipo" role="menuitem" onClick={closeAll}>
               {t('Nuestro equipo')}
-            </a>
-            <a href="/mecanismo-de-quejas" role="menuitem" onClick={closeAll}>
-              {t('Mecanismo de quejas')}
             </a>
           </div>
         </div>
@@ -390,7 +372,7 @@ export default function SiteHeader() {
           </div>
         </div>
 
-        {/* Dropdown 3: INFÓRMATE */}
+        {/* Dropdown 3: PARTICIPA */}
         <div className={`nav-dropdown${openDropdown === 'informate' ? ' is-open' : ''}${isInformateActive ? ' is-active' : ''}`}>
           <button
             type="button"
@@ -399,7 +381,7 @@ export default function SiteHeader() {
             onClick={() => toggleDropdown('informate')}
           >
             <span className="nav-dropdown__label">
-              {t('INFÓRMATE')}
+              {t('PARTICIPA')}
               {isInformateActive && <span className="nav-dropdown__active-indicator" aria-hidden="true" />}
             </span>
             <svg className="nav-dropdown__chevron" viewBox="0 0 12 8" width="11" height="7" aria-hidden="true">
@@ -410,11 +392,8 @@ export default function SiteHeader() {
             <a href="/noticias" role="menuitem" onClick={closeAll}>
               {t('NOTICIAS')}
             </a>
-            <a href="/publicaciones" role="menuitem" onClick={closeAll}>
-              {t('PUBLICACIONES')}
-            </a>
-            <a href="/campanas" role="menuitem" onClick={closeAll}>
-              {t('CAMPAÑAS')}
+            <a href="/voluntariado" role="menuitem" onClick={closeAll}>
+              {t('VOLUNTARIADO')}
             </a>
             <a href="/alianzas-empresariales" role="menuitem" onClick={closeAll}>
               {t('Alianzas empresariales')}

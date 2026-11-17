@@ -1,5 +1,5 @@
-export const joinAreas = ['Reforestación', 'Educación', 'Salud', 'Comunicación', 'Por definir']
-export const joinAvailability = ['Entre semana', 'Fines de semana', 'Actividades puntuales', 'Por coordinar']
+export const joinAreas = ['Reforestación', 'Educación', 'Salud', 'Comunicación', 'Alianzas empresariales', 'Por definir']
+export const joinAvailability = ['Fines de semana', 'Entre semana', 'Flexible']
 export const joinFields = ['name', 'email', 'phone', 'city', 'area', 'availability', 'message', 'consent'] as const
 export type JoinField = typeof joinFields[number]
 export type JoinErrors = Partial<Record<JoinField, string>>
@@ -21,7 +21,8 @@ export function validateJoinForm(data: FormData): JoinErrors {
   }
 
   const phone = value('phone')
-  if (phone && (!/^\+?[\d\s().-]+$/.test(phone) || !/^\d{7,15}$/.test(phone.replace(/\D/g, '')))) {
+  if (!phone) errors.phone = 'Ingresa tu teléfono.'
+  else if (!/^\+?[\d\s().-]+$/.test(phone) || !/^\d{7,15}$/.test(phone.replace(/\D/g, ''))) {
     errors.phone = 'Ingresa entre 7 y 15 dígitos. Puedes incluir +, espacios, guiones o paréntesis.'
   }
 

@@ -31,7 +31,7 @@ for (const file of files) {
 const report = { missing: [...missing], candidates: [...candidates].filter(text => !missing.has(text)), raw }
 if (process.argv.includes('--json')) console.log(JSON.stringify(report, null, 2))
 else {
-  const identifiers = new Set(['Av. Arequipa 2447 – Office 409, Lince District, Lima, Peru', 'ES | Español', 'EN | English', 'SEMBRANDO PERÚ', 'SEMBRANDO', 'PERÚ'])
+  const identifiers = new Set(['Av. Arequipa 2447 – Office 409, Lince District, Lima, Peru', 'ES | Español', 'EN | English', 'SEMBRANDO PERÚ', 'SEMBRANDO', 'PERÚ', 'WhatsApp'])
   const untranslatedMarkup = raw.filter(({ text }) => !identifiers.has(text) && !text.includes('@') && !text.startsWith('https://'))
   if (missing.size || report.candidates.length || untranslatedMarkup.length) {
     console.error(JSON.stringify({ missing: report.missing, data: report.candidates, markup: untranslatedMarkup }, null, 2))

@@ -1,0 +1,966 @@
+.conservation-strategies-page {
+  width: 100%;
+  max-width: 1920px;
+  min-height: 100vh;
+  margin: 0 auto;
+  overflow: clip;
+  background: #fff;
+  color: #191c1d;
+  font-family: var(--font-avenir);
+}
+
+.strategies-hero {
+  position: relative;
+  min-height: clamp(340px, 39vw, 540px);
+  display: grid;
+  align-items: center;
+  padding: 48px max(24px, calc((100% - 1180px) / 2));
+  background-color: #006445;
+  background-position: center 48%;
+  background-size: cover;
+  isolation: isolate;
+}
+
+.strategies-hero.strategies-hero--overview {
+  height: 620px;
+  min-height: 0;
+  align-items: center;
+  padding-top: clamp(104px, 7.5vw, 144px);
+}
+
+.strategies-hero .hero-socials--banner {
+  top: 20px !important;
+  right: max(24px, calc((100% - 1180px) / 2));
+}
+
+.strategies-hero--overview .hero-socials--banner {
+  top: 88px !important;
+}
+
+@media (max-width: 760px) {
+  .strategies-hero.strategies-hero--overview {
+    height: 660px;
+  }
+}
+
+.strategies-hero::before {
+  position: absolute;
+  z-index: -1;
+  inset: 0;
+  background: linear-gradient(90deg, rgb(0 48 33 / 76%), rgb(0 48 33 / 23%) 88%);
+  content: '';
+}
+
+.strategies-hero h1 {
+  width: min(100%, 820px);
+  margin: 0 auto;
+  text-align: center;
+  color: #fff;
+  font-family: var(--font-display);
+  font-size: clamp(42px, 6.5vw, 80px);
+  font-weight: 400;
+  line-height: 1.12;
+  text-shadow: 0 2px 12px rgb(0 0 0 / 32%);
+}
+
+.strategies-hero--overview h1 {
+  width: min(100%, 500px);
+  margin: 0;
+  transform: translateY(-52px);
+  font-size: clamp(42px, 4.5vw, 64px);
+  line-height: 1.3;
+  text-align: left;
+}
+
+.strategies-intro {
+  display: grid;
+  min-height: 260px;
+  place-items: center;
+  padding: 80px 24px;
+  background: #fff;
+  text-align: center;
+}
+
+.strategies-intro p {
+  width: min(100%, 780px);
+  margin: 0;
+  color: #343a36;
+  font-family: var(--font-inter);
+  font-size: 18px;
+  font-weight: 300;
+  line-height: 1.45;
+  text-align: center;
+}
+
+.strategies-section {
+  padding: 64px 24px 124px;
+  background: #00583e;
+  color: #fff;
+}
+
+.strategies-section__inner {
+  width: min(100%, 1200px);
+  margin: 0 auto;
+}
+
+.strategies-section h2 {
+  margin: 0 0 42px;
+  color: #fff;
+  font-family: var(--font-display);
+  font-size: clamp(34px, 4.5vw, 54px);
+  font-weight: 600;
+  line-height: 1.15;
+  text-align: center;
+}
+
+.strategies-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 28px;
+  align-items: stretch;
+}
+
+.strategy {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  background: #fff;
+  color: #24372e;
+}
+
+.strategy__image {
+  width: 100%;
+  height: 230px;
+  display: block;
+  object-fit: cover;
+  object-position: center;
+}
+
+.strategy__content {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  padding: 14px 14px 18px;
+}
+
+.strategy__content h2 {
+  margin: 0 0 8px;
+  color: #006445;
+  font-family: var(--font-display);
+  font-size: 19px;
+  font-weight: 400;
+  line-height: 1.2;
+  text-transform: uppercase;
+  text-align: left;
+}
+
+.strategy__content h2 a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.strategy__content h2 a:hover {
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+.strategy__more {
+  display: inline-block;
+  align-self: flex-start;
+  margin-top: 14px;
+  color: #006445;
+  font-size: 14px;
+  font-weight: 600;
+  text-underline-offset: 4px;
+}
+
+.strategy__content p {
+  flex: 1;
+  margin: 0;
+  font-family: var(--font-inter);
+  font-size: 16px;
+  line-height: 1.5;
+  text-align: justify;
+}
+
+.strategy-detail__hero h1 {
+  font-size: clamp(38px, 5vw, 64px);
+}
+
+.strategy-detail {
+  width: min(100%, 840px);
+  margin: 0 auto;
+  padding: 64px 24px 80px;
+  font-family: var(--font-avenir);
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 1.55;
+}
+
+.strategy-detail a {
+  color: #006445;
+  text-underline-offset: 4px;
+}
+
+.strategy-detail p {
+  margin: 0;
+  font-size: inherit;
+  line-height: inherit;
+  text-align: justify;
+}
+
+.strategy-detail p + p {
+  margin-top: 32px;
+}
+
+.strategy-detail h2 {
+  color: #006445;
+  font-family: var(--font-display);
+  font-size: clamp(32px, 3vw, 40px);
+  font-weight: 400;
+  line-height: 1.2;
+}
+
+@media (max-width: 760px) {
+  .strategy-detail {
+    font-size: 17px;
+  }
+
+  .strategy-detail h2 {
+    font-size: clamp(28px, 6vw, 32px);
+  }
+}
+
+@media (max-width: 900px) {
+  .strategies-grid {
+    grid-template-columns: 1fr;
+    max-width: 660px;
+    margin: 0 auto;
+    gap: 24px;
+  }
+
+  .strategy {
+    display: grid;
+    grid-template-columns: minmax(200px, 0.85fr) minmax(0, 1fr);
+    align-items: stretch;
+  }
+
+  .strategy__image {
+    height: 100%;
+    min-height: 230px;
+  }
+}
+
+@media (max-width: 600px) {
+  .strategies-hero {
+    min-height: 340px;
+    padding: 36px 22px;
+    background-position: 60% center;
+  }
+
+  .strategies-intro {
+    min-height: 0;
+    padding: 64px 22px;
+  }
+
+  .strategies-section {
+    padding: 48px 20px 88px;
+  }
+
+  .strategies-section h2 {
+    margin-bottom: 30px;
+  }
+
+  .strategy {
+    grid-template-columns: 1fr;
+  }
+
+  .strategy__image {
+    height: clamp(200px, 58vw, 300px);
+    min-height: 0;
+  }
+
+  .strategy__content {
+    padding: 20px 18px 24px;
+  }
+}
+
+.reto-hero{position:relative;min-height:clamp(430px,48vw,620px);display:flex;align-items:center;padding:56px max(24px,calc((100% - 1180px)/2));background-color:#07583e;background-position:center 48%;background-size:cover;isolation:isolate}
+.reto-hero::before{position:absolute;z-index:-1;inset:0;background:linear-gradient(90deg,rgba(0,60,40,.92) 0%,rgba(0,69,45,.76) 44%,rgba(0,45,30,.05) 100%);content:''}
+.reto-hero__copy{width:min(100%,520px);color:white}
+.reto-hero__eyebrow,.reto-kicker{margin:0 0 10px;color:#d6f35d;font-size:14px;font-weight:800;letter-spacing:.12em}
+.reto-hero h1{margin:0;color:#fff;font-family:var(--font-display);font-size:clamp(62px,9vw,112px);font-weight:700;line-height:.95;letter-spacing:-.04em}
+.reto-hero__lead{max-width:440px;margin:20px 0 28px;font-size:clamp(24px,3.2vw,38px);font-weight:700;line-height:1.12}
+.reto-button{display:inline-flex;align-items:center;justify-content:center;gap:12px;min-height:52px;padding:13px 22px;border-radius:999px;background:#d7f04f;color:#123e2d;font-size:16px;font-weight:800;text-decoration:none;transition:transform .2s,background .2s}
+.reto-button:hover{transform:translateY(-2px);background:#e4fb75}
+.reto-main{width:min(100%,1200px);margin:0 auto;padding:0 24px 72px}
+.reto-intro{max-width:1050px;margin:0 auto;padding:36px 24px 42px;text-align:center}
+.reto-intro__visuals{display:grid;grid-template-columns:minmax(0,.86fr) minmax(0,1.14fr);align-items:stretch;gap:20px;margin-top:18px}
+.reto-intro__image{display:block;width:100%;height:100%;min-height:170px;max-height:205px;object-fit:cover;border-radius:22px}
+.reto-intro__copy{max-width:760px;margin:0 auto}
+.reto-intro .reto-kicker{color:#548028}
+.reto-intro h2,.reto-steps>h2,.reto-benefits>h2{margin:0 0 14px;color:#124f37;font-family:var(--font-display);font-size:clamp(28px,4vw,40px);font-weight:700;line-height:1.15}
+.reto-intro__copy>p:last-child{max-width:760px;margin:0 auto;color:#35483e;font-size:17px;line-height:1.45}
+.reto-goal{display:flex;align-items:center;justify-content:center;gap:18px;width:100%;min-height:170px;margin:0;padding:18px 24px;border-radius:22px;background:linear-gradient(110deg,#e7f4d0,#f2f8df);text-align:left}
+.reto-goal__icon{display:grid;place-items:center;width:76px;height:76px;flex:0 0 auto;border-radius:50%;background:#d4ee9e;color:#397b30}
+.reto-goal p{margin:0 0 3px;color:#164b34;font-size:18px;font-weight:700}
+.reto-goal strong{display:block;color:#174f32;font-size:clamp(32px,5vw,48px);font-weight:800;line-height:1}
+.reto-goal span{display:block;margin-top:7px;color:#30483b;font-size:17px}.reto-goal span b{color:#50852a}
+.reto-steps{padding:6px 0 48px;text-align:center}
+.reto-steps>h2{margin-bottom:30px}
+.reto-steps__grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:26px;text-align:left}
+.reto-step{position:relative;display:flex;align-items:center;gap:14px;min-height:112px;padding:18px;border-radius:20px;background:#f0f5df}
+.reto-step__icon,.reto-benefit__icon{display:grid;place-items:center;flex:0 0 auto;width:58px;height:58px;border-radius:50%;background:#daedb8;color:#3c7c37}
+.reto-step__body h3,.reto-benefit h3{margin:0 0 5px;color:#164b34;font-size:18px;font-weight:800;line-height:1.2}
+.reto-step__body p,.reto-benefit p{margin:0;color:#35483e;font-size:14px;line-height:1.45}
+.reto-step__arrow{position:absolute;right:-27px;z-index:1;color:#4f842c}
+.reto-donation{display:flex;align-items:center;justify-content:space-between;gap:20px;margin:0 0 60px;padding:24px 34px;border:1px solid #e1e9ca;border-radius:25px;background:#edf4db}
+.reto-donation>p{max-width:210px;margin:0;color:#174b34;font-size:21px;font-weight:800;line-height:1.16}
+.reto-donation>strong{display:flex;flex-direction:column;align-items:center;justify-content:center;min-width:205px;padding:11px 25px;border-radius:999px;background:#07583e;color:#fff;font-size:36px;line-height:1}
+.reto-donation>strong small{margin-bottom:3px;color:#d7ef70;font-size:14px}.reto-donation__equals{color:#3c7131;font-size:34px;font-weight:700}
+.reto-donation__area{display:flex;align-items:center;gap:9px;color:#397b30}.reto-donation__area b{color:#183f2d;font-size:18px}.reto-donation__area small{display:block;font-size:14px;font-weight:500}
+.reto-benefits{padding:0 0 50px}.reto-benefits>h2{text-align:center;margin-bottom:25px}
+.reto-benefits__grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px}
+.reto-benefit{display:flex;align-items:flex-start;gap:12px}.reto-benefit__icon{width:48px;height:48px}.reto-benefit h3{font-size:16px}
+.reto-cta{display:flex;align-items:center;gap:20px;padding:28px 34px;border-radius:22px;background:linear-gradient(115deg,#064c36,#00633d);color:#fff;box-shadow:0 16px 36px rgba(16,76,45,.17)}
+.reto-cta__badge{position:relative;display:grid;place-items:center;width:64px;height:64px;flex:0 0 auto;border:2px solid #d6ed72;border-radius:12px;color:#d6ed72}.reto-cta__badge svg+svg{position:absolute;right:-9px;bottom:-8px;padding:3px;border-radius:50%;background:#064c36}
+.reto-cta p{flex:1;margin:0;font-size:15px;line-height:1.5}.reto-cta p strong{color:#d6ed72;font-size:19px}.reto-button--light{flex:0 0 auto;background:#d7f04f}
+@media(max-width:850px){.reto-steps__grid,.reto-benefits__grid{grid-template-columns:1fr;max-width:600px;margin:0 auto}.reto-step__arrow{right:18px;transform:rotate(90deg)}.reto-donation{flex-wrap:wrap;justify-content:center;text-align:center}.reto-donation>p{max-width:none;flex-basis:100%}}
+@media(max-width:700px){.reto-intro{padding:42px 4px 30px}.reto-intro__visuals{grid-template-columns:1fr;gap:14px;margin-top:22px}.reto-intro__image{height:auto;min-height:0;max-height:none;aspect-ratio:16/9}.reto-intro__copy{max-width:600px;margin:0 auto}.reto-intro__copy>p:last-child{font-size:16px}.reto-goal{min-height:130px;justify-content:flex-start;padding:18px 20px}}
+@media(max-width:600px){.reto-hero{min-height:490px;padding:42px 24px;background-position:62% center}.reto-hero::before{background:linear-gradient(90deg,rgba(0,60,40,.88),rgba(0,69,45,.52) 70%,rgba(0,45,30,.15))}.reto-hero__copy{padding-top:36px}.reto-main{padding:0 18px 48px}.reto-goal{justify-content:flex-start;margin-bottom:40px;padding:20px;border-radius:20px}.reto-goal__icon{width:60px;height:60px}.reto-goal__icon svg{width:38px}.reto-steps__grid{gap:13px}.reto-step{min-height:96px;padding:14px}.reto-step__icon{width:50px;height:50px}.reto-donation{gap:14px;padding:22px 16px;margin-bottom:44px}.reto-donation>strong{min-width:190px;font-size:32px}.reto-donation__equals{display:none}.reto-benefits{padding-bottom:34px}.reto-cta{flex-wrap:wrap;gap:15px;padding:22px}.reto-cta p{flex-basis:calc(100% - 82px)}.reto-button--light{width:100%}}
+
+/* Reto 300 layout overrides */
+.strategies-hero.strategies-hero--overview.reto-hero{height:auto;min-height:clamp(430px,48vw,620px);align-items:center;padding-top:56px}
+@media(max-width:760px){.strategies-hero.strategies-hero--overview.reto-hero{height:auto;min-height:490px;padding-top:42px}}
+@media(max-width:600px){.reto-goal{margin-bottom:0}}
+
+/* Keep the campaign typography and spacing aligned with the rest of the site. */
+.reto-hero__copy{font-family:var(--font-avenir)}
+.reto-hero__eyebrow{display:block;margin:0 0 14px;font-family:var(--font-avenir);font-size:clamp(12px,1.1vw,15px);font-weight:700;line-height:1.4;letter-spacing:.1em}
+.reto-hero h1{transform:none;font-family:var(--font-display);font-size:clamp(52px,7vw,88px);font-weight:400;line-height:1.08;letter-spacing:0}
+.reto-hero__lead{margin:18px 0 26px;font-family:var(--font-avenir);font-size:clamp(22px,2.8vw,34px);font-weight:600;line-height:1.22}
+.reto-button{font-family:var(--font-avenir);font-weight:700}
+.reto-intro__copy,.reto-step__body,.reto-benefit,.reto-cta{font-family:var(--font-avenir)}
+.reto-intro h2,.reto-steps>h2,.reto-benefits>h2{font-family:var(--font-display);font-weight:500}
+.reto-step__body h3,.reto-benefit h3{font-weight:700}
+@media(max-width:600px){.reto-hero h1{font-size:clamp(48px,13vw,68px)}.reto-hero__eyebrow{margin-bottom:12px}.reto-hero__lead{margin:14px 0 22px}}
+
+/* Soft section breaks: gentle surface shifts and thin borders. */
+.reto-intro{padding-bottom:38px;border-bottom:1px solid #e9eddf}
+.reto-steps{margin:20px 0 28px;padding:36px 28px 40px;border:1px solid #edf0e4;border-radius:24px;background:#fafbf6}
+.reto-donation{margin-top:0}
+.reto-benefits{padding:34px 0 42px;border-top:1px solid #e9eddf}
+.reto-hero__lead{margin-bottom:0}
+.reto-benefit__icon{width:56px;height:56px}
+.reto-benefit__icon svg{width:32px;height:32px}
+.reto-cta{margin-top:22px}
+.reto-steps{margin:12px 0 30px;padding:32px 0 38px;border:0;border-radius:0;background:transparent}
+.reto-steps>h2{margin-bottom:28px;font-size:clamp(26px,3.2vw,34px)}
+.reto-steps__grid{gap:20px}
+.reto-step{min-height:104px;padding:14px 16px;border:1px solid #edf0e4;border-radius:16px;background:#fff}
+.reto-step__icon{width:50px;height:50px;background:#edf5dc}
+.reto-step__body h3{font-size:17px}
+.reto-step__body p{font-size:14px;line-height:1.5}
+.reto-step__arrow{right:-23px;width:20px;color:#8ba76a}
+.reto-donation{display:grid;grid-template-columns:minmax(220px,1.2fr) minmax(180px,.9fr) 44px minmax(220px,1fr);align-items:center;justify-content:stretch;gap:24px;margin-bottom:44px;padding:24px 34px;border:1px solid #e6ebd9;border-radius:18px;background:#f8faf2}
+.reto-donation>p{max-width:260px;font-size:18px;line-height:1.35}
+.reto-donation>strong{min-width:0;padding:0;border-radius:0;background:transparent;color:#07583e;font-size:32px}
+.reto-donation>strong small{margin:0 0 2px;color:#668747;font-size:13px;font-weight:600}
+.reto-donation__equals{justify-self:center;font-size:26px;color:#9aaa83}
+.reto-donation__area{justify-self:center;min-width:195px;gap:12px;color:#54813e}
+.reto-donation__area b{font-size:17px}
+@media(max-width:850px){.reto-donation{display:flex;flex-wrap:wrap;justify-content:center;gap:18px}.reto-donation>p{flex:0 0 100%;max-width:none;text-align:center}.reto-donation>strong{min-width:0}}
+@media(max-width:600px){.reto-steps{margin:12px 0 22px;padding:28px 18px 30px;border-radius:18px}.reto-intro{padding-bottom:30px}.reto-benefits{padding:28px 0 34px}}
+
+.conservation-strategies-page .reto-button,
+.conservation-strategies-page .reto-intro__image,
+.conservation-strategies-page .reto-goal,
+.conservation-strategies-page .reto-steps,
+.conservation-strategies-page .reto-step,
+.conservation-strategies-page .reto-donation,
+.conservation-strategies-page .reto-cta{border-radius:0}
+
+/* Match the reforestation page's typography while retaining campaign hierarchy. */
+.conservation-strategies-page .reto-hero h1 {
+  font-size: clamp(38px, 4.5vw, 72px);
+  font-weight: 400;
+  line-height: 1.1;
+  text-transform: uppercase;
+}
+
+.conservation-strategies-page .reto-hero__lead {
+  font-size: clamp(17px, 1.8vw, 23px);
+  font-weight: 200;
+  line-height: 1.4;
+}
+
+.conservation-strategies-page .reto-hero {
+  padding-right: max(24px, calc((100% - 1150px) / 2));
+  padding-left: max(24px, calc((100% - 1150px) / 2));
+}
+
+.conservation-strategies-page .reto-main h2 {
+  font-size: clamp(32px, 3vw, 40px);
+  font-weight: 400;
+  line-height: 1.2;
+}
+
+.conservation-strategies-page .reto-intro__copy > p:last-child {
+  font-size: clamp(18px, 1.35vw, 20px);
+  line-height: 1.5;
+}
+
+.conservation-strategies-page .reto-step__body h3,
+.conservation-strategies-page .reto-benefit h3 {
+  font-family: var(--font-display);
+  font-size: 22px;
+  font-weight: 400;
+  line-height: 1.25;
+}
+
+.conservation-strategies-page .reto-step__body p,
+.conservation-strategies-page .reto-benefit p {
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+.conservation-strategies-page .reto-donation > p {
+  font-size: 20px;
+  line-height: 1.35;
+}
+
+.conservation-strategies-page .reto-donation__area b {
+  font-size: 18px;
+}
+
+.conservation-strategies-page .reto-donation__area small {
+  font-size: 15px;
+}
+
+.conservation-strategies-page .reto-cta p {
+  font-size: 17px;
+  line-height: 1.55;
+}
+
+.conservation-strategies-page .reto-cta p strong {
+  font-size: 22px;
+  font-weight: 500;
+}
+
+@media (max-width: 760px) {
+  .conservation-strategies-page .reto-main h2 {
+    font-size: clamp(28px, 6vw, 32px);
+  }
+}
+
+@media (max-width: 600px) {
+  .conservation-strategies-page .reto-hero h1 {
+    font-size: clamp(38px, 4.5vw, 72px);
+  }
+}
+
+@media (max-width: 760px) {
+  .conservation-strategies-page .reto-hero {
+    padding-right: 22px;
+    padding-left: 22px;
+  }
+}
+
+.conservation-strategies-page {
+  --reto-green: var(--forest-deep);
+  --reto-surface: #f3f5f2;
+  --reto-text: #343a36;
+}
+
+.conservation-strategies-page .reto-hero {
+  min-height: 560px;
+  box-sizing: border-box;
+  align-items: center;
+  padding: 80px max(32px, calc((100% - 1150px) / 2));
+  background-color: var(--reto-green);
+  background-position: center 45%;
+}
+
+.conservation-strategies-page .reto-hero::before {
+  background: rgb(0 53 37 / 62%);
+}
+
+.conservation-strategies-page .reto-hero__copy {
+  width: min(100%, 1150px);
+  margin: 0 auto;
+  color: #fff;
+}
+
+.conservation-strategies-page .reto-hero h1 {
+  width: auto;
+  max-width: 100%;
+  margin: 0;
+  color: #fff;
+  font-family: var(--font-display);
+  font-size: clamp(56px, 6vw, 80px);
+  font-weight: 400;
+  line-height: 1.1;
+  text-align: left;
+  text-transform: uppercase;
+  text-shadow: none;
+}
+
+.conservation-strategies-page .reto-banner {
+  display: grid;
+  min-height: 128px;
+  box-sizing: border-box;
+  place-items: center;
+  padding: 30px 24px;
+  background: var(--reto-green);
+  color: #fff;
+  text-align: center;
+}
+
+.conservation-strategies-page .reto-banner p {
+  margin: 0;
+  font-family: var(--font-avenir);
+  font-size: clamp(20px, 2vw, 26px);
+  line-height: 1.45;
+}
+
+.conservation-strategies-page .reto-main {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  font-family: var(--font-avenir);
+}
+
+.conservation-strategies-page .reto-intro {
+  width: 100%;
+  max-width: none;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 72px 24px 80px;
+  border: 0;
+  background: #fff;
+  text-align: center;
+}
+
+.conservation-strategies-page .reto-intro__copy {
+  width: min(100%, 700px);
+  margin: 0 auto;
+}
+
+.conservation-strategies-page .reto-intro h2,
+.conservation-strategies-page .reto-section-title {
+  margin: 0 0 20px;
+  color: var(--reto-green);
+  font-family: var(--font-display);
+  font-size: clamp(32px, 3.2vw, 40px);
+  font-weight: 400;
+  line-height: 1.2;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.conservation-strategies-page .reto-intro__copy > p:last-child {
+  max-width: 700px;
+  margin: 0 auto;
+  color: var(--reto-text);
+  font-family: var(--font-avenir);
+  font-size: 19px;
+  line-height: 1.7;
+  text-align: center;
+}
+
+.conservation-strategies-page .reto-goal {
+  display: flex;
+  width: 100%;
+  min-height: 420px;
+  box-sizing: border-box;
+  align-items: stretch;
+  margin: 0;
+  padding: 0;
+  background-color: var(--reto-green);
+  background-position: center;
+  background-size: cover;
+}
+
+.conservation-strategies-page .reto-goal__panel {
+  display: flex;
+  width: min(44%, 470px);
+  min-height: 420px;
+  box-sizing: border-box;
+  flex-direction: column;
+  justify-content: center;
+  margin-left: max(32px, calc((100% - 1150px) / 2));
+  padding: 48px;
+  background: rgb(0 0 0 / 72%);
+  color: #fff;
+}
+
+.conservation-strategies-page .reto-goal__panel p {
+  margin: 0 0 8px;
+  color: #fff;
+  font-family: var(--font-display);
+  font-size: 22px;
+  line-height: 1.3;
+  text-transform: uppercase;
+}
+
+.conservation-strategies-page .reto-goal__panel strong {
+  display: block;
+  color: #fff;
+  font-family: var(--font-display);
+  font-size: clamp(46px, 6vw, 72px);
+  font-weight: 500;
+  line-height: 1.05;
+}
+
+.conservation-strategies-page .reto-goal__panel span {
+  display: block;
+  margin-top: 8px;
+  color: #fff;
+  font-family: var(--font-avenir);
+  font-size: 21px;
+  line-height: 1.5;
+}
+
+.conservation-strategies-page .reto-impact {
+  padding: 72px 32px 80px;
+  background: var(--reto-surface);
+}
+
+.conservation-strategies-page .reto-impact__inner,
+.conservation-strategies-page .reto-benefits__inner {
+  width: min(100%, 1150px);
+  margin: 0 auto;
+}
+
+.conservation-strategies-page .reto-impact .reto-section-title,
+.conservation-strategies-page .reto-benefits .reto-section-title {
+  margin-bottom: 38px;
+}
+
+.conservation-strategies-page .reto-steps__grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 30px;
+  margin: 0;
+  text-align: left;
+}
+
+.conservation-strategies-page .reto-step {
+  display: block;
+  min-height: 0;
+  padding: 18px 0 0;
+  border: 0;
+  border-top: 1px solid var(--reto-green);
+  border-radius: 0;
+  background: transparent;
+}
+
+.conservation-strategies-page .reto-step__number {
+  display: block;
+  margin-bottom: 12px;
+  color: var(--reto-green);
+  font-family: var(--font-display);
+  font-size: 32px;
+  line-height: 1;
+}
+
+.conservation-strategies-page .reto-step__body h3 {
+  margin: 0 0 8px;
+  color: var(--reto-green);
+  font-family: var(--font-display);
+  font-size: 23px;
+  font-weight: 400;
+  line-height: 1.25;
+  text-transform: uppercase;
+}
+
+.conservation-strategies-page .reto-step__body p {
+  max-width: 340px;
+  margin: 0;
+  color: var(--reto-text);
+  font-family: var(--font-avenir);
+  font-size: 17px;
+  line-height: 1.65;
+}
+
+.conservation-strategies-page .reto-gallery {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
+  margin-top: 48px;
+}
+
+.conservation-strategies-page .reto-gallery img {
+  display: block;
+  width: 100%;
+  height: clamp(220px, 25vw, 320px);
+  border-radius: 12px;
+  object-fit: cover;
+}
+
+.conservation-strategies-page .reto-donation {
+  display: block;
+  margin: 0;
+  padding: 72px 24px 78px;
+  border: 0;
+  border-radius: 0;
+  background: #fff;
+  text-align: center;
+}
+
+.conservation-strategies-page .reto-donation__inner {
+  width: min(100%, 700px);
+  margin: 0 auto;
+}
+
+.conservation-strategies-page .reto-donation .reto-section-title {
+  margin-bottom: 18px;
+}
+
+.conservation-strategies-page .reto-donation__proposal {
+  margin: 0;
+  color: var(--reto-green);
+  font-family: var(--font-display);
+  font-size: 25px;
+  line-height: 1.35;
+}
+
+.conservation-strategies-page .reto-donation__note {
+  margin: 10px 0 0;
+  color: var(--reto-text);
+  font-family: var(--font-avenir);
+  font-size: 17px;
+  line-height: 1.65;
+}
+
+.conservation-strategies-page .reto-benefits {
+  padding: 72px 32px 82px;
+  border: 0;
+  background: #fff;
+}
+
+.conservation-strategies-page .reto-benefits__grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 36px;
+  margin: 0;
+}
+
+.conservation-strategies-page .reto-benefit {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  text-align: center;
+}
+
+.conservation-strategies-page .reto-benefit__icon {
+  display: block;
+  width: 36px;
+  height: 36px;
+  border-radius: 0;
+  background: none;
+  color: var(--reto-green);
+  stroke-width: 1.5;
+}
+
+.conservation-strategies-page .reto-benefit h3 {
+  margin: 0;
+  color: var(--reto-green);
+  font-family: var(--font-display);
+  font-size: 22px;
+  font-weight: 400;
+  line-height: 1.25;
+  text-transform: uppercase;
+}
+
+.conservation-strategies-page .reto-benefit p {
+  max-width: 330px;
+  margin: 0;
+  color: var(--reto-text);
+  font-family: var(--font-avenir);
+  font-size: 17px;
+  line-height: 1.65;
+}
+
+.conservation-strategies-page .reto-cta {
+  display: block;
+  margin: 0;
+  padding: 64px 32px 72px;
+  border-radius: 0;
+  background: var(--reto-green);
+  box-shadow: none;
+  color: #fff;
+  text-align: center;
+}
+
+.conservation-strategies-page .reto-cta__inner {
+  width: min(100%, 760px);
+  margin: 0 auto;
+}
+
+.conservation-strategies-page .reto-cta h2 {
+  margin: 0 0 14px;
+  color: #fff;
+  font-family: var(--font-display);
+  font-size: clamp(32px, 4vw, 44px);
+  font-weight: 400;
+  line-height: 1.2;
+  text-transform: uppercase;
+}
+
+.conservation-strategies-page .reto-cta p {
+  margin: 0 auto 26px;
+  color: #fff;
+  font-family: var(--font-avenir);
+  font-size: 18px;
+  line-height: 1.65;
+}
+
+.conservation-strategies-page .reto-button {
+  display: inline-flex;
+  min-height: 56px;
+  box-sizing: border-box;
+  align-items: center;
+  justify-content: center;
+  padding: 14px 26px;
+  border: 0;
+  border-radius: 0;
+  background: #fff;
+  color: var(--reto-green);
+  font-family: var(--font-display);
+  font-size: 18px;
+  font-weight: 500;
+  text-align: center;
+  text-decoration: none;
+  text-transform: uppercase;
+  transition: background-color 180ms ease;
+}
+
+.conservation-strategies-page .reto-button:hover {
+  transform: none;
+  background: var(--reto-surface);
+}
+
+@media (max-width: 760px) {
+  .conservation-strategies-page .reto-hero {
+    min-height: 420px;
+    padding: 90px 24px 56px;
+    background-position: 58% center;
+  }
+
+  .conservation-strategies-page .reto-hero h1 {
+    font-size: clamp(48px, 10vw, 64px);
+  }
+
+  .conservation-strategies-page .reto-banner {
+    min-height: 108px;
+    padding: 24px 20px;
+  }
+
+  .conservation-strategies-page .reto-intro {
+    padding: 52px 24px 58px;
+  }
+
+  .conservation-strategies-page .reto-intro__copy > p:last-child {
+    font-size: 17px;
+  }
+
+  .conservation-strategies-page .reto-goal,
+  .conservation-strategies-page .reto-goal__panel {
+    min-height: 320px;
+  }
+
+  .conservation-strategies-page .reto-goal__panel {
+    width: min(80%, 420px);
+    margin-left: 24px;
+    padding: 32px;
+  }
+
+  .conservation-strategies-page .reto-impact,
+  .conservation-strategies-page .reto-benefits {
+    padding: 56px 24px 62px;
+  }
+
+  .conservation-strategies-page .reto-steps__grid {
+    grid-template-columns: 1fr;
+    gap: 24px;
+    max-width: 560px;
+  }
+
+  .conservation-strategies-page .reto-gallery {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .conservation-strategies-page .reto-gallery img {
+    height: clamp(190px, 35vw, 270px);
+  }
+
+  .conservation-strategies-page .reto-gallery img:last-child {
+    grid-column: 1 / -1;
+    width: calc(50% - 9px);
+    justify-self: center;
+  }
+
+  .conservation-strategies-page .reto-donation {
+    padding: 56px 24px 62px;
+  }
+
+  .conservation-strategies-page .reto-benefits__grid {
+    grid-template-columns: 1fr;
+    gap: 34px;
+  }
+}
+
+@media (max-width: 540px) {
+  .conservation-strategies-page .reto-hero {
+    min-height: 360px;
+    padding: 96px 20px 40px;
+  }
+
+  .conservation-strategies-page .reto-hero h1 {
+    font-size: clamp(42px, 11vw, 56px);
+  }
+
+  .conservation-strategies-page .reto-goal,
+  .conservation-strategies-page .reto-goal__panel {
+    min-height: 280px;
+  }
+
+  .conservation-strategies-page .reto-goal__panel {
+    width: calc(100% - 32px);
+    margin: 0 16px;
+    padding: 28px 24px;
+  }
+
+  .conservation-strategies-page .reto-goal__panel strong {
+    font-size: clamp(42px, 12vw, 58px);
+  }
+
+  .conservation-strategies-page .reto-impact,
+  .conservation-strategies-page .reto-benefits {
+    padding-right: 20px;
+    padding-left: 20px;
+  }
+
+  .conservation-strategies-page .reto-gallery {
+    grid-template-columns: 1fr;
+    gap: 14px;
+    margin-top: 34px;
+  }
+
+  .conservation-strategies-page .reto-gallery img,
+  .conservation-strategies-page .reto-gallery img:last-child {
+    width: 100%;
+    height: 240px;
+    grid-column: auto;
+  }
+
+  .conservation-strategies-page .reto-cta {
+    padding: 50px 22px 56px;
+  }
+
+  .conservation-strategies-page .reto-button {
+    width: 100%;
+  }
+}

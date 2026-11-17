@@ -38,7 +38,6 @@
 }
 
 .news-banner p { margin: 0; font-size: clamp(21px, 2.2vw, 28px); line-height: 1.4; }
-.publications-page .news-banner p { font-size: 17px; }
 .news-intro { max-width: 860px; margin: auto; padding: 72px 32px 88px; text-align: center; }
 .news-intro p { margin: 0 0 16px; font-size: 18px; line-height: 1.75; }
 .news-intro p:last-child { margin-bottom: 0; }
@@ -85,22 +84,12 @@
   .news-page--news .news-item__image img { height: 160px; }
 }
 
-.publications-page .news-hero { background-position: center 40%; }
-.publications-page .news-content { padding-top: 64px; scroll-margin-top: 100px; }
-.publications-page .news-item { grid-template-columns: 200px minmax(0, 1fr); gap: 32px; padding: 28px 0; }
-.publications-page .news-item:first-child { padding-top: 0; }
-.publications-page .news-item__image { display: block; width: 100%; text-decoration: none; }
-.publications-page .news-item__body { display: flex; flex-direction: column; justify-content: flex-start; padding-top: 12px; }
-.publications-page .news-item h2 { margin-bottom: 16px; font-family: var(--font-display); font-size: clamp(26px, 2.4vw, 32px); font-weight: 500; line-height: 1.25; }
-.publication-library-note { margin: 0 0 24px; color: #68716c; font-size: 13px; line-height: 1.6; }
-.publication-format { margin-bottom: 12px; color: #02734d; font-size: 13px; font-weight: 700; letter-spacing: .04em; text-transform: uppercase; }
 
 @media (max-width: 800px) {
   .news-hero { min-height: 420px; }
   .news-search { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .news-search__submit { min-height: 48px; }
   .news-item { grid-template-columns: 210px minmax(0, 1fr); }
-  .publications-page .news-item { grid-template-columns: 170px minmax(0, 1fr); gap: 24px; }
 }
 
 @media (max-width: 540px) {
@@ -115,9 +104,4 @@
   .news-item__image img { height: auto; aspect-ratio: 16 / 10; }
   .news-content { padding-bottom: 64px; }
   .news-more button { min-width: 0; width: 100%; }
-  .publications-page .news-content { padding-top: 40px; }
-  .publications-page .news-hero h1 { font-size: clamp(40px, 11vw, 56px); }
-  .publications-page .news-item { grid-template-columns: 120px minmax(0, 1fr); gap: 16px; }
-  .publications-page .news-item h2 { font-size: 24px; }
-  .publications-page .news-item__body { padding-top: 4px; }
 }
