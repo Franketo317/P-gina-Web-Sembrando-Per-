@@ -13,19 +13,19 @@ import './NosotrosPage.css'
 const peruPillars = [
   {
     title: 'Protección del medioambiente',
-    description: 'Restauramos los bosques, protegemos la biodiversidad y promovemos el cuidado responsable del territorio.',
+    description: 'Contribuir a la restauración de bosques degradados mediante la reforestación con especies nativas, favoreciendo la recuperación de los ecosistemas y la conservación de la biodiversidad. También buscamos involucrar a las comunidades en el cuidado de sus recursos naturales y fomentar prácticas sostenibles.',
     image: aboutPhotoFour,
     imageAlt: 'Sendero rodeado de árboles en el bosque',
   },
   {
     title: 'Educación para el desarrollo',
-    description: 'Impulsamos el aprendizaje y la alfabetización para ampliar las oportunidades de niñas, niños y comunidades rurales.',
+    description: 'Promover oportunidades de aprendizaje mediante iniciativas de educación ambiental y alfabetización en comunidades rurales. Buscamos desarrollar conocimientos y capacidades, fomentar una mayor conciencia ambiental y brindar herramientas para el crecimiento personal y comunitario.',
     image: educationImage,
     imageAlt: 'Actividad educativa para niñas y niños',
   },
   {
     title: 'Bienestar y salud infantil',
-    description: 'Acompañamos a las familias con acciones de prevención y promoción de la salud integral de la niñez.',
+    description: 'Apoyar la prevención de la anemia infantil mediante iniciativas de sensibilización y educación sobre alimentación saludable y cuidado de la salud. Asimismo, buscamos ampliar los conocimientos de las familias e incentivar hábitos saludables que favorezcan el bienestar y el desarrollo de los niños.',
     image: healthImage,
     imageAlt: 'Niñas y niños sostienen un cartel de Sembrando Perú',
   },

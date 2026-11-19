@@ -19,9 +19,9 @@ export function VolunteeringParticipation() {
     { title: 'Salud', description: 'Contribuye al bienestar infantil y familiar.', image: healthPhoto, icon: Heart, href: '/salud' },
   ]
   const steps = [
-    { title: 'Explora', text: 'Conoce nuestras iniciativas.', icon: Binoculars },
-    { title: 'Elige', text: 'Indica tus intereses y disponibilidad.', icon: Pencil },
-    { title: 'Inscríbete', text: 'Envía tu solicitud para coordinar tu participación.', icon: CalendarCheck },
+    { title: 'Explora', text: 'Conoce nuestras iniciativas de reforestación, educación y salud. Visita nuestras redes sociales para descubrir actividades y oportunidades de voluntariado.', icon: Binoculars },
+    { title: 'Elige', text: 'Identifica el área en la que te gustaría colaborar, considerando tus intereses, conocimientos, habilidades y disponibilidad.', icon: Pencil },
+    { title: 'Inscríbete', text: 'Completa nuestro formulario de contacto con tus datos e intereses para que el equipo pueda informarte sobre los siguientes pasos y coordinar tu participación.', icon: CalendarCheck },
   ]
   return (
     <>

@@ -13,7 +13,8 @@ dist-ssr
 *.local
 .env
 .env.*
-!.env.production.example
+!.env.example
+!.env.*.example
 supabase/.temp/
 
 # Editor directories and files

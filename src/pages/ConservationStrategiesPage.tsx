@@ -8,15 +8,15 @@ import { BlogFooter } from './BlogPage'
 import './ConservationStrategiesPage.css'
 
 const impactSteps = [
-  { icon: Handshake, title: 'Tu empresa aporta', text: 'Conversa con nuestro equipo para definir el aporte y las condiciones de colaboración.' },
-  { icon: Sprout, title: 'Reforestamos', text: 'Contribuimos a recuperar áreas degradadas de la Selva Central junto a las comunidades.' },
-  { icon: BookOpen, title: 'Educamos', text: 'Fortalecemos el aprendizaje de los niños y las comunidades de la zona.' },
+  { icon: Handshake, title: 'Tu empresa aporta', text: 'Conversa con nuestro equipo para definir una propuesta de colaboración que se adapte a los objetivos y posibilidades de tu empresa. Tu participación puede apoyar iniciativas ambientales y educativas orientadas a generar cambios positivos en la Selva Central.' },
+  { icon: Sprout, title: 'Reforestamos', text: 'Contribuimos a la recuperación de áreas degradadas de la Selva Central mediante la reforestación con especies nativas y el trabajo conjunto con las comunidades locales.' },
+  { icon: BookOpen, title: 'Educamos', text: 'Impulsamos iniciativas educativas que fortalecen el aprendizaje de los niños y las comunidades de la zona, ampliando oportunidades educativas y la conciencia sobre el cuidado del medioambiente.' },
 ]
 
 const benefits = [
-  { icon: Leaf, title: 'Impacto ambiental y social', text: 'Contribuye a la recuperación de los bosques y al desarrollo de las comunidades.' },
-  { icon: Award, title: 'Reconocimiento como empresa aliada', text: 'Visibilizamos tu compromiso en nuestros canales oficiales.' },
-  { icon: BarChart3, title: 'Resultados y transparencia', text: 'Conoce el avance y el impacto real de tu participación.' },
+  { icon: Leaf, title: 'Impacto ambiental y social', text: 'Contribuye a la recuperación de bosques degradados mediante iniciativas de reforestación y apoya actividades educativas que buscan mejorar el bienestar de las comunidades locales.' },
+  { icon: Award, title: 'Reconocimiento como empresa aliada', text: 'Fortalece tu compromiso social y ambiental al formar parte de una iniciativa orientada a la conservación y al desarrollo comunitario. También puedes visibilizar tu participación mediante los canales oficiales de Sembrando Perú.' },
+  { icon: BarChart3, title: 'Resultados y transparencia', text: 'Conoce los avances y resultados de tu contribución para identificar sus aportes ambientales y sociales y comunicar el compromiso de tu empresa.' },
 ]
 
 export default function ConservationStrategiesPage() {

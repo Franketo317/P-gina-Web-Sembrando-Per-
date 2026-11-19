@@ -12,9 +12,9 @@ import communityImage from '../assets/figma/reforestacion6.jpg'
 import './ReforestationPage.css'
 
 const actions = [
-  { title: 'Restauramos áreas degradadas', text: 'Impulsamos iniciativas de reforestación para recuperar los bosques y sus ecosistemas.' },
-  { title: 'Trabajamos junto a las comunidades', text: 'Involucramos a agricultores y familias en las jornadas de plantación y el cuidado del territorio.' },
-  { title: 'Fomentamos la educación ambiental', text: 'Compartimos conocimientos sobre la importancia de los bosques y su conservación.' },
+  { title: 'Restauramos áreas degradadas', text: 'Impulsamos iniciativas de reforestación con especies nativas para contribuir a la recuperación de bosques degradados y favorecer la conservación de la biodiversidad. Buscamos restaurar los ecosistemas afectados, fortalecer su equilibrio natural y proteger los recursos forestales.' },
+  { title: 'Trabajamos junto a las comunidades', text: 'Involucramos a agricultores y familias locales en las jornadas de plantación y el cuidado de los árboles. Promovemos su participación activa y compartimos responsabilidades para fortalecer el vínculo con el entorno natural y fomentar prácticas sostenibles.' },
+  { title: 'Fomentamos la educación ambiental', text: 'Compartimos conocimientos sobre la importancia de los bosques, la biodiversidad y el uso responsable de los recursos naturales mediante actividades de sensibilización y educación ambiental.' },
 ]
 
 const stories = [

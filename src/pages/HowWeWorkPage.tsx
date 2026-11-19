@@ -15,7 +15,7 @@ const workMethodCards = [
     title: 'Socio estratégico local',
     label: 'TRABAJO LOCAL',
     text:
-      'Trabajamos con agricultores y familias rurales, promoviendo su participación en la reforestación y el cuidado de los bosques.',
+      'Trabajamos de la mano con agricultores y familias rurales, promoviendo su participación activa en la restauración y el cuidado de los bosques. Mediante el trabajo colaborativo, buscamos reforzar el vínculo de las comunidades con su entorno natural y fomentar prácticas sostenibles que contribuyan a su bienestar.',
     image: strategyImageOne,
     imageAlt: 'Agricultores y equipo local colaboran en la Amazonía',
     href: '/#programas',
@@ -29,7 +29,7 @@ const workMethodCards = [
     title: 'Sostenibilidad integral',
     label: 'ENFOQUE INTEGRAL',
     text:
-      'Integramos la restauración de bosques, la educación ambiental, la alfabetización y la prevención en salud para generar un desarrollo sostenible en las comunidades.',
+      'Integramos la restauración de bosques con iniciativas de educación ambiental, alfabetización y prevención en salud, reconociendo la importancia de conectar el cuidado del medioambiente con el bienestar de las comunidades. Con este enfoque, buscamos generar beneficios ambientales y sociales que favorezcan el desarrollo sostenible.',
     image: communityGalleryImageOne,
     imageAlt: 'Equipo de Sembrando Perú participa en una jornada comunitaria',
     href: '/#programas',
@@ -44,7 +44,7 @@ const workMethodCards = [
     title: 'Alianzas y voluntariado activo',
     label: 'PARTICIPACIÓN ACTIVA',
     text:
-      'Promovemos la participación de voluntarios y la colaboración con organizaciones interesadas en contribuir a nuestras iniciativas.',
+      'Promovemos la participación de voluntarios y la colaboración con organizaciones y aliados estratégicos que comparten nuestro compromiso social y ambiental. Mediante el trabajo conjunto y el intercambio de experiencias, buscamos ampliar el alcance de nuestras iniciativas y aportar a las comunidades donde realizamos nuestras actividades.',
     image: communityGalleryImageTwo,
     imageAlt: 'Voluntarios de Sembrando Perú trabajan junto a la comunidad',
     href: '/#programas',
