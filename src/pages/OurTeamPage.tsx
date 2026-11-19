@@ -161,6 +161,7 @@ export default function OurTeamPage() {
         <section className="team-volunteer-callout" aria-labelledby="team-volunteer-title">
           <div className="team-volunteer-callout__inner">
             <UsersRound className="team-volunteer-callout__icon" aria-hidden="true" />
+            <span className="team-volunteer-callout__count" aria-label="Más de 50">+50</span>
             <div className="team-volunteer-callout__copy">
               <h2 id="team-volunteer-title">{t('Voluntarios que impulsan nuestra misión')}</h2>
               <p>{t('Personas comprometidas con la protección del medioambiente y el bienestar de las comunidades, que contribuyen con su tiempo, conocimientos y compromiso en nuestras distintas iniciativas.')}</p>

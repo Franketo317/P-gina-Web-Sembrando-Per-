@@ -4,22 +4,24 @@
   flex-direction: column;
   align-items: flex-start;
   padding: 64px clamp(28px, 6vw, 110px);
-  background-position: center top;
+  background-position: center 45%;
 }
 
 .health-page .health-hero::before {
-  background: linear-gradient(180deg, rgb(0 0 0 / 3%) 35%, rgb(0 0 0 / 28%));
+  background: linear-gradient(90deg, rgb(0 35 25 / 68%) 0%, rgb(0 35 25 / 46%) 38%, rgb(0 35 25 / 12%) 72%, transparent 100%), linear-gradient(0deg, rgb(0 0 0 / 16%), transparent 48%);
 }
 
 .health-page .health-hero h1 {
   font-size: clamp(44px, 4vw, 64px);
   line-height: 1.1;
+  text-shadow: 0 2px 14px rgb(0 0 0 / 55%);
 }
 
 .health-page .health-hero__subtitle {
   max-width: 360px;
   margin-top: 12px;
   text-wrap: pretty;
+  text-shadow: 0 2px 10px rgb(0 0 0 / 65%);
 }
 
 .health-page .health-intro {
@@ -43,10 +45,75 @@
   margin-bottom: 0;
 }
 
+.health-conclusion-feature {
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  min-height: clamp(440px, 42vw, 620px);
+  margin-top: 0;
+  padding: clamp(36px, 6vw, 84px) max(24px, calc((100% - 1500px) / 2));
+  background-color: #164b34;
+  background-position: center 48%;
+  background-size: cover;
+  isolation: isolate;
+}
+
+.health-conclusion-feature::before {
+  position: absolute;
+  z-index: -1;
+  inset: 0;
+  background: transparent;
+  content: '';
+}
+
+.health-conclusion-feature__copy {
+  width: min(100%, 1000px);
+  padding: 0;
+  margin: 0 auto;
+  color: #fff;
+}
+
+.health-page main .health-conclusion-feature h2 {
+  color: #fff;
+  font-size: clamp(30px, 3.3vw, 44px);
+  font-weight: 500;
+  line-height: 1.15;
+  text-align: center;
+  text-shadow: 0 2px 8px rgb(0 0 0 / 85%);
+}
+
+.health-page main .health-conclusion-feature p {
+  max-width: 600px;
+  margin: 16px 0 0;
+  color: #fff;
+  font-size: clamp(16px, 1.4vw, 19px);
+  line-height: 1.55;
+  text-align: left;
+}
+
+.health-page .reforestation-actions ul {
+  margin-top: 28px;
+}
+
+.health-page .reforestation-actions li {
+  padding-left: 10px;
+  line-height: 1.6;
+}
+
+.health-page .reforestation-actions li + li {
+  margin-top: 20px;
+}
+
 @media (max-width: 760px) {
   .health-page .health-hero {
     height: 380px;
     padding: 48px 24px;
+    background-position: 56% 45%;
+  }
+
+  .health-page .health-hero::before {
+    background: linear-gradient(90deg, rgb(0 35 25 / 66%), rgb(0 35 25 / 30%) 78%, rgb(0 35 25 / 10%)), linear-gradient(0deg, rgb(0 0 0 / 18%), transparent 52%);
   }
 
   .health-page .health-hero__subtitle {
@@ -56,8 +123,99 @@
   .health-page .health-intro {
     padding: 40px 24px 20px;
   }
+
+  .health-conclusion-feature {
+    min-height: 430px;
+    padding: 28px 20px;
+    background-position: 52% center;
+  }
+
+  .health-conclusion-feature__copy {
+    width: min(100%, 420px);
+    padding: 0;
+  }
+
+  .health-page main .health-conclusion-feature h2 {
+    font-size: clamp(26px, 7vw, 34px);
+    text-shadow: 0 2px 8px rgb(0 0 0 / 90%);
+  }
+
+  .health-page .reforestation-actions ul {
+    margin-top: 22px;
+  }
+
+  .health-page .reforestation-actions li + li {
+    margin-top: 18px;
+  }
 }
 
 .health-challenges .reforestation-threats__image {
-  object-position: center 12%;
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-position: center top;
+}
+
+.health-challenges {
+  position: relative;
+  display: flex;
+  min-height: clamp(460px, 42vw, 600px);
+  overflow: hidden;
+}
+
+.health-challenges .reforestation-threats__inner {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: stretch;
+  width: 100%;
+  margin: 0;
+  padding: 0 clamp(20px, 5vw, 72px) 0 0;
+}
+
+.health-challenges .reforestation-threats__panel {
+  width: min(360px, 31%);
+  margin: 0 0 0 auto;
+  padding: 24px 26px;
+  gap: 18px;
+  background: #000;
+  color: #fff;
+}
+
+.health-page main .health-challenges .reforestation-threats__panel h2 {
+  font-size: clamp(26px, 2.2vw, 32px);
+  line-height: 1.15;
+  color: #fff;
+  text-align: left;
+}
+
+.health-page main .health-challenges .reforestation-threats__panel p {
+  color: #fff;
+  font-size: 16px;
+  line-height: 1.5;
+  text-align: left;
+}
+
+@media (max-width: 760px) {
+  .health-challenges {
+    min-height: 460px;
+  }
+
+  .health-challenges .reforestation-threats__inner {
+    padding: 0 16px 0 0;
+  }
+
+  .health-challenges .reforestation-threats__panel {
+    width: min(82%, 320px);
+    padding: 20px;
+  }
+
+  .health-page main .health-challenges .reforestation-threats__panel h2 {
+    font-size: 25px;
+  }
+
+  .health-page main .health-challenges .reforestation-threats__panel p {
+    font-size: 15px;
+  }
 }

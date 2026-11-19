@@ -332,9 +332,6 @@ export default function SiteHeader() {
             <a href="/convocatoria-consultorias" role="menuitem" onClick={closeAll}>
               {t('Convocatoria consultorías')}
             </a>
-            <a href="/contacto" role="menuitem" onClick={closeAll}>
-              {t('Contáctanos')}
-            </a>
             <a href="/nuestro-equipo" role="menuitem" onClick={closeAll}>
               {t('Nuestro equipo')}
             </a>
@@ -409,8 +406,8 @@ export default function SiteHeader() {
           <a className="about-navigation__btn about-navigation__btn--volunteer" href="/sumate" onClick={closeAll}>
             {t('SÚMATE')} <img src={arrowRight} alt="" />
           </a>
-          <a className="about-navigation__btn about-navigation__btn--membership" href="/membresia" onClick={closeAll}>
-            {t('MEMBRESÍA')} <img src={arrowRight} alt="" />
+          <a className="about-navigation__btn about-navigation__btn--membership" href="/contacto" onClick={closeAll}>
+            {t('CONTÁCTANOS')} <img src={arrowRight} alt="" />
           </a>
         </div>
         <LanguageSwitcher className="about-navigation__language-mobile" />
@@ -459,8 +456,8 @@ export default function SiteHeader() {
           <a className="header-action-btn header-action-btn--volunteer" href="/sumate" onClick={closeAll}>
             {t('SÚMATE')}
           </a>
-          <a className="header-action-btn header-action-btn--membership" href="/membresia" onClick={closeAll}>
-            {t('MEMBRESÍA')}
+          <a className="header-action-btn header-action-btn--membership" href="/contacto" onClick={closeAll}>
+            {t('CONTÁCTANOS')}
           </a>
         </div>
       </div>

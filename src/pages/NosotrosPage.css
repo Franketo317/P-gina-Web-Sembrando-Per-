@@ -121,8 +121,10 @@
   place-items: center start;
   padding: 48px max(32px, calc((100% - 1200px) / 2));
   background-color: #78aa2d;
-  background-position: center;
-  background-size: cover;
+  /* The q3 asset is a photo captured inside a viewer; zoom and offset it to
+     fill the hero with the photo area while excluding the viewer borders. */
+  background-position: 36% 14%;
+  background-size: 116% auto;
   isolation: isolate;
 }
 
@@ -131,7 +133,7 @@
   z-index: -1;
   inset: 0;
   content: '';
-  background: linear-gradient(90deg, rgb(0 58 39 / 72%), rgb(0 58 39 / 32%) 62%, rgb(0 58 39 / 10%));
+  background: linear-gradient(90deg, rgb(0 48 32 / 68%), rgb(0 48 32 / 29%) 58%, rgb(0 48 32 / 8%));
 }
 
 .about-hero h1 {
@@ -296,26 +298,75 @@
 }
 
 .about-peru {
-  padding: 58px 24px 66px;
-  background: #f5f8f4;
+  padding: 64px 24px 66px;
+  background: #f4f7f3;
   text-align: center;
 }
 
-.about-photo-gallery {
+.about-pillars {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 18px;
-  width: min(1200px, calc(100% - 48px));
+  gap: 28px;
+  width: min(1200px, 100%);
   margin: 0 auto;
-  padding: 0 0 64px;
 }
 
-.about-photo-gallery img {
-  display: block;
-  width: 100%;
-  height: clamp(220px, 27vw, 340px);
-  border-radius: 12px;
-  object-fit: cover;
+.about-pillar {
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  padding: 26px 26px 0;
+  border: 1px solid #e3ebe2;
+  border-radius: 20px;
+  background: #fff;
+  box-shadow: 0 10px 28px rgb(24 70 43 / 6%);
+  text-align: left;
+  transition: transform 220ms ease, box-shadow 220ms ease;
+}
+
+.about-pillar:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 16px 34px rgb(24 70 43 / 10%);
+}
+
+.about-pillar h3 {
+  width: fit-content;
+  max-width: 100%;
+  margin-top: 0;
+  padding: 8px 18px;
+  border-radius: 999px;
+  background: #007653;
+  color: #fff;
+  font-family: var(--font-avenir);
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 1.35;
+}
+
+.about-pillar p {
+  margin-top: 13px;
+  margin-bottom: 22px;
+  color: #40534a;
+  font-family: var(--font-avenir);
+  font-size: 16px;
+  line-height: 1.55;
+}
+
+.about-pillar__image {
+  width: calc(100% + 52px);
+  height: clamp(165px, 17vw, 220px);
+  margin: auto -26px 0;
+  flex: 0 0 auto;
+  border-radius: 0 0 19px 19px;
+  background-color: #dfe9df;
+  background-position: center;
+  background-size: cover;
+}
+
+.about-pillar__image--health {
+  background-position: center 70%;
+  background-size: 125% auto;
 }
 
 .about-peru__content {
@@ -747,6 +798,8 @@
     min-height: 380px;
     height: auto;
     padding: 56px 24px 36px;
+    background-position: 36% 14%;
+    background-size: auto 116%;
   }
 
   .about-hero h1 {
@@ -811,15 +864,29 @@
     padding: 42px 22px 48px;
   }
 
-  .about-photo-gallery {
+  .about-pillars {
     grid-template-columns: 1fr;
-    width: min(100% - 44px, 520px);
     gap: 14px;
-    padding-bottom: 48px;
   }
 
-  .about-photo-gallery img {
-    height: clamp(220px, 62vw, 320px);
+  .about-pillar {
+    min-height: 0;
+    padding: 22px 22px 0;
+  }
+
+  .about-pillar__image {
+    width: calc(100% + 44px);
+    height: clamp(190px, 58vw, 270px);
+    margin-right: -22px;
+    margin-left: -22px;
+  }
+
+  .about-pillar h3 {
+    font-size: 15px;
+  }
+
+  .about-pillar p {
+    font-size: 15px;
   }
 
   .about-mission-vision {

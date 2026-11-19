@@ -272,7 +272,7 @@ function App() {
   const { t } = useLanguage()
 
   if (currentPath === '/membresia') {
-    return <DonationPage isMembership />
+    return <ContactPage />
   }
 
   if (currentPath === '/donacion') {

@@ -1,4 +1,5 @@
-import aboutHero from '../assets/figma/como1.JPG'
+import workHero from '../assets/figma/como2.jpg'
+import strategyImageOne from '../assets/figma/como1.JPG'
 import communityWorkImage from '../assets/figma/como2.jpg'
 import communityGalleryImageOne from '../assets/figma/como3.jpg'
 import communityGalleryImageTwo from '../assets/figma/como4.JPG'
@@ -11,10 +12,12 @@ import './HowWeWorkPage.css'
 
 const workMethodCards = [
   {
-    title: 'SOCIO ESTRATÉGICO LOCAL',
+    title: 'Socio estratégico local',
     label: 'TRABAJO LOCAL',
     text:
       'Trabajamos con agricultores y familias rurales, promoviendo su participación en la reforestación y el cuidado de los bosques.',
+    image: strategyImageOne,
+    imageAlt: 'Agricultores y equipo local colaboran en la Amazonía',
     href: '/#programas',
     icon: (
       <svg viewBox="0 0 64 64" aria-hidden="true">
@@ -23,10 +26,12 @@ const workMethodCards = [
     ),
   },
   {
-    title: 'SOSTENIBILIDAD INTEGRAL',
+    title: 'Sostenibilidad integral',
     label: 'ENFOQUE INTEGRAL',
     text:
       'Integramos la restauración de bosques, la educación ambiental, la alfabetización y la prevención en salud para generar un desarrollo sostenible en las comunidades.',
+    image: communityGalleryImageOne,
+    imageAlt: 'Equipo de Sembrando Perú participa en una jornada comunitaria',
     href: '/#programas',
     icon: (
       <svg viewBox="0 0 64 64" aria-hidden="true">
@@ -36,10 +41,12 @@ const workMethodCards = [
     ),
   },
   {
-    title: 'ALIANZAS Y VOLUNTARIADO ACTIVO',
+    title: 'Alianzas y voluntariado activo',
     label: 'PARTICIPACIÓN ACTIVA',
     text:
       'Promovemos la participación de voluntarios y la colaboración con organizaciones interesadas en contribuir a nuestras iniciativas.',
+    image: communityGalleryImageTwo,
+    imageAlt: 'Voluntarios de Sembrando Perú trabajan junto a la comunidad',
     href: '/#programas',
     icon: (
       <svg viewBox="0 0 64 64" aria-hidden="true">
@@ -57,7 +64,7 @@ export default function HowWeWorkPage() {
       <SiteHeader />
       <section
         className="work-hero"
-        style={{ backgroundImage: `url(${aboutHero})` }}
+        style={{ backgroundImage: `url(${workHero})` }}
         aria-labelledby="work-title"
       >
         <h1 id="work-title">{t('CÓMO TRABAJAMOS')}</h1>
@@ -75,28 +82,16 @@ export default function HowWeWorkPage() {
           style={{ backgroundImage: `url(${communityWorkImage})` }}
           aria-label={t('Nuestro trabajo junto a las comunidades')}
         />
-        <section className="work-community-gallery" aria-label={t('Imágenes de nuestro trabajo con las comunidades')}>
-          <img src={communityGalleryImageOne} alt={t('Trabajo de Sembrando Perú junto a las comunidades')} loading="lazy" />
-          <img src={communityGalleryImageTwo} alt={t('Trabajo de Sembrando Perú junto a las comunidades')} loading="lazy" />
-        </section>
-        <section className="work-areas work-areas--single" aria-label={t('Nuestras áreas de trabajo')}>
+        <section className="work-areas work-areas--single" aria-labelledby="work-method-title">
+          <h2 className="work-areas__heading" id="work-method-title">{t('Nuestras estrategias de trabajo')}</h2>
           <div className="work-areas__grid">
-            {workMethodCards.map((item) => (
-              <article className="work-areas__item" key={item.title}>
-                <h2 className="work-areas__title">{t(item.title)}</h2>
-
-                <div className="work-areas__circle" aria-label={t(item.label)}>
-                  {item.icon}
-                  <span>{t(item.label)}</span>
+            {workMethodCards.map((item, index) => (
+              <article className={`work-areas__row${index % 2 ? ' work-areas__row--reverse' : ''}`} key={item.title}>
+                <img className="work-areas__image" src={item.image} alt={t(item.imageAlt)} loading="lazy" />
+                <div className="work-areas__copy">
+                  <h3>{t(item.title)}</h3>
+                  <p>{t(item.text)}</p>
                 </div>
-
-                <p className="work-areas__text">{t(item.text)}</p>
-
-                {item.href ? (
-                  <a className="work-areas__button" href={item.href}>
-                    {t('CONOCE MÁS')}
-                  </a>
-                ) : null}
               </article>
             ))}
           </div>
