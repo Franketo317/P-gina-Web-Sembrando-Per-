@@ -14,13 +14,6 @@ type SearchItem = {
 }
 
 const searchDatabase: SearchItem[] = [
-  {
-    title: 'Convocatoria consultorías',
-    category: 'Sembrando Perú',
-    description: 'Consulta las convocatorias de consultoría por palabra clave, mes y año.',
-    href: '/convocatoria-consultorias',
-    keywords: ['consultorias', 'consultoria', 'convocatoria', 'convocatorias', 'servicios', 'consultores'],
-  },
   // SEMBRANDO PERÚ (Institucional)
   {
     title: '¿Quiénes somos? / Nosotros',
@@ -110,13 +103,6 @@ const searchDatabase: SearchItem[] = [
   },
 
   // INFÓRMATE
-  {
-    title: 'Últimas Noticias de Impacto',
-    category: 'Infórmate',
-    description: 'Conoce las acciones recientes de reforestación, salud y educación en nuestras comunidades.',
-    href: '/noticias',
-    keywords: ['ultimas noticias', 'noticias', 'reciente', 'impacto'],
-  },
   {
     title: 'Voluntariado',
     category: 'Infórmate',
@@ -288,8 +274,8 @@ export default function SiteHeader() {
   }
 
   const currentPath = typeof window !== 'undefined' ? window.location.pathname.replace(/\/+$/, '') || '/' : '/'
-  const isSembrandoPeruActive = currentPath === '/nosotros' || currentPath.startsWith('/nosotros') || currentPath === '/contacto' || currentPath === '/como-trabajamos' || currentPath === '/trabaja-con-nosotros' || currentPath.startsWith('/convocatoria-consultorias') || currentPath === '/nuestro-equipo' || currentPath === '/mecanismo-de-quejas' || currentPath === '/membresia'
-  const isInformateActive = currentPath === '/noticias' || currentPath === '/voluntariado' || currentPath === '/campanas' || currentPath.startsWith('/campanas/') || currentPath === '/alianzas-empresariales'
+  const isSembrandoPeruActive = currentPath === '/nosotros' || currentPath.startsWith('/nosotros') || currentPath === '/contacto' || currentPath === '/como-trabajamos' || currentPath === '/nuestro-equipo' || currentPath === '/mecanismo-de-quejas' || currentPath === '/membresia'
+  const isInformateActive = currentPath === '/voluntariado' || currentPath === '/campanas' || currentPath.startsWith('/campanas/') || currentPath === '/alianzas-empresariales'
 
   return (
     <header className="about-header site-header-root" ref={headerRef}>
@@ -326,11 +312,8 @@ export default function SiteHeader() {
             <a href="/como-trabajamos" role="menuitem" onClick={closeAll}>
               {t('¿Cómo trabajamos?')}
             </a>
-            <a href="/trabaja-con-nosotros" role="menuitem" onClick={closeAll}>
-              {t('Bolsa laboral')}
-            </a>
-            <a href="/convocatoria-consultorias" role="menuitem" onClick={closeAll}>
-              {t('Convocatoria consultorías')}
+            <a href="/contacto" role="menuitem" onClick={closeAll}>
+              {t('Contáctanos')}
             </a>
             <a href="/nuestro-equipo" role="menuitem" onClick={closeAll}>
               {t('Nuestro equipo')}
@@ -386,9 +369,6 @@ export default function SiteHeader() {
             </svg>
           </button>
           <div className="nav-dropdown__menu" role="menu">
-            <a href="/noticias" role="menuitem" onClick={closeAll}>
-              {t('NOTICIAS')}
-            </a>
             <a href="/voluntariado" role="menuitem" onClick={closeAll}>
               {t('VOLUNTARIADO')}
             </a>

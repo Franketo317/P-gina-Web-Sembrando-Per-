@@ -8,15 +8,39 @@ import { BlogFooter } from './BlogPage'
 import './ConservationStrategiesPage.css'
 
 const impactSteps = [
-  { icon: Handshake, title: 'Tu empresa aporta', text: 'Conversa con nuestro equipo para definir una propuesta de colaboración que se adapte a los objetivos y posibilidades de tu empresa. Tu participación puede apoyar iniciativas ambientales y educativas orientadas a generar cambios positivos en la Selva Central.' },
-  { icon: Sprout, title: 'Reforestamos', text: 'Contribuimos a la recuperación de áreas degradadas de la Selva Central mediante la reforestación con especies nativas y el trabajo conjunto con las comunidades locales.' },
-  { icon: BookOpen, title: 'Educamos', text: 'Impulsamos iniciativas educativas que fortalecen el aprendizaje de los niños y las comunidades de la zona, ampliando oportunidades educativas y la conciencia sobre el cuidado del medioambiente.' },
+  {
+    icon: Handshake,
+    title: 'Tu empresa aporta',
+    text: 'Conversa con nuestro equipo para definir una propuesta de colaboración que se adapte a los objetivos y posibilidades de tu empresa. A través de tu participación, podrás apoyar iniciativas ambientales y educativas orientadas a generar cambios positivos en la Selva Central.',
+  },
+  {
+    icon: Sprout,
+    title: 'Reforestamos',
+    text: 'Contribuimos a la recuperación de áreas degradadas de la Selva Central mediante la reforestación con especies nativas y el trabajo conjunto con las comunidades locales. De esta manera, buscamos favorecer la conservación de los bosques, la biodiversidad y el equilibrio de los ecosistemas.',
+  },
+  {
+    icon: BookOpen,
+    title: 'Educamos',
+    text: 'Impulsamos iniciativas educativas que fortalecen el aprendizaje de los niños y las comunidades de la zona, promoviendo el desarrollo de conocimientos y capacidades. Con estas actividades, buscamos ampliar las oportunidades educativas y fomentar una mayor conciencia sobre el cuidado del medioambiente.',
+  },
 ]
 
 const benefits = [
-  { icon: Leaf, title: 'Impacto ambiental y social', text: 'Contribuye a la recuperación de bosques degradados mediante iniciativas de reforestación y apoya actividades educativas que buscan mejorar el bienestar de las comunidades locales.' },
-  { icon: Award, title: 'Reconocimiento como empresa aliada', text: 'Fortalece tu compromiso social y ambiental al formar parte de una iniciativa orientada a la conservación y al desarrollo comunitario. También puedes visibilizar tu participación mediante los canales oficiales de Sembrando Perú.' },
-  { icon: BarChart3, title: 'Resultados y transparencia', text: 'Conoce los avances y resultados de tu contribución para identificar sus aportes ambientales y sociales y comunicar el compromiso de tu empresa.' },
+  {
+    icon: Leaf,
+    title: 'Impacto ambiental y social',
+    text: 'Contribuye a la recuperación de bosques degradados de la Selva Central mediante iniciativas de reforestación que promueven la conservación de la biodiversidad. Asimismo, apoya actividades educativas que fortalecen el aprendizaje y buscan mejorar el bienestar de las comunidades locales.',
+  },
+  {
+    icon: Award,
+    title: 'Reconocimiento como empresa aliada',
+    text: 'Fortalece el compromiso social y ambiental de tu empresa al formar parte de una iniciativa orientada a la conservación del medioambiente y el desarrollo comunitario. Además, permite dar visibilidad a su participación y colaboración mediante los canales oficiales de comunicación de Sembrando Perú.',
+  },
+  {
+    icon: BarChart3,
+    title: 'Resultados y transparencia',
+    text: 'Conoce los avances y resultados de tu contribución a través de información sobre las iniciativas realizadas. De esta manera, tu empresa podrá identificar los aportes ambientales y sociales de su participación y comunicar su compromiso con el desarrollo sostenible.',
+  },
 ]
 
 export default function ConservationStrategiesPage() {
@@ -28,7 +52,7 @@ export default function ConservationStrategiesPage() {
       <section className="strategies-hero strategies-hero--overview reto-hero" style={{ backgroundImage: `url(${retoHero})` }} aria-labelledby="strategies-title">
         <div className="reto-hero__copy">
           <h1 id="strategies-title">{t('Reto 300')}</h1>
-          <p className="reto-hero__lead">{t('Reforesta y educa con nosotros.')}</p>
+          <p className="reto-hero__lead">{t('Súmate al compromiso de restaurar los bosques de la Selva Central y transformar vidas a través de la reforestación y la educación. ¡Juntos podemos construir un futuro más sostenible!')}</p>
         </div>
         <SocialLinks placement="banner" />
       </section>
@@ -37,7 +61,7 @@ export default function ConservationStrategiesPage() {
         <section className="reto-intro" aria-labelledby="reto-intro-title">
           <div className="reto-intro__copy">
             <h2 id="reto-intro-title">{t('¿Qué es el Reto 300 Empresas?')}</h2>
-          <p>{t('Es un programa de Sembrando Perú que suma el compromiso del sector privado para generar un impacto ambiental, educativo y social en la Selva Central.')}</p>
+            <p>{t('Es un programa de Sembrando Perú que suma el compromiso del sector privado para generar beneficios ambientales, educativos y sociales en la Selva Central. A través de alianzas estratégicas, buscamos contribuir a la recuperación de bosques degradados e impulsar iniciativas educativas que promuevan el bienestar de las comunidades locales.')}</p>
           </div>
           <div className="reto-intro__visuals">
             <img className="reto-intro__image" src={retoForest} alt={t('Vista de un bosque verde en la Selva Central del Perú')} loading="lazy" />
@@ -70,14 +94,18 @@ export default function ConservationStrategiesPage() {
           <h2 id="reto-benefits-title">{t('Beneficios para tu empresa')}</h2>
           <div className="reto-benefits__grid">
             {benefits.map(({ icon: Icon, title, text }) => <article className="reto-benefit" key={title}>
-              <span className="reto-benefit__icon"><Icon size={27} aria-hidden="true" /></span><div><h3>{t(title)}</h3><p>{t(text)}</p></div>
+              <div className="reto-benefit__heading">
+                <span className="reto-benefit__icon"><Icon size={24} aria-hidden="true" /></span>
+                <h3>{t(title)}</h3>
+              </div>
+              <p>{t(text)}</p>
             </article>)}
           </div>
         </section>
 
         <section className="reto-cta">
           <div className="reto-cta__badge"><Leaf size={38} aria-hidden="true" /><Award size={21} aria-hidden="true" /></div>
-          <p><strong>{t('Súmate al Reto 300')}</strong><br />{t('Tu empresa puede contribuir a recuperar los bosques y fortalecer el aprendizaje en la Selva Central.')}</p>
+          <p><strong>{t('Súmate al Reto 300')}</strong>{t('Tu empresa puede contribuir a recuperar los bosques y fortalecer el aprendizaje en la Selva Central.')}</p>
           <a className="reto-button reto-button--light" href="/alianzas#conversemos">{t('Quiero sumar a mi empresa')} <ArrowRight size={19} aria-hidden="true" /></a>
         </section>
       </main>

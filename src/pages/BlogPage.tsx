@@ -1,100 +1,13 @@
-import { useState } from 'react'
 import { Mail } from 'lucide-react'
-import arrowRight from '../assets/figma/imgArrowRight.svg'
-import arrowRight1 from '../assets/figma/imgArrowRight1.svg'
-import arrowRight2 from '../assets/figma/imgArrowRight2.svg'
-import blogFeatureForest from '../assets/figma/blog-featured-forest.jpg'
-import blogFeatureCommunity from '../assets/figma/blog-featured-community.jpg'
-import blogReforestation from '../assets/figma/blog-article-reforestation.jpg'
-import blogCommunity from '../assets/figma/blog-article-community.jpg'
-import blogHealth from '../assets/figma/blog-article-health.jpg'
 import logo from '../assets/figma/imgImage4.png'
-import SiteHeader from '../components/SiteHeader'
 import { useLanguage } from '../components/LanguageContext'
-import SocialLinks from '../components/SocialLinks'
 import socialFacebook from '../assets/figma/imgPlatformFacebookColorNegative.svg'
 import socialLinkedin from '../assets/figma/imgPlatformLinkedInColorNegative.svg'
 import socialInstagramReal from '../assets/figma/imgSocialIcons1.svg'
 import socialTiktok from '../assets/figma/imgPlatformTikTokColorNegative.svg'
 import socialX from '../assets/figma/imgPlatformXTwitterColorNegative.svg'
-
-import blogHeroBackground from '../assets/figma/about-values-background.png'
-import './BlogPage.css'
 import './BlogFooter.css'
 
-const categories = [
-  { label: 'Reforestación', count: 12 },
-  { label: 'Educación', count: 8 },
-  { label: 'Comunidad', count: 15 },
-  { label: 'Voluntariado', count: 24 },
-  { label: 'Salud', count: 5 },
-]
-
-export const featuredArticles = [
-  {
-    slug: 'sembrando-futuro-juntos-por-nuestros-bosques',
-    category: 'MEDIO AMBIENTE',
-    date: 'Marzo 12, 2026',
-    publishedAt: '2026-03-12',
-    title: 'Sembrando futuro: juntos por nuestros bosque',
-    description: 'Conoce nuestras acciones de reforestación y el impacto que generamos en las comunidades.',
-    image: blogFeatureForest,
-    alt: 'Niñas plantando árboles en la Amazonía',
-    arrow: arrowRight1,
-  },
-  {
-    slug: 'transformando-vidas-comunidades',
-    category: 'COMUNIDAD',
-    date: 'Enero 15, 2026',
-    publishedAt: '2026-01-15',
-    title: 'Transformando vidas en nuestras comunidades',
-    description: 'Conoce las historias y acciones que impulsamos para mejorar la vida de niños y familias.',
-    image: blogFeatureCommunity,
-    alt: 'Mujeres de una comunidad amazónica',
-    arrow: arrowRight2,
-  },
-]
-
-export const articles = [
-  {
-    slug: 'jornada-reforestacion-madre-de-dios',
-    category: 'VOLUNTARIADO',
-    date: '12 Oct, 2024',
-    publishedAt: '2024-10-12',
-    title: 'Jornada de reforestación en Madre de Dios',
-    description: 'Un fin de semana lleno de esfuerzo y esperanza, donde más de 50 voluntarios se unieron para restaurar áreas.',
-    image: blogReforestation,
-    alt: 'Jornada comunitaria de reforestación',
-  },
-  {
-    slug: 'guardianas-del-bosque',
-    category: 'COMUNIDAD',
-    date: '05 Oct, 2024',
-    publishedAt: '2024-10-05',
-    title: 'Guardianas del bosque: historias locales',
-    description: 'Conoce a las mujeres que lideran los esfuerzos de conservación y educación ambiental en sus propias comunidades.',
-    image: blogCommunity,
-    alt: 'Equipo comunitario trabajando en un vivero',
-  },
-  {
-    slug: 'prevencion-anemia-nuevos-enfoques',
-    category: 'SALUD',
-    date: '28 Sep, 2024',
-    publishedAt: '2024-09-28',
-    title: 'Prevención de anemia: nuevos enfoques',
-    description: 'Nuestra reciente campaña médica ha introducido métodos innovadores para combatir la malnutrición infantil.',
-    image: blogHealth,
-    alt: 'Jornada de atención de salud en una comunidad',
-  },
-]
-
-const popularArticles = [
-  { title: '5 consejos para proteger el bosque amazónico', date: '10 Oct, 2024', image: blogReforestation },
-  { title: 'El rol de la comunidad en la conservación', date: '02 Oct, 2024', image: blogCommunity },
-  { title: 'Lucha contra la prevención de la anemia', date: '25 Sep, 2024', image: blogHealth },
-]
-
-const tags = ['Amazonía', 'Sostenibilidad', 'Innovación', 'Perú', 'Clima', 'Biodiversidad']
 const socials = [
   { label: 'Facebook', image: socialFacebook, href: 'https://www.facebook.com/PeruSembrando' },
   { label: 'Instagram', image: socialInstagramReal, href: 'https://www.instagram.com/sembrando_peru/' },
@@ -137,7 +50,6 @@ export function BlogFooter() {
             <nav className="blog-footer__links" aria-label={t('Navegación')}>
               <button type="button" onClick={toggleLanguage} lang={language === 'es' ? 'en' : 'es'}>{language === 'es' ? 'English' : 'Español'}</button>
               <a href="/contacto">{t('Contáctanos')}</a>
-              <a href="/trabaja-con-nosotros">{t('Bolsa de Trabajo')}</a>
               <a href="/contacto#privacidad">{t('Políticas')}</a>
               <a href="/mecanismo-de-quejas">{t('Quejas')}</a>
             </nav>
@@ -146,131 +58,5 @@ export function BlogFooter() {
         </div>
       </div>
     </footer>
-  )
-}
-
-
-export function BlogHero({ title = 'NOTICIAS' }: { title?: string }) {
-  const { t } = useLanguage()
-
-  return (
-    <section
-      className="blog-masthead"
-      style={{ backgroundImage: `url(${blogHeroBackground})` }}
-    >
-      <div style={{ position: 'absolute', inset: 0, background: 'rgba(2, 115, 77, 0.4)', zIndex: 1 }} />
-      <SocialLinks />
-      <h1>{t(title)}</h1>
-    </section>
-  )
-}
-
-export function BlogHeader({ showMasthead = true }: { showMasthead?: boolean }) {
-  return (
-    <>
-      <SiteHeader />
-      {showMasthead && <BlogHero />}
-    </>
-  )
-}
-
-export default function BlogPage() {
-  const [selectedCategory, setSelectedCategory] = useState('')
-  const [selectedTag, setSelectedTag] = useState('')
-  const [message, setMessage] = useState('')
-  const { t } = useLanguage()
-  const filteredArticles = selectedCategory
-    ? articles.filter((article) => article.category.toLowerCase() === selectedCategory.toLowerCase())
-    : articles
-
-  function clearFilters() {
-    setSelectedCategory('')
-    setSelectedTag('')
-    setMessage('')
-  }
-
-  return (
-    <div className="blog-page">
-      <SiteHeader />
-      <BlogHero />
-      <main className="blog-layout">
-        <div className="blog-main-column">
-          <section className="blog-featured" aria-labelledby="featured-title">
-            <div className="blog-section-heading"><h2 id="featured-title">{t('Destacados')}</h2></div>
-            <div className="blog-featured__grid">
-              {featuredArticles.map((article) => (
-                <article className="featured-card" key={article.title}>
-                  <img className="featured-card__image" src={article.image} alt={t(article.alt)} />
-                  <div className="featured-card__content">
-                    <div className="blog-meta"><span>{t(article.category)}</span><i /><time>{t(article.date)}</time></div>
-                    <h3>{t(article.title)}</h3>
-                    <p>{t(article.description)}</p>
-                    <a href={`/blog/articulo/${article.slug}`}>{t('Leer artículo')} <img src={article.arrow} alt="" /></a>
-                  </div>
-                </article>
-              ))}
-            </div>
-          </section>
-          <section className="blog-latest" id="articulos" aria-labelledby="latest-title">
-            <div className="blog-section-heading"><h2 id="latest-title">{t('Últimos Artículos')}</h2></div>
-            {selectedCategory || selectedTag ? (
-              <div className="blog-filter-status">
-                <span>{selectedCategory || selectedTag}</span>
-                <button type="button" onClick={clearFilters}>{t('Limpiar filtro')}</button>
-              </div>
-            ) : null}
-            <div className="blog-latest__list">
-              {filteredArticles.length ? filteredArticles.map((article) => (
-                <article className="latest-card" key={article.title}>
-                  <img className="latest-card__image" src={article.image} alt={t(article.alt)} />
-                  <div className="latest-card__content">
-                    <div className="blog-meta"><span>{t(article.category)}</span><i /><time>{t(article.date)}</time></div>
-                    <h3>{t(article.title)}</h3>
-                    <p>{t(article.description)}</p>
-                    <a href={`/blog/articulo/${article.slug}`}>{t('Leer más')} <img src={arrowRight} alt="" /></a>
-                  </div>
-                </article>
-              )) : <p className="blog-empty">{t('No hay artículos para este filtro.')}</p>}
-            </div>
-            <div className="blog-load-more">
-              <button type="button" onClick={() => setMessage('No hay más historias por ahora.')}>{t('Cargar más historias')}</button>
-              {message && <p role="status">{t(message)}</p>}
-            </div>
-          </section>
-        </div>
-        <aside className="blog-sidebar" aria-label={t('Explorar artículos')}>
-          <section className="blog-sidebar__categories">
-            <h2>{t('Categorías')}</h2>
-            <ul>
-              {categories.map((category) => (
-                <li key={category.label}>
-                  <button type="button" aria-pressed={selectedCategory === category.label} onClick={() => { setSelectedCategory(category.label); setSelectedTag('') }}>
-                    {t(category.label)}<span>{category.count}</span>
-                  </button>
-                </li>
-              ))}
-            </ul>
-          </section>
-          <section className="blog-sidebar__popular">
-            <h2>{t('Post más leídos')}</h2>
-            {popularArticles.map((article) => (
-              <a className="popular-post" href="#articulos" key={article.title}>
-                <img src={article.image} alt="" />
-                <span><strong>{t(article.title)}</strong><time>{t(article.date)}</time></span>
-              </a>
-            ))}
-          </section>
-          <section className="blog-sidebar__tags">
-            <h2>{t('Etiquetas Populares')}</h2>
-            <div>
-              {tags.map((tag) => (
-                <button className={selectedTag === tag ? 'is-selected' : ''} type="button" key={tag} onClick={() => { setSelectedTag(tag); setSelectedCategory('') }}>{t(tag)}</button>
-              ))}
-            </div>
-          </section>
-        </aside>
-      </main>
-      <BlogFooter />
-    </div>
   )
 }
