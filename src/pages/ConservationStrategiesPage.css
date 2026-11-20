@@ -287,7 +287,7 @@
 
 .reto-hero{position:relative;min-height:clamp(430px,48vw,620px);display:flex;align-items:center;padding:56px max(24px,calc((100% - 1180px)/2));background-color:#07583e;background-position:center 48%;background-size:cover;isolation:isolate}
 .reto-hero::before{position:absolute;z-index:-1;inset:0;background:linear-gradient(90deg,rgba(0,60,40,.92) 0%,rgba(0,69,45,.76) 44%,rgba(0,45,30,.05) 100%);content:''}
-.reto-hero__copy{width:min(100%,520px);color:white}
+.reto-hero__copy{width:min(100%,42rem);color:white}
 .reto-hero__eyebrow,.reto-kicker{margin:0 0 10px;color:#d6f35d;font-size:14px;font-weight:800;letter-spacing:.12em}
 .reto-hero h1{margin:0;color:#fff;font-family:var(--font-display);font-size:clamp(62px,9vw,112px);font-weight:700;line-height:.95;letter-spacing:-.04em}
 .reto-hero__lead{max-width:440px;margin:20px 0 28px;font-size:clamp(24px,3.2vw,38px);font-weight:700;line-height:1.12}
@@ -389,9 +389,16 @@
 }
 
 .conservation-strategies-page .reto-hero__lead {
-  font-size: clamp(17px, 1.8vw, 23px);
-  font-weight: 200;
-  line-height: 1.4;
+  max-width: none;
+  margin: 16px 0 0;
+  font-size: clamp(17px, 1.6vw, 21px);
+  font-weight: 400;
+  line-height: 1.55;
+  text-wrap: pretty;
+}
+
+.conservation-strategies-page .reto-hero::before {
+  background: linear-gradient(90deg, rgb(0 52 35 / 92%), rgb(0 52 35 / 74%) 56%, rgb(0 45 30 / 12%));
 }
 
 .conservation-strategies-page .reto-hero {
@@ -402,12 +409,27 @@
 .conservation-strategies-page .reto-main h2 {
   font-size: clamp(32px, 3vw, 40px);
   font-weight: 400;
-  line-height: 1.2;
+  line-height: 1.25;
+  text-wrap: balance;
 }
 
 .conservation-strategies-page .reto-intro__copy > p:last-child {
-  font-size: clamp(18px, 1.35vw, 20px);
+  max-width: 65ch;
+  font-size: clamp(17px, 1.45vw, 20px);
+  line-height: 1.65;
+  text-wrap: pretty;
+}
+
+.conservation-strategies-page .reto-intro__visuals {
+  margin-top: 26px;
+}
+
+.conservation-strategies-page .reto-goal {
   line-height: 1.5;
+}
+
+.conservation-strategies-page .reto-goal strong {
+  line-height: 1.2;
 }
 
 .conservation-strategies-page .reto-step__body h3,
@@ -415,18 +437,110 @@
   font-family: var(--font-display);
   font-size: 22px;
   font-weight: 400;
-  line-height: 1.25;
+  line-height: 1.3;
+  margin-bottom: 8px;
 }
 
 .conservation-strategies-page .reto-step__body p,
 .conservation-strategies-page .reto-benefit p {
   font-size: 16px;
-  line-height: 1.5;
+  line-height: 1.6;
+  text-wrap: pretty;
+}
+
+.conservation-strategies-page .reto-benefits__grid {
+  gap: 20px;
+}
+
+.conservation-strategies-page .reto-benefit {
+  display: grid;
+  align-self: stretch;
+  align-content: start;
+  gap: 12px;
+  min-width: 0;
+  padding: 20px;
+  background: #fff;
+  box-shadow: 0 3px 12px rgb(17 62 43 / 10%);
+}
+
+.conservation-strategies-page .reto-benefit__icon {
+  width: 36px;
+  height: 36px;
+}
+
+.conservation-strategies-page .reto-benefit__icon svg {
+  width: 24px;
+  height: 24px;
+}
+
+.reto-benefit__heading {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.conservation-strategies-page .reto-benefit__heading h3 {
+  margin: 0;
+  font-size: 20px;
+}
+
+@media (min-width: 1024px) {
+  .conservation-strategies-page .reto-benefit {
+    grid-row: span 2;
+    grid-template-rows: subgrid;
+    row-gap: 10px;
+  }
+}
+
+@media (max-width: 1023px) {
+  .conservation-strategies-page .reto-benefits__grid {
+    grid-template-columns: minmax(0, 1fr);
+    grid-auto-rows: 1fr;
+    max-width: 660px;
+    margin-inline: auto;
+  }
+}
+
+.conservation-strategies-page .reto-step {
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 14px;
+  padding: clamp(20px, 2vw, 28px);
+}
+
+.conservation-strategies-page .reto-steps__grid {
+  gap: 32px;
+}
+
+.conservation-strategies-page .reto-step__body p {
+  line-height: 1.65;
+}
+
+@media (min-width: 1024px) {
+  .conservation-strategies-page .reto-step__arrow {
+    top: calc(50% - 12.5px);
+    right: -27px;
+  }
+}
+
+.conservation-strategies-page .reto-donation {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.5fr);
 }
 
 .conservation-strategies-page .reto-donation > p {
   font-size: 20px;
-  line-height: 1.35;
+  line-height: 1.4;
+}
+
+.conservation-strategies-page .reto-donation__area {
+  justify-self: start;
+  min-width: 0;
+  line-height: 1.45;
+}
+
+.conservation-strategies-page .reto-donation__area svg {
+  flex: 0 0 auto;
 }
 
 .conservation-strategies-page .reto-donation__area b {
@@ -435,16 +549,63 @@
 
 .conservation-strategies-page .reto-donation__area small {
   font-size: 15px;
+  line-height: 1.6;
+  margin-top: 4px;
 }
 
 .conservation-strategies-page .reto-cta p {
   font-size: 17px;
-  line-height: 1.55;
+  line-height: 1.6;
 }
 
 .conservation-strategies-page .reto-cta p strong {
+  display: block;
+  margin-bottom: 6px;
   font-size: 22px;
   font-weight: 500;
+  line-height: 1.3;
+}
+
+.conservation-strategies-page .reto-button {
+  line-height: 1.35;
+  text-align: center;
+}
+
+@media (max-width: 1023px) {
+  .conservation-strategies-page .reto-steps__grid {
+    grid-template-columns: minmax(0, 1fr);
+    max-width: 660px;
+    margin-inline: auto;
+  }
+
+  .conservation-strategies-page .reto-step__arrow {
+    right: calc(50% - 10px);
+    bottom: -29px;
+    transform: rotate(90deg);
+  }
+}
+
+@media (max-width: 600px) {
+  .conservation-strategies-page .reto-steps {
+    padding-inline: 0;
+  }
+}
+
+@media (max-width: 850px) {
+  .conservation-strategies-page .reto-donation {
+    grid-template-columns: minmax(0, 1fr);
+    text-align: left;
+  }
+
+  .conservation-strategies-page .reto-donation > p {
+    text-align: left;
+  }
+}
+
+@media (max-width: 700px) {
+  .conservation-strategies-page .reto-intro__visuals {
+    grid-template-columns: minmax(0, 1fr);
+  }
 }
 
 @media (max-width: 760px) {
@@ -463,5 +624,9 @@
   .conservation-strategies-page .reto-hero {
     padding-right: 22px;
     padding-left: 22px;
+  }
+
+  .conservation-strategies-page .reto-hero::before {
+    background: linear-gradient(90deg, rgb(0 52 35 / 92%), rgb(0 52 35 / 75%));
   }
 }

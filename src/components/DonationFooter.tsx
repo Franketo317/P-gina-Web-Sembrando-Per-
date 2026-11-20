@@ -24,7 +24,6 @@ export default function DonationFooter({ showJoinOptions = false }: { showJoinOp
         <nav className="donation-footer__links" aria-label={t('Enlaces útiles')}>
           <div>
             <a href="/contacto">{t('Contáctanos')}</a>
-            <a href="/trabaja-con-nosotros">{t('Bolsa laboral')}</a>
           </div>
           <div>
             <a href="/contacto#privacidad">{t('Políticas')}</a>
