@@ -41,7 +41,7 @@ const collaborationOptions = [
     title: 'Colaboración técnica',
     description: 'Comparte conocimientos y capacidades para fortalecer nuestros proyectos.',
     Icon: GraduationCap,
-    href: '/convocatoria-consultorias',
+    href: '#conversemos',
   },
 ]
 

@@ -19,9 +19,21 @@ export function VolunteeringParticipation() {
     { title: 'Salud', description: 'Contribuye al bienestar infantil y familiar.', image: healthPhoto, icon: Heart, href: '/salud' },
   ]
   const steps = [
-    { title: 'Explora', text: 'Conoce nuestras iniciativas.', icon: Binoculars },
-    { title: 'Elige', text: 'Indica tus intereses y disponibilidad.', icon: Pencil },
-    { title: 'Inscríbete', text: 'Envía tu solicitud para coordinar tu participación.', icon: CalendarCheck },
+    {
+      title: 'Explora',
+      text: 'Conoce nuestras iniciativas de reforestación, educación y salud. Visita nuestras redes sociales para descubrir las actividades que realizamos y las oportunidades de voluntariado.',
+      icon: Binoculars,
+    },
+    {
+      title: 'Elige',
+      text: 'Identifica el área en la que te gustaría colaborar, considerando tus intereses, conocimientos, habilidades y disponibilidad para participar en nuestras iniciativas.',
+      icon: Pencil,
+    },
+    {
+      title: 'Inscríbete',
+      text: 'Completa nuestro formulario de contacto con tus datos e intereses para que el equipo pueda informarte sobre los siguientes pasos y coordinar tu participación.',
+      icon: CalendarCheck,
+    },
   ]
   return (
     <>
@@ -52,7 +64,15 @@ export function VolunteeringParticipation() {
       <section className="volunteer-how" aria-labelledby="volunteer-how-title">
         <h2 id="volunteer-how-title">{t('¿Cómo puedes participar?')}</h2>
         <ol>
-          {steps.map(({ title, text, icon: Icon }, index) => <li key={title}><span className="volunteer-step__number">0{index + 1}</span><span className="volunteer-step__icon"><Icon size={24} aria-hidden="true" /></span><span><strong>{t(title)}</strong><small>{t(text)}</small></span>{index < steps.length - 1 && <ChevronRight className="volunteer-step__arrow" size={24} aria-hidden="true" />}</li>)}
+          {steps.map(({ title, text, icon: Icon }, index) => (
+            <li key={title}>
+              <span className="volunteer-step__number">0{index + 1}</span>
+              <span className="volunteer-step__icon"><Icon size={24} aria-hidden="true" /></span>
+              <strong>{t(title)}</strong>
+              <p>{t(text)}</p>
+              {index < steps.length - 1 && <ChevronRight className="volunteer-step__arrow" size={24} aria-hidden="true" />}
+            </li>
+          ))}
         </ol>
       </section>
     </>

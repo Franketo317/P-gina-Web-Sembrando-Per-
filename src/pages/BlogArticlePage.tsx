@@ -92,7 +92,7 @@ export default function BlogArticlePage({ slug }: Props) {
       <SiteHeader />
       {article ? (
         <main className="blog-article">
-          <a className="blog-article__back" href="/noticias">{t('← Volver a Últimos artículos')}</a>
+          <a className="blog-article__back" href="/">{t('Volver al inicio')}</a>
           <article>
             <header className="blog-article__header">
               <div className="blog-meta"><span>{t(article.category)}</span><i /><time>{t(article.date)}</time></div>
@@ -130,7 +130,7 @@ export default function BlogArticlePage({ slug }: Props) {
       ) : (
         <main className="blog-article blog-article--not-found">
           <h1>{t('Artículo no encontrado')}</h1>
-          <a className="blog-article__back" href="/noticias">{t('Volver a Últimos artículos')}</a>
+          <a className="blog-article__back" href="/">{t('Volver al inicio')}</a>
         </main>
       )}
       <BlogFooter />

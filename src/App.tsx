@@ -1,10 +1,5 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { ChevronRight } from 'lucide-react'
-import arrowRight1 from './assets/figma/imgArrowRight1.svg'
-import arrowRight2 from './assets/figma/imgArrowRight2.svg'
-import blogImage from './assets/figma/imgBlogImage.png'
-import blogImage1 from './assets/figma/imgBlogImage1.png'
-import blogImage2 from './assets/figma/imgBlogImage2.png'
 import blogImage3 from './assets/figma/imgBlogImage3.png'
 import blogImage4 from './assets/figma/imgBlogImage4.png'
 import blogImage5 from './assets/figma/imgBlogImage5.png'
@@ -19,15 +14,11 @@ import ValuesSection from './components/ValuesSection'
 import NosotrosPage from './pages/NosotrosPage'
 import { BlogFooter } from './pages/BlogPage'
 import BlogArticlePage from './pages/BlogArticlePage'
-import NewsPage from './pages/NewsPage'
 import ContactPage from './pages/ContactPage'
 import DonationPage from './pages/DonationPage'
 import JoinPage from './pages/JoinPage'
 import HowWeWorkPage from './pages/HowWeWorkPage'
-import WorkWithUsPage from './pages/WorkWithUsPage'
-import ConsultanciesPage, { ConsultancyDetailPage } from './pages/ConsultanciesPage'
 import OurTeamPage from './pages/OurTeamPage'
-import ComplaintsMechanismPage from './pages/ComplaintsMechanismPage'
 import ConservationStrategiesPage from './pages/ConservationStrategiesPage'
 import ReforestationPage from './pages/ReforestationPage'
 import EducationPage from './pages/EducationPage'
@@ -41,9 +32,9 @@ import './pages/ParticipationTypography.css'
 const programs = [
   {
     category: 'medio-ambiente',
-    title: 'BOLSA DE TRABAJO',
-    action: 'POSTULA',
-    href: '/trabaja-con-nosotros',
+    title: 'Reto 300',
+    action: 'Conoce el Reto 300',
+    href: '/estrategias-conservacion',
     description:
       'Trabajamos para restaurar los árboles extraídos de manera injusta en la Amazonía, protegiendo bosques y la biodiversidad.',
     image: blogImage5,
@@ -106,38 +97,13 @@ const heroSlides = [
   },
 ]
 
-const articles = [
-  {
-    category: 'MEDIO AMBIENTE',
-    date: 'Marzo 12, 2026',
-    title: 'Comunidades y agricultores se unen para restaurar los bosques de la Amazonía peruana',
-    description:
-      'Conoce nuestras acciones de reforestación y el impacto que generamos en las comunidades.',
-    image: blogImage,
-    alt: 'Bosque de la Amazonía peruana',
-    arrow: arrowRight1,
-  },
-  {
-    category: 'VOLUNTARIADO',
-    date: 'Febrero 28, 2026',
-    title: 'Voluntariado: sumamos esfuerzos por la conservación y el bienestar de las comunidades',
-    description:
-      'Sé parte del cambio y únete a nuestras próximas actividades y proyectos sociales.',
-    image: blogImage1,
-    alt: 'Voluntariado de Sembrando Perú',
-    arrow: arrowRight2,
-  },
-  {
-    category: 'COMUNIDAD',
-    date: 'Enero 15, 2026',
-    title: 'Educación y salud: un futuro con más oportunidades para los niños y sus familias',
-    description:
-      'Conoce las historias y acciones que impulsamos para mejorar la vida de niños y familias.',
-    image: blogImage2,
-    alt: 'Familia de una comunidad amazónica',
-    arrow: arrowRight2,
-  },
-]
+function RedirectToContactComplaints() {
+  useEffect(() => {
+    window.location.replace('/contacto#mecanismo-de-quejas')
+  }, [])
+
+  return null
+}
 
 function ProgramCard({ category, title, action, href, image, alt }: (typeof programs)[number]) {
   const { t } = useLanguage()
@@ -180,23 +146,6 @@ function ProgramsSection() {
         {programs.slice(0, 2).map((program) => <ProgramCard key={program.category} {...program} />)}
       </div>
     </section>
-  )
-}
-
-function ArticleCard({
-  title,
-  image,
-  alt,
-}: (typeof articles)[number]) {
-  const { t } = useLanguage()
-
-  return (
-    <article className="article-card">
-      <img className="article-card__image" src={image} alt={t(alt)} />
-      <div className="article-card__body">
-        <h3><a href="/noticias">{t(title)}</a></h3>
-      </div>
-    </article>
   )
 }
 
@@ -272,7 +221,7 @@ function App() {
   const { t } = useLanguage()
 
   if (currentPath === '/membresia') {
-    return <DonationPage isMembership />
+    return <ContactPage />
   }
 
   if (currentPath === '/donacion') {
@@ -289,10 +238,6 @@ function App() {
 
   if (currentPath === '/contacto') {
     return <ContactPage />
-  }
-
-  if (currentPath === '/noticias') {
-    return <NewsPage />
   }
 
   if (currentPath === '/alianzas-empresariales') {
@@ -337,24 +282,12 @@ function App() {
     return <ConservationStrategyDetailPage slug={slug} />
   }
 
-  if (currentPath === '/trabaja-con-nosotros') {
-    return <WorkWithUsPage />
-  }
-
-  if (currentPath === '/convocatoria-consultorias') {
-    return <ConsultanciesPage />
-  }
-
-  if (currentPath.startsWith('/convocatoria-consultorias/')) {
-    return <ConsultancyDetailPage slug={currentPath.slice('/convocatoria-consultorias/'.length)} />
-  }
-
   if (currentPath === '/nuestro-equipo') {
     return <OurTeamPage />
   }
 
   if (currentPath === '/mecanismo-de-quejas') {
-    return <ComplaintsMechanismPage />
+    return <RedirectToContactComplaints />
   }
 
   return (
@@ -379,17 +312,6 @@ function App() {
               </div>
             </div>
 
-            <div className="community-section__updates">
-              <div className="community-section__subscribe">
-                <span>{t('Suscríbete a nuestro boletín')}</span>
-              </div>
-
-              <div className="community-section__articles">
-                {articles.map((article) => <ArticleCard key={article.title} {...article} />)}
-              </div>
-
-              <a className="button button--green community-section__more" href="/noticias">{t('Ver más')}</a>
-            </div>
           </div>
         </section>
 

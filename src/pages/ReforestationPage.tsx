@@ -4,7 +4,6 @@ import { useLanguage } from '../components/LanguageContext'
 import { BlogFooter } from './BlogPage'
 import ProgramVolunteerCta from '../components/ProgramVolunteerCta'
 import forestImage from '../assets/figma/reforestacion1.jpg'
-import plantingImage from '../assets/figma/reforestacion2.jpg'
 import nurseryImage from '../assets/figma/reforestacion3.JPG'
 import communityPanorama from '../assets/figma/reforestacion4.jpg'
 import plantingStoryImage from '../assets/figma/reforestacion5.jpg'
@@ -12,9 +11,18 @@ import communityImage from '../assets/figma/reforestacion6.jpg'
 import './ReforestationPage.css'
 
 const actions = [
-  { title: 'Restauramos áreas degradadas', text: 'Impulsamos iniciativas de reforestación para recuperar los bosques y sus ecosistemas.' },
-  { title: 'Trabajamos junto a las comunidades', text: 'Involucramos a agricultores y familias en las jornadas de plantación y el cuidado del territorio.' },
-  { title: 'Fomentamos la educación ambiental', text: 'Compartimos conocimientos sobre la importancia de los bosques y su conservación.' },
+  {
+    title: 'Restauramos áreas degradadas',
+    text: 'Impulsamos iniciativas de reforestación con especies nativas para contribuir a la recuperación de bosques degradados y favorecer la conservación de la biodiversidad. Mediante estas acciones, buscamos restaurar los ecosistemas afectados, fortalecer su equilibrio natural y proteger los recursos forestales para las futuras generaciones.',
+  },
+  {
+    title: 'Trabajamos junto a las comunidades',
+    text: 'Involucramos a agricultores y familias locales en las jornadas de plantación y el cuidado de los árboles, promoviendo su participación activa en las actividades de reforestación. El trabajo colaborativo permite compartir responsabilidades, fortalecer el vínculo con el entorno natural y fomentar prácticas sostenibles que contribuyan a su bienestar.',
+  },
+  {
+    title: 'Fomentamos la educación ambiental',
+    text: 'Compartimos conocimientos sobre la importancia de los bosques, la biodiversidad y el uso responsable de los recursos naturales mediante actividades de sensibilización y educación ambiental. De esta manera, buscamos desarrollar una mayor conciencia ecológica, promover hábitos responsables y motivar la participación de las comunidades en el cuidado de los ecosistemas.',
+  },
 ]
 
 const stories = [
@@ -32,20 +40,19 @@ export default function ReforestationPage() {
       <main>
         <section className="reforestation-hero" style={{ backgroundImage: `url(${forestImage})` }} aria-labelledby="reforestation-title">
           <h1 id="reforestation-title">{t('REFORESTACIÓN')}</h1>
-          <p className="reforestation-hero__subtitle">{t('Recuperamos los bosques de la Amazonía junto a las comunidades.')}</p>
+          <p className="reforestation-hero__subtitle">{t('Recuperamos los bosques de la Amazonía junto a las comunidades, promoviendo la restauración de los ecosistemas y la conservación de nuestra biodiversidad.')}</p>
           <SocialLinks placement="banner" />
         </section>
 
         <section className="reforestation-intro" aria-label={t('Bosques y comunidades')}>
-          <p>{t('En Sembrando Perú promovemos la recuperación de áreas degradadas de la Amazonía peruana mediante iniciativas de reforestación que involucran a agricultores, familias y comunidades locales.')}</p>
+          <p>{t('En Sembrando Perú promovemos la recuperación de áreas degradadas de la Amazonía peruana mediante iniciativas de reforestación con especies nativas. Trabajamos junto a agricultores, familias y comunidades locales para contribuir a la restauración de los ecosistemas y fomentar prácticas sostenibles que fortalezcan el cuidado de nuestros bosques.')}</p>
         </section>
 
         <section className="reforestation-threats" aria-labelledby="reforestation-threats-title">
-          <img className="reforestation-threats__image" src={plantingImage} alt={t('Participación comunitaria en una jornada de plantación')} loading="lazy" />
           <div className="reforestation-threats__inner">
             <div className="reforestation-threats__panel">
               <h2 id="reforestation-threats-title">{t('Nuestros bosques nos necesitan')}</h2>
-              <p>{t('La tala indiscriminada y la degradación forestal amenazan la biodiversidad y el bienestar de las comunidades. Protegerlos es cuidar nuestro futuro.')}</p>
+              <p>{t('La tala indiscriminada y la degradación forestal amenazan la biodiversidad, deterioran los ecosistemas y afectan el bienestar de las comunidades que dependen de ellos. Frente a esta realidad, impulsamos la recuperación de áreas degradadas y el cuidado de nuestros recursos naturales para las futuras generaciones.')}</p>
             </div>
           </div>
         </section>
@@ -53,17 +60,23 @@ export default function ReforestationPage() {
         <img className="reforestation-panorama" src={nurseryImage} alt={t('Vivero de plantas para la reforestación de Sembrando Perú')} loading="lazy" />
 
         <section className="reforestation-actions" aria-labelledby="reforestation-actions-title">
-          <div className="reforestation-actions__copy">
-            <h2 id="reforestation-actions-title">{t('Cómo contribuimos')}</h2>
-            <ul>{actions.map((action) => <li key={action.title}><strong>{t(action.title)}:</strong> {t(action.text)}</li>)}</ul>
-          </div>
+          <h2 id="reforestation-actions-title">{t('Cómo contribuimos')}</h2>
+          <ul className="reforestation-actions__list" role="list">
+            {actions.map(({ title, text }) => (
+              <li className="reforestation-actions__card" key={title}>
+                <h3>{t(title)}</h3>
+                <p>{t(text)}</p>
+              </li>
+            ))}
+          </ul>
         </section>
 
-        <img className="reforestation-panorama reforestation-panorama--after-actions" src={communityPanorama} alt={t('Familias de una comunidad participando en actividades de Sembrando Perú')} loading="lazy" />
-
-        <section className="program-conclusion" aria-labelledby="reforestation-conclusion-title">
-          <h2 id="reforestation-conclusion-title">{t('Sembramos juntos, construimos futuro')}</h2>
-          <p>{t('Cada árbol representa una oportunidad para recuperar nuestros bosques y fortalecer el vínculo entre las comunidades y la naturaleza.')}</p>
+        <section className="reforestation-conclusion" aria-labelledby="reforestation-conclusion-title">
+          <img className="reforestation-conclusion__image" src={communityPanorama} alt={t('Familias de una comunidad participando en actividades de Sembrando Perú')} loading="lazy" />
+          <div className="reforestation-conclusion__panel">
+            <h2 id="reforestation-conclusion-title">{t('Sembramos juntos, construimos futuro')}</h2>
+            <p>{t('Cada árbol representa una oportunidad para recuperar nuestros bosques y fortalecer el vínculo entre las comunidades y la naturaleza.')}</p>
+          </div>
         </section>
 
         <section className="reforestation-stories" aria-labelledby="reforestation-stories-title">

@@ -1,14 +1,35 @@
-import aboutHero from '../assets/figma/q1.jpg'
-import storyCard from '../assets/figma/q2.jpg'
-import aboutPhotoThree from '../assets/figma/q3.JPG'
+import aboutHero from '../assets/figma/q3.JPG'
+import storyCard from '../assets/figma/RETO2.JPG'
+import educationImage from '../assets/figma/q2.jpg'
+import healthImage from '../assets/figma/q1.jpg'
 import aboutPhotoFour from '../assets/figma/q4.JPG'
-import aboutPhotoFive from '../assets/figma/q5.JPG'
 import SiteHeader from '../components/SiteHeader'
 import { useLanguage } from '../components/LanguageContext'
 import SocialLinks from '../components/SocialLinks'
 import greenLine from '../assets/figma/imgGreenLine.svg'
 import { BlogFooter } from './BlogPage'
 import './NosotrosPage.css'
+
+const peruPillars = [
+  {
+    title: 'Protección del medioambiente',
+    description: 'Contribuir a la restauración de bosques degradados mediante la reforestación con especies nativas, favoreciendo la recuperación de los ecosistemas y la conservación de la biodiversidad. También buscamos involucrar a las comunidades en el cuidado de sus recursos naturales y fomentar prácticas sostenibles.',
+    image: aboutPhotoFour,
+    imageAlt: 'Sendero rodeado de árboles en el bosque',
+  },
+  {
+    title: 'Educación para el desarrollo',
+    description: 'Promover oportunidades de aprendizaje mediante iniciativas de educación ambiental y alfabetización en comunidades rurales. Buscamos desarrollar conocimientos y capacidades, fomentar una mayor conciencia ambiental y brindar herramientas para el crecimiento personal y comunitario.',
+    image: educationImage,
+    imageAlt: 'Actividad educativa para niñas y niños',
+  },
+  {
+    title: 'Bienestar y salud infantil',
+    description: 'Apoyar la prevención de la anemia infantil mediante iniciativas de sensibilización y educación sobre alimentación saludable y cuidado de la salud. Asimismo, buscamos ampliar los conocimientos de las familias e incentivar hábitos saludables que favorezcan el bienestar y el desarrollo de los niños.',
+    image: healthImage,
+    imageAlt: 'Niñas y niños sostienen un cartel de Sembrando Perú',
+  },
+]
 
 function AboutHero() {
   const { t } = useLanguage()
@@ -59,16 +80,20 @@ function OrganizationStory() {
         </div>
       </section>
       <section className="about-peru" aria-labelledby="about-peru-title">
-        <div className="about-peru__content">
-          <h2 id="about-peru-title">{t('EN EL PERÚ')}</h2>
-          <img className="about-story__rule" src={greenLine} alt="" />
-          <p>{t('Trabajamos con comunidades rurales de la Amazonía y los Andes mediante acciones de restauración de ecosistemas, educación ambiental, alfabetización y prevención en salud, junto a agricultores y familias locales.')}</p>
+        <div className="about-pillars" aria-label={t('Nuestros tres pilares')}>
+          {peruPillars.map(({ title, description, image, imageAlt }) => (
+            <article className="about-pillar" key={title}>
+              <h3>{t(title)}</h3>
+              <p>{t(description)}</p>
+              <div
+                className={`about-pillar__image${title === 'Bienestar y salud infantil' ? ' about-pillar__image--health' : ''}`}
+                role="img"
+                aria-label={t(imageAlt)}
+                style={{ backgroundImage: `url(${image})` }}
+              />
+            </article>
+          ))}
         </div>
-      </section>
-      <section className="about-photo-gallery" aria-label={t('Imágenes de Sembrando Perú')}>
-        {[aboutPhotoThree, aboutPhotoFour, aboutPhotoFive].map((photo) => (
-          <img key={photo} src={photo} alt={t('Sembrando Perú trabaja junto a las comunidades')} loading="lazy" />
-        ))}
       </section>
     </>
   )

@@ -114,7 +114,7 @@ export default function JoinPage({ volunteering = false }: { volunteering?: bool
               <span className="volunteer-hero__badge">{t('Voluntariado')}</span>
               <h1 id="join-title">{t('Tu tiempo puede transformar vidas')}</h1>
               <p>{t('Ser parte del cambio empieza con una acción. Comparte tu tiempo y tus conocimientos para acompañar a las comunidades y cuidar la naturaleza.')}</p>
-              <a className="volunteer-hero__button" href="/contacto">{t('Quiero ser voluntario')} <ArrowRight size={20} aria-hidden="true" /></a>
+              <a className="volunteer-hero__button" href="https://postulaciones.sembrandoperu.org/">{t('Quiero ser voluntario')} <ArrowRight size={20} aria-hidden="true" /></a>
             </div>
           ) : (
           <div className="join-hero__content join-hero__content--left">

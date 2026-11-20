@@ -5,7 +5,6 @@ import { BlogFooter } from './BlogPage'
 import ProgramVolunteerCta from '../components/ProgramVolunteerCta'
 import learningImage from '../assets/figma/educacion4.jpg'
 import classroomImage from '../assets/figma/educacion1.jpg'
-import communityImage from '../assets/figma/DONAR2.jpg'
 import plantingImage from '../assets/figma/educacion5.jpg'
 import communityLearningImage from '../assets/figma/educacion2.jpg'
 import literacyImage from '../assets/figma/educacion3.jpg'
@@ -14,9 +13,9 @@ import './ReforestationPage.css'
 import './EducationPage.css'
 
 const actions = [
-  { title: 'Alfabetización', text: 'Promovemos la lectura y la escritura para ampliar las oportunidades de aprendizaje en las comunidades.' },
-  { title: 'Educación comunitaria', text: 'Fomentamos espacios de aprendizaje participativo donde niños y familias fortalecen sus capacidades.' },
-  { title: 'Educación ambiental', text: 'Impulsamos el aprendizaje sobre el cuidado de los árboles, los bosques y los recursos naturales.' },
+  { title: 'Alfabetización', text: 'Promovemos la lectura y la escritura como herramientas fundamentales para el aprendizaje y el desarrollo personal. A través de iniciativas educativas, buscamos fortalecer las habilidades de niños y familias de comunidades rurales, brindándoles mayores oportunidades para adquirir conocimientos y desenvolverse en su vida cotidiana.' },
+  { title: 'Educación comunitaria', text: 'Fomentamos espacios participativos donde niños y familias comparten experiencias y desarrollan nuevas capacidades. Mediante actividades educativas y el intercambio de saberes, buscamos incentivar la participación de las comunidades y contribuir a su desarrollo personal y colectivo.' },
+  { title: 'Educación ambiental', text: 'Impulsamos el aprendizaje sobre el cuidado de los árboles, los bosques y los recursos naturales, promoviendo una mayor conciencia sobre la importancia de conservar nuestro entorno. A través de actividades educativas, buscamos fomentar hábitos responsables y motivar a las comunidades a involucrarse en la protección del medioambiente.' },
 ]
 
 const stories = [
@@ -52,12 +51,12 @@ export default function EducationPage() {
       <main>
         <section className="reforestation-hero education-hero" style={{ backgroundImage: `url(${learningImage})` }} aria-labelledby="education-title">
           <h1 id="education-title">{t('EDUCACIÓN')}</h1>
-          <p className="reforestation-hero__subtitle">{t('Aprender hoy, transformar el mañana.')}</p>
+          <p className="reforestation-hero__subtitle">{t('Sembramos conocimientos, cultivamos sueños y construimos un futuro lleno de oportunidades.')}</p>
           <SocialLinks placement="banner" />
         </section>
 
         <section className="reforestation-intro education-intro" aria-label={t('Educación y comunidades')}>
-          <p>{t('En Sembrando Perú promovemos la alfabetización, el aprendizaje comunitario y la educación ambiental para contribuir al desarrollo de niños y familias en las comunidades rurales.')}</p>
+          <p>{t('En Sembrando Perú promovemos la alfabetización, el aprendizaje comunitario y la educación ambiental para contribuir al desarrollo de niños y familias en las comunidades rurales. A través de nuestras iniciativas, buscamos fortalecer sus conocimientos y capacidades, generando oportunidades educativas que favorezcan su bienestar y crecimiento.')}</p>
         </section>
 
         <section className="reforestation-threats education-challenges" aria-labelledby="education-challenges-title">
@@ -69,8 +68,6 @@ export default function EducationPage() {
             </div>
           </div>
         </section>
-
-        <img className="reforestation-panorama" src={communityImage} alt={t('Niños caminando juntos por su comunidad')} loading="lazy" />
 
         <section className="reforestation-actions" aria-labelledby="education-actions-title">
           <div className="reforestation-actions__copy">

@@ -8,4 +8,8 @@ if (!supabaseUrl || !supabaseAnonKey) {
   console.error('Faltan las variables de entorno de Supabase en .env.local')
 }
 
-export const supabase = createClient(supabaseUrl, supabaseAnonKey)
+// El sitio también debe poder ejecutarse sin credenciales locales de Supabase.
+// El cliente solo se crea cuando ambas variables están configuradas.
+export const supabase = supabaseUrl && supabaseAnonKey
+  ? createClient(supabaseUrl, supabaseAnonKey)
+  : null

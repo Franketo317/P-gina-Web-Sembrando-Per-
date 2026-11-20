@@ -5,17 +5,16 @@ import { BlogFooter } from './BlogPage'
 import ProgramVolunteerCta from '../components/ProgramVolunteerCta'
 import healthHero from '../assets/figma/salud1.jpeg'
 import healthImage from '../assets/figma/salud2.JPG'
+import healthChallengesImage from '../assets/figma/salud.jpeg'
 import communityImage from '../assets/figma/saluld3.jpg'
-import nutritionImage from '../assets/figma/salud4.jpeg'
 import healthImageFive from '../assets/figma/salud5.jpeg'
-import healthImageSix from '../assets/figma/salud6.jpeg'
 import './ReforestationPage.css'
 import './HealthPage.css'
 
 const actions = [
-  { title: 'Prevención en salud', text: 'Impulsamos acciones de prevención para contribuir al bienestar de niños y familias de las comunidades rurales.' },
-  { title: 'Educación en salud y nutrición', text: 'Promovemos la educación comunitaria sobre salud y alimentación saludable, desde un enfoque participativo.' },
-  { title: 'Participación de las familias', text: 'Trabajamos junto a las familias para prevenir la anemia infantil y fortalecer hábitos saludables en la comunidad.' },
+  { title: 'Prevención en salud', text: 'Impulsamos acciones de prevención y sensibilización orientadas al bienestar de los niños y las familias de las comunidades rurales. A través de nuestras iniciativas, buscamos compartir información sobre el cuidado de la salud, fomentar prácticas preventivas y generar mayor conciencia sobre la importancia de prevenir la anemia infantil.' },
+  { title: 'Educación en salud y nutrición', text: 'Promovemos la educación comunitaria sobre alimentación saludable, nutrición y hábitos de cuidado que favorezcan el crecimiento y desarrollo de los niños. Mediante actividades de sensibilización y aprendizaje, buscamos brindar información útil a las familias para que puedan incorporar prácticas saludables en su vida cotidiana.' },
+  { title: 'Participación de las familias', text: 'Trabajamos junto a las familias para que participen activamente en las iniciativas de salud comunitaria y compartan experiencias sobre el cuidado infantil. Con su involucramiento, buscamos promover la colaboración, el intercambio de conocimientos y la adopción de hábitos que favorezcan entornos saludables para los niños.' },
 ]
 
 const stories = [
@@ -51,16 +50,15 @@ export default function HealthPage() {
       <main>
         <section className="reforestation-hero health-hero" style={{ backgroundImage: `url(${healthHero})` }} aria-labelledby="health-title">
           <h1 id="health-title">{t('SALUD')}</h1>
-          <p className="reforestation-hero__subtitle">{t('Bienestar para las niñas, niños y familias de las comunidades.')}</p>
           <SocialLinks placement="banner" />
         </section>
 
         <section className="reforestation-intro health-intro" aria-label={t('Salud y bienestar en las comunidades')}>
-          <p>{t('En Sembrando Perú trabajamos para contribuir a la prevención de la anemia infantil y fortalecer la salud en las zonas rurales de la Selva y la Sierra, con un enfoque que conecta la prevención, la educación y la participación de las familias.')}</p>
+          <p>{t('En Sembrando Perú trabajamos para contribuir a la prevención de la anemia infantil y fortalecer la salud en las zonas rurales de la Selva y la Sierra. A través de iniciativas de prevención, educación y participación comunitaria, buscamos promover hábitos saludables, ampliar los conocimientos de las familias y favorecer el bienestar y desarrollo de los niños.')}</p>
         </section>
 
         <section className="reforestation-threats health-challenges" aria-labelledby="health-challenges-title">
-          <img className="reforestation-threats__image" src={nutritionImage} alt={t('Participación de familias en una actividad comunitaria')} loading="lazy" />
+          <img className="reforestation-threats__image" src={healthChallengesImage} alt={t('Equipo de salud y familias de la comunidad durante una jornada de atención')} loading="lazy" />
           <div className="reforestation-threats__inner">
             <div className="reforestation-threats__panel">
               <h2 id="health-challenges-title">{t('Retos para el bienestar infantil')}</h2>
@@ -69,8 +67,6 @@ export default function HealthPage() {
           </div>
         </section>
 
-        <img className="reforestation-panorama" src={healthImageSix} alt={t('Actividad comunitaria relacionada con la salud')} loading="lazy" />
-
         <section className="reforestation-actions" aria-labelledby="health-actions-title">
           <div className="reforestation-actions__copy">
             <h2 id="health-actions-title">{t('¿Qué hacemos por la salud?')}</h2>
@@ -78,11 +74,15 @@ export default function HealthPage() {
           </div>
         </section>
 
-        <img className="reforestation-panorama reforestation-panorama--after-actions" src={communityImage} alt={t('Familias de una comunidad de Sembrando Perú')} loading="lazy" />
-
-        <section className="program-conclusion" aria-labelledby="health-conclusion-title">
-          <h2 id="health-conclusion-title">{t('Cuidar su salud es sembrar su futuro')}</h2>
-          <p>{t('Con prevención, educación y el compromiso de las familias, generamos más oportunidades para que las nuevas generaciones crezcan sanas y con bienestar en sus comunidades.')}</p>
+        <section
+          className="health-conclusion-feature"
+          style={{ backgroundImage: `url(${communityImage})` }}
+          aria-labelledby="health-conclusion-title"
+          aria-label={t('Familias de una comunidad de Sembrando Perú')}
+        >
+          <div className="health-conclusion-feature__copy">
+            <h2 id="health-conclusion-title">{t('Cuidar su salud es sembrar su futuro')}</h2>
+          </div>
         </section>
 
         <section className="reforestation-stories" aria-labelledby="health-stories-title">
