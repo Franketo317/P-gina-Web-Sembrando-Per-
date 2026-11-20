@@ -240,10 +240,6 @@
   object-fit: cover;
 }
 
-.team-card__portrait-image--jose {
-  transform: scale(1.22);
-}
-
 .team-card__content {
   min-width: 0;
 }

@@ -1,10 +1,10 @@
 import { ArrowRight, UsersRound } from 'lucide-react'
 import teamBanner from '../assets/figma/equipo1.jpg'
-import carlosPhoto from '../assets/figma/team-carlos.png'
-import andreaPhoto from '../assets/figma/team-andrea.png'
-import ricardoPhoto from '../assets/figma/team-ricardo.png'
-import solancePhoto from '../assets/figma/team-solance.png'
-import josePhoto from '../assets/figma/team-joseVasquez.png'
+import carlosPhoto from '../assets/figma/Carlos_Velez.png'
+import andreaPhoto from '../assets/figma/Andrea_Tuesta.png'
+import ricardoPhoto from '../assets/figma/Ricardo_Garcés.png'
+import solancePhoto from '../assets/figma/Solance_Vargas.png'
+import stipPhoto from '../assets/figma/Stip_Florian.png'
 import volunteerAlina from '../assets/figma/volunteer-alina-miranda.png'
 import volunteerEvelyn from '../assets/figma/volunteer-evelyn-estrada.png'
 import volunteerIsabel from '../assets/figma/volunteer-isabel-agurto.png'
@@ -20,7 +20,7 @@ const teamMembers = [
     role: 'Dirección General',
     description: 'Lidera la estrategia de la organización y la gestión de alianzas para impulsar nuestras iniciativas.',
     photo: carlosPhoto,
-    portraitPosition: '68% 48%',
+    portraitPosition: 'center 38%',
   },
   {
     name: 'Andrea Tuesta',
@@ -44,10 +44,10 @@ const teamMembers = [
     portraitPosition: 'center 38%',
   },
   {
-    name: 'José Vásquez',
-    role: 'Dirección de Comunicaciones',
-    description: 'Contribuye a la comunicación institucional y a la difusión de las iniciativas de la organización.',
-    photo: josePhoto,
+    name: 'Stip Florian',
+    role: 'DIRECTOR DE PROYECTOS',
+    description: 'Coordina los proyectos de la organización.',
+    photo: stipPhoto,
     portraitPosition: 'center 38%',
   },
 ]
@@ -132,7 +132,6 @@ export default function OurTeamPage() {
                   <li className="team-card" key={member.name}>
                     <div className="team-card__portrait">
                       <img
-                        className={member.name === 'José Vásquez' ? 'team-card__portrait-image--jose' : undefined}
                         src={member.photo}
                         alt={t(member.name)}
                         style={{ objectPosition: member.portraitPosition }}
