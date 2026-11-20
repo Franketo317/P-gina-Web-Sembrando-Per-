@@ -2,6 +2,7 @@ import SiteHeader from '../components/SiteHeader'
 import PrivacyPolicy from '../components/PrivacyPolicy'
 import ComplaintsMechanismContent from '../components/ComplaintsMechanismContent'
 import { useLanguage } from '../components/LanguageContext'
+import { useEffect } from 'react'
 import { ChevronDown, Mail, MapPin, Phone } from 'lucide-react'
 import heroImage from '../assets/figma/contact-hero.png'
 import socialFacebook from '../assets/figma/imgPlatformFacebookColorNegative.svg'
@@ -64,9 +65,20 @@ function ContactChannels() {
 
 function ComplaintsDisclosure() {
   const { t } = useLanguage()
+
+  useEffect(() => {
+    if (window.location.hash !== '#mecanismo-de-quejas') return
+
+    const disclosure = document.getElementById('mecanismo-de-quejas')
+    if (!(disclosure instanceof HTMLDetailsElement)) return
+
+    disclosure.open = true
+    requestAnimationFrame(() => disclosure.scrollIntoView({ block: 'start' }))
+  }, [])
+
   return (
     <section className="contact-complaints" aria-labelledby="complaints-disclosure-title">
-      <details className="contact-disclosure">
+      <details className="contact-disclosure" id="mecanismo-de-quejas">
         <summary>
           <h2 id="complaints-disclosure-title">{t('Mecanismo de quejas')}</h2>
           <ChevronDown className="contact-disclosure__chevron" aria-hidden="true" />

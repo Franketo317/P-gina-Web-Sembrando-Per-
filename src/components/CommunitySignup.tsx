@@ -2,7 +2,7 @@ import { useRef, useState, type FormEvent } from 'react'
 import { useLanguage } from './LanguageContext'
 import Turnstile from './Turnstile'
 import { joinProductionOrigin } from '../lib/submitJoin'
-import { supabase } from '../supabaseClient' // 👈 Verifica que la ruta hacia supabaseClient sea correcta
+import { supabase } from '../supabaseClient'
 
 export function CommunitySignupForm() {
   const [submitted, setSubmitted] = useState(false)
@@ -36,6 +36,10 @@ export function CommunitySignupForm() {
     const formData = new FormData(form)
 
     try {
+      if (!supabase) {
+        throw new Error('Supabase no está configurado en este entorno.')
+      }
+
       // Inserción directa en la tabla comunidad_registros de Supabase
       const { error } = await supabase.from('comunidad_registros').insert([
         {

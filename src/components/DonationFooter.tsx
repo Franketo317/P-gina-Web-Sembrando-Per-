@@ -27,7 +27,7 @@ export default function DonationFooter({ showJoinOptions = false }: { showJoinOp
           </div>
           <div>
             <a href="/contacto#privacidad">{t('Políticas')}</a>
-            <a href="/mecanismo-de-quejas">{t('Mecanismo de quejas')}</a>
+            <a href="/contacto#mecanismo-de-quejas">{t('Mecanismo de quejas')}</a>
           </div>
         </nav>
         <div className="donation-footer__social"><SocialLinks /></div>

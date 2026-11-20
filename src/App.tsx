@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { ChevronRight } from 'lucide-react'
 import blogImage3 from './assets/figma/imgBlogImage3.png'
 import blogImage4 from './assets/figma/imgBlogImage4.png'
@@ -19,7 +19,6 @@ import DonationPage from './pages/DonationPage'
 import JoinPage from './pages/JoinPage'
 import HowWeWorkPage from './pages/HowWeWorkPage'
 import OurTeamPage from './pages/OurTeamPage'
-import ComplaintsMechanismPage from './pages/ComplaintsMechanismPage'
 import ConservationStrategiesPage from './pages/ConservationStrategiesPage'
 import ReforestationPage from './pages/ReforestationPage'
 import EducationPage from './pages/EducationPage'
@@ -97,6 +96,14 @@ const heroSlides = [
     href: '/#programas',
   },
 ]
+
+function RedirectToContactComplaints() {
+  useEffect(() => {
+    window.location.replace('/contacto#mecanismo-de-quejas')
+  }, [])
+
+  return null
+}
 
 function ProgramCard({ category, title, action, href, image, alt }: (typeof programs)[number]) {
   const { t } = useLanguage()
@@ -280,7 +287,7 @@ function App() {
   }
 
   if (currentPath === '/mecanismo-de-quejas') {
-    return <ComplaintsMechanismPage />
+    return <RedirectToContactComplaints />
   }
 
   return (

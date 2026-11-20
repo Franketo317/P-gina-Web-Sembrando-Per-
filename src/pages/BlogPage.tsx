@@ -36,7 +36,7 @@ export function BlogFooter() {
             <a href="/reforestacion">{t('Reforestación')}</a>
             <a href="/educacion">{t('Educación')}</a>
             <a href="/salud">{t('Salud')}</a>
-            <a href="/mecanismo-de-quejas">{t('Mecanismo de quejas')}</a>
+            <a href="/contacto#mecanismo-de-quejas">{t('Mecanismo de quejas')}</a>
           </nav>
         </div>
       </div>
@@ -51,7 +51,7 @@ export function BlogFooter() {
               <button type="button" onClick={toggleLanguage} lang={language === 'es' ? 'en' : 'es'}>{language === 'es' ? 'English' : 'Español'}</button>
               <a href="/contacto">{t('Contáctanos')}</a>
               <a href="/contacto#privacidad">{t('Políticas')}</a>
-              <a href="/mecanismo-de-quejas">{t('Quejas')}</a>
+              <a href="/contacto#mecanismo-de-quejas">{t('Quejas')}</a>
             </nav>
             <p className="blog-footer__copyright">{t('© 2026 Sembrando. Todos los derechos reservados.')}</p>
           </div>
