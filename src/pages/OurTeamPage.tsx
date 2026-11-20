@@ -5,7 +5,6 @@ import andreaPhoto from '../assets/figma/team-andrea.png'
 import ricardoPhoto from '../assets/figma/team-ricardo.png'
 import solancePhoto from '../assets/figma/team-solance.png'
 import josePhoto from '../assets/figma/team-joseVasquez.png'
-import volunteerMariana from '../assets/figma/volunteer-mariana.png'
 import volunteerAlina from '../assets/figma/volunteer-alina-miranda.png'
 import volunteerEvelyn from '../assets/figma/volunteer-evelyn-estrada.png'
 import volunteerIsabel from '../assets/figma/volunteer-isabel-agurto.png'
@@ -49,13 +48,6 @@ const teamMembers = [
     role: 'Dirección de Comunicaciones',
     description: 'Contribuye a la comunicación institucional y a la difusión de las iniciativas de la organización.',
     photo: josePhoto,
-    portraitPosition: 'center 38%',
-  },
-  {
-    name: 'NOMBRE APELLIDO',
-    role: 'Área por definir',
-    description: 'Información del integrante por completar.',
-    photo: volunteerMariana,
     portraitPosition: 'center 38%',
   },
 ]
