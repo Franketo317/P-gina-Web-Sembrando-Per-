@@ -1,10 +1,10 @@
 import { ArrowRight, UsersRound } from 'lucide-react'
 import teamBanner from '../assets/figma/equipo1.jpg'
-import carlosPhoto from '../assets/figma/Carlos_Velez.png'
-import andreaPhoto from '../assets/figma/Andrea_Tuesta.png'
-import ricardoPhoto from '../assets/figma/Ricardo_Garcés.png'
-import solancePhoto from '../assets/figma/Solance_Vargas.png'
-import stipPhoto from '../assets/figma/Stip_Florian.png'
+import carlosPhoto from '../assets/figma/CARLOS VELEZ.png'
+import andreaPhoto from '../assets/figma/ANDREA TUESTA.png'
+import ricardoPhoto from '../assets/figma/RICARDO GARCES.png'
+import solancePhoto from '../assets/figma/SOLANCE VARGAS.png'
+import stipPhoto from '../assets/figma/STIP FLORIAN.png'
 import volunteerAlina from '../assets/figma/volunteer-alina-miranda.png'
 import volunteerEvelyn from '../assets/figma/volunteer-evelyn-estrada.png'
 import volunteerIsabel from '../assets/figma/volunteer-isabel-agurto.png'
@@ -45,7 +45,7 @@ const teamMembers = [
   },
   {
     name: 'Stip Florian',
-    role: 'DIRECTOR DE PROYECTOS',
+    role: 'Director de proyectos',
     description: 'Coordina los proyectos de la organización.',
     photo: stipPhoto,
     portraitPosition: 'center 38%',
@@ -55,7 +55,7 @@ const teamMembers = [
 const volunteerVoices = [
   {
     name: 'Evelyn Estrada',
-    role: 'Voluntaria',
+    role: 'Coordinadora de marketing',
     quote: 'En Sembrando Perú he descubierto que liderar va más allá de coordinar un equipo: es unir talentos, impulsar ideas y transformar esfuerzos en acciones que generan impacto. Porque los grandes cambios se construyen cuando muchas personas trabajan por un mismo propósito.',
     photo: volunteerEvelyn,
   },
